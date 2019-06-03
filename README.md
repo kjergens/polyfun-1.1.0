@@ -10,7 +10,7 @@ Note these changes were made to be backward compatible with code that uses the p
 * Updated variable names to be descriptive, e.g. double var2 became double numericalCoefficient. (Note that because attributes are private and access is only through the getters and setters, the interface for the user does not change.)
 * Added getters and setters to reflect new variable names, e.g. getDouble became getNumericalCoeffienct. (The old ones were not removed, but marked as deprecated.)
 * Added setters where they were missing.
-* Simplified "if (<cond>) return true; else return false;" to "return <cond>;". (IntelliJ code analyzer recommended this.)
+* Simplified "if ([cond]) return true; else return false;" to "return [cond];". (IntelliJ code analyzer recommended this.)
 * Where the code instantiated an object by using the default constructor then set the attributes separately, changed to using a constructor that sets all the attributes.
 * Where the code had a statement that appeared in all if-if-else-else blocks, that statement was pulled out of if block.
 * Where the code used for-loops to copy arrays, replaced with System.arraycopy. (IntelliJ code analyzer recommended this.)

@@ -81,6 +81,18 @@ public class Coef {
         this.setTerms(terms);
     }
 
+    /**
+     * Get terms array.
+     * @return terms array
+     */
+    public Term[] getTerms() {
+        return this.terms;
+    }
+
+    /**
+     * Set terms array. The array passed in is copied to the terms attribute.
+     * @param terms
+     */
     public void setTerms(Term[] terms) {
         this.terms = new Term[terms.length];
 
@@ -91,48 +103,12 @@ public class Coef {
 
     }
 
+    /**
+     * Set terms array with this term as the only element
+     * @param term term that will make up the terms array
+     */
     public void setTerms(Term term) {
         this.setTerms(new Term[]{term.simplify()}); // TODO: Better to make a copy of term first?
-    }
-
-    public Term[] getTerms() {
-        return this.terms;
-    }
-
-    @Deprecated
-    public void print() {
-        if (this.terms[0].getNumericalCoefficient() != 0.0D) {
-            this.terms[0].print();
-        }
-
-        for (int i = 1; i < this.terms.length; ++i) {
-            if (this.terms[i].getNumericalCoefficient() > 0.0D) {
-                System.out.print("+");
-                this.terms[i].print();
-            } else if (this.terms[i].getNumericalCoefficient() < 0.0D) {
-                this.terms[i].print();
-            }
-        }
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder string = new StringBuilder();
-
-        if (this.terms[0].getNumericalCoefficient() != 0.0D) {
-            string = new StringBuilder(this.terms[0].toString());
-        }
-
-        for (int i = 1; i < this.terms.length; ++i) {
-            if (this.terms[i].getNumericalCoefficient() > 0.0D) {
-                string.append("+");
-                string.append(this.terms[i].toString());
-            } else if (this.terms[i].getNumericalCoefficient() < 0.0D) {
-                string.append(this.terms[i].toString());
-            }
-        }
-
-        return string.toString();
     }
 
     /**
@@ -199,7 +175,6 @@ public class Coef {
         }
 
         return coef;
-
     }
 
     /**
@@ -245,6 +220,22 @@ public class Coef {
     }
 
     /**
+     * Multiplies each Term in the Coef by a scalar (double)
+     *
+     * @param scalar The double to multiply it by
+     * @return Coef that's been multiplied by a scalar
+     */
+    public Coef times(double scalar) {
+        Term[] terms = new Term[this.getTerms().length];
+
+        for (int i = 0; i < this.getTerms().length; ++i) {
+            terms[i] = this.getTerms()[i].times(scalar);
+        }
+
+        return new Coef(terms);
+    }
+
+    /**
      * Add Coefs by combining like Terms and adding unlike Terms
      *
      * @param coef Coef to be added to the first Coef
@@ -263,22 +254,6 @@ public class Coef {
 
         Coef coef1 = new Coef(terms);
         return coef1.simplify();
-    }
-
-    /**
-     * Multiplies each Term in the Coef by a scalar (double)
-     *
-     * @param scalar The double to multiply it by
-     * @return Coef that's been multiplied by a scalar
-     */
-    public Coef times(double scalar) {
-        Term[] terms = new Term[this.getTerms().length];
-
-        for (int i = 0; i < this.getTerms().length; ++i) {
-            terms[i] = this.getTerms()[i].times(scalar);
-        }
-
-        return new Coef(terms);
     }
 
     /**
@@ -311,12 +286,56 @@ public class Coef {
     }
 
     /**
-     * True if Coef consists only of a double, false otherwise
+     * True if Coef consists only of a double, false otherwise.
+     *
      * @return True if Coef consists only of a double, false otherwise
      */
     public boolean isConstantCoef() {
         this.simplify();
         return this.terms.length == 1 && this.terms[0].isConstantTerm();
+    }
+
+    /**
+     * @deprecated Use {@link #toString()} instead.
+     */
+    @Deprecated
+    public void print() {
+        if (this.terms[0].getNumericalCoefficient() != 0.0D) {
+            this.terms[0].print();
+        }
+
+        for (int i = 1; i < this.terms.length; ++i) {
+            if (this.terms[i].getNumericalCoefficient() > 0.0D) {
+                System.out.print("+");
+                this.terms[i].print();
+            } else if (this.terms[i].getNumericalCoefficient() < 0.0D) {
+                this.terms[i].print();
+            }
+        }
+    }
+
+    /**
+     * Compose a printable string of the Coef.
+     * @return a printable string
+     */
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+
+        if (this.terms[0].getNumericalCoefficient() != 0.0D) {
+            string = new StringBuilder(this.terms[0].toString());
+        }
+
+        for (int i = 1; i < this.terms.length; ++i) {
+            if (this.terms[i].getNumericalCoefficient() > 0.0D) {
+                string.append("+");
+                string.append(this.terms[i].toString());
+            } else if (this.terms[i].getNumericalCoefficient() < 0.0D) {
+                string.append(this.terms[i].toString());
+            }
+        }
+
+        return string.toString();
     }
 }
 

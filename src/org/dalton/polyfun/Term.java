@@ -3,10 +3,10 @@ package org.dalton.polyfun;
 /**
  * An array of Atoms and a number. The Atoms are understood to be multiplied.
  * For example: In the polynomial in x:
- *
- *     P(x) = 2(a_1)^3(b)x^4 - (a_2)(b_4)x^2 + 7ab + b_2
- *
- *  2(a_1)^3(b) is a term, and 7ab + b_2 is two terms: 7ab and b_2
+ * <p>
+ * P(x) = 2(a_1)^3(b)x^4 - (a_2)(b_4)x^2 + 7ab + b_2
+ * <p>
+ * 2(a_1)^3(b) is a term, and 7ab + b_2 is two terms: 7ab and b_2
  *
  * @Author David Gomprecht
  * @Author Katie Jergens
@@ -55,12 +55,46 @@ public class Term {
      * Construct a Term with a new number and an array of Atoms.
      *
      * @param numericalCoefficient The numericalCoefficient attribute
-     * @param atoms Atom[] attribute
+     * @param atoms                Atom[] attribute
      */
     public Term(double numericalCoefficient, Atom[] atoms) {
         this.numericalCoefficient = numericalCoefficient;
         this.atoms = new Atom[atoms.length];
         System.arraycopy(atoms, 0, this.atoms, 0, atoms.length);
+    }
+
+    /**
+     * @deprecated use {@link #getNumericalCoefficient()} ()} instead.
+     */
+    @Deprecated
+    public double getTermDouble() {
+        return this.numericalCoefficient;
+    }
+
+    /**
+     * Get the numerical coefficient.
+     *
+     * @return the numerical coefficient
+     */
+    public double getNumericalCoefficient() {
+        return numericalCoefficient;
+    }
+
+    /**
+     * @deprecated use {@link #getAtoms()} ()} instead.
+     */
+    @Deprecated
+    public Atom[] getTermAtoms() {
+        return this.atoms;
+    }
+
+    /**
+     * Get the array of Atoms
+     *
+     * @return atoms
+     */
+    public Atom[] getAtoms() {
+        return atoms;
     }
 
     /**
@@ -88,101 +122,31 @@ public class Term {
         this.atoms = atoms; // TODO: should this be an arraycopy?
     }
 
-    /**
-     * @deprecated use {@link #getNumericalCoefficient()} ()} instead.
-     */
-    @Deprecated
-    public double getTermDouble() {
-        return this.numericalCoefficient;
-    }
 
     /**
-     * @deprecated use {@link #getAtoms()} ()} instead.
+     * Set the numericalCoefficient.
+     *
+     * @param numericalCoefficient
      */
-    @Deprecated
-    public Atom[] getTermAtoms() {
-        return this.atoms;
-    }
-
-    public double getNumericalCoefficient() {
-        return numericalCoefficient;
-    }
-
     public void setNumericalCoefficient(double numericalCoefficient) {
         this.numericalCoefficient = numericalCoefficient;
     }
 
-    public Atom[] getAtoms() {
-        return atoms;
-    }
-
+    /**
+     * Set the array of Atoms. Note this array gets assigned, not copied.
+     *
+     * @param atoms Will become the Atoms array for this Term
+     */
     public void setAtoms(Atom[] atoms) {
         this.atoms = atoms; // TODO: should this be an arraycopy?
     }
 
     /**
-     * @deprecated use {@link #toString()} instead.
-     */
-    @Deprecated
-    public void print() {
-        if (this.atoms.length == 0 && this.numericalCoefficient != 0.0D) {
-            System.out.print(this.numericalCoefficient);
-        } else {
-            int i;
-            if (this.numericalCoefficient == 1.0D) {
-                for (i = 0; i < this.atoms.length; ++i) {
-                    this.atoms[i].print();
-                }
-            } else if (this.numericalCoefficient == -1.0D) {
-                System.out.print("-");
-
-                for (i = 0; i < this.atoms.length; ++i) {
-                    this.atoms[i].print();
-                }
-            } else {
-                System.out.print(this.numericalCoefficient);
-
-                for (i = 0; i < this.atoms.length; ++i) {
-                    this.atoms[i].print();
-                }
-            }
-        }
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder string = new StringBuilder();
-        if (this.atoms.length == 0 && this.numericalCoefficient != 0.0D) {
-            string = new StringBuilder(String.valueOf(this.numericalCoefficient));
-        } else {
-            int i;
-            if (this.numericalCoefficient == 1.0D) {
-                for (i = 0; i < this.atoms.length; ++i) {
-                    string.append(this.atoms[i].toString());
-                }
-            } else if (this.numericalCoefficient == -1.0D) {
-                string.append("-");
-
-                for (i = 0; i < this.atoms.length; ++i) {
-                    string.append(this.atoms[i].toString());
-                }
-            } else {
-                string = new StringBuilder(String.valueOf(this.numericalCoefficient));
-
-                for (i = 0; i < this.atoms.length; ++i) {
-                    string.append(this.atoms[i].toString());
-                }
-            }
-        }
-
-        return string.toString();
-    }
-
-    /**
      * Make a new Term with the first Atom removed. Will fail with Term that has no Atoms.
-     *
+     * <p>
      * TODO: Actually update this Term and return the popped Atom.
      * TODO: rename pop()
+     *
      * @return New term with the first Atom removed
      */
     public Term snip() {
@@ -197,7 +161,7 @@ public class Term {
 
     /**
      * Creates a new Term with the a new Atom at the front of Term
-     *
+     * <p>
      * TODO: Actually update this Term.
      * TODO: rename insertInFront() or push()
      *
@@ -216,10 +180,10 @@ public class Term {
     /**
      * Places a new Atom in the array of Atoms that make up the term. Atoms go in alphabetical order,
      * then by subscript. It "myatom" is "like" (same letter & subscript) the Atoms are combined.
-     *
+     * <p>
      * example: place b^2 in the Term 3abd will result in 3ab^3d
      * example: place c_1 in the Term 3abd will result in 3abc_1d
-     *
+     * <p>
      * TODO: rename insert()
      *
      * @param atom
@@ -252,7 +216,7 @@ public class Term {
     /**
      * Orders Atoms and combines like Atoms in the Array of atoms.
      * example: 3baca^2 becomes 3a^3bc
-     *
+     * <p>
      * Permanently alters the Term.
      *
      * @return Term Permanently alters the Term
@@ -291,6 +255,93 @@ public class Term {
 
         Term termProduct = new Term(this.numericalCoefficient * term.getNumericalCoefficient(), atoms);
         return termProduct.simplify();
+    }
+
+    /**
+     * Multiply Term by a scalar value.
+     *
+     * @param scalar Value to multiply this Term by
+     * @return the product
+     */
+    public Term times(double scalar) {
+        return new Term(scalar * this.getNumericalCoefficient(), this.getAtoms());
+    }
+
+    /**
+     * Tests to see if two terms have "like" (same letter & subscript) Atoms
+     *
+     * @param term Term to compare "this" to
+     * @return true or false if they are "like" or not
+     */
+    public boolean like(Term term) {
+        Term term1 = new Term(this.simplify().getNumericalCoefficient(), this.simplify().getAtoms());
+        Term term2 = new Term(term.simplify().getNumericalCoefficient(), term.simplify().getAtoms());
+        int len = 0;
+
+        if (term1.getAtoms().length != term2.getAtoms().length) {
+            return false;
+        } else {
+            for (int i = 0; i < term1.getAtoms().length; ++i) {
+                if (term1.getAtoms()[i].like(term2.getAtoms()[i])) {
+                    ++len;
+                }
+            }
+
+            return len == term1.getAtoms().length;
+        }
+    }
+
+    /**
+     * Detects if the term passed in is less than this term.
+     *
+     * @param term term to compare
+     * @return true if this is less than the param
+     */
+    public boolean lessThan(Term term) {
+        int len = 0;
+        Term term1 = new Term(this.simplify().getNumericalCoefficient(), this.simplify().getAtoms());
+        Term term2 = new Term(term.simplify().getNumericalCoefficient(), term.simplify().getAtoms());
+
+        if (term1.getAtoms().length <= term2.getAtoms().length && !this.equals(term)) {
+
+            for (int i = 0; i < term1.getAtoms().length; ++i) {
+                if (term1.getAtoms()[i].lessThanOrEqual(term2.getAtoms()[i])) {
+                    ++len;
+                }
+            }
+
+            return len == term1.getAtoms().length;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Checks to see of the double (and hence the Term) is zero.
+     *
+     * @return
+     */
+    public boolean isZero() {
+        return this.numericalCoefficient == 0.0D;
+    }
+
+    /**
+     * Non-descriptive method name.
+     *
+     * @deprecated use {@link #isConstantTerm()} instead.
+     */
+    @Deprecated
+    public boolean isDouble() {
+        return this.atoms.length == 0;
+    }
+
+    /**
+     * Checks if this is a constant term, i.e. no variables.
+     *
+     * @return
+     */
+    public boolean isConstantTerm() {
+        return this.atoms.length == 0;
     }
 
     /**
@@ -343,80 +394,65 @@ public class Term {
     }
 
     /**
-     * Tests to see if two terms have "like" (same letter & subscript) Atoms
-     *
-     * @param term Term to compare "this" to
-     * @return true or false if they are "like" or not
-     */
-    public boolean like(Term term) {
-        Term term1 = new Term(this.simplify().getNumericalCoefficient(), this.simplify().getAtoms());
-        Term term2 = new Term(term.simplify().getNumericalCoefficient(), term.simplify().getAtoms());
-        int len = 0;
-
-        if (term1.getAtoms().length != term2.getAtoms().length) {
-            return false;
-        } else {
-            for (int i = 0; i < term1.getAtoms().length; ++i) {
-                if (term1.getAtoms()[i].like(term2.getAtoms()[i])) {
-                    ++len;
-                }
-            }
-
-            return len == term1.getAtoms().length;
-        }
-    }
-
-    public boolean lessThan(Term term) {
-        int len = 0;
-        Term term1 = new Term(this.simplify().getNumericalCoefficient(), this.simplify().getAtoms());
-        Term term2 = new Term(term.simplify().getNumericalCoefficient(), term.simplify().getAtoms());
-
-        if (term1.getAtoms().length <= term2.getAtoms().length && !this.equals(term)) {
-
-            for (int i = 0; i < term1.getAtoms().length; ++i) {
-                if (term1.getAtoms()[i].lessThanOrEqual(term2.getAtoms()[i])) {
-                    ++len;
-                }
-            }
-
-            return len == term1.getAtoms().length;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Multiply Term by a scalar value.
-     *
-     * @param scalar Value to multiply this Term by
-     * @return the product
-     */
-    public Term times(double scalar) {
-        return new Term(scalar * this.getNumericalCoefficient(), this.getAtoms());
-    }
-
-    /**
-     * Checks to see of the double (and hence the Term) is zero.
-     *
-     * @return
-     */
-    public boolean isZero() {
-        return this.numericalCoefficient == 0.0D;
-    }
-
-    /**
-     * @deprecated use {@link #isConstantTerm()} instead.
+     * @deprecated use {@link #toString()} instead.
      */
     @Deprecated
-    public boolean isDouble() {
-        return this.atoms.length == 0;
+    public void print() {
+        if (this.atoms.length == 0 && this.numericalCoefficient != 0.0D) {
+            System.out.print(this.numericalCoefficient);
+        } else {
+            int i;
+            if (this.numericalCoefficient == 1.0D) {
+                for (i = 0; i < this.atoms.length; ++i) {
+                    this.atoms[i].print();
+                }
+            } else if (this.numericalCoefficient == -1.0D) {
+                System.out.print("-");
+
+                for (i = 0; i < this.atoms.length; ++i) {
+                    this.atoms[i].print();
+                }
+            } else {
+                System.out.print(this.numericalCoefficient);
+
+                for (i = 0; i < this.atoms.length; ++i) {
+                    this.atoms[i].print();
+                }
+            }
+        }
     }
 
     /**
-     * Checks if this is a constant term, i.e. no variables.
-     * @return
+     * Composes a printable string of this term.
+     *
+     * @return a printable string
      */
-    public boolean isConstantTerm() {
-        return this.atoms.length == 0;
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        if (this.atoms.length == 0 && this.numericalCoefficient != 0.0D) {
+            string = new StringBuilder(String.valueOf(this.numericalCoefficient));
+        } else {
+            int i;
+            if (this.numericalCoefficient == 1.0D) {
+                for (i = 0; i < this.atoms.length; ++i) {
+                    string.append(this.atoms[i].toString());
+                }
+            } else if (this.numericalCoefficient == -1.0D) {
+                string.append("-");
+
+                for (i = 0; i < this.atoms.length; ++i) {
+                    string.append(this.atoms[i].toString());
+                }
+            } else {
+                string = new StringBuilder(String.valueOf(this.numericalCoefficient));
+
+                for (i = 0; i < this.atoms.length; ++i) {
+                    string.append(this.atoms[i].toString());
+                }
+            }
+        }
+
+        return string.toString();
     }
 }

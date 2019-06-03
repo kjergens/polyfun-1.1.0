@@ -209,6 +209,54 @@ public class Polynomial {
     }
 
     /**
+     * Gets the degree of the Polynomial.
+     *
+     * @return degree The degree of the polynomial
+     */
+    public int getDegree() {
+        return this.degree;
+    }
+
+    /**
+     * Doesn't follow naming convention.
+     *
+     * @deprecated use {@link #getCoefAt(int)} instead.
+     */
+    @Deprecated
+    public Coef getCoefficient(int index) {
+        return this.coefs[index];
+    }
+
+    /**
+     * Retrieve a specific coefficient by specifying the x which corresponds with that
+     * org.dalton.polyfun.Coef. Returns a org.dalton.polyfun.Coef.
+     *
+     * @param index
+     * @return org.dalton.polyfun.Coef
+     */
+    public Coef getCoefAt(int index) {
+        return this.coefs[index];
+    }
+
+    /**
+     * Doesn't follow naming convention.
+     *
+     * @deprecated use {@link #getCoefs()} instead.
+     */
+    @Deprecated
+    public Coef[] getCoefficients() {
+        return this.coefs;
+    }
+
+    /**
+     * Get the Coef array.
+     * @return the array of Coefs.
+     */
+    public Coef[] getCoefs() {
+        return this.coefs;
+    }
+
+    /**
      * Sets the degree of the Polynomial.
      *
      * @param degree The degree to set (also specifies length of coeffs array)
@@ -216,15 +264,6 @@ public class Polynomial {
     public void setDegree(int degree) {
         this.degree = degree;
         this.coefs = new Coef[degree + 1];
-    }
-
-    /**
-     * Gets the degree of the Polynomial.
-     *
-     * @return degree The degree of the polynomial
-     */
-    public int getDegree() {
-        return this.degree;
     }
 
     /**
@@ -283,132 +322,6 @@ public class Polynomial {
             this.coefs[i] = new Coef(coefficients[i]);
         }
 
-    }
-
-    /**
-     * Doesn't follow naming convention.
-     *
-     * @deprecated use {@link #getCoefAt(int)} instead.
-     */
-    @Deprecated
-    public Coef getCoefficient(int index) {
-        return this.coefs[index];
-    }
-
-    /**
-     * Retrieve a specific coefficient by specifying the x which corresponds with that
-     * org.dalton.polyfun.Coef. Returns a org.dalton.polyfun.Coef.
-     *
-     * @param index
-     * @return org.dalton.polyfun.Coef
-     */
-    public Coef getCoefAt(int index) {
-        return this.coefs[index];
-    }
-
-    /**
-     * Doesn't follow naming convention.
-     *
-     * @deprecated use {@link #getCoefs()} instead.
-     */
-    @Deprecated
-    public Coef[] getCoefficients() {
-        return this.coefs;
-    }
-
-    /**
-     * Get the Coef array.
-     * @return the array of Coefs.
-     */
-    public Coef[] getCoefs() {
-        return this.coefs;
-    }
-
-    /**
-     * Doesn't follow convention.
-     *
-     * @deprecated use {@link #toString()} instead.
-     */
-    @Deprecated
-    public void print() {
-        for(int i = this.degree; i > 1; --i) {
-            if (!this.coefs[i].isZero()) {
-                System.out.print("(");
-                this.coefs[i].print();
-                System.out.print(")X^" + i);
-
-                int j;
-                for(j = i - 1; j > 0 && this.coefs[j].isZero(); --j) {
-                }
-
-                if (j != 0) {
-                    System.out.print("+");
-                }
-            }
-        }
-
-        if (this.degree > 0) {
-            if (!this.coefs[1].isZero()) {
-                System.out.print("(");
-                this.coefs[1].print();
-                System.out.print(")X");
-            }
-
-            if (!this.coefs[0].isZero()) {
-                System.out.print("+");
-                this.coefs[0].print();
-            }
-        }
-
-        if (this.degree == 0 && !this.coefs[0].isZero()) {
-            this.coefs[0].print();
-        }
-
-        System.out.println();
-    }
-
-    /**
-     * Returns a printable string.
-     * @return String representing the polynomial.
-     */
-    @Override
-    public String toString() {
-        StringBuilder string = new StringBuilder();
-
-        for(int i = this.degree; i > 1; --i) {
-            if (!this.coefs[i].isZero()) {
-                string.append("(");
-                string.append(this.coefs[i].toString());
-                string.append(")X^").append(i);
-
-                int j;
-                for(j = i - 1; j > 0 && this.coefs[j].isZero(); --j) {
-                }
-
-                if (j != 0) {
-                    string.append("+");
-                }
-            }
-        }
-
-        if (this.degree > 0) {
-            if (!this.coefs[1].isZero()) {
-                string.append("(");
-                string.append(this.coefs[1].toString());
-                string.append(")X");
-            }
-
-            if (!this.coefs[0].isZero()) {
-                string.append("+");
-                string.append(this.coefs[0].toString());
-            }
-        }
-
-        if (this.degree == 0 && !this.coefs[0].isZero()) {
-            string.append(this.coefs[0].toString());
-        }
-
-        return string.append("\n").toString();
     }
 
     /**
@@ -611,5 +524,92 @@ public class Polynomial {
         }
 
         return degree == this.degree;
+    }
+
+    /**
+     * Doesn't follow convention.
+     *
+     * @deprecated use {@link #toString()} instead.
+     */
+    @Deprecated
+    public void print() {
+        for(int i = this.degree; i > 1; --i) {
+            if (!this.coefs[i].isZero()) {
+                System.out.print("(");
+                this.coefs[i].print();
+                System.out.print(")X^" + i);
+
+                int j;
+                for(j = i - 1; j > 0 && this.coefs[j].isZero(); --j) {
+                }
+
+                if (j != 0) {
+                    System.out.print("+");
+                }
+            }
+        }
+
+        if (this.degree > 0) {
+            if (!this.coefs[1].isZero()) {
+                System.out.print("(");
+                this.coefs[1].print();
+                System.out.print(")X");
+            }
+
+            if (!this.coefs[0].isZero()) {
+                System.out.print("+");
+                this.coefs[0].print();
+            }
+        }
+
+        if (this.degree == 0 && !this.coefs[0].isZero()) {
+            this.coefs[0].print();
+        }
+
+        System.out.println();
+    }
+
+    /**
+     * Returns a printable string.
+     * @return String representing the polynomial.
+     */
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+
+        for(int i = this.degree; i > 1; --i) {
+            if (!this.coefs[i].isZero()) {
+                string.append("(");
+                string.append(this.coefs[i].toString());
+                string.append(")X^").append(i);
+
+                int j;
+                for(j = i - 1; j > 0 && this.coefs[j].isZero(); --j) {
+                }
+
+                if (j != 0) {
+                    string.append("+");
+                }
+            }
+        }
+
+        if (this.degree > 0) {
+            if (!this.coefs[1].isZero()) {
+                string.append("(");
+                string.append(this.coefs[1].toString());
+                string.append(")X");
+            }
+
+            if (!this.coefs[0].isZero()) {
+                string.append("+");
+                string.append(this.coefs[0].toString());
+            }
+        }
+
+        if (this.degree == 0 && !this.coefs[0].isZero()) {
+            string.append(this.coefs[0].toString());
+        }
+
+        return string.append("\n").toString();
     }
 }

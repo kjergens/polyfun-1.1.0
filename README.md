@@ -1,6 +1,8 @@
 # Polyfun for Java 11
 
-Refactored version of David Gomprecht's polyfun library. You can download the JAR in out/artifacts/polyfun_v_11/polyfun_v_11.jar
+Refactored version of David Gomprecht's polyfun library.
+
+Download [polyfun_v_11.jar](out/artifacts/polyfun_v_11/polyfun_v_11.jar)
 
 ## Change log
 Note these changes were made to be backward compatible with code that uses the previous version. In other words, no methods were deleted and no method signatures were changed.

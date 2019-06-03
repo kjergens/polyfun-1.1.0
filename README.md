@@ -10,4 +10,6 @@ Refactored version of David Gomprecht's polyfun library.
 * Simplified object construction, e.g. using default constructor then setting the attributes separately became using the proper constructor
 * When a statement appeared in all if-if-else-else blocks, pulled it out of if block.
 * Replaced a for-loop to copy arrays with System.arraycopy
-* Added unit tests
+* Added toString methods
+* Marked methods with old names as deprecated
+* Added Junit tests

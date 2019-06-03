@@ -2,11 +2,91 @@ import org.dalton.polyfun.Atom;
 import org.dalton.polyfun.Coef;
 import org.dalton.polyfun.Polynomial;
 import org.dalton.polyfun.Term;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Random;
 
 
 public class PolynomialTest {
+
+    private polyfun.Polynomial polynomial_v6;
+    private Polynomial polynomial_v11;
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+
+    @Before
+    public void setUp() {
+        // Point System.out to another output stream so I can test the print() outputs.
+        System.setOut(new PrintStream(outContent));
+
+        // Randomly create the polynomials v 6 and v 11 for comparison
+        Random random = new Random();
+
+        // Create 2 identical Coef arrays, of random length from 2 - 5 (so they will be at least a 1 degree poly)
+        int numCoefficients = random.nextInt(5) + 2;
+        polyfun.Coef[] oldCoefs = new polyfun.Coef[numCoefficients];
+        Coef[] newCoefs = new Coef[numCoefficients];
+
+        // Fill them using numericalCoefficients, randomly selected
+        for (int j = 0; j < oldCoefs.length; j++) {
+            double numericalCoefficient = random.nextDouble() * random.nextInt(10);
+            oldCoefs[j] = new polyfun.Coef(numericalCoefficient);
+            newCoefs[j] = new Coef(numericalCoefficient);
+        }
+
+        // Finally, create 2 identical Polynomials
+        polynomial_v6 = new polyfun.Polynomial(oldCoefs);
+        polynomial_v11 = new Polynomial(newCoefs);
+
+    }
+
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
+
+    @Test
+    public void printPolynomials_CompareV6V11() {
+        polynomial_v6.print();
+        System.err.println(outContent.toString());
+        Assert.assertEquals(outContent.toString(), polynomial_v11.toString());
+    }
+
+    @Test
+    public void polynomialParts_CompareV6V11() {
+        comparePolynomials(polynomial_v6, polynomial_v11);
+    }
+
+    @Test
+    public void addPolynomialsToSelf_CompareV6V11() {
+        polyfun.Polynomial sum_v6 = polynomial_v6.plus(polynomial_v6);
+        Polynomial sum_v11 = polynomial_v11.plus(polynomial_v11);
+        sum_v6.print();
+        Assert.assertEquals(outContent.toString(), sum_v11.toString());
+    }
+
+    @Test
+    public void multiplyPolynomialsToSelf_CompareV6V11() {
+        polyfun.Polynomial product_v6 = polynomial_v6.times(polynomial_v6);
+        Polynomial product_v11 = polynomial_v11.times(polynomial_v11);
+        product_v6.print();
+        Assert.assertEquals(outContent.toString(), product_v11.toString());
+    }
+
+    @Test
+    public void addTangent_CompareV6V11() {
+        polyfun.Polynomial sum_v6 = polynomial_v6.addTangent();
+        Polynomial sum_v11 = polynomial_v11.addTangent();
+        sum_v6.print();
+        Assert.assertEquals(outContent.toString(), sum_v11.toString());
+    }
 
     @Test
     public void testEvaluate_CompareToPolyfunOld() {
@@ -48,7 +128,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void testTo_CompareToPolyfunOld() {
+    public void testTo_CompareV6V11() {
         // Create 2 identical polynomials
         double[] coefficients = {1, -3, 0, 2};
 
@@ -61,6 +141,19 @@ public class PolynomialTest {
 
         // Compare both
         comparePolynomials(old_result, new_result);
+    }
+
+    @Test
+    public void testToRandom_CompareV6V11() {
+        polyfun.Polynomial raised_v6 = polynomial_v6.to(5);
+        Polynomial raised_v11 = polynomial_v11.to(5);
+
+        // Compare parts
+        comparePolynomials(raised_v6, raised_v11);
+
+        // Also test printed versions
+        raised_v6.print();
+        Assert.assertEquals(outContent.toString(), raised_v11.toString());
     }
 
     @Test

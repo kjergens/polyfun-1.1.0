@@ -369,31 +369,6 @@ public class Term {
     }
 
     /**
-     * Check equality between two Terms.
-     *
-     * @param term Term to check
-     * @return boolean True if they are equal
-     */
-    public boolean equals(Term term) {
-        this.simplify();
-        term.simplify();
-
-        if (this.getAtoms().length == term.getAtoms().length) {
-
-            for (int i = 0; i < this.getAtoms().length; ++i) {
-                if (!this.getAtoms()[i].equals(term.getAtoms()[i])) {
-                    return false;
-                }
-            }
-
-            // If got this far, they must be equal
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * @deprecated use {@link #toString()} instead.
      */
     @Deprecated
@@ -420,6 +395,31 @@ public class Term {
                 }
             }
         }
+    }
+
+    /**
+     * Check equality between two Terms.
+     *
+     * @param term Term to check
+     * @return boolean True if they are equal
+     */
+    public boolean equals(Term term) {
+        this.simplify();
+        term.simplify();
+
+        if (this.getAtoms().length == term.getAtoms().length) {
+
+            for (int i = 0; i < this.getAtoms().length; ++i) {
+                if (!this.getAtoms()[i].equals(term.getAtoms()[i])) {
+                    return false;
+                }
+            }
+
+            // If got this far, they must be equal
+            return true;
+        }
+
+        return false;
     }
 
     /**

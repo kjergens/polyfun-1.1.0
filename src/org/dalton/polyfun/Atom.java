@@ -40,19 +40,6 @@ public class Atom {
     }
 
     /**
-     * Create an Atom by entering a letter, a subscript, and a power
-     *
-     * @param letter    The letter
-     * @param subscript The subscript
-     * @param power     The power (i.e. exponent)
-     */
-    public void setAtom(char letter, int subscript, int power) {
-        this.letter = letter;
-        this.subscript = subscript;
-        this.power = power;
-    }
-
-    /**
      * Get letter
      *
      * @return
@@ -103,6 +90,19 @@ public class Atom {
      * @param power
      */
     public void setPower(int power) {
+        this.power = power;
+    }
+
+    /**
+     * Create an Atom by entering a letter, a subscript, and a power
+     *
+     * @param letter    The letter
+     * @param subscript The subscript
+     * @param power     The power (i.e. exponent)
+     */
+    public void setAtom(char letter, int subscript, int power) {
+        this.letter = letter;
+        this.subscript = subscript;
         this.power = power;
     }
 
@@ -177,17 +177,6 @@ public class Atom {
     }
 
     /**
-     * Checks equality between Atoms.
-     *
-     * @param atom - The org.dalton.polyfun.Atom to compare to this one.
-     * @return boolean
-     */
-    public boolean equals(Atom atom) {
-        return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript()
-                && this.getPower() == atom.getPower();
-    }
-
-    /**
      * Prints the Atom.
      *
      * @deprecated Use {@link #toString()} instead
@@ -206,6 +195,17 @@ public class Atom {
             System.out.print(this.letter + "_" + this.subscript + "^" + this.power);
         }
 
+    }
+
+    /**
+     * Checks equality between Atoms.
+     *
+     * @param atom - The org.dalton.polyfun.Atom to compare to this one.
+     * @return boolean
+     */
+    public boolean equals(Atom atom) {
+        return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript()
+                && this.getPower() == atom.getPower();
     }
 
     /**

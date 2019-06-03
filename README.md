@@ -30,7 +30,7 @@ These changes were made to be backward compatible. In other words, old XClass co
 * Where a method looked for a non-zero value in an array, updated it from counting all the non-zero elements then returning true if count > 0, to instead return false at the first occurrence of a non-zero element.
 * Where a method returned a new object by declaring and instantiating on one line, and returning on the next line, changed to returning an anonymous object instantiating on the same line.
 * Added toString() methods and put deprecation warning for print() methods.
-* Added equals() methods and put deprecation warning on identicalTo() methods.
+* Added equals() methods to Atom and Term and put deprecation warning on identicalTo() methods.
 * Throughout the library, replaced use of deprecated methods with their newer counterparts.
 * Auto-reformatted code.
 * Added Junit tests

@@ -121,7 +121,7 @@ public class Term {
     }
 
     /**
-     * @deprecated use {@link #toString()} ()} instead.
+     * @deprecated use {@link #toString()} instead.
      */
     @Deprecated
     public void print() {
@@ -294,7 +294,7 @@ public class Term {
     }
 
     /**
-     * @deprecated use {@link #equals(Term)} ()} instead.
+     * @deprecated use {@link #equals(Term)} instead.
      */
     @Deprecated
     public boolean identicalTo(Term term) {
@@ -405,7 +405,7 @@ public class Term {
     }
 
     /**
-     * @deprecated use {@link #isConstantTerm()} ()} instead.
+     * @deprecated use {@link #isConstantTerm()} instead.
      */
     @Deprecated
     public boolean isDouble() {

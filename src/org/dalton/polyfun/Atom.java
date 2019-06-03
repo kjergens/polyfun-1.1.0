@@ -18,6 +18,9 @@ public class Atom {
     private int subscript = -1;
     private int power = 1;
 
+    /**
+     * Default constructor.
+     */
     public Atom() {
     }
 
@@ -27,28 +30,79 @@ public class Atom {
         this.power = power;
     }
 
+    /**
+     * Create an atom with just a letter.
+     * @param letter The new letter.
+     */
     public Atom(char letter) {
         this.letter = letter;
     }
 
+    /**
+     * Create an Atom by entering a letter, a subscript, and a power
+     * @param letter The letter
+     * @param subscript The subscript
+     * @param power The power (i.e. exponent)
+     */
     public void setAtom(char letter, int subscript, int power) {
         this.letter = letter;
         this.subscript = subscript;
         this.power = power;
     }
 
+    /**
+     * Set letter.
+     * @param letter
+     */
+    public void setLetter(char letter) {
+        this.letter = letter;
+    }
+
+    /**
+     * Set subscript.
+     * @param subscript
+     */
+    public void setSubscript(int subscript) {
+        this.subscript = subscript;
+    }
+
+    /**
+     * Set power.
+     * @param power
+     */
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    /**
+     * Get letter
+     * @return
+     */
     public char getLetter() {
         return this.letter;
     }
 
+    /**
+     * Get subscript
+     * @return
+     */
     public int getSubscript() {
         return this.subscript;
     }
 
+    /**
+     * Get power
+     * @return
+     */
     public int getPower() {
         return this.power;
     }
 
+    /**
+     * Prints the Atom.
+     *
+     * @deprecated Use {@link #toString()} instead
+     */
     @Deprecated
     public void print() {
         if (this.subscript == -1) {
@@ -65,6 +119,10 @@ public class Atom {
 
     }
 
+    /**
+     * Returns a printable string of the Atom.
+     * @return A string.
+     */
     @Override
     public String toString() {
         String string = "";
@@ -85,10 +143,25 @@ public class Atom {
 
     }
 
+    /**
+     * Multiply two atoms which have the same letter and subscript.
+     * For example:
+     *      (a_1)^3 * (a_1)^4 = (a_1)^7
+     *
+     *  The orignal atoms remain unchanged
+     *
+     * @param atom
+     * @return the product
+     */
     public Atom timesLikeAtom(Atom atom) {
         return new Atom(this.getLetter(), this.subscript, this.getPower() + atom.getPower());
     }
 
+    /**
+     * Test to see if Atoms are exactly identical (same letter, subscript, and power)
+     * @param atom
+     * @return
+     */
     public boolean identicalTo(Atom atom) {
         return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript()
                 && this.getPower() == atom.getPower();
@@ -105,10 +178,26 @@ public class Atom {
                 && this.getPower() == atom.getPower();
     }
 
+
+    /**
+     * Test to see if Atoms are "like" (same letter, subscript)
+     *
+     * @param atom Atom to compare this to.
+     * @return true if the two Atoms have same letter and subscript.
+     */
     public boolean like(Atom atom) {
         return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript();
     }
 
+    /**
+     * Defines a way of comparing two atoms. If letters are in alphabetical order it's true. If
+     * letters are the same, but subscripts are in increasing order it's true. If letters are the same,
+     * and subscripts are the same, and powers are equal or in increasing order it's true. Otherwise
+     * it's false.
+     *
+     * @param atom Atom to compare this to.
+     * @return true if this is less than or equal to the atom passed in.
+     */
     public boolean lessThanOrEqual(Atom atom) {
         if (this.getLetter() < atom.getLetter()) {
             return true;
@@ -119,6 +208,14 @@ public class Atom {
         }
     }
 
+    /**
+     * Compares two atoms by letter and subscript only. If the letters are in alphabetical order it's true.
+     * If the letters are the same, and the subscripts are in increasing order it's true. Otherwise
+     * it's false.
+     *
+     * @param atom Atom to compare this to.
+     * @return true if this is less than the atom passed in
+     */
     public boolean lessThan(Atom atom) {
         if (this.getLetter() < atom.getLetter()) {
             return true;

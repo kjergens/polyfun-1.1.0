@@ -1,0 +1,64 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.dalton.polyfun.*;
+import static org.junit.Assert.*;
+
+public class AtomTest {
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void setAtom() {
+    }
+
+    @Test
+    public void getLetter() {
+    }
+
+    @Test
+    public void getSubscript() {
+    }
+
+    @Test
+    public void getPower() {
+    }
+
+    @Test
+    public void print() {
+    }
+
+    @Test
+    public void toString1() {
+    }
+
+    @Test
+    public void timesLikeAtom() {
+    }
+
+    @Test
+    public void identicalTo() {
+    }
+
+    @Test
+    public void equals1() {
+    }
+
+    @Test
+    public void like() {
+    }
+
+    @Test
+    public void lessThanOrEqual() {
+    }
+
+    @Test
+    public void lessThan() {
+    }
+}

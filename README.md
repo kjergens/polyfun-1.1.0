@@ -13,6 +13,14 @@ These changes were made to be backward compatible. In other words, old XClass co
 * Added getters and setters to reflect new variable names, e.g. `getDouble()` became `getNumericalCoefficient()`.
   * Note that the old ones were not removed, but they were marked as deprecated.
 * Added setters where they were missing.
+* In each class, arranged methods in following order:
+  * Constructors
+  * Getters
+  * Setters
+  * other methods
+    * overloaded methods are grouped together
+  * equals
+  * toString
 * Simplified `if (<condition>) return true; else return false;` to `return <condition>;`.
   * Note IntelliJ code analyzer recommended this change.
 * Where the code instantiated an object by using the default constructor then set the attributes individually using setters, changed to using a constructor that sets all the attributes.
@@ -26,3 +34,7 @@ These changes were made to be backward compatible. In other words, old XClass co
 * Throughout the library, replaced use of deprecated methods with their newer counterparts.
 * Auto-reformatted code.
 * Added Junit tests
+* Added class diagrams (see below).
+
+![class diagrams](class_diagrams.png)
+

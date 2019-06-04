@@ -24,6 +24,8 @@ public class AtomTest {
 
     @After
     public void tearDown() throws Exception {
+        // Point System.out back to console.
+        System.setOut(originalOut);
     }
 
     @Test
@@ -59,9 +61,17 @@ public class AtomTest {
     }
 
     @Test
+    @SuppressWarnings("deprecation")
     public void print() {
         atom.print();
         Assert.assertEquals("a_1^2", outContent.toString());
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    public void print_vs_toString() {
+        atom.print();
+        Assert.assertEquals(outContent.toString(), atom.toString());
     }
 
     @Test
@@ -86,6 +96,11 @@ public class AtomTest {
     public void equals1() {
         Atom a = new Atom('a', 1, 2);
         Assert.assertTrue(atom.equals(a));
+    }
+
+    @Test void identicalTo_vs_Equals(){
+        Atom a = new Atom('a', 1, 2);
+        Assert.assertEquals(atom.identicalTo(a), atom.equals(a));
     }
 
     @Test

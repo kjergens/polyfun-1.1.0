@@ -64,6 +64,8 @@ public class Term {
     }
 
     /**
+     * Get atoms array.
+     *
      * @deprecated use {@link #getNumericalCoefficient()} ()} instead.
      */
     @Deprecated
@@ -98,6 +100,8 @@ public class Term {
     }
 
     /**
+     * Set Term numerical coefficient and atoms array.
+     *
      * @deprecated use {@link #Term(double, Atom[])} ()} instead.
      */
     @Deprecated
@@ -107,6 +111,8 @@ public class Term {
     }
 
     /**
+     * Set numerical coeffiecient.
+     *
      * @deprecated use {@link #setNumericalCoefficient(double)} ()} instead.
      */
     @Deprecated
@@ -115,6 +121,8 @@ public class Term {
     }
 
     /**
+     * Set atoms array.
+     *
      * @deprecated use {@link #setAtoms(Atom[])} ()} instead.
      */
     @Deprecated
@@ -192,12 +200,12 @@ public class Term {
     public Term place(Atom atom) {
         Term term = new Term(this.numericalCoefficient, this.atoms);
 
-        if (atom.lessThan(this.atoms[0])) {
+        if (atom.isLessThan(this.atoms[0])) {
             return term.paste(atom);
         } else {
             Atom atom1;
 
-            if (atom.like(this.atoms[0])) {
+            if (atom.isLike(this.atoms[0])) {
                 atom1 = this.atoms[0];
                 return term.snip().paste(atom1.timesLikeAtom(atom));
             } else if (this.atoms.length == 1) {
@@ -272,7 +280,9 @@ public class Term {
      *
      * @param term Term to compare "this" to
      * @return true or false if they are "like" or not
+     * @deprecated Use {@link #isLike(Term)} instead.
      */
+    @Deprecated
     public boolean like(Term term) {
         Term term1 = new Term(this.simplify().getNumericalCoefficient(), this.simplify().getAtoms());
         Term term2 = new Term(term.simplify().getNumericalCoefficient(), term.simplify().getAtoms());
@@ -292,15 +302,42 @@ public class Term {
     }
 
     /**
+     * Tests to see if two terms have "like" (same letter & subscript) Atoms
+     *
+     * @param term Term to compare "this" to
+     * @return true or false if they are "like" or not
+     */
+    public boolean isLike(Term term) {
+        this.simplify();
+        term.simplify();
+
+        if (this.getAtoms().length != term.getAtoms().length) return false;
+
+        for (int i = 0; i < this.getAtoms().length; ++i) {
+            if (!this.getAtoms()[i].isLike(term.getAtoms()[i])) {
+                return false;
+            }
+        }
+
+        // If got this far, have the same number of Atoms each atom pair has same letter and subscript.
+        return true;
+    }
+
+    /**
      * Detects if the term passed in is less than this term.
      *
      * @param term term to compare
      * @return true if this is less than the param
+     * @deprecated Use {@link #isLessThan(Term)} instead.
      */
+    @Deprecated
     public boolean lessThan(Term term) {
         int len = 0;
-        Term term1 = new Term(this.simplify().getNumericalCoefficient(), this.simplify().getAtoms());
-        Term term2 = new Term(term.simplify().getNumericalCoefficient(), term.simplify().getAtoms());
+        term.simplify();
+        this.simplify();
+
+        Term term1 = new Term(this.getNumericalCoefficient(), this.getAtoms());
+        Term term2 = new Term(term.getNumericalCoefficient(), term.getAtoms());
 
         if (term1.getAtoms().length <= term2.getAtoms().length && !this.equals(term)) {
 
@@ -311,15 +348,39 @@ public class Term {
             }
 
             return len == term1.getAtoms().length;
-        } else {
-            return false;
         }
+
+        return false;
+    }
+
+    /**
+     * Detects if the term passed in is less than this term.
+     *
+     * @param term term to compare
+     * @return true if this is less than the param
+     */
+    public boolean isLessThan(Term term) {
+        this.simplify();
+        term.simplify();
+
+        if (this.equals(term)) return false;
+
+        if (this.getAtoms().length > term.getAtoms().length) return false;
+
+        for (int i = 0; i < this.getAtoms().length; i++) {
+
+            if (!this.getAtoms()[i].isLessThanOrEquals(term.getAtoms()[i])) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
      * Checks to see of the double (and hence the Term) is zero.
      *
-     * @return
+     * @return true if numericalCoefficient is zero.
      */
     public boolean isZero() {
         return this.numericalCoefficient == 0.0D;
@@ -338,7 +399,7 @@ public class Term {
     /**
      * Checks if this is a constant term, i.e. no variables.
      *
-     * @return
+     * @return true if a constant term
      */
     public boolean isConstantTerm() {
         return this.atoms.length == 0;

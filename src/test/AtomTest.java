@@ -17,13 +17,13 @@ public class AtomTest {
     private final PrintStream originalOut = System.out;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         // Point System.out to another output stream so I can test the print() outputs.
         System.setOut(new PrintStream(outContent));
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         // Point System.out back to console.
         System.setOut(originalOut);
     }
@@ -87,6 +87,7 @@ public class AtomTest {
     }
 
     @Test
+    @SuppressWarnings("deprecation")
     public void identicalTo() {
         Atom a = new Atom('a', 1, 2);
         Assert.assertTrue(atom.identicalTo(a));
@@ -98,33 +99,66 @@ public class AtomTest {
         Assert.assertTrue(atom.equals(a));
     }
 
-    @Test void identicalTo_vs_Equals(){
+    @Test
+    @SuppressWarnings("deprecation")
+    public void identicalTo_vs_Equals(){
         Atom a = new Atom('a', 1, 2);
         Assert.assertEquals(atom.identicalTo(a), atom.equals(a));
     }
 
     @Test
+    @SuppressWarnings("deprecation")
     public void like() {
         Atom a = new Atom('a', 1, 4);
         Assert.assertTrue(atom.like(a));
     }
 
     @Test
+    @SuppressWarnings("deprecation")
     public void lessThanOrEqual() {
         Atom a = new Atom('a', 1, 2);
         Assert.assertTrue(atom.lessThanOrEqual(a));
     }
 
     @Test
-    public void lessThanOrEqual_Letter() {
+    @SuppressWarnings("deprecation")
+    public void lessThanOrEqual_HigherLetter() {
         Atom a = new Atom('b', 1, 2);
         Assert.assertTrue(atom.lessThanOrEqual(a));
     }
 
     @Test
-    public void lessThan() {
+    @SuppressWarnings("deprecation")
+    public void lessThanOrEqual_HigherLetterLowerSubscript() {
+        Atom a = new Atom('b', 0, 0);
+        Assert.assertFalse(a.lessThanOrEqual(atom));
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    public void lessThanOrEqual_SameLetterLowerSubscript() {
+        Atom a = new Atom('a', 0, 0);
+        Assert.assertTrue(a.lessThanOrEqual(atom));
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    public void lessThan_SameLetterLowerSubscript() {
         Atom a = new Atom('a', 0, 1);
-        System.err.println(atom + " < " + a);
         Assert.assertTrue(a.lessThan(atom));
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    public void lessThan_HigherLetterLowerSubscript() {
+        Atom a = new Atom('b', 0, 1);
+        Assert.assertTrue(atom.lessThan(a));
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    public void lessThan_SameLetterSameSubscript() {
+        Atom a = new Atom('a', 1, 1);
+        Assert.assertFalse(atom.lessThan(a));
     }
 }

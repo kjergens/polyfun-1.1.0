@@ -172,23 +172,95 @@ public class TermTest {
     }
 
     @Test
-    public void times() {
+    public void simplify_TestMultiplying() {
+        Atom atom = new Atom('a', 1, 3);
+        Term newTerm = term.paste(atom);
+
+        newTerm.simplify();
+
+        Assert.assertEquals(1, newTerm.getAtoms().length);
+        Assert.assertTrue(3.0 == newTerm.getNumericalCoefficient());
+        Assert.assertEquals('a', newTerm.getAtoms()[0].getLetter());
+        Assert.assertEquals(1, newTerm.getAtoms()[0].getSubscript());
+        Assert.assertEquals(5, newTerm.getAtoms()[0].getPower());
     }
 
     @Test
+    public void timesTerm() {
+        Atom atom = new Atom('a', 1, 3);
+        Atom[] atoms = {atom};
+        Term newTerm = new Term(2, atoms);
+
+        Term product = term.times(newTerm);
+
+
+        Assert.assertEquals(1, product.getAtoms().length);
+        Assert.assertTrue(6.0 == product.getNumericalCoefficient());
+        Assert.assertEquals('a', product.getAtoms()[0].getLetter());
+        Assert.assertEquals(1, product.getAtoms()[0].getSubscript());
+        Assert.assertEquals(5, product.getAtoms()[0].getPower());
+    }
+
+    @Test
+    public void timesScalar() {
+        Term product = term.times(10);
+
+
+        Assert.assertEquals(1, product.getAtoms().length);
+        Assert.assertTrue(30.0 == product.getNumericalCoefficient());
+        Assert.assertEquals('a', product.getAtoms()[0].getLetter());
+        Assert.assertEquals(1, product.getAtoms()[0].getSubscript());
+        Assert.assertEquals(2, product.getAtoms()[0].getPower());
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
     public void identicalTo() {
+        Atom atom = new Atom('a', 1, 2);
+        Atom[] atoms = {atom};
+        Term newTerm = new Term(2, atoms);
+
+        Assert.assertTrue(term.identicalTo(newTerm));
     }
 
     @Test
     public void equals1() {
+        Atom atom = new Atom('a', 1, 2);
+        Atom[] atoms = {atom};
+        Term newTerm = new Term(2, atoms);
+
+        Assert.assertTrue(term.equals(newTerm));
     }
 
     @Test
     public void like() {
+        Atom atom = new Atom('a', 1, 3);
+        Atom[] atoms = {atom};
+        Term newTerm = new Term(2, atoms);
+
+        Assert.assertTrue(term.like(newTerm));
     }
 
     @Test
-    public void lessThan() {
+    public void isLessThan_MoreAtoms() {
+        // TODO: Which one is less than the other?
+        // Greater length but lower letters
+        Atom[] atomsA = {
+                new Atom('a', 1, 1),
+                new Atom('b', 1, 1),
+                new Atom('c', 1, 1)
+        };
+
+        // Smaller length but higher letters
+        Atom[] atomsB = {
+                new Atom('d', 1, 1),
+                new Atom('e', 1, 1)
+        };
+
+        Term termA = new Term(1, atomsA);
+        Term termB = new Term(1, atomsB);
+
+        Assert.assertFalse(termB.isLessThan(termA));
     }
 
     @Test

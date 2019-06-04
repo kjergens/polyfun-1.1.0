@@ -125,8 +125,19 @@ public class Atom {
      *
      * @param atom Atom to compare this to.
      * @return true if the two Atoms have same letter and subscript.
+     * @deprecated Use {@link #isLike(Atom)} instead.
      */
     public boolean like(Atom atom) {
+        return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript();
+    }
+
+    /**
+     * Test to see if Atoms are "like" (same letter, subscript)
+     *
+     * @param atom Atom to compare this to.
+     * @return true if the two Atoms have same letter and subscript.
+     */
+    public boolean isLike(Atom atom) {
         return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript();
     }
 
@@ -138,16 +149,64 @@ public class Atom {
      *
      * @param atom Atom to compare this to.
      * @return true if this is less than or equal to the atom passed in.
+     * @deprecated Use {@link #isLessThanOrEquals(Atom)} instead.
      */
     public boolean lessThanOrEqual(Atom atom) {
-        if (this.getLetter() < atom.getLetter()) {
-            return true;
-        } else if (this.getLetter() == atom.getLetter()
-                && this.getSubscript() < atom.getSubscript()) {
-            return true;
-        } else {
-            return this.equals(atom);
+        if (this.getLetter() < atom.getLetter()) return true;
+
+        if (this.getLetter() == atom.getLetter()) {
+            if (this.getSubscript() < atom.getSubscript()) return true;
+
+            if (this.getSubscript() == atom.getSubscript()
+                    && this.getPower() < atom.getPower()) {
+                return true;
+            }
         }
+
+        return this.equals(atom);
+    }
+
+    /**
+     * Defines a way of comparing two atoms. If letters are in alphabetical order it's true. If
+     * letters are the same, but subscripts are in increasing order it's true. If letters are the same,
+     * and subscripts are the same, and powers are equal or in increasing order it's true. Otherwise
+     * it's false.
+     *
+     * @param atom Atom to compare this to.
+     * @return true if this is less than or equal to the atom passed in.
+     */
+    public boolean isLessThanOrEquals(Atom atom) {
+        // First precedence is to the letter
+        if (this.getLetter() < atom.getLetter()) return true;
+
+        // If the letter is the same, the next precedence is to the subscript.
+        if (this.getLetter() == atom.getLetter()) {
+            if (this.getSubscript() < atom.getSubscript()) return true;
+
+            // If the letter and the subscript are the same, the next precedence is to the power.
+            if (this.getSubscript() == atom.getSubscript()
+                && this.getPower() < atom.getPower()) {
+                return true;
+            }
+        }
+
+        // The the "less-than" checks failed, return true if equal. Otherwise, return false.
+        return this.equals(atom);
+    }
+
+    /**
+     * Compares two atoms by letter and subscript only. If the letters are in alphabetical order it's true.
+     * If the letters are the same, and the subscripts are in increasing order it's true. Otherwise
+     * it's false.
+     *
+     * @param atom Atom to compare this to.
+     * @return true if this is less than the atom passed in
+     * @deprecated Use {@link #isLessThan(Atom)} instead
+     */
+    public boolean lessThan(Atom atom) {
+        if (this.getLetter() < atom.getLetter()) return true;
+
+        return this.getLetter() == atom.getLetter() && this.getSubscript() < atom.getSubscript();
     }
 
     /**
@@ -158,10 +217,8 @@ public class Atom {
      * @param atom Atom to compare this to.
      * @return true if this is less than the atom passed in
      */
-    public boolean lessThan(Atom atom) {
-        if (this.getLetter() < atom.getLetter()) {
-            return true;
-        }
+    public boolean isLessThan(Atom atom) {
+        if (this.getLetter() < atom.getLetter()) return true;
 
         return this.getLetter() == atom.getLetter() && this.getSubscript() < atom.getSubscript();
     }
@@ -170,7 +227,8 @@ public class Atom {
      * Test to see if Atoms are exactly identical (same letter, subscript, and power)
      *
      * @param atom
-     * @return
+     * @return true if same
+     * @deprecated Use {@link #equals(Atom)} instead.
      */
     public boolean identicalTo(Atom atom) {
         return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript()

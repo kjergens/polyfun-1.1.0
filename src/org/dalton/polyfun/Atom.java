@@ -111,9 +111,9 @@ public class Atom {
      * For example:
      * (a_1)^3 * (a_1)^4 = (a_1)^7
      * <p>
-     * The original atoms remain unchanged
+     * The original atom remains unchanged
      *
-     * @param atom
+     * @param atom the like atom to multiply by
      * @return the product
      */
     public Atom timesLikeAtom(Atom atom) {
@@ -142,7 +142,8 @@ public class Atom {
     public boolean lessThanOrEqual(Atom atom) {
         if (this.getLetter() < atom.getLetter()) {
             return true;
-        } else if (this.getLetter() == atom.getLetter() && this.getSubscript() < atom.getSubscript()) {
+        } else if (this.getLetter() == atom.getLetter()
+                && this.getSubscript() < atom.getSubscript()) {
             return true;
         } else {
             return this.equals(atom);
@@ -160,9 +161,9 @@ public class Atom {
     public boolean lessThan(Atom atom) {
         if (this.getLetter() < atom.getLetter()) {
             return true;
-        } else {
-            return this.getLetter() == atom.getLetter() && this.getSubscript() < atom.getSubscript();
         }
+
+        return this.getLetter() == atom.getLetter() && this.getSubscript() < atom.getSubscript();
     }
 
     /**

@@ -1,12 +1,11 @@
-import org.dalton.polyfun.Atom;
-import org.dalton.polyfun.Coef;
 import org.dalton.polyfun.Polynomial;
-import org.dalton.polyfun.Term;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import testlib.ParameterCreator;
+import testlib.PolyPair;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -32,28 +31,24 @@ public class ParameterizedPolynomialTest {
     @Parameters(name = "{index} {0}")
     public static Collection<Object[]> data() {
         // Create list of random polynomials
-        String[][] polyPairs = new String[1000][2];
+        String[][] polyParams = new String[1000][2];
 
-        Random random = new Random();
+        for (int i = 0; i < polyParams.length; i++) {
+            PolyPair polyPair;
 
-        for (int i = 0; i < polyPairs.length; i++) {
-            // Get random length from 2 - 6 (so they will be at least a 1 degree poly)
-            int numCoefficients = random.nextInt(5) + 2;
-
-            // Create 2 identical Coef arrays.
-            polyfun.Coef[] oldCoefs = new polyfun.Coef[numCoefficients];
-            Coef[] newCoefs = new Coef[numCoefficients];
-
-            // Fill them using randomly selected numericalCoefficients.
-            for (int j = 0; j < oldCoefs.length; j++) {
-                double numericalCoefficient = random.nextDouble() * random.nextInt(10);
-                oldCoefs[j] = new polyfun.Coef(numericalCoefficient);
-                newCoefs[j] = new Coef(numericalCoefficient);
+            if (i % 5 == 0) {
+                /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
+                polyPair = ParameterCreator.createRandomPolyPairWithCoefArray();
+            } else if (i % 5 == 1) {
+                /* Create 20% with Polynomial(double constant) constructor */
+                polyPair = ParameterCreator.createRandomPolyPairWithConstant();
+            } else if (i % 5 == 2) {
+                /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
+                polyPair = ParameterCreator.createRandomPolyPairWithDoubleArray();
+            } else {
+                /* Create 40% with Polynomial(Term term, int degree) constructor */
+                polyPair = ParameterCreator.createRandomPolyPairWithTermDegree();
             }
-
-            // Finally, create 2 (hopefully) identical Polynomials
-            polyfun.Polynomial polynomial_v6 = new polyfun.Polynomial(oldCoefs);
-            Polynomial polynomial_v11 = new Polynomial(newCoefs);
 
             // Get the strings
 
@@ -62,16 +57,16 @@ public class ParameterizedPolynomialTest {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            polynomial_v6.print();
-            polyPairs[i][0] = outContent.toString();
+            polyPair.polynomial_v6.print();
+            polyParams[i][0] = outContent.toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
 
-            polyPairs[i][1] = polynomial_v11.toString();
+            polyParams[i][1] = polyPair.polynomial_v11.toString();
         }
 
-        return Arrays.asList(polyPairs);
+        return Arrays.asList(polyParams);
     }
 
     @Test

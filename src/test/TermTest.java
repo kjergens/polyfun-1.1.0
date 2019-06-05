@@ -233,12 +233,22 @@ public class TermTest {
     }
 
     @Test
+    @SuppressWarnings("deprecation")
     public void like() {
         Atom atom = new Atom('a', 1, 3);
         Atom[] atoms = {atom};
         Term newTerm = new Term(2, atoms);
 
         Assert.assertTrue(term.like(newTerm));
+    }
+
+    @Test
+    public void isLike() {
+        Atom atom = new Atom('a', 1, 3);
+        Atom[] atoms = {atom};
+        Term newTerm = new Term(2, atoms);
+
+        Assert.assertTrue(term.isLike(newTerm));
     }
 
     @Test
@@ -264,18 +274,28 @@ public class TermTest {
     }
 
     @Test
-    public void times1() {
-    }
-
-    @Test
     public void isZero() {
+        Atom atom = new Atom('a', 1, 2);
+        Atom[] atoms = {atom};
+        Term newTerm = new Term(0, atoms);
+
+        Assert.assertTrue(newTerm.isZero());
     }
 
     @Test
+    @SuppressWarnings("deprecation")
     public void isDouble() {
+        Atom[] atoms = new Atom[0];
+        Term newTerm = new Term(2, atoms);
+
+        Assert.assertTrue(newTerm.isDouble());
     }
 
     @Test
     public void isConstantTerm() {
+        Atom[] atoms = new Atom[0];
+        Term newTerm = new Term(2, atoms);
+
+        Assert.assertTrue(newTerm.isConstantTerm());
     }
 }

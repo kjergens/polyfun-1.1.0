@@ -11,7 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Random;
 
-
+// TODO: add test cases with negative terms.
 public class PolynomialTest {
 
     // Create output streams to capture .print() output.

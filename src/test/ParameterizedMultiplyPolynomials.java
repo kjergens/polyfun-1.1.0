@@ -1,7 +1,4 @@
-import org.dalton.polyfun.Atom;
-import org.dalton.polyfun.Coef;
 import org.dalton.polyfun.Polynomial;
-import org.dalton.polyfun.Term;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,19 +11,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Random;
 
 /**
  * Randomly generate 1000 polynomials in the v6 library and in the v11 library and make sure they match.
  */
 
 @RunWith(value = Parameterized.class)
-public class AddPolynomials {
+public class ParameterizedMultiplyPolynomials {
     private String poly_v6;
     private String polly_v11;
 
     // Inject via constructor
-    public AddPolynomials(String poly_v6, String polly_v11) {
+    public ParameterizedMultiplyPolynomials(String poly_v6, String polly_v11) {
         this.poly_v6 = poly_v6;
         this.polly_v11 = polly_v11;
     }
@@ -58,9 +54,9 @@ public class AddPolynomials {
                 polyPair2 = ParameterCreator.createRandomPolyPairWithTermDegree();
             }
 
-            /* Add the polys */
-            polyfun.Polynomial sum_v6 = polyPair.polynomial_v6.plus(polyPair2.polynomial_v6);
-            Polynomial sum_v11 = polyPair.polynomial_v11.plus(polyPair2.polynomial_v11);
+            /* Mutiply the polys */
+            polyfun.Polynomial product_v6 = polyPair.polynomial_v6.times(polyPair2.polynomial_v6);
+            Polynomial product_v11 = polyPair.polynomial_v11.times(polyPair2.polynomial_v11);
 
             // Get the strings
 
@@ -69,13 +65,13 @@ public class AddPolynomials {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            sum_v6.print();
+            product_v6.print();
             polyParams[i][0] = outContent.toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
 
-            polyParams[i][1] = sum_v11.toString();
+            polyParams[i][1] = product_v11.toString();
         }
 
         return Arrays.asList(polyParams);

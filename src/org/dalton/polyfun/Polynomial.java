@@ -519,7 +519,7 @@ public class Polynomial {
         int degree = -1;
 
         for (int i = 0; i <= this.degree; ++i) {
-            if (this.coefs[i].isDouble()) {
+            if (this.coefs[i].isConstantCoef()) {
                 ++degree;
             }
         }

@@ -1,3 +1,7 @@
+import org.dalton.polyfun.Atom;
+import org.dalton.polyfun.Coef;
+import org.dalton.polyfun.Polynomial;
+import org.dalton.polyfun.Term;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,18 +14,19 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Random;
 
 /**
  * Randomly generate 1000 polynomials in the v6 library and in the v11 library and make sure they match.
  */
 
 @RunWith(value = Parameterized.class)
-public class ParameterizedPolynomialTest {
+public class ParameterizedAddPolynomials {
     private String poly_v6;
     private String polly_v11;
 
     // Inject via constructor
-    public ParameterizedPolynomialTest(String poly_v6, String polly_v11) {
+    public ParameterizedAddPolynomials(String poly_v6, String polly_v11) {
         this.poly_v6 = poly_v6;
         this.polly_v11 = polly_v11;
     }
@@ -33,20 +38,29 @@ public class ParameterizedPolynomialTest {
 
         for (int i = 0; i < polyParams.length; i++) {
             PolyPair polyPair;
+            PolyPair polyPair2;
 
             if (i % 5 == 0) {
                 /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
                 polyPair = ParameterCreator.createRandomPolyPairWithCoefArray();
+                polyPair2 = ParameterCreator.createRandomPolyPairWithCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
                 polyPair = ParameterCreator.createRandomPolyPairWithConstant();
+                polyPair2 = ParameterCreator.createRandomPolyPairWithConstant();
             } else if (i % 5 == 2) {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
                 polyPair = ParameterCreator.createRandomPolyPairWithDoubleArray();
+                polyPair2 = ParameterCreator.createRandomPolyPairWithDoubleArray();
             } else {
                 /* Create 40% with Polynomial(Term term, int degree) constructor */
                 polyPair = ParameterCreator.createRandomPolyPairWithTermDegree();
+                polyPair2 = ParameterCreator.createRandomPolyPairWithTermDegree();
             }
+
+            /* Add the polys */
+            polyfun.Polynomial sum_v6 = polyPair.polynomial_v6.plus(polyPair2.polynomial_v6);
+            Polynomial sum_v11 = polyPair.polynomial_v11.plus(polyPair2.polynomial_v11);
 
             // Get the strings
 
@@ -55,13 +69,13 @@ public class ParameterizedPolynomialTest {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            polyPair.polynomial_v6.print();
+            sum_v6.print();
             polyParams[i][0] = outContent.toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
 
-            polyParams[i][1] = polyPair.polynomial_v11.toString();
+            polyParams[i][1] = sum_v11.toString();
         }
 
         return Arrays.asList(polyParams);

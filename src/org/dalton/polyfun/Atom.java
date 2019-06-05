@@ -127,6 +127,7 @@ public class Atom {
      * @return true if the two Atoms have same letter and subscript.
      * @deprecated Use {@link #isLike(Atom)} instead.
      */
+    @Deprecated
     public boolean like(Atom atom) {
         return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript();
     }
@@ -151,6 +152,7 @@ public class Atom {
      * @return true if this is less than or equal to the atom passed in.
      * @deprecated Use {@link #isLessThanOrEquals(Atom)} instead.
      */
+    @Deprecated
     public boolean lessThanOrEqual(Atom atom) {
         if (this.getLetter() < atom.getLetter()) return true;
 
@@ -203,6 +205,7 @@ public class Atom {
      * @return true if this is less than the atom passed in
      * @deprecated Use {@link #isLessThan(Atom)} instead
      */
+    @Deprecated
     public boolean lessThan(Atom atom) {
         if (this.getLetter() < atom.getLetter()) return true;
 
@@ -230,6 +233,7 @@ public class Atom {
      * @return true if same
      * @deprecated Use {@link #equals(Atom)} instead.
      */
+    @Deprecated
     public boolean identicalTo(Atom atom) {
         return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript()
                 && this.getPower() == atom.getPower();

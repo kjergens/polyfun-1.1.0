@@ -161,7 +161,7 @@ public class Coef {
     public Coef place(Term term) {
         Coef coef = new Coef(this.terms);
 
-        if (!term.isZero() && term.lessThan(this.getTerms()[0])) {
+        if (!term.isZero() && term.isLessThan(this.getTerms()[0])) {
             return coef.paste(term);
         } else if (term.equals(this.getTerms()[0])) {
             coef.getTerms()[0].setNumericalCoefficient(term.getNumericalCoefficient() + coef.getTerms()[0].getNumericalCoefficient());

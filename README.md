@@ -2,7 +2,7 @@
 
 Refactored version of David Gomprecht's polyfun library which was compiled in Java 6.
 
-Download [polyfun_v_2.jar](https://github.com/kjergens/polyfun11/raw/master/out/artifacts/polyfun_v_2/polyfun_v_2.jar).
+Download [polyfun_v_2.jar](https://github.com/kjergens/polyfun_v_2/raw/master/polyfun_v_2.jar).
 
 ## Change log
 These changes were made to be backward compatible. In other words, old XClass code will work with this updated library.
@@ -18,7 +18,7 @@ These changes were made to be backward compatible. In other words, old XClass co
   * Getters
   * Setters
   * other methods
-    * overloaded methods are grouped together
+    * overloaded methods grouped together
   * equals
   * toString
 * Simplified `if (<condition>) return true; else return false;` to `return <condition>;`.

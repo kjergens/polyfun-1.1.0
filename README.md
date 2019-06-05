@@ -8,7 +8,7 @@ Download [polyfun_v_2.jar](https://github.com/kjergens/polyfun11/raw/master/out/
 These changes were made to be backward compatible. In other words, old XClass code will work with this updated library.
 * Compiled in Java 11
 * Updated variable names to be descriptive, e.g. `double var2` became `double numericalCoefficient`.
-  * Note that attributes are private, with access only through getters and setters, therefore changing attribute names does not affect the user interface.
+  * Attributes are private, with access only through getters and setters, therefore changing attribute names does not affect the user interface.
   * Descriptive parameter names should help users know arguments are expected.
 * Added getters and setters to reflect new variable names, e.g. `getDouble()` became `getNumericalCoefficient()`.
   * The original getters and setters were not removed, but they were marked as deprecated.

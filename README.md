@@ -1,4 +1,4 @@
-# Polyfun for Java 11
+# Polyfun Version 2
 
 Refactored version of David Gomprecht's polyfun library which was compiled in Java 6.
 

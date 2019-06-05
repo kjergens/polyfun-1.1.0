@@ -1,5 +1,3 @@
-package test;
-
 import org.dalton.polyfun.Coef;
 import org.dalton.polyfun.Polynomial;
 

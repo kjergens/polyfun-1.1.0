@@ -19,12 +19,12 @@ import java.util.Random;
  */
 
 @RunWith(value = Parameterized.class)
-public class ParameterizedPolynomialTest {
+public class MultiplyPolynomials {
     private String poly_v6;
     private String polly_v11;
 
     // Inject via constructor
-    public ParameterizedPolynomialTest(String poly_v6, String polly_v11) {
+    public MultiplyPolynomials(String poly_v6, String polly_v11) {
         this.poly_v6 = poly_v6;
         this.polly_v11 = polly_v11;
     }
@@ -55,6 +55,29 @@ public class ParameterizedPolynomialTest {
             polyfun.Polynomial polynomial_v6 = new polyfun.Polynomial(oldCoefs);
             Polynomial polynomial_v11 = new Polynomial(newCoefs);
 
+            /** Second poly */
+            // Get random length from 2 - 6 (so they will be at least a 1 degree poly)
+            numCoefficients = random.nextInt(5) + 2;
+
+            // Create 2 identical Coef arrays.
+            oldCoefs = new polyfun.Coef[numCoefficients];
+            newCoefs = new Coef[numCoefficients];
+
+            // Fill them using randomly selected numericalCoefficients.
+            for (int j = 0; j < oldCoefs.length; j++) {
+                double numericalCoefficient = random.nextDouble() * random.nextInt(10);
+                oldCoefs[j] = new polyfun.Coef(numericalCoefficient);
+                newCoefs[j] = new Coef(numericalCoefficient);
+            }
+
+            // Finally, create 2 (hopefully) identical Polynomials
+            polyfun.Polynomial polynomial_v6_2 = new polyfun.Polynomial(oldCoefs);
+            Polynomial polynomial_v11_2 = new Polynomial(newCoefs);
+
+            /* Add the polys */
+            polyfun.Polynomial sum_v6 = polynomial_v6.times(polynomial_v6_2);
+            Polynomial sum_v11 = polynomial_v11.times(polynomial_v11_2);
+
             // Get the strings
 
             // Point System.out to another output stream so I can capture the print() output.
@@ -62,13 +85,13 @@ public class ParameterizedPolynomialTest {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            polynomial_v6.print();
+            sum_v6.print();
             polyPairs[i][0] = outContent.toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
 
-            polyPairs[i][1] = polynomial_v11.toString();
+            polyPairs[i][1] = sum_v11.toString();
         }
 
         return Arrays.asList(polyPairs);

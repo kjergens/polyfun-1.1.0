@@ -3,6 +3,7 @@ import org.dalton.polyfun.Coef;
 import org.dalton.polyfun.Polynomial;
 import org.dalton.polyfun.Term;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -19,12 +20,12 @@ import java.util.Random;
  */
 
 @RunWith(value = Parameterized.class)
-public class ParameterizedPolynomialTest {
+public class AddTangents {
     private String poly_v6;
     private String polly_v11;
 
     // Inject via constructor
-    public ParameterizedPolynomialTest(String poly_v6, String polly_v11) {
+    public AddTangents(String poly_v6, String polly_v11) {
         this.poly_v6 = poly_v6;
         this.polly_v11 = polly_v11;
     }
@@ -55,27 +56,27 @@ public class ParameterizedPolynomialTest {
             polyfun.Polynomial polynomial_v6 = new polyfun.Polynomial(oldCoefs);
             Polynomial polynomial_v11 = new Polynomial(newCoefs);
 
-            // Get the strings
+            // Get the string
 
             // Point System.out to another output stream so I can capture the print() output.
             ByteArrayOutputStream outContent = new ByteArrayOutputStream();
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            polynomial_v6.print();
+            polynomial_v6.addTangent().print();
             polyPairs[i][0] = outContent.toString();
+
+            polyPairs[i][1] = polynomial_v11.addTangent().toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
-
-            polyPairs[i][1] = polynomial_v11.toString();
         }
 
         return Arrays.asList(polyPairs);
     }
 
     @Test
-    public void test_RandomPolynomials_Compare_v6_v11() {
+    public void addTangents_Compare_v6_v11() {
         Assert.assertEquals(poly_v6, polly_v11);
     }
 

@@ -215,8 +215,8 @@ public class Coef {
             }
         }
 
-        Coef result = new Coef(terms);
-        return result.simplify();
+        Coef product = new Coef(terms);
+        return product.simplify();
     }
 
     /**
@@ -252,8 +252,8 @@ public class Coef {
             }
         }
 
-        Coef coef1 = new Coef(terms);
-        return coef1.simplify();
+        Coef sum = new Coef(terms);
+        return sum.simplify();
     }
 
     /**
@@ -280,6 +280,7 @@ public class Coef {
      * @return True if Coef consists only of a double, false otherwise
      * @deprecated use {@link #isConstantCoef()} instead.
      */
+    @Deprecated
     public boolean isDouble() {
         this.simplify();
         return this.terms.length == 1 && this.terms[0].isDouble();
@@ -300,15 +301,19 @@ public class Coef {
      */
     @Deprecated
     public void print() {
+
+        // No leading + sign
         if (this.terms[0].getNumericalCoefficient() != 0.0D) {
             this.terms[0].print();
         }
 
         for (int i = 1; i < this.terms.length; ++i) {
+            // If positive, prepend with plus sign, then print term
             if (this.terms[i].getNumericalCoefficient() > 0.0D) {
                 System.out.print("+");
                 this.terms[i].print();
             } else if (this.terms[i].getNumericalCoefficient() < 0.0D) {
+                // If negative, don't include "+" (the "-" comes with the negative number)
                 this.terms[i].print();
             }
         }
@@ -322,16 +327,17 @@ public class Coef {
     public String toString() {
         StringBuilder string = new StringBuilder();
 
-        if (this.terms[0].getNumericalCoefficient() != 0.0D) {
-            string = new StringBuilder(this.terms[0].toString());
-        }
+        for (int i = 0; i < this.getTerms().length; i++) {
 
-        for (int i = 1; i < this.terms.length; ++i) {
-            if (this.terms[i].getNumericalCoefficient() > 0.0D) {
-                string.append("+");
-                string.append(this.terms[i].toString());
-            } else if (this.terms[i].getNumericalCoefficient() < 0.0D) {
-                string.append(this.terms[i].toString());
+            // Only save term if coeffiecient is not zero
+            if (this.getTerms()[i].getNumericalCoefficient() != 0.0D) {
+
+                // Positive terms get leading "+", except the first one.
+                if (string.length() > 0 && this.getTerms()[i].getNumericalCoefficient() > 0.0D) {
+                    string.append("+");
+                }
+
+                string.append(this.getTerms()[i].toString());
             }
         }
 

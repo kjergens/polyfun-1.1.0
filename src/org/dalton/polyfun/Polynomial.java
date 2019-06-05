@@ -6,14 +6,14 @@ package org.dalton.polyfun;
  * "term" refers to a term of a polynomial in the mathematical sense, while "Term" refers to the java object.
  * The coefficients, whether numbers or letters or a combination, are always stored as Coefs in an array of Coefs
  * called "coeffs." The index of the array corresponds to the degree of the term for which that Coef belongs.
- *
+ * <p>
  * Example: mathematical object
- *
- *      p(x) = (3a+1)x^3 + (ab-ac)x + c_2
- *
+ * <p>
+ * p(x) = (3a+1)x^3 + (ab-ac)x + c_2
+ * <p>
  * Java object degree = 3
  * Coefs = {c_2, ab-ac, 0, 3a+1} (an array of Coefs. Note the order of the Coefs in the array)
- *
+ * <p>
  * Students will use this code and expand on it when developing the VDM method(s) and other Polynomial
  * manipulation methods.
  *
@@ -52,13 +52,13 @@ public class Polynomial {
         this.degree = numericalCoefficients.length - 1;
         this.coefs = new Coef[numericalCoefficients.length];
 
-        for(int i = 0; i < numericalCoefficients.length; ++i) {
+        for (int i = 0; i < numericalCoefficients.length; ++i) {
             this.coefs[i] = new Coef(numericalCoefficients[i]);
         }
     }
 
     /**
-     *  Construct a Polynomial by setting the degree.
+     * Construct a Polynomial by setting the degree.
      *
      * @param degree The degree of the polynomial
      */
@@ -84,13 +84,13 @@ public class Polynomial {
      * Example: coefficient = 2.0 deg = 3 creates p(x) = 2.0x^3.
      *
      * @param numericalCoefficient The coefficient
-     * @param degree The degree of the term and the polynomial
+     * @param degree               The degree of the term and the polynomial
      */
     public Polynomial(double numericalCoefficient, int degree) {
         this.coefs = new Coef[degree + 1];
         this.coefs[degree] = new Coef(numericalCoefficient);
 
-        for(int i = 0; i < degree; ++i) {
+        for (int i = 0; i < degree; ++i) {
             this.coefs[i] = new Coef(0.0D);
         }
 
@@ -113,14 +113,14 @@ public class Polynomial {
      * Constructs a polynomial of a certain degree with only one term whose coefficient is an abstract constant.
      * For example: with atom = a_2 and degree = 2 this creates p(x) = (a_2)x^2
      *
-     * @param atom  The Atom which becomes the coefficient
+     * @param atom   The Atom which becomes the coefficient
      * @param degree The degree of the polynomial
      */
     public Polynomial(Atom atom, int degree) {
         this.coefs = new Coef[degree + 1];
         this.coefs[degree] = new Coef(atom);
 
-        for(int i = 0; i < degree; ++i) {
+        for (int i = 0; i < degree; ++i) {
             this.coefs[i] = new Coef(0.0D);
         }
 
@@ -150,7 +150,7 @@ public class Polynomial {
         this.coefs = new Coef[degree + 1];
         this.coefs[degree] = new Coef(term);
 
-        for(int i = 0; i < degree; ++i) {
+        for (int i = 0; i < degree; ++i) {
             this.coefs[i] = new Coef(0.0D);
         }
 
@@ -171,16 +171,16 @@ public class Polynomial {
 
     /**
      * Constructs a polynomial of a certain degree with only one term whose coefficient is a Coef.
-     *  For example: with newcoef = 3ab+c and deg = 2 this creates p(x) = (3ab+c)x^2
+     * For example: with newcoef = 3ab+c and deg = 2 this creates p(x) = (3ab+c)x^2
      *
-     * @param coef A Coef object is an array of Terms, which becomes the coefficient.
+     * @param coef   A Coef object is an array of Terms, which becomes the coefficient.
      * @param degree The degree of the polynomial
      */
     public Polynomial(Coef coef, int degree) {
         this.coefs = new Coef[degree + 1];
         this.coefs[degree] = coef;
 
-        for(int i = 0; i < degree; ++i) {
+        for (int i = 0; i < degree; ++i) {
             this.coefs[i] = new Coef(0.0D);
         }
 
@@ -199,7 +199,7 @@ public class Polynomial {
         Atom[] atoms = new Atom[degree + 1];
         Term[] terms = new Term[degree + 1];
 
-        for(int i = 0; i < atoms.length; ++i) {
+        for (int i = 0; i < atoms.length; ++i) {
             atoms[i] = new Atom(letter, i, 1);
             terms[i] = new Term(atoms[i]);
             this.coefs[i] = new Coef(terms[i]);
@@ -250,6 +250,7 @@ public class Polynomial {
 
     /**
      * Get the Coef array.
+     *
      * @return the array of Coefs.
      */
     public Coef[] getCoefs() {
@@ -290,7 +291,7 @@ public class Polynomial {
         this.degree = nums.length - 1;
         this.coefs = new Coef[this.degree + 1];
 
-        for(int i = 0; i <= this.degree; ++i) {
+        for (int i = 0; i <= this.degree; ++i) {
             this.coefs[i] = new Coef(nums[i]);
         }
 
@@ -318,7 +319,7 @@ public class Polynomial {
         this.degree = coefficients.length - 1;
         this.coefs = new Coef[this.degree + 1];
 
-        for(int i = 0; i <= this.degree; ++i) {
+        for (int i = 0; i <= this.degree; ++i) {
             this.coefs[i] = new Coef(coefficients[i]);
         }
 
@@ -331,57 +332,25 @@ public class Polynomial {
      * @return the sum
      */
     public Polynomial plus(Polynomial polynomial) {
-        int degree = Math.max(this.getDegree(), polynomial.getDegree());
-        Coef[] coefs = new Coef[degree + 1];
-        int i;
-        if (this.getDegree() > polynomial.getDegree()) {
-            for(i = 0; i <= polynomial.getDegree(); ++i) {
-                coefs[i] = this.getCoefAt(i).plus(polynomial.getCoefAt(i));
-            }
+        int biggerDegree = Math.max(this.getDegree(), polynomial.getDegree());
+        int smallerDegree = Math.min(this.getDegree(), polynomial.getDegree());
 
-            for(i = polynomial.getDegree() + 1; i <= this.getDegree(); ++i) {
+        Coef[] coefs = new Coef[biggerDegree + 1];
+
+        // Add the co-responding coefficients
+        for (int i = 0; i <= smallerDegree; i++) {
+            coefs[i] = this.getCoefAt(i).plus(polynomial.getCoefAt(i));
+        }
+
+        // Get the rest of the coefficients
+        if (this.getDegree() > polynomial.getDegree()) {
+            for (int i = smallerDegree + 1; i <= biggerDegree; i++) {
                 coefs[i] = this.getCoefAt(i);
             }
         } else {
-            for(i = 0; i <= this.getDegree(); ++i) {
-                coefs[i] = this.getCoefAt(i).plus(polynomial.getCoefAt(i));
-            }
-
-            for(i = this.getDegree() + 1; i <= polynomial.getDegree(); ++i) {
+            for (int i = smallerDegree + 1; i <= biggerDegree; i++) {
                 coefs[i] = polynomial.getCoefAt(i);
             }
-        }
-
-        return new Polynomial(coefs);
-    }
-
-    /**
-     * Multiply a polynomial by a scalar by multiplying all the Coefs by the scalar.
-     *
-     * @param scalar to multiply
-     * @return the product
-     */
-    public Polynomial times(double scalar) {
-        Coef[] coefs = new Coef[this.getDegree() + 1];
-
-        for(int i = 0; i < this.getDegree() + 1; ++i) {
-            coefs[i] = this.getCoefAt(i).times(scalar);
-        }
-
-        return new Polynomial(coefs);
-    }
-
-    /**
-     * Multiply a polynomial by a Coef by multiplying all the Coefs by the Coef.
-     *
-     * @param coef to multiply
-     * @return the product
-     */
-    public Polynomial times(Coef coef) {
-        Coef[] coefs = new Coef[this.getDegree() + 1];
-
-        for(int i = 0; i < this.getDegree() + 1; ++i) {
-            coefs[i] = this.getCoefAt(i).times(coef);
         }
 
         return new Polynomial(coefs);
@@ -398,6 +367,38 @@ public class Polynomial {
     }
 
     /**
+     * Multiply a polynomial by a scalar by multiplying all the Coefs by the scalar.
+     *
+     * @param scalar to multiply
+     * @return the product
+     */
+    public Polynomial times(double scalar) {
+        Coef[] coefs = new Coef[this.getDegree() + 1];
+
+        for (int i = 0; i < this.getDegree() + 1; ++i) {
+            coefs[i] = this.getCoefAt(i).times(scalar);
+        }
+
+        return new Polynomial(coefs);
+    }
+
+    /**
+     * Multiply a polynomial by a Coef by multiplying all the Coefs by the Coef.
+     *
+     * @param coef to multiply
+     * @return the product
+     */
+    public Polynomial times(Coef coef) {
+        Coef[] coefs = new Coef[this.getDegree() + 1];
+
+        for (int i = 0; i < this.getDegree() + 1; ++i) {
+            coefs[i] = this.getCoefAt(i).times(coef);
+        }
+
+        return new Polynomial(coefs);
+    }
+
+    /**
      * Multiply a polynomial by a polynomial.
      *
      * @param polynomial to multiply
@@ -407,12 +408,12 @@ public class Polynomial {
         Coef[] coefs = new Coef[this.getDegree() + polynomial.getDegree() + 1];
 
         int i;
-        for(i = 0; i < coefs.length; ++i) {
+        for (i = 0; i < coefs.length; ++i) {
             coefs[i] = new Coef(0.0D);
         }
 
-        for(i = 0; i < coefs.length; ++i) {
-            for(int j = 0; j <= i; ++j) {
+        for (i = 0; i < coefs.length; ++i) {
+            for (int j = 0; j <= i; ++j) {
                 if (j <= this.getDegree() && i - j <= polynomial.getDegree()) {
                     coefs[i] = coefs[i].plus(this.getCoefAt(j).times(polynomial.getCoefAt(i - j)));
                 }
@@ -450,7 +451,7 @@ public class Polynomial {
         Atom atomBias = new Atom('b');
         Polynomial b = new Polynomial(atomBias);
 
-        Polynomial tangent = new Polynomial(mx.plus(b).getCoefs());
+        Polynomial tangent = mx.plus(b);
 
         return this.plus(tangent);
     }
@@ -459,13 +460,13 @@ public class Polynomial {
      * Composes two GenPolynomials.
      * Example: if this = p(x) and poly = q(x), this.of(poly) returns p[q(x)]
      *
-     * @param polynomial  The inner polynomial
+     * @param polynomial The inner polynomial
      * @return The new polynomial which is the composition
      */
     public Polynomial of(Polynomial polynomial) {
         Polynomial result = new Polynomial(0.0D);
 
-        for(int i = 0; i <= this.getDegree(); ++i) {
+        for (int i = 0; i <= this.getDegree(); ++i) {
             Polynomial temp = polynomial.to(i).times(this.getCoefAt(i));
             result.setCoefs(result.plus(temp).getCoefs());
         }
@@ -488,7 +489,7 @@ public class Polynomial {
         Polynomial polynomial = new Polynomial(value);
         Coef coef = new Coef(0.0D);
 
-        for(int i = 0; i < this.coefs.length; ++i) {
+        for (int i = 0; i < this.coefs.length; ++i) {
             coef.setTerms(coef.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
         }
 
@@ -507,7 +508,7 @@ public class Polynomial {
         Polynomial polynomial = new Polynomial(coef);
         Coef result = new Coef(0.0D);
 
-        for(int i = 0; i < this.coefs.length; ++i) {
+        for (int i = 0; i < this.coefs.length; ++i) {
             result.setTerms(result.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
         }
 
@@ -517,7 +518,7 @@ public class Polynomial {
     public boolean isPlottable() {
         int degree = -1;
 
-        for(int i = 0; i <= this.degree; ++i) {
+        for (int i = 0; i <= this.degree; ++i) {
             if (this.coefs[i].isDouble()) {
                 ++degree;
             }
@@ -533,14 +534,14 @@ public class Polynomial {
      */
     @Deprecated
     public void print() {
-        for(int i = this.degree; i > 1; --i) {
+        for (int i = this.degree; i > 1; --i) {
             if (!this.coefs[i].isZero()) {
                 System.out.print("(");
                 this.coefs[i].print();
                 System.out.print(")X^" + i);
 
                 int j;
-                for(j = i - 1; j > 0 && this.coefs[j].isZero(); --j) {
+                for (j = i - 1; j > 0 && this.coefs[j].isZero(); --j) {
                 }
 
                 if (j != 0) {
@@ -571,43 +572,43 @@ public class Polynomial {
 
     /**
      * Returns a printable string.
+     *
      * @return String representing the polynomial.
      */
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
 
-        for(int i = this.degree; i > 1; --i) {
-            if (!this.coefs[i].isZero()) {
-                string.append("(");
-                string.append(this.coefs[i].toString());
-                string.append(")X^").append(i);
+        // Get terms with an exponent
+        for (int i = this.getDegree(); i > 1; i--) {
+            if (!this.getCoefAt(i).isZero()) {
+                string.append("(").append(this.getCoefAt(i).toString()).append(")X^").append(i);
 
-                int j;
-                for(j = i - 1; j > 0 && this.coefs[j].isZero(); --j) {
+                // Skip zeros
+                int j = i - 1;
+                while(j > 0 && this.getCoefAt(j).isZero()) {
+                    j--;
                 }
 
+                // If not at end append a "+"
                 if (j != 0) {
                     string.append("+");
                 }
             }
         }
 
-        if (this.degree > 0) {
-            if (!this.coefs[1].isZero()) {
-                string.append("(");
-                string.append(this.coefs[1].toString());
-                string.append(")X");
+        if (this.getDegree() > 0) {
+            // Get term with no exponent (X exponent is 1)
+            if (!this.getCoefAt(1).isZero()) {
+                string.append("(").append(this.getCoefAt(1).toString()).append(")X");
             }
 
-            if (!this.coefs[0].isZero()) {
-                string.append("+");
-                string.append(this.coefs[0].toString());
+            // Get 0-degree term (no X invariate)
+            if (!this.getCoefAt(0).isZero()) {
+                string.append("+").append(this.getCoefAt(0).toString());
             }
-        }
-
-        if (this.degree == 0 && !this.coefs[0].isZero()) {
-            string.append(this.coefs[0].toString());
+        } else if (this.getDegree() == 0 && !this.getCoefAt(0).isZero()) {
+            string.append(this.getCoefAt(0).toString());
         }
 
         return string.append("\n").toString();

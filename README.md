@@ -4,6 +4,8 @@ Refactored version of David Gomprecht's polyfun library which was compiled in Ja
 
 Download [polyfun_v_2.jar](https://github.com/kjergens/polyfun_v_2/raw/master/out/artifacts/polyfun_v_2/polyfun_v_2.jar).
 
+See [Javadocs](https://kjergens.github.io/polyfun_v_2/out/html/package-summary.html)
+
 ## Change log
 These changes were made to be backward compatible. In other words, old XClass code will work with this updated library.
 * Compiled in Java 11

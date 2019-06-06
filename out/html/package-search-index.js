@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":""}]
+packageSearchIndex = [{"l":"polyfun_v_2/out/html/"}]

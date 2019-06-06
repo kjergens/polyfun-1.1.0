@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"","l":"Atom"},{"p":"","l":"Coef"},{"p":"","l":"Polynomial"},{"p":"","l":"Term"}]

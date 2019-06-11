@@ -18,16 +18,16 @@ import java.util.Collection;
 
 @RunWith(value = Parameterized.class)
 public class ParameterizedAddPolynomials {
-    private String poly_orig;
-    private String poly_refactored;
+    private String polyOrig;
+    private String polyRefactored;
 
     private static final int NUM_TESTS = 1000;
 
 
     // Inject via constructor
-    public ParameterizedAddPolynomials(String poly_orig, String poly_refactored) {
-        this.poly_orig = poly_orig;
-        this.poly_refactored = poly_refactored;
+    public ParameterizedAddPolynomials(String polyOrig, String polyRefactored) {
+        this.polyOrig = polyOrig;
+        this.polyRefactored = polyRefactored;
     }
 
     @Parameters(name = "{index} {0}")
@@ -58,8 +58,8 @@ public class ParameterizedAddPolynomials {
             }
 
             /* Add the polys */
-            polyfun.Polynomial sum_orig = polyPair.polynomial_orig.plus(polyPair2.polynomial_orig);
-            Polynomial sum_refactored = polyPair.polynomial_refactored.plus(polyPair2.polynomial_refactored);
+            polyfun.Polynomial sum_orig = polyPair.polynomialOrig.plus(polyPair2.polynomialOrig);
+            Polynomial sum_refactored = polyPair.polynomialRefactored.plus(polyPair2.polynomialRefactored);
 
             // Get the strings
 
@@ -82,7 +82,7 @@ public class ParameterizedAddPolynomials {
 
     @Test
     public void test_RandomPolynomials_Compare_orig_refactored() {
-        Assert.assertEquals(poly_orig, poly_refactored);
+        Assert.assertEquals(polyOrig, polyRefactored);
     }
 
 }

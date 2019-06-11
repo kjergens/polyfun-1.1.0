@@ -136,7 +136,7 @@ public class Coef {
      * @return A new Coef with another Term (original Coef is not changed)
      *
      * TODO: Actually update this Term.
-     * TODO: rename insertInFront() or push()
+     * TODO: rename as insertInFront() or push()
      */
     public Coef paste(Term term) {
         Term[] terms = new Term[this.getTerms().length + 1];
@@ -156,7 +156,7 @@ public class Coef {
      * @return A new Coef with another Term (original Coef is not changed)
      *
      * TODO: Actually update this Coef
-     * TODO: rename insert()
+     * TODO: rename as insert()
      */
     public Coef place(Term term) {
         Coef coef = new Coef(this.terms);

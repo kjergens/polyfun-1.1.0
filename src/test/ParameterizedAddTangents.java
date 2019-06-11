@@ -17,16 +17,16 @@ import java.util.Collection;
 
 @RunWith(value = Parameterized.class)
 public class ParameterizedAddTangents {
-    private String poly_orig;
-    private String poly_refactored;
+    private String polyOrig;
+    private String polyRefactored;
 
     private static final int NUM_TESTS = 1000;
 
 
     // Inject via constructor
-    public ParameterizedAddTangents(String poly_orig, String poly_refactored) {
-        this.poly_orig = poly_orig;
-        this.poly_refactored = poly_refactored;
+    public ParameterizedAddTangents(String polyOrig, String polyRefactored) {
+        this.polyOrig = polyOrig;
+        this.polyRefactored = polyRefactored;
     }
 
     @Parameters(name = "{index} {0}")
@@ -58,10 +58,10 @@ public class ParameterizedAddTangents {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            polyPair.polynomial_orig.addTangent().print();
+            polyPair.polynomialOrig.addTangent().print();
             polyParams[i][0] = outContent.toString();
 
-            polyParams[i][1] = polyPair.polynomial_refactored.addTangent().toString();
+            polyParams[i][1] = polyPair.polynomialRefactored.addTangent().toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
@@ -72,7 +72,7 @@ public class ParameterizedAddTangents {
 
     @Test
     public void addTangents_Compare_orig_refactored() {
-        Assert.assertEquals(poly_orig, poly_refactored);
+        Assert.assertEquals(polyOrig, polyRefactored);
     }
 
 }

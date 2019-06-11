@@ -498,7 +498,7 @@ public class Polynomial {
 
     /**
      * Think of this method as plugging in a variable into a polynomial function. For example,
-     * if p(x) = x2 + 5, and org.dalton.polyfun.Coef C = a2, then p.evaluate(C) would essentially evaluate
+     * if p(x) = x2 + 5, and Coef C = a2, then p.evaluate(C) would essentially evaluate
      * p(a^2) = (a^2)^2 + 5 = a^4 + 5
      *
      * @param coef The coef to plug into the polynomial.

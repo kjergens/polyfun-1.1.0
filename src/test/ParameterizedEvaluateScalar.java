@@ -17,14 +17,14 @@ import java.util.Collection;
 
 @RunWith(value = Parameterized.class)
 public class ParameterizedEvaluateScalar {
-    private String poly_orig;
-    private String poly_refactored;
+    private String polyOrig;
+    private String polyRefactored;
     private static final int NUM_TESTS = 1000;
 
     // Inject via constructor
     public ParameterizedEvaluateScalar(String poly_orig, String poly_refactored) {
-        this.poly_orig = poly_orig;
-        this.poly_refactored = poly_refactored;
+        this.polyOrig = poly_orig;
+        this.polyRefactored = poly_refactored;
     }
 
     @Parameters(name = "{index} {0}")
@@ -60,10 +60,10 @@ public class ParameterizedEvaluateScalar {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            polyPair.polynomial_orig.evaluate(scalar).print();
+            polyPair.polynomialOrig.evaluate(scalar).print();
             polyParams[i][0] = outContent.toString();
 
-            polyParams[i][1] = polyPair.polynomial_refactored.evaluate(scalar).toString();
+            polyParams[i][1] = polyPair.polynomialRefactored.evaluate(scalar).toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
@@ -74,7 +74,7 @@ public class ParameterizedEvaluateScalar {
 
     @Test
     public void addTangents_Compare_orig_refactored() {
-        Assert.assertEquals(poly_orig, poly_refactored);
+        Assert.assertEquals(polyOrig, polyRefactored);
     }
 
 }

@@ -35,14 +35,14 @@ public class PolynomialTest {
         PolyPair polyPair = new PolyPair();
 
         // Print to System.err
-        System.err.println(polyPair.polynomial_refactored);
+        System.err.println(polyPair.polynomialRefactored);
 
         // Compare each part
-        comparePolynomials(polyPair.polynomial_orig, polyPair.polynomial_refactored);
+        comparePolynomials(polyPair.polynomialOrig, polyPair.polynomialRefactored);
 
         // Compare printed string
-        polyPair.polynomial_orig.print();
-        Assert.assertEquals(outContent.toString(), polyPair.polynomial_refactored.toString());
+        polyPair.polynomialOrig.print();
+        Assert.assertEquals(outContent.toString(), polyPair.polynomialRefactored.toString());
 
     }
 
@@ -50,24 +50,24 @@ public class PolynomialTest {
     public void printPolynomials_CompareVersions() {
         PolyPair polyPair = new PolyPair();
 
-        polyPair.polynomial_orig.print();
+        polyPair.polynomialOrig.print();
         System.err.println(outContent.toString());
-        Assert.assertEquals(outContent.toString(), polyPair.polynomial_refactored.toString());
+        Assert.assertEquals(outContent.toString(), polyPair.polynomialRefactored.toString());
     }
 
     @Test
     public void polynomialParts_CompareVersions() {
         PolyPair polyPair = new PolyPair();
 
-        comparePolynomials(polyPair.polynomial_orig, polyPair.polynomial_refactored);
+        comparePolynomials(polyPair.polynomialOrig, polyPair.polynomialRefactored);
     }
 
     @Test
     public void addPolynomialsToSelf_CompareVersions() {
         PolyPair polyPair = new PolyPair();
 
-        polyfun.Polynomial sum_orig = polyPair.polynomial_orig.plus(polyPair.polynomial_orig);
-        Polynomial sum_refactored = polyPair.polynomial_refactored.plus(polyPair.polynomial_refactored);
+        polyfun.Polynomial sum_orig = polyPair.polynomialOrig.plus(polyPair.polynomialOrig);
+        Polynomial sum_refactored = polyPair.polynomialRefactored.plus(polyPair.polynomialRefactored);
         sum_orig.print();
         Assert.assertEquals(outContent.toString(), sum_refactored.toString());
     }
@@ -75,21 +75,21 @@ public class PolynomialTest {
     @Test
     public void multiplyPolynomialsToSelf_CompareVersions() {
         PolyPair polyPair = new PolyPair();
-        PolyPair productPair = new PolyPair(polyPair.polynomial_orig.times(polyPair.polynomial_orig),
-                polyPair.polynomial_refactored.times(polyPair.polynomial_refactored));
+        PolyPair productPair = new PolyPair(polyPair.polynomialOrig.times(polyPair.polynomialOrig),
+                polyPair.polynomialRefactored.times(polyPair.polynomialRefactored));
 
-        productPair.polynomial_orig.print();
-        Assert.assertEquals(outContent.toString(), productPair.polynomial_refactored.toString());
+        productPair.polynomialOrig.print();
+        Assert.assertEquals(outContent.toString(), productPair.polynomialRefactored.toString());
     }
 
     @Test
     public void addTangent_CompareVersions() {
         PolyPair polyPair = new PolyPair();
-        PolyPair sumPair = new PolyPair(polyPair.polynomial_orig.addTangent(),
-                polyPair.polynomial_refactored.addTangent());
+        PolyPair sumPair = new PolyPair(polyPair.polynomialOrig.addTangent(),
+                polyPair.polynomialRefactored.addTangent());
 
-        sumPair.polynomial_orig.print();
-        Assert.assertEquals(outContent.toString(), sumPair.polynomial_refactored.toString());
+        sumPair.polynomialOrig.print();
+        Assert.assertEquals(outContent.toString(), sumPair.polynomialRefactored.toString());
     }
 
     @Test
@@ -98,8 +98,8 @@ public class PolynomialTest {
 
         PolyPair polyPair = new PolyPair(coefficients);
 
-        double old_result = polyPair.polynomial_orig.evaluate(3).getTerms()[0].getTermDouble();
-        double new_result = polyPair.polynomial_refactored.evaluate(3).getTerms()[0].getNumericalCoefficient();
+        double old_result = polyPair.polynomialOrig.evaluate(3).getTerms()[0].getTermDouble();
+        double new_result = polyPair.polynomialRefactored.evaluate(3).getTerms()[0].getNumericalCoefficient();
 
         Assert.assertTrue(old_result == new_result);
     }
@@ -138,8 +138,8 @@ public class PolynomialTest {
         PolyPair polyPair = new PolyPair(coefficients);
 
         // Raise both to the power of 3
-        polyfun.Polynomial old_result = polyPair.polynomial_orig.to(3);
-        Polynomial new_result = polyPair.polynomial_refactored.to(3);
+        polyfun.Polynomial old_result = polyPair.polynomialOrig.to(3);
+        Polynomial new_result = polyPair.polynomialRefactored.to(3);
 
         // Compare both
         comparePolynomials(old_result, new_result);
@@ -148,14 +148,14 @@ public class PolynomialTest {
     @Test
     public void testToRandom_CompareVersions() {
         PolyPair polyPair = new PolyPair();
-        PolyPair raisePolys = new PolyPair(polyPair.polynomial_orig.to(5), polyPair.polynomial_refactored.to(5));
+        PolyPair raisePolys = new PolyPair(polyPair.polynomialOrig.to(5), polyPair.polynomialRefactored.to(5));
 
         // Compare parts
-        comparePolynomials(raisePolys.polynomial_orig, raisePolys.polynomial_refactored);
+        comparePolynomials(raisePolys.polynomialOrig, raisePolys.polynomialRefactored);
 
         // Also test printed versions
-        raisePolys.polynomial_orig.print();
-        Assert.assertEquals(outContent.toString(), raisePolys.polynomial_refactored.toString());
+        raisePolys.polynomialOrig.print();
+        Assert.assertEquals(outContent.toString(), raisePolys.polynomialRefactored.toString());
     }
 
     @Test
@@ -164,11 +164,11 @@ public class PolynomialTest {
         double[] coefficients = {1, -3, 0, 2};
 
         PolyPair polyPair = new PolyPair(coefficients);
-        PolyPair raisedPolyPair = new PolyPair(polyPair.polynomial_orig.to(0),
-                polyPair.polynomial_refactored.to(0));
+        PolyPair raisedPolyPair = new PolyPair(polyPair.polynomialOrig.to(0),
+                polyPair.polynomialRefactored.to(0));
 
         // Compare both
-        comparePolynomials(raisedPolyPair.polynomial_orig, raisedPolyPair.polynomial_refactored);
+        comparePolynomials(raisedPolyPair.polynomialOrig, raisedPolyPair.polynomialRefactored);
     }
 
     @Test

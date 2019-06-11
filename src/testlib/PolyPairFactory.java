@@ -28,8 +28,8 @@ public class PolyPairFactory {
         }
 
         // Finally, create 2 (hopefully) identical Polynomials
-        polyPair.polynomial_orig = new polyfun.Polynomial(oldCoefs);
-        polyPair.polynomial_refactored = new Polynomial(newCoefs);
+        polyPair.polynomialOrig = new polyfun.Polynomial(oldCoefs);
+        polyPair.polynomialRefactored = new Polynomial(newCoefs);
 
         return polyPair;
     }
@@ -38,8 +38,8 @@ public class PolyPairFactory {
         PolyPair polyPair = new PolyPair();
 
         double constant = random.nextDouble() * 10;
-        polyPair.polynomial_orig = new polyfun.Polynomial(constant);
-        polyPair.polynomial_refactored = new Polynomial(constant);
+        polyPair.polynomialOrig = new polyfun.Polynomial(constant);
+        polyPair.polynomialRefactored = new Polynomial(constant);
 
         return polyPair;
     }
@@ -55,8 +55,8 @@ public class PolyPairFactory {
             numericalCoefficients[j] = random.nextDouble() * 10;
         }
 
-        polyPair.polynomial_orig = new polyfun.Polynomial(numericalCoefficients);
-        polyPair.polynomial_refactored = new Polynomial(numericalCoefficients);
+        polyPair.polynomialOrig = new polyfun.Polynomial(numericalCoefficients);
+        polyPair.polynomialRefactored = new Polynomial(numericalCoefficients);
 
         return polyPair;
     }
@@ -66,7 +66,7 @@ public class PolyPairFactory {
 
         // How many Atoms
         int atomArrayLen = random.nextInt(10) + 1;
-        polyfun.Atom[] atoms_Orig = new polyfun.Atom[atomArrayLen];
+        polyfun.Atom[] atomsOrig = new polyfun.Atom[atomArrayLen];
         Atom[] atoms = new Atom[atomArrayLen];
 
         // Create Atom arrays for both original and refactored polyfun
@@ -75,19 +75,19 @@ public class PolyPairFactory {
             int subscript = random.nextInt(5) + 1;
             int power = random.nextInt(5);
 
-            atoms_Orig[j] = new polyfun.Atom(letter, subscript, power);
+            atomsOrig[j] = new polyfun.Atom(letter, subscript, power);
             atoms[j] = new Atom(letter, subscript, power);
         }
 
         // Create Term for both original and refactored
         double numericalCoefficient = random.nextDouble() * 10;
-        polyfun.Term term_Orig = new polyfun.Term(numericalCoefficient, atoms_Orig);
+        polyfun.Term termOrig = new polyfun.Term(numericalCoefficient, atomsOrig);
         Term term = new Term(numericalCoefficient, atoms);
 
         // Finally, create Polynomial for both original and refactored
         int degree = random.nextInt(4);
-        polyPair.polynomial_orig = new polyfun.Polynomial(term_Orig, degree);
-        polyPair.polynomial_refactored = new Polynomial(term, degree);
+        polyPair.polynomialOrig = new polyfun.Polynomial(termOrig, degree);
+        polyPair.polynomialRefactored = new Polynomial(term, degree);
 
         return polyPair;
     }

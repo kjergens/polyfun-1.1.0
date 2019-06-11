@@ -51,7 +51,6 @@ public class ParameterizedTo {
 
             // Create exponent (even spread of positive and negative numbers)
             int exponent = i - (NUM_TESTS /2);
-            System.err.println(exponent);
 
             // Get the string
 

@@ -51,7 +51,6 @@ public class ParameterizedEvaluateScalar {
 
             // Create scalar (even spread of positive and negative numbers)
             double scalar = ((double) i * .123) - ((double) NUM_TESTS * .123)/2;
-            System.err.println(scalar);
 
             // Get the string
 

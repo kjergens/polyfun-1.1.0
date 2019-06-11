@@ -2,7 +2,7 @@
 
 Refactored version of David Gomprecht's polyfun library which was compiled in Java 6.
 
-Download [polyfun_v_2.jar](https://github.com/kjergens/polyfun_v_2/raw/master/out/artifacts/polyfun_v_2/polyfun_v_2.jar).
+Download [polyfun-1.2.0 jar](https://github.com/kjergens/polyfun_v_2/raw/master/out/artifacts/polyfun_1_2_0/polyfun-1.2.0.jar).
 
 See [Javadocs](https://kjergens.github.io/polyfun_v_2/out/html/package-summary.html)
 

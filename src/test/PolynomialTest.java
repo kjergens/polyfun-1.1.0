@@ -47,7 +47,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void printPolynomials_CompareV6V11() {
+    public void printPolynomials_CompareVersions() {
         PolyPair polyPair = new PolyPair();
 
         polyPair.polynomial_orig.print();
@@ -56,14 +56,14 @@ public class PolynomialTest {
     }
 
     @Test
-    public void polynomialParts_CompareV6V11() {
+    public void polynomialParts_CompareVersions() {
         PolyPair polyPair = new PolyPair();
 
         comparePolynomials(polyPair.polynomial_orig, polyPair.polynomial_refactored);
     }
 
     @Test
-    public void addPolynomialsToSelf_CompareV6V11() {
+    public void addPolynomialsToSelf_CompareVersions() {
         PolyPair polyPair = new PolyPair();
 
         polyfun.Polynomial sum_orig = polyPair.polynomial_orig.plus(polyPair.polynomial_orig);
@@ -73,7 +73,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void multiplyPolynomialsToSelf_CompareV6V11() {
+    public void multiplyPolynomialsToSelf_CompareVersions() {
         PolyPair polyPair = new PolyPair();
         PolyPair productPair = new PolyPair(polyPair.polynomial_orig.times(polyPair.polynomial_orig),
                 polyPair.polynomial_refactored.times(polyPair.polynomial_refactored));
@@ -83,7 +83,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void addTangent_CompareV6V11() {
+    public void addTangent_CompareVersions() {
         PolyPair polyPair = new PolyPair();
         PolyPair sumPair = new PolyPair(polyPair.polynomial_orig.addTangent(),
                 polyPair.polynomial_refactored.addTangent());
@@ -131,7 +131,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void testTo_CompareV6V11() {
+    public void testTo_CompareVersions() {
         // Create 2 identical polynomials
         double[] coefficients = {1, -3, 0, 2};
 
@@ -146,7 +146,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void testToRandom_CompareV6V11() {
+    public void testToRandom_CompareVersions() {
         PolyPair polyPair = new PolyPair();
         PolyPair raisePolys = new PolyPair(polyPair.polynomial_orig.to(5), polyPair.polynomial_refactored.to(5));
 

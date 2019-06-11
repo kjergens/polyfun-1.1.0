@@ -20,6 +20,9 @@ public class ParameterizedAddTangents {
     private String poly_orig;
     private String poly_refactored;
 
+    private static final int NUM_TESTS = 1000;
+
+
     // Inject via constructor
     public ParameterizedAddTangents(String poly_orig, String poly_refactored) {
         this.poly_orig = poly_orig;
@@ -29,7 +32,7 @@ public class ParameterizedAddTangents {
     @Parameters(name = "{index} {0}")
     public static Collection<Object[]> data() {
         // Create list of random polynomials
-        String[][] polyParams = new String[1000][2];
+        String[][] polyParams = new String[NUM_TESTS][2];
 
         for (int i = 0; i < polyParams.length; i++) {
             PolyPair polyPair;

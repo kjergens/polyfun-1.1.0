@@ -8,10 +8,11 @@ import org.dalton.polyfun.Term;
 import java.util.Random;
 
 public class PolyPairFactory {
+
+    static Random random = new Random(1);
+
     public static PolyPair createRandomPolyPairWithCoefArray() {
         PolyPair polyPair = new PolyPair();
-        Random random = new Random();
-
         // Get random length from 2 - 6 (so they will be at least a 1 degree poly)
         int numCoefficients = random.nextInt(5) + 2;
 
@@ -35,7 +36,6 @@ public class PolyPairFactory {
 
     public static PolyPair createRandomPolyPairWithConstant() {
         PolyPair polyPair = new PolyPair();
-        Random random = new Random();
 
         double constant = random.nextDouble() * 10;
         polyPair.polynomial_orig = new polyfun.Polynomial(constant);
@@ -46,7 +46,6 @@ public class PolyPairFactory {
 
     public static PolyPair createRandomPolyPairWithDoubleArray() {
         PolyPair polyPair = new PolyPair();
-        Random random = new Random();
 
         int arrayLen = random.nextInt(10) + 1;
 
@@ -64,7 +63,6 @@ public class PolyPairFactory {
 
     public static PolyPair createRandomPolyPairWithTermDegree() {
         PolyPair polyPair = new PolyPair();
-        Random random = new Random();
 
         // How many Atoms
         int atomArrayLen = random.nextInt(10) + 1;

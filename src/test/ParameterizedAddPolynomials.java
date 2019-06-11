@@ -1,34 +1,30 @@
-import org.dalton.polyfun.Atom;
-import org.dalton.polyfun.Coef;
 import org.dalton.polyfun.Polynomial;
-import org.dalton.polyfun.Term;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import testlib.ParameterCreator;
+import testlib.PolyPairFactory;
 import testlib.PolyPair;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Random;
 
 /**
- * Randomly generate 1000 polynomials in the v6 library and in the v11 library and make sure they match.
+ * Randomly generate 1000 polynomials in the original and in the refactored polyfun and make sure they match.
  */
 
 @RunWith(value = Parameterized.class)
 public class ParameterizedAddPolynomials {
-    private String poly_v6;
-    private String polly_v11;
+    private String poly_orig;
+    private String poly_refactored;
 
     // Inject via constructor
-    public ParameterizedAddPolynomials(String poly_v6, String polly_v11) {
-        this.poly_v6 = poly_v6;
-        this.polly_v11 = polly_v11;
+    public ParameterizedAddPolynomials(String poly_orig, String poly_refactored) {
+        this.poly_orig = poly_orig;
+        this.poly_refactored = poly_refactored;
     }
 
     @Parameters(name = "{index} {0}")
@@ -42,25 +38,25 @@ public class ParameterizedAddPolynomials {
 
             if (i % 5 == 0) {
                 /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithCoefArray();
-                polyPair2 = ParameterCreator.createRandomPolyPairWithCoefArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithCoefArray();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithConstant();
-                polyPair2 = ParameterCreator.createRandomPolyPairWithConstant();
+                polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithConstant();
             } else if (i % 5 == 2) {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithDoubleArray();
-                polyPair2 = ParameterCreator.createRandomPolyPairWithDoubleArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithDoubleArray();
             } else {
                 /* Create 40% with Polynomial(Term term, int degree) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithTermDegree();
-                polyPair2 = ParameterCreator.createRandomPolyPairWithTermDegree();
+                polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithTermDegree();
             }
 
             /* Add the polys */
-            polyfun.Polynomial sum_v6 = polyPair.polynomial_v6.plus(polyPair2.polynomial_v6);
-            Polynomial sum_v11 = polyPair.polynomial_v11.plus(polyPair2.polynomial_v11);
+            polyfun.Polynomial sum_orig = polyPair.polynomial_orig.plus(polyPair2.polynomial_orig);
+            Polynomial sum_refactored = polyPair.polynomial_refactored.plus(polyPair2.polynomial_refactored);
 
             // Get the strings
 
@@ -69,21 +65,21 @@ public class ParameterizedAddPolynomials {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            sum_v6.print();
+            sum_orig.print();
             polyParams[i][0] = outContent.toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
 
-            polyParams[i][1] = sum_v11.toString();
+            polyParams[i][1] = sum_refactored.toString();
         }
 
         return Arrays.asList(polyParams);
     }
 
     @Test
-    public void test_RandomPolynomials_Compare_v6_v11() {
-        Assert.assertEquals(poly_v6, polly_v11);
+    public void test_RandomPolynomials_Compare_orig_refactored() {
+        Assert.assertEquals(poly_orig, poly_refactored);
     }
 
 }

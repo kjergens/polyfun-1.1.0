@@ -9,15 +9,14 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Random;
+
+import testlib.PolyPair;
 
 // TODO: add test cases with negative coefficients.
 public class PolynomialTest {
 
     // Create output streams to capture .print() output.
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-
 
     @Before
     public void setUp() {
@@ -28,7 +27,7 @@ public class PolynomialTest {
     @After
     public void restoreStreams() {
         // Point System.out back to console.
-        System.setOut(originalOut);
+        System.setOut(System.out);
     }
 
     @Test
@@ -36,14 +35,14 @@ public class PolynomialTest {
         PolyPair polyPair = new PolyPair();
 
         // Print to System.err
-        System.err.println(polyPair.polynomial_v11);
+        System.err.println(polyPair.polynomial_refactored);
 
         // Compare each part
-        comparePolynomials(polyPair.polynomial_v6, polyPair.polynomial_v11);
+        comparePolynomials(polyPair.polynomial_orig, polyPair.polynomial_refactored);
 
         // Compare printed string
-        polyPair.polynomial_v6.print();
-        Assert.assertEquals(outContent.toString(), polyPair.polynomial_v11.toString());
+        polyPair.polynomial_orig.print();
+        Assert.assertEquals(outContent.toString(), polyPair.polynomial_refactored.toString());
 
     }
 
@@ -51,46 +50,46 @@ public class PolynomialTest {
     public void printPolynomials_CompareV6V11() {
         PolyPair polyPair = new PolyPair();
 
-        polyPair.polynomial_v6.print();
+        polyPair.polynomial_orig.print();
         System.err.println(outContent.toString());
-        Assert.assertEquals(outContent.toString(), polyPair.polynomial_v11.toString());
+        Assert.assertEquals(outContent.toString(), polyPair.polynomial_refactored.toString());
     }
 
     @Test
     public void polynomialParts_CompareV6V11() {
         PolyPair polyPair = new PolyPair();
 
-        comparePolynomials(polyPair.polynomial_v6, polyPair.polynomial_v11);
+        comparePolynomials(polyPair.polynomial_orig, polyPair.polynomial_refactored);
     }
 
     @Test
     public void addPolynomialsToSelf_CompareV6V11() {
         PolyPair polyPair = new PolyPair();
 
-        polyfun.Polynomial sum_v6 = polyPair.polynomial_v6.plus(polyPair.polynomial_v6);
-        Polynomial sum_v11 = polyPair.polynomial_v11.plus(polyPair.polynomial_v11);
-        sum_v6.print();
-        Assert.assertEquals(outContent.toString(), sum_v11.toString());
+        polyfun.Polynomial sum_orig = polyPair.polynomial_orig.plus(polyPair.polynomial_orig);
+        Polynomial sum_refactored = polyPair.polynomial_refactored.plus(polyPair.polynomial_refactored);
+        sum_orig.print();
+        Assert.assertEquals(outContent.toString(), sum_refactored.toString());
     }
 
     @Test
     public void multiplyPolynomialsToSelf_CompareV6V11() {
         PolyPair polyPair = new PolyPair();
-        PolyPair productPair = new PolyPair(polyPair.polynomial_v6.times(polyPair.polynomial_v6),
-                polyPair.polynomial_v11.times(polyPair.polynomial_v11));
+        PolyPair productPair = new PolyPair(polyPair.polynomial_orig.times(polyPair.polynomial_orig),
+                polyPair.polynomial_refactored.times(polyPair.polynomial_refactored));
 
-        productPair.polynomial_v6.print();
-        Assert.assertEquals(outContent.toString(), productPair.polynomial_v11.toString());
+        productPair.polynomial_orig.print();
+        Assert.assertEquals(outContent.toString(), productPair.polynomial_refactored.toString());
     }
 
     @Test
     public void addTangent_CompareV6V11() {
         PolyPair polyPair = new PolyPair();
-        PolyPair sumPair = new PolyPair(polyPair.polynomial_v6.addTangent(),
-                polyPair.polynomial_v11.addTangent());
+        PolyPair sumPair = new PolyPair(polyPair.polynomial_orig.addTangent(),
+                polyPair.polynomial_refactored.addTangent());
 
-        sumPair.polynomial_v6.print();
-        Assert.assertEquals(outContent.toString(), sumPair.polynomial_v11.toString());
+        sumPair.polynomial_orig.print();
+        Assert.assertEquals(outContent.toString(), sumPair.polynomial_refactored.toString());
     }
 
     @Test
@@ -99,8 +98,8 @@ public class PolynomialTest {
 
         PolyPair polyPair = new PolyPair(coefficients);
 
-        double old_result = polyPair.polynomial_v6.evaluate(3).getTerms()[0].getTermDouble();
-        double new_result = polyPair.polynomial_v11.evaluate(3).getTerms()[0].getNumericalCoefficient();
+        double old_result = polyPair.polynomial_orig.evaluate(3).getTerms()[0].getTermDouble();
+        double new_result = polyPair.polynomial_refactored.evaluate(3).getTerms()[0].getNumericalCoefficient();
 
         Assert.assertTrue(old_result == new_result);
     }
@@ -139,8 +138,8 @@ public class PolynomialTest {
         PolyPair polyPair = new PolyPair(coefficients);
 
         // Raise both to the power of 3
-        polyfun.Polynomial old_result = polyPair.polynomial_v6.to(3);
-        Polynomial new_result = polyPair.polynomial_v11.to(3);
+        polyfun.Polynomial old_result = polyPair.polynomial_orig.to(3);
+        Polynomial new_result = polyPair.polynomial_refactored.to(3);
 
         // Compare both
         comparePolynomials(old_result, new_result);
@@ -149,14 +148,14 @@ public class PolynomialTest {
     @Test
     public void testToRandom_CompareV6V11() {
         PolyPair polyPair = new PolyPair();
-        PolyPair raisePolys = new PolyPair(polyPair.polynomial_v6.to(5), polyPair.polynomial_v11.to(5));
+        PolyPair raisePolys = new PolyPair(polyPair.polynomial_orig.to(5), polyPair.polynomial_refactored.to(5));
 
         // Compare parts
-        comparePolynomials(raisePolys.polynomial_v6, raisePolys.polynomial_v11);
+        comparePolynomials(raisePolys.polynomial_orig, raisePolys.polynomial_refactored);
 
         // Also test printed versions
-        raisePolys.polynomial_v6.print();
-        Assert.assertEquals(outContent.toString(), raisePolys.polynomial_v11.toString());
+        raisePolys.polynomial_orig.print();
+        Assert.assertEquals(outContent.toString(), raisePolys.polynomial_refactored.toString());
     }
 
     @Test
@@ -165,11 +164,11 @@ public class PolynomialTest {
         double[] coefficients = {1, -3, 0, 2};
 
         PolyPair polyPair = new PolyPair(coefficients);
-        PolyPair raisedPolyPair = new PolyPair(polyPair.polynomial_v6.to(0),
-                polyPair.polynomial_v11.to(0));
+        PolyPair raisedPolyPair = new PolyPair(polyPair.polynomial_orig.to(0),
+                polyPair.polynomial_refactored.to(0));
 
         // Compare both
-        comparePolynomials(raisedPolyPair.polynomial_v6, raisedPolyPair.polynomial_v11);
+        comparePolynomials(raisedPolyPair.polynomial_orig, raisedPolyPair.polynomial_refactored);
     }
 
     @Test
@@ -298,56 +297,4 @@ public class PolynomialTest {
             Assert.assertEquals(oldAtoms[i].getSubscript(), newAtoms[i].getSubscript());
         }
     }
-
-    private class PolyPair {
-        polyfun.Polynomial polynomial_v6;
-        Polynomial polynomial_v11;
-
-        /**
-         * Default constructor creates a random pair of matching polynomials, one for v6 and one for v11.
-         * Uses Coefs[] constructor to make Polynomials.
-         */
-        public PolyPair() {
-            Random random = new Random();
-
-            // Get random length from 2 - 6 (so they will be at least a 1 degree poly)
-            int numCoefficients = random.nextInt(5) + 2;
-
-            // Create 2 identical Coef arrays.
-            polyfun.Coef[] oldCoefs = new polyfun.Coef[numCoefficients];
-            Coef[] newCoefs = new Coef[numCoefficients];
-
-            // Fill them using randomly selected numericalCoefficients.
-            for (int j = 0; j < oldCoefs.length; j++) {
-                double numericalCoefficient = random.nextDouble() * random.nextInt(10);
-                oldCoefs[j] = new polyfun.Coef(numericalCoefficient);
-                newCoefs[j] = new Coef(numericalCoefficient);
-            }
-
-            // Finally, create 2 (hopefully) identical Polynomials
-            this.polynomial_v6 = new polyfun.Polynomial(oldCoefs);
-            this.polynomial_v11 = new Polynomial(newCoefs);
-        }
-
-        /**
-         * Construct with given numericalCoefficients array.
-         * Uses double[] constructor to make Polynomials.
-         */
-        public PolyPair(double[] numericalCoefficients) {
-
-            // Finally, create 2 (hopefully) identical Polynomials
-            this.polynomial_v6 = new polyfun.Polynomial(numericalCoefficients);
-            this.polynomial_v11 = new Polynomial(numericalCoefficients);
-        }
-
-        /**
-         * Construct with given polyfun.Polynomial and Polynomial
-         * Uses double[] constructor to make Polynomials.
-         */
-        public PolyPair(polyfun.Polynomial p6, Polynomial p11) {
-            this.polynomial_v6 = p6;
-            this.polynomial_v11 = p11;
-        }
-    }
-
 }

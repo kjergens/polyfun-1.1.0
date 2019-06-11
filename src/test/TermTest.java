@@ -16,7 +16,6 @@ public class TermTest {
 
     // Create output streams to capture .print() output.
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
 
     @Before
     public void setUp() {
@@ -32,7 +31,7 @@ public class TermTest {
     @After
     public void restoreStreams() {
         // Point System.out back to console.
-        System.setOut(originalOut);
+        System.setOut(System.out);
     }
 
     @Test

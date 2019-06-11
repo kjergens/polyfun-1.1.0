@@ -7,7 +7,7 @@ import org.dalton.polyfun.Term;
 
 import java.util.Random;
 
-public class ParameterCreator {
+public class PolyPairFactory {
     public static PolyPair createRandomPolyPairWithCoefArray() {
         PolyPair polyPair = new PolyPair();
         Random random = new Random();
@@ -27,8 +27,8 @@ public class ParameterCreator {
         }
 
         // Finally, create 2 (hopefully) identical Polynomials
-        polyPair.polynomial_v6 = new polyfun.Polynomial(oldCoefs);
-        polyPair.polynomial_v11 = new Polynomial(newCoefs);
+        polyPair.polynomial_orig = new polyfun.Polynomial(oldCoefs);
+        polyPair.polynomial_refactored = new Polynomial(newCoefs);
 
         return polyPair;
     }
@@ -38,8 +38,8 @@ public class ParameterCreator {
         Random random = new Random();
 
         double constant = random.nextDouble() * 10;
-        polyPair.polynomial_v6 = new polyfun.Polynomial(constant);
-        polyPair.polynomial_v11 = new Polynomial(constant);
+        polyPair.polynomial_orig = new polyfun.Polynomial(constant);
+        polyPair.polynomial_refactored = new Polynomial(constant);
 
         return polyPair;
     }
@@ -56,8 +56,8 @@ public class ParameterCreator {
             numericalCoefficients[j] = random.nextDouble() * 10;
         }
 
-        polyPair.polynomial_v6 = new polyfun.Polynomial(numericalCoefficients);
-        polyPair.polynomial_v11 = new Polynomial(numericalCoefficients);
+        polyPair.polynomial_orig = new polyfun.Polynomial(numericalCoefficients);
+        polyPair.polynomial_refactored = new Polynomial(numericalCoefficients);
 
         return polyPair;
     }
@@ -88,8 +88,8 @@ public class ParameterCreator {
 
         // Finally, create Polynomial for both original and refactored
         int degree = random.nextInt(4);
-        polyPair.polynomial_v6 = new polyfun.Polynomial(term_Orig, degree);
-        polyPair.polynomial_v11 = new Polynomial(term, degree);
+        polyPair.polynomial_orig = new polyfun.Polynomial(term_Orig, degree);
+        polyPair.polynomial_refactored = new Polynomial(term, degree);
 
         return polyPair;
     }

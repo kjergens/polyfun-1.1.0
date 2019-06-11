@@ -3,7 +3,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import testlib.ParameterCreator;
+import testlib.PolyPairFactory;
 import testlib.PolyPair;
 
 import java.io.ByteArrayOutputStream;
@@ -17,13 +17,13 @@ import java.util.Collection;
 
 @RunWith(value = Parameterized.class)
 public class ParameterizedPolynomialTest {
-    private String poly_v6;
-    private String polly_v11;
+    private String poly_orig;
+    private String poly_refactored;
 
     // Inject via constructor
-    public ParameterizedPolynomialTest(String poly_v6, String polly_v11) {
-        this.poly_v6 = poly_v6;
-        this.polly_v11 = polly_v11;
+    public ParameterizedPolynomialTest(String poly_orig, String poly_refactored) {
+        this.poly_orig = poly_orig;
+        this.poly_refactored = poly_refactored;
     }
 
     @Parameters(name = "{index} {0}")
@@ -36,16 +36,16 @@ public class ParameterizedPolynomialTest {
 
             if (i % 5 == 0) {
                 /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithCoefArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithConstant();
+                polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
             } else if (i % 5 == 2) {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithDoubleArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
             } else {
                 /* Create 40% with Polynomial(Term term, int degree) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithTermDegree();
+                polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
             }
 
             // Get the strings
@@ -55,21 +55,21 @@ public class ParameterizedPolynomialTest {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            polyPair.polynomial_v6.print();
+            polyPair.polynomial_orig.print();
             polyParams[i][0] = outContent.toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
 
-            polyParams[i][1] = polyPair.polynomial_v11.toString();
+            polyParams[i][1] = polyPair.polynomial_refactored.toString();
         }
 
         return Arrays.asList(polyParams);
     }
 
     @Test
-    public void test_RandomPolynomials_Compare_v6_v11() {
-        Assert.assertEquals(poly_v6, polly_v11);
+    public void test_RandomPolynomials_Compare_orig_refactored() {
+        Assert.assertEquals(poly_orig, poly_refactored);
     }
 
 }

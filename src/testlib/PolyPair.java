@@ -6,8 +6,8 @@ import org.dalton.polyfun.Polynomial;
 import java.util.Random;
 
 public class PolyPair {
-    public polyfun.Polynomial polynomial_v6;
-    public Polynomial polynomial_v11;
+    public polyfun.Polynomial polynomial_orig;
+    public Polynomial polynomial_refactored;
 
     /**
      * Default constructor creates a random pair of matching polynomials, one for v6 and one for v11.
@@ -31,8 +31,8 @@ public class PolyPair {
         }
 
         // Finally, create 2 (hopefully) identical Polynomials
-        this.polynomial_v6 = new polyfun.Polynomial(oldCoefs);
-        this.polynomial_v11 = new Polynomial(newCoefs);
+        this.polynomial_orig = new polyfun.Polynomial(oldCoefs);
+        this.polynomial_refactored = new Polynomial(newCoefs);
     }
 
     /**
@@ -42,8 +42,8 @@ public class PolyPair {
     public PolyPair(double[] numericalCoefficients) {
 
         // Finally, create 2 (hopefully) identical Polynomials
-        this.polynomial_v6 = new polyfun.Polynomial(numericalCoefficients);
-        this.polynomial_v11 = new Polynomial(numericalCoefficients);
+        this.polynomial_orig = new polyfun.Polynomial(numericalCoefficients);
+        this.polynomial_refactored = new Polynomial(numericalCoefficients);
     }
 
     /**
@@ -51,7 +51,7 @@ public class PolyPair {
      * Uses double[] constructor to make Polynomials.
      */
     public PolyPair(polyfun.Polynomial p6, Polynomial p11) {
-        this.polynomial_v6 = p6;
-        this.polynomial_v11 = p11;
+        this.polynomial_orig = p6;
+        this.polynomial_refactored = p11;
     }
 }

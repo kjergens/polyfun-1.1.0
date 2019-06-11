@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import testlib.ParameterCreator;
+import testlib.PolyPairFactory;
 import testlib.PolyPair;
 
 import java.io.ByteArrayOutputStream;
@@ -18,13 +18,13 @@ import java.util.Collection;
 
 @RunWith(value = Parameterized.class)
 public class ParameterizedMultiplyPolynomials {
-    private String poly_v6;
-    private String polly_v11;
+    private String poly_orig;
+    private String poly_refactored;
 
     // Inject via constructor
-    public ParameterizedMultiplyPolynomials(String poly_v6, String polly_v11) {
-        this.poly_v6 = poly_v6;
-        this.polly_v11 = polly_v11;
+    public ParameterizedMultiplyPolynomials(String poly_orig, String poly_refactored) {
+        this.poly_orig = poly_orig;
+        this.poly_refactored = poly_refactored;
     }
 
     @Parameters(name = "{index} {0}")
@@ -38,25 +38,25 @@ public class ParameterizedMultiplyPolynomials {
 
             if (i % 5 == 0) {
                 /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithCoefArray();
-                polyPair2 = ParameterCreator.createRandomPolyPairWithCoefArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithCoefArray();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithConstant();
-                polyPair2 = ParameterCreator.createRandomPolyPairWithConstant();
+                polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithConstant();
             } else if (i % 5 == 2) {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithDoubleArray();
-                polyPair2 = ParameterCreator.createRandomPolyPairWithDoubleArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithDoubleArray();
             } else {
                 /* Create 40% with Polynomial(Term term, int degree) constructor */
-                polyPair = ParameterCreator.createRandomPolyPairWithTermDegree();
-                polyPair2 = ParameterCreator.createRandomPolyPairWithTermDegree();
+                polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithTermDegree();
             }
 
             /* Mutiply the polys */
-            polyfun.Polynomial product_v6 = polyPair.polynomial_v6.times(polyPair2.polynomial_v6);
-            Polynomial product_v11 = polyPair.polynomial_v11.times(polyPair2.polynomial_v11);
+            polyfun.Polynomial product_orig = polyPair.polynomial_orig.times(polyPair2.polynomial_orig);
+            Polynomial product_refactored = polyPair.polynomial_refactored.times(polyPair2.polynomial_refactored);
 
             // Get the strings
 
@@ -65,21 +65,21 @@ public class ParameterizedMultiplyPolynomials {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            product_v6.print();
+            product_orig.print();
             polyParams[i][0] = outContent.toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
 
-            polyParams[i][1] = product_v11.toString();
+            polyParams[i][1] = product_refactored.toString();
         }
 
         return Arrays.asList(polyParams);
     }
 
     @Test
-    public void test_RandomPolynomials_Compare_v6_v11() {
-        Assert.assertEquals(poly_v6, polly_v11);
+    public void test_RandomPolynomials_Compare_orig_refactored() {
+        Assert.assertEquals(poly_orig, poly_refactored);
     }
 
 }

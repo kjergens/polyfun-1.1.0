@@ -1,7 +1,4 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.dalton.polyfun.*;
 
 import java.io.ByteArrayOutputStream;
@@ -12,9 +9,8 @@ import static org.junit.Assert.*;
 public class AtomTest {
 
     Atom atom = new Atom('a', 1, 2);
-
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
+
 
     @Before
     public void setUp() {
@@ -25,7 +21,7 @@ public class AtomTest {
     @After
     public void tearDown() {
         // Point System.out back to console.
-        System.setOut(originalOut);
+        System.setOut(System.out);
     }
 
     @Test

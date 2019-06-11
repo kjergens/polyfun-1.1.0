@@ -1,6 +1,6 @@
 # Polyfun 1.1.0
 
-Refactored version of David Gomprecht's polyfun library which was compiled in Java 6.
+Refactored version of David Gomprecht's polyfun 1.0.0 library which was compiled in Java 6.
 
 Download [polyfun-1.1.0 jar](https://github.com/kjergens/polyfun_v_2/raw/master/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar).
 

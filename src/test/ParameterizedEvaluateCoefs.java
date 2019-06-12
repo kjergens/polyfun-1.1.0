@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import testlib.CoefPair;
+import testlib.CoefPairFactory;
 import testlib.PolyPairFactory;
 import testlib.PolyPair;
 
@@ -17,14 +19,14 @@ import java.util.Collection;
  */
 
 @RunWith(value = Parameterized.class)
-public class ParameterizedMultiplyPolynomials {
+public class ParameterizedEvaluateCoefs {
     private String polyOrig;
     private String polyRefactored;
 
     private static final int NUM_TESTS = 1000;
 
     // Inject via constructor
-    public ParameterizedMultiplyPolynomials(String polyOrig, String polyRefactored) {
+    public ParameterizedEvaluateCoefs(String polyOrig, String polyRefactored) {
         this.polyOrig = polyOrig;
         this.polyRefactored = polyRefactored;
     }
@@ -41,24 +43,22 @@ public class ParameterizedMultiplyPolynomials {
             if (i % 5 == 0) {
                 /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithCoefArray();
-                polyPair2 = PolyPairFactory.createRandomPolyPairWithCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
-                polyPair2 = PolyPairFactory.createRandomPolyPairWithConstant();
             } else if (i % 5 == 2) {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
-                polyPair2 = PolyPairFactory.createRandomPolyPairWithDoubleArray();
             } else {
                 /* Create 40% with Polynomial(Term term, int degree) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
-                polyPair2 = PolyPairFactory.createRandomPolyPairWithTermDegree();
             }
 
+            CoefPair coefPair = CoefPairFactory.createCoefPairWithTermArray();
+
             /* Mutiply the polys */
-            polyfun.Polynomial productOrig = polyPair.polynomialOrig.times(polyPair2.polynomialOrig);
-            Polynomial productRefactored = polyPair.polynomialRefactored.times(polyPair2.polynomialRefactored);
+            polyfun.Polynomial evaluatedOrig = polyPair.polynomialOrig.times(coefPair.coefOrig);
+            Polynomial evaluatedRefactored = polyPair.polynomialRefactored.times(coefPair.coefRefactored);
 
             // Get the strings
 
@@ -67,13 +67,13 @@ public class ParameterizedMultiplyPolynomials {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            productOrig.print();
+            evaluatedOrig.print();
             polyParams[i][0] = outContent.toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);
 
-            polyParams[i][1] = productRefactored.toString();
+            polyParams[i][1] = evaluatedRefactored.toString();
         }
 
         return Arrays.asList(polyParams);

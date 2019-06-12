@@ -29,7 +29,7 @@ public class ParameterizedSubtractPolynomials {
         this.polyRefactored = polyRefactored;
     }
 
-    @Parameters(name = "{index} {0}")
+    @Parameters(name = "{index} {0} {1}")
     public static Collection<Object[]> data() {
         // Create list of random polynomials
         String[][] polyParams = new String[NUM_TESTS][2];
@@ -84,7 +84,7 @@ public class ParameterizedSubtractPolynomials {
     }
 
     @Test
-    public void test_RandomPolynomials_Compare_orig_refactored() {
+    public void compareOrigRefactored() {
         PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
     }
 

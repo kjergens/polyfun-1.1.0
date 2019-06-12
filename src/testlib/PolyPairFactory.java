@@ -8,6 +8,7 @@ import org.junit.Assert;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -19,7 +20,7 @@ public class PolyPairFactory {
 
     public static PolyPair createRandomPolyPairWithAbstractCoefArray() {
         PolyPair polyPair = new PolyPair();
-        // Get random length from 2 - 6 (so they will be at least a 1 degree poly)
+        // Get random length from 2 - 4 (so they will be at least a 1 degree poly)
         int numCoefficients = random.nextInt(3) + 2;
 
         // Create 2 identical Coef arrays.
@@ -42,8 +43,8 @@ public class PolyPairFactory {
 
     public static PolyPair createRandomPolyPairWithNumericalCoefArray() {
         PolyPair polyPair = new PolyPair();
-        // Get random length from 2 - 6 (so they will be at least a 1 degree poly)
-        int numCoefficients = random.nextInt(5) + 2;
+        // Get random length from 2 - 4 (so they will be at least a 1 degree poly)
+        int numCoefficients = random.nextInt(3) + 2;
 
         // Create 2 identical Coef arrays.
         polyfun.Coef[] oldCoefs = new polyfun.Coef[numCoefficients];
@@ -82,7 +83,7 @@ public class PolyPairFactory {
     public static PolyPair createRandomPolyPairWithDoubleArray() {
         PolyPair polyPair = new PolyPair();
 
-        int arrayLen = random.nextInt(10) + 1;
+        int arrayLen = random.nextInt(3) + 1;
 
         double[] numericalCoefficients = new double[arrayLen];
 
@@ -102,7 +103,7 @@ public class PolyPairFactory {
         PolyPair polyPair = new PolyPair();
 
         // How many Atoms
-        int atomArrayLen = random.nextInt(10) + 1;
+        int atomArrayLen = random.nextInt(3) + 1;
         polyfun.Atom[] atomsOrig = new polyfun.Atom[atomArrayLen];
         Atom[] atoms = new Atom[atomArrayLen];
 
@@ -173,20 +174,27 @@ public class PolyPairFactory {
         }
 
         // Get all the individual terms
-        String[] orig = polyOrig.split("\\(|\\)|\\+");
-        String[] refactored = polyRefactored.split("\\(|\\)|\\+");
+        String[] orig = polyOrig.split("[\\(\\)\\+-]");
+        String[] refactored = polyRefactored.split("[\\(\\)\\+-]");
 
         // Sort
         Arrays.sort(orig);
         Arrays.sort(refactored);
 
-        try {
-            // Assert that all terms are present irrespective of their order
-            Assert.assertThat(refactored, is(orig));
-        } catch (AssertionError e) {
-            System.err.println("Orig: " + polyOrig);
-            System.err.println("Refac:" + polyRefactored);
-            throw (e);
+        // Turn into ArrayList to make removing blanks easier
+        ArrayList<String> origList = new ArrayList<>(Arrays.asList(orig));
+        ArrayList<String> refList = new ArrayList<>(Arrays.asList(refactored));
+
+        while (origList.get(0).equals("")) {
+            origList.remove(0);
         }
+
+        while (refList.get(0).equals("")) {
+            refList.remove(0);
+        }
+
+
+        // Assert that all terms are present irrespective of their order
+        Assert.assertThat(origList.toArray(), is(refList.toArray()));
     }
 }

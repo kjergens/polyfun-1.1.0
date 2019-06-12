@@ -14,8 +14,6 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.hamcrest.core.Is.is;
-
 /**
  * Randomly generate 1000 polynomials in the v6 library and in the v11 library and make sure they match.
  */

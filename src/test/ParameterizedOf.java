@@ -12,10 +12,9 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.hamcrest.core.Is.is;
-
 /**
- * Randomly generate 1000 polynomials in the v6 library and in the v11 library and make sure they match.
+ * Randomly generate 1000 polynomials in the origianl library and in the refactored library and make sure they match.
+ * Note: This test takes a long time, so set to only 10 iterations.
  */
 
 @RunWith(value = Parameterized.class)
@@ -87,10 +86,6 @@ public class ParameterizedOf {
 
     @Test
     public void testPolynomialsCompareOrigRefactored() {
-
-        // DEBUG
-        System.err.println(polyOrig);
-        System.err.println(polyRefactored);
         PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
     }
 

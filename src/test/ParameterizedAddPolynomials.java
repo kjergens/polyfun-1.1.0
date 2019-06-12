@@ -13,8 +13,6 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.hamcrest.core.Is.is;
-
 /**
  * Randomly generate 1000 polynomials in the original and in the refactored polyfun and make sure they match.
  */

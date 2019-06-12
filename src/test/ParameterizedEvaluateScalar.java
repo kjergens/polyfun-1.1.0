@@ -13,8 +13,6 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.hamcrest.core.Is.is;
-
 /**
  * Randomly generate 1000 polynomials in the original library and in the refactored library and make sure they match.
  */

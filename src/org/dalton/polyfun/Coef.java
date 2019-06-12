@@ -3,17 +3,17 @@ package org.dalton.polyfun;
 /**
  * An array of Terms. The Terms are understood to be added.
  * For example: In the polynomial in x:
- *
- *      P(x) = [2(a_1)^3(b) + 3b^2]x^4 - (a_2)(b_4)x^2 + 7ab + b_2
- *
- *  2(a_1)^3(b)+3b^2 is a Coef, as is -(a_2)(b_4) and 7ab + b_2. The first and third have
- *  length 2 (two Terms) the middle has length 1 (one term)
+ * <p>
+ * P(x) = [2(a_1)^3(b) + 3b^2]x^4 - (a_2)(b_4)x^2 + 7ab + b_2
+ * <p>
+ * 2(a_1)^3(b)+3b^2 is a Coef, as is -(a_2)(b_4) and 7ab + b_2. The first and third have
+ * length 2 (two Terms) the middle has length 1 (one term)
  *
  * @Author David Gomprecht
  * @Author Katie Jergens
- *
- *  TODO: In the setters, think through if they should assign an attribute to the Object passed in...
- *  TODO:  (cont) ... or first make a copy of the Object (so that it can't be altered from outside the instance).
+ * <p>
+ * TODO: In the setters, think through if they should assign an attribute to the Object passed in...
+ * TODO:  (cont) ... or first make a copy of the Object (so that it can't be altered from outside the instance).
  */
 public class Coef {
     private Term[] terms;
@@ -83,6 +83,7 @@ public class Coef {
 
     /**
      * Get terms array.
+     *
      * @return terms array
      */
     public Term[] getTerms() {
@@ -91,6 +92,7 @@ public class Coef {
 
     /**
      * Set terms array. The array passed in is copied to the terms attribute.
+     *
      * @param terms
      */
     public void setTerms(Term[] terms) {
@@ -105,6 +107,7 @@ public class Coef {
 
     /**
      * Set terms array with this term as the only element
+     *
      * @param term term that will make up the terms array
      */
     public void setTerms(Term term) {
@@ -113,7 +116,7 @@ public class Coef {
 
     /**
      * Create new Ceof array with the first Term removed. Meant for array > 1 only.
-     *
+     * <p>
      * TODO: Make this so it actually updates the coefs attribute and returns the popped Term.
      * TODO: Rename pop()
      *
@@ -130,13 +133,36 @@ public class Coef {
     }
 
     /**
+     * Remove first Term.
+     *
+     * @return The popped Term or null
+     */
+    private Term pop() {
+        if (this.getTerms().length == 0) {
+            return null;
+        } else {
+            // Save the first term before it's removed
+            Term poppedTerm = this.getTerms()[0];
+
+            // Create new shorter-by-one terms array
+            Term[] terms = new Term[this.getTerms().length - 1];
+
+            // Copy everything but first term into new array
+            System.arraycopy(this.getTerms(), 1, terms, 0, this.getTerms().length - 1);
+
+            // Set new array as the terms for this Coef
+            this.setTerms(terms);
+
+            // Return the popped Term
+            return poppedTerm;
+        }
+    }
+
+    /**
      * Creates new Coef array with the new Term at the front of the array of Terms.
      *
      * @param term Term to place in front.
      * @return A new Coef with another Term (original Coef is not changed)
-     *
-     * TODO: Actually update this Term.
-     * TODO: rename as insertInFront() or push()
      */
     public Coef paste(Term term) {
         Term[] terms = new Term[this.getTerms().length + 1];
@@ -150,22 +176,39 @@ public class Coef {
     }
 
     /**
+     * Inserts new Term at the front of the array of Terms.
+     *
+     * @param term Term to place in front.
+     * @return nothing
+     **/
+    private void push(Term term) {
+        Term[] terms = new Term[this.getTerms().length + 1];
+        terms[0] = term;
+
+        for (int i = 1; i < this.getTerms().length + 1; ++i) {
+            terms[i] = new Term(this.getTerms()[i - 1].getNumericalCoefficient(), this.getTerms()[i - 1].getAtoms());
+        }
+
+        this.setTerms(terms);
+    }
+
+    /**
      * Creates a new Coef with the Term inserted in a convenient order or combines it with a like another like Term
      *
      * @param term
      * @return A new Coef with another Term (original Coef is not changed)
-     *
-     * TODO: Actually update this Coef
-     * TODO: rename as insert()
      */
     public Coef place(Term term) {
         Coef coef = new Coef(this.terms);
 
         if (!term.isZero() && term.isLessThan(this.getTerms()[0])) {
+            // If the given term is less than the Coef's first term, insert the new term at the front.
             return coef.paste(term);
         } else if (term.equals(this.getTerms()[0])) {
+            // If the given term is the same as  the Coef's first term, add the numerical coefficients.
             coef.getTerms()[0].setNumericalCoefficient(term.getNumericalCoefficient() + coef.getTerms()[0].getNumericalCoefficient());
         } else if (this.getTerms().length == 1) {
+            // If the Coef only has one term, append the given term at the end. (?)
             Term[] terms = new Term[]{term};
             Coef coef1 = new Coef(terms);
             coef.setTerms(coef1.paste(this.getTerms()[0]).getTerms());
@@ -175,6 +218,37 @@ public class Coef {
         }
 
         return coef;
+    }
+
+    /**
+     * Inserts given Term in a convenient order or combines it with a like another like Term
+     *
+     * @param term
+     * @return
+     */
+    private void smartInsert(Term term) {
+        if (term != null && !term.isZero()) {
+            // If the given term is the same as an existing term, add the numerical coefficients.
+            for (int i = 0; i < this.getTerms().length; i++) {
+                if (term.equals(this.getTerms()[i])) {
+                    double sum = term.getNumericalCoefficient() + this.getTerms()[i].getNumericalCoefficient();
+                    this.getTerms()[i].setNumericalCoefficient(sum);
+                    return; // Quit once you've handled it.
+                }
+            }
+
+            // If the given term is less than the Coef's first term, insert the new term at the front.
+            // TODO: Make this a for-loop and where it should insert, split the arrays in 2 and push onto second then merge arrays
+            if (term.isLessThan(this.getTerms()[0])) {
+                this.push(term);
+                return;
+            }
+
+
+            // If it's not equal to or less than any other term, append
+            // TODO
+
+        }
     }
 
     /**
@@ -194,6 +268,26 @@ public class Coef {
         }
 
         return this;
+    }
+
+    /**
+     * Combines like terms and writes them in order.
+     * Recursive solution.
+     *
+     * @return this The original Coef is permanently altered.
+     */
+    public void reduce() {
+        // Save a copy of the current terms.
+        Term[] termsUnordered = new Term[this.getTerms().length];
+        System.arraycopy(this.getTerms(), 0, termsUnordered, 0, this.getTerms().length);
+
+        // Wipe out the currect terms
+        this.setTerms(new Term[0]);
+
+        // Put them back in smart order
+        for (int i = 0; i < termsUnordered.length; i++) {
+            this.smartInsert(termsUnordered[i]);
+        }
     }
 
     /**
@@ -321,6 +415,7 @@ public class Coef {
 
     /**
      * Compose a printable string of the Coef.
+     *
      * @return a printable string
      */
     @Override

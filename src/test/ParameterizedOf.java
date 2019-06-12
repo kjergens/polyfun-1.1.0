@@ -12,6 +12,8 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static org.hamcrest.core.Is.is;
+
 /**
  * Randomly generate 1000 polynomials in the v6 library and in the v11 library and make sure they match.
  */
@@ -21,7 +23,7 @@ public class ParameterizedOf {
     private String polyOrig;
     private String polyRefactored;
 
-    private static final int NUM_TESTS = 1000;
+    private static final int NUM_TESTS = 10;
 
     // Inject via constructor
     public ParameterizedOf(String polyOrig, String polyRefactored) {
@@ -40,8 +42,8 @@ public class ParameterizedOf {
 
             if (i % 5 == 0) {
                 /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithCoefArray();
-                polyPair2 = PolyPairFactory.createRandomPolyPairWithCoefArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithNumericalCoefArray();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithNumericalCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
@@ -50,10 +52,14 @@ public class ParameterizedOf {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
                 polyPair2 = PolyPairFactory.createRandomPolyPairWithDoubleArray();
-            } else {
-                /* Create 40% with Polynomial(Term term, int degree) constructor */
+            } else if (i % 5 == 3) {
+                /* Create 20% with Polynomial(Term term, int degree) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
                 polyPair2 = PolyPairFactory.createRandomPolyPairWithTermDegree();
+            } else {
+                /* Create 20% with Polynomials made with abstract coefs */
+                polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
+                polyPair2 = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
             }
 
             /* Mutiply the polys */
@@ -80,8 +86,12 @@ public class ParameterizedOf {
     }
 
     @Test
-    public void test_RandomPolynomials_Compare_orig_refactored() {
-        Assert.assertEquals(polyOrig, polyRefactored);
+    public void testPolynomialsCompareOrigRefactored() {
+
+        // DEBUG
+        System.err.println(polyOrig);
+        System.err.println(polyRefactored);
+        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
     }
 
 }

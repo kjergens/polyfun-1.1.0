@@ -11,6 +11,8 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static org.hamcrest.core.Is.is;
+
 /**
  * Randomly generate 1000 polynomials in the original library and in the refactored library and make sure they match.
  */
@@ -37,16 +39,19 @@ public class ParameterizedTo {
 
             if (i % 5 == 0) {
                 /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithCoefArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithNumericalCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
             } else if (i % 5 == 2) {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
-            } else {
-                /* Create 40% with Polynomial(Term term, int degree) constructor */
+            } else if (i % 5 == 3) {
+                /* Create 20% with Polynomial(Term term, int degree) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
+            } else {
+                /* Create 20% with Polynomial(Coef[] coefs) and Coef(Term[] terms) constructors */
+                polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
             }
 
             // Create exponent (even spread of positive and negative numbers)
@@ -72,8 +77,8 @@ public class ParameterizedTo {
     }
 
     @Test
-    public void addTangents_Compare_orig_refactored() {
-        Assert.assertEquals(polyOrig, polyRefactored);
+    public void compareOrigRefactored() {
+        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
     }
 
 }

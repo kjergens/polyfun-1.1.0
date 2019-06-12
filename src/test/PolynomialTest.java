@@ -12,6 +12,8 @@ import java.io.PrintStream;
 
 import testlib.PolyPair;
 
+import static org.hamcrest.core.Is.is;
+
 // TODO: add test cases with negative coefficients.
 public class PolynomialTest {
 
@@ -155,7 +157,7 @@ public class PolynomialTest {
 
         // Also test printed versions
         raisePolys.polynomialOrig.print();
-        Assert.assertEquals(outContent.toString(), raisePolys.polynomialRefactored.toString());
+        Assert.assertThat(raisePolys.polynomialRefactored.toString(), is(outContent.toString()));
     }
 
     @Test

@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -37,17 +38,20 @@ public class ParameterizedPolynomialTest {
             PolyPair polyPair;
 
             if (i % 5 == 0) {
-                /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithCoefArray();
+                /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) and Coef(double[] nums) constructors */
+                polyPair = PolyPairFactory.createRandomPolyPairWithNumericalCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
             } else if (i % 5 == 2) {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
-            } else {
-                /* Create 40% with Polynomial(Term term, int degree) constructor */
+            } else if (i % 5 == 3) {
+                /* Create 20% with Polynomial(Term term, int degree) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
+            } else {
+                /* Create 20% with Polynomial(Coef[] coefs) and Coef(Term[] terms) constructors */
+                polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
             }
 
             // Get the strings
@@ -69,9 +73,14 @@ public class ParameterizedPolynomialTest {
         return Arrays.asList(polyParams);
     }
 
-    @Test
-    public void test_RandomPolynomials_Compare_orig_refactored() {
-        Assert.assertEquals(polyOrig, polyRefactored);
-    }
+//    @Test
+//    @Ignore
+//    public void testPolynomialsCompareOrigRefactored() {
+//        PolyPairFactory.comparePolynomials(polyOrig, polyRefactored);
+//    }
 
+    @Test
+    public void testPolynomialsCompareAllTermsExistOrigRefactored() {
+        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
+    }
 }

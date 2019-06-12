@@ -8,8 +8,12 @@ import testlib.PolyPair;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Collection;
+
+import static org.hamcrest.core.Is.is;
 
 /**
  * Randomly generate 1000 polynomials in the original library and in the refactored library and make sure they match.
@@ -37,20 +41,25 @@ public class ParameterizedEvaluateScalar {
 
             if (i % 5 == 0) {
                 /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithCoefArray();
+                polyPair = PolyPairFactory.createRandomPolyPairWithNumericalCoefArray();
             } else if (i % 5 == 1) {
                 /* Create 20% with Polynomial(double constant) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
             } else if (i % 5 == 2) {
                 /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
-            } else {
-                /* Create 40% with Polynomial(Term term, int degree) constructor */
+            } else if (i % 5 == 3) {
+                /* Create 20% with Polynomial(Term term, int degree) constructor */
                 polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
+            } else {
+                /* Create 20% with Polynomial(Coef[] coefs) and Coef(Term[] terms) constructors */
+                polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
             }
 
-            // Create scalar (even spread of positive and negative numbers)
+            // Create scalar (even spread of positive and negative numbers), make precision 2 so easier to read tests
             double scalar = ((double) i * .123) - ((double) NUM_TESTS * .123)/2;
+            BigDecimal bd = new BigDecimal(scalar).setScale(2, RoundingMode.HALF_EVEN);
+            scalar = bd.doubleValue();
 
             // Get the string
 
@@ -72,8 +81,8 @@ public class ParameterizedEvaluateScalar {
     }
 
     @Test
-    public void addTangents_Compare_orig_refactored() {
-        Assert.assertEquals(polyOrig, polyRefactored);
+    public void testCompareOrigRefactored() {
+        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
     }
 
 }

@@ -178,11 +178,14 @@ public class Atom {
      * @return true if this is less than or equal to the atom passed in.
      */
     public boolean isLessThanOrEquals(Atom atom) {
-        // First precedence is to the letter
-        if (this.getLetter() < atom.getLetter()) return true;
+        // First check for equals
+        if (this.equals(atom)) return true;
+
+        // For comparison, first precedence is to the letter
+        if ((int) this.getLetter() < (int) atom.getLetter()) return true;
 
         // If the letter is the same, the next precedence is to the subscript.
-        if (this.getLetter() == atom.getLetter()) {
+        if ((int) this.getLetter() == (int) atom.getLetter()) {
             if (this.getSubscript() < atom.getSubscript()) return true;
 
             // If the letter and the subscript are the same, the next precedence is to the power.
@@ -192,8 +195,8 @@ public class Atom {
             }
         }
 
-        // The the "less-than" checks failed, return true if equal. Otherwise, return false.
-        return this.equals(atom);
+        // If the  equals and "less-than" checks failed, return false.
+        return false;
     }
 
     /**

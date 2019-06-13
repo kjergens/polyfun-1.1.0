@@ -13,6 +13,7 @@ import java.io.PrintStream;
 import testlib.PolyPair;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertTrue;
 
 // TODO: add test cases with negative coefficients.
 public class PolynomialTest {
@@ -99,7 +100,7 @@ public class PolynomialTest {
         double old_result = polyPair.polynomialOrig.evaluate(3).getTerms()[0].getTermDouble();
         double new_result = polyPair.polynomialRefactored.evaluate(3).getTerms()[0].getNumericalCoefficient();
 
-        Assert.assertTrue(old_result == new_result);
+        assertTrue(old_result == new_result);
     }
 
     @Test
@@ -125,7 +126,7 @@ public class PolynomialTest {
 
         double y = poly.evaluate(3).getTerms()[0].getNumericalCoefficient();
 
-        Assert.assertTrue(46.0 == y);
+        assertTrue(46.0 == y);
     }
 
     @Test
@@ -280,7 +281,7 @@ public class PolynomialTest {
 
     private void compareTerms(polyfun.Term oldTerm, Term newTerm) {
         // Compare term coefficients
-        Assert.assertTrue(oldTerm.getTermDouble() == newTerm.getNumericalCoefficient());
+        assertTrue(oldTerm.getTermDouble() == newTerm.getNumericalCoefficient());
 
         // For each Term, compare Atom array by Atom array
         polyfun.Atom[] oldAtoms = oldTerm.getTermAtoms();

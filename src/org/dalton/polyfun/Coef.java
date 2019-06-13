@@ -244,7 +244,6 @@ public class Coef {
                 return;
             }
 
-
             // If it's not equal to or less than any other term, append
             // TODO
 
@@ -272,7 +271,7 @@ public class Coef {
 
     /**
      * Combines like terms and writes them in order.
-     * Recursive solution.
+     * Iterative solution.
      *
      * @return this The original Coef is permanently altered.
      */

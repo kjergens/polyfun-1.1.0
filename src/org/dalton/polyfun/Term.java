@@ -365,10 +365,12 @@ public class Term {
 
         if (this.equals(term)) return false;
 
+        // More atoms makes it "greater than"
         if (this.getAtoms().length > term.getAtoms().length) return false;
 
+        // Atom-atom place pairs must be less than for the whole term to be "less than"
+        // This means that fewer atoms can still be greater than.
         for (int i = 0; i < this.getAtoms().length; i++) {
-
             if (!this.getAtoms()[i].isLessThanOrEquals(term.getAtoms()[i])) {
                 return false;
             }

@@ -63,11 +63,11 @@ public class ParameterizedAddPolynomials {
         return Arrays.asList(polyParams);
     }
 
-    @Test
-    @Ignore("ordering of terms bug")
-    public void testPolynomialsCompareOrigRefactored() {
-        PolyPairFactory.comparePolynomials(polyOrig, polyRefactored);
-    }
+//    @Test
+//    @Ignore("ordering of terms bug")
+//    public void testPolynomialsCompareOrigRefactored() {
+//        PolyPairFactory.comparePolynomials(polyOrig, polyRefactored);
+//    }
 
     @Test
     public void testPolynomialsCompareAllTermsExistOrigRefactored() {

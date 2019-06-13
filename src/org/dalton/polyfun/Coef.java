@@ -10,7 +10,7 @@ package org.dalton.polyfun;
  * length 2 (two Terms) the middle has length 1 (one term)
  *
  * @Author David Gomprecht
- * @Author Katie Jergens
+ * @Author Katie Jergens (refactoring)
  * <p>
  * TODO: In the setters, think through if they should assign an attribute to the Object passed in...
  * TODO:  (cont) ... or first make a copy of the Object (so that it can't be altered from outside the instance).
@@ -419,23 +419,18 @@ public class Coef {
      */
     @Override
     public String toString() {
-        StringBuilder string = new StringBuilder();
+        String string = "";
 
         for (int i = 0; i < this.getTerms().length; i++) {
-
-            // Only save term if coeffiecient is not zero
-            if (this.getTerms()[i].getNumericalCoefficient() != 0.0D) {
-
-                // Positive terms get leading "+", except the first one.
-                if (string.length() > 0 && this.getTerms()[i].getNumericalCoefficient() > 0.0D) {
-                    string.append("+");
-                }
-
-                string.append(this.getTerms()[i].toString());
-            }
+            String term = this.getTerms()[i].toString();
+            if (term.length() > 0) string += (term + "+");
         }
 
-        return string.toString();
+        // Clean up the last + and +- combinations
+        string = string.replaceAll("\\+\\Z", ""); // strip last +
+        string = string.replaceAll("\\+-", "-");
+
+        return string;
     }
 }
 

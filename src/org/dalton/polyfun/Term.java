@@ -59,8 +59,11 @@ public class Term {
      */
     public Term(double numericalCoefficient, Atom[] atoms) {
         this.numericalCoefficient = numericalCoefficient;
-        this.atoms = new Atom[atoms.length];
-        System.arraycopy(atoms, 0, this.atoms, 0, atoms.length);
+
+        if (atoms != null) {
+            this.atoms = new Atom[atoms.length];
+            System.arraycopy(atoms, 0, this.atoms, 0, atoms.length);
+        }
     }
 
     /**
@@ -149,6 +152,29 @@ public class Term {
         this.atoms = atoms; // TODO: should this be an arraycopy?
     }
 
+
+    /**
+     * Remove first Atom and return it. Will fail with Term that has no Atoms.
+     * <p>
+     *
+     * @return the popped Atom
+     */
+    public Atom pop() {
+        if (this.getAtoms() == null && this.getAtoms().length == 0) {
+            return null;
+        } else {
+            Atom[] atoms = new Atom[this.getAtoms().length - 1];
+            Atom removed = this.getAtoms()[0];
+
+            for (int i = 0; i < atoms.length; i++) {
+                atoms[i] = this.getAtoms()[i + 1];
+            }
+
+            this.setAtoms(atoms);
+            return removed;
+        }
+    }
+
     /**
      * Make a new Term with the first Atom removed. Will fail with Term that has no Atoms.
      * <p>
@@ -183,6 +209,38 @@ public class Term {
         System.arraycopy(this.atoms, 0, atoms, 1, atoms.length - 1);
 
         return new Term(this.numericalCoefficient, atoms);
+    }
+
+    /**
+     * Inserts new Atom at the front of Term
+     * <p>
+     *
+     * @param atom
+     * @return nothing
+     */
+    public void push(Atom atom) {
+        Atom[] atoms = new Atom[this.atoms.length + 1];
+        atoms[0] = atom;
+
+        System.arraycopy(this.atoms, 0, atoms, 1, atoms.length - 1);
+
+        this.setAtoms(atoms);
+    }
+
+    /**
+     * Inserts new Atom at the end of Term
+     * <p>
+     *
+     * @param atom
+     * @return nothing
+     */
+    public void append(Atom atom) {
+        Atom[] atoms = new Atom[this.atoms.length + 1];
+
+        System.arraycopy(this.atoms, 0, atoms, 0, atoms.length - 1);
+        atoms[atoms.length - 1] = atom;
+
+        this.setAtoms(atoms);
     }
 
     /**
@@ -222,6 +280,40 @@ public class Term {
     }
 
     /**
+     * Places a new Atom in the array of Atoms that make up the term. Atoms go in alphabetical order,
+     * then by subscript. It "myatom" is "like" (same letter & subscript) the Atoms are combined.
+     * <p>
+     * example: place b^2 in the Term 3abd will result in 3ab^3d
+     * example: place c_1 in the Term 3abd will result in 3abc_1d
+     * <p>
+     *
+     * @param atom
+     * @return nothing
+     * @author Katie Jergens
+     */
+    public void smartInsert(Atom atom) {
+        if (this.getAtoms() == null || this.getAtoms().length == 0) {
+            // If there are no atoms make this the atom
+            this.setAtoms(new Atom[]{atom});
+        } else if (atom.isLessThan(this.atoms[0])) {
+            // If this atom is smaller then it goes in front
+            this.push(atom);
+        } else if (atom.isLike(this.atoms[0])) {
+            // Replace the first atom with the product of the first atom and this atom
+            Atom head = this.pop();
+            this.push(head.timesLikeAtom(atom));
+        } else if (this.atoms.length == 1) {
+            // Otherwise put it at the end
+            this.append(atom);
+        } else {
+            // Recursive calls
+            Atom head = this.pop();
+            this.smartInsert(atom);
+            this.push(head);
+        }
+    }
+
+    /**
      * Orders Atoms and combines like Atoms in the Array of atoms.
      * example: 3baca^2 becomes 3a^3bc
      * <p>
@@ -230,7 +322,7 @@ public class Term {
      * @return Term Permanently alters the Term
      */
     public Term simplify() {
-        if (this.atoms.length > 1) {
+        if (this.atoms != null && this.atoms.length > 1) {
             Atom atom = new Atom(this.atoms[0].getLetter(), this.atoms[0].getSubscript(), this.atoms[0].getPower());
             Term term = new Term(this.numericalCoefficient, this.atoms);
 
@@ -242,12 +334,39 @@ public class Term {
     }
 
     /**
+     * Orders Atoms and combines like Atoms in the Array of atoms.
+     * example: 3baca^2 becomes 3a^3bc
+     * <p>
+     * Permanently alters the Term.
+     *
+     * @return nothing. Permanently alters the Term
+     */
+    public void reduce() {
+        if (this.getAtoms() == null) {
+            return;
+        }
+
+        // Shallow copy
+        Atom[] unorderedAtoms = this.getAtoms();
+
+        // Remove existing atoms
+        this.setAtoms(null);
+
+        // Put them back in order
+        for (int i = 0; i < unorderedAtoms.length; i++) {
+            this.smartInsert(unorderedAtoms[i]);
+        }
+    }
+
+    /**
      * Multiply Term by another Term.
      *
      * @param term The Term to multiply to this one
      * @return Term
      */
     public Term times(Term term) {
+        if (this.atoms == null || term.atoms == null) return term;
+
         Atom[] atoms = new Atom[this.atoms.length + term.getAtoms().length];
 
         for (int i = 0; i < atoms.length; ++i) {
@@ -308,8 +427,8 @@ public class Term {
      * @return true or false if they are "like" or not
      */
     public boolean isLike(Term term) {
-        this.simplify();
-        term.simplify();
+        this.reduce();
+        term.reduce();
 
         if (this.getAtoms().length != term.getAtoms().length) return false;
 
@@ -360,8 +479,10 @@ public class Term {
      * @return true if this is less than the param
      */
     public boolean isLessThan(Term term) {
-        this.simplify();
-        term.simplify();
+        this.reduce();
+        term.reduce();
+
+        if (term == null || term.getAtoms() == null || this.getAtoms() == null) return false;
 
         if (this.equals(term)) return false;
 
@@ -467,8 +588,13 @@ public class Term {
      * @return boolean True if they are equal
      */
     public boolean equals(Term term) {
-        this.simplify();
-        term.simplify();
+        this.reduce();
+        term.reduce();
+
+        if (term == null) return false;
+        if (this.getAtoms() == null && term.getAtoms() == null) return true;
+        if (this.getAtoms() == null) return false;
+        if (term.getAtoms() == null) return false;
 
         if (this.getAtoms().length == term.getAtoms().length) {
 
@@ -493,27 +619,17 @@ public class Term {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        if (this.atoms.length == 0 && this.numericalCoefficient != 0.0D) {
-            string = new StringBuilder(String.valueOf(this.numericalCoefficient));
-        } else {
-            int i;
-            if (this.numericalCoefficient == 1.0D) {
-                for (i = 0; i < this.atoms.length; ++i) {
-                    string.append(this.atoms[i].toString());
-                }
-            } else if (this.numericalCoefficient == -1.0D) {
-                string.append("-");
 
-                for (i = 0; i < this.atoms.length; ++i) {
-                    string.append(this.atoms[i].toString());
-                }
-            } else {
-                string = new StringBuilder(String.valueOf(this.numericalCoefficient));
+        if (this.numericalCoefficient == 0) return "";
+        if (this.atoms == null || this.atoms.length == 0) return String.valueOf(this.numericalCoefficient);
 
-                for (i = 0; i < this.atoms.length; ++i) {
-                    string.append(this.atoms[i].toString());
-                }
-            }
+        // Prepend with the numerical coef (unless it's 1, which is implied)
+        if (this.numericalCoefficient == -1.0D) string.append("-");
+        else if (this.numericalCoefficient != 1.0D) string.append(String.valueOf(this.numericalCoefficient));
+
+        // Append all the atoms
+        for (int i = 0; i < this.atoms.length; i++) {
+            string.append(this.atoms[i].toString());
         }
 
         return string.toString();

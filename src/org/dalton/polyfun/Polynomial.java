@@ -579,24 +579,21 @@ public class Polynomial {
     public String toString() {
         StringBuilder string = new StringBuilder();
 
-        // Get terms with an exponent
+        // Get 2-degree terms and higher
         for (int i = this.getDegree(); i > 1; i--) {
             if (!this.getCoefAt(i).isZero()) {
                 string.append("(").append(this.getCoefAt(i).toString()).append(")X^").append(i);
 
-                // Skip zeros
+                // Skip zero terms
                 int j = i - 1;
-                while(j > 0 && this.getCoefAt(j).isZero()) {
-                    j--;
-                }
+                while(j > 0 && this.getCoefAt(j).isZero()) j--;
 
                 // If not at end append a "+"
-                if (j != 0) {
-                    string.append("+");
-                }
+                if (j != 0) string.append("+");
             }
         }
 
+        // Get 1 and 0 degree term
         if (this.getDegree() > 0) {
             // Get term with no exponent (X exponent is 1)
             if (!this.getCoefAt(1).isZero()) {
@@ -611,6 +608,6 @@ public class Polynomial {
             string.append(this.getCoefAt(0).toString());
         }
 
-        return string.append("\n").toString();
+        return string.toString();
     }
 }

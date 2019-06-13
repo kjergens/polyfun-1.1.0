@@ -218,19 +218,23 @@ public class PolyPairFactory {
     }
 
     public static void comparePolynomials(String polyOrig, String polyRefactored) {
+        // Get rid of trailing newline
+        polyOrig = polyOrig.replace("\n", "");
+
         // FIXME Both the original & refactored sometimes have a bad triple +++ sign. Fix in the refactored version.
         polyOrig = polyOrig.replace("+++", "+");
-        polyRefactored = polyRefactored.replace("+++", "+");
+        //polyRefactored = polyRefactored.replace("+++", "+");
 
         // FIXME Both the original & refactored sometimes have a bad double ++ sign. Fix in the refactored version.
         polyOrig = polyOrig.replace("++", "+");
-        polyRefactored = polyRefactored.replace("++", "+");
+        //polyRefactored = polyRefactored.replace("++", "+");
 
         // Correct for the original sometimes having a bad leading + sign
         polyOrig = polyOrig.replaceAll("\\A\\+", "");
         polyOrig = polyOrig.replace("(+", "(");
 
         // Correct for the original sometimes having a bad trailing + sign
+        polyOrig = polyOrig.replace("+)", ")");
         polyOrig = polyOrig.replaceAll("\\+\\Z", "+");
 
         Assert.assertThat(polyRefactored, is(polyOrig));
@@ -255,6 +259,9 @@ public class PolyPairFactory {
 
             // Correct for the original sometimes having a bad trailing + sign
             polyOrig = polyOrig.replaceAll("\\+\\Z", "+");
+
+            // Get rid of trailing newline
+            polyOrig = polyOrig.replace("\n", "");
         }
 
         // Get all the individual terms
@@ -269,10 +276,12 @@ public class PolyPairFactory {
         ArrayList<String> origList = new ArrayList<>(Arrays.asList(orig));
         ArrayList<String> refactoredList = new ArrayList<>(Arrays.asList(refactored));
 
-        while (origList.size() > 0 && origList.get(0).equals("")) {
+        // Remove blanks and newline from original
+        while (origList.size() > 0 && (origList.get(0).equals(""))) {
             origList.remove(0);
         }
 
+        // Remove blanks
         while (refactoredList.size() > 0 && refactoredList.get(0).equals("")) {
             refactoredList.remove(0);
         }

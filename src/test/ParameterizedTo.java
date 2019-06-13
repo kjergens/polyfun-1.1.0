@@ -34,24 +34,7 @@ public class ParameterizedTo {
         String[][] polyParams = new String[NUM_TESTS][2];
 
         for (int i = 0; i < polyParams.length; i++) {
-            PolyPair polyPair;
-
-            if (i % 5 == 0) {
-                /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithNumericalCoefArray();
-            } else if (i % 5 == 1) {
-                /* Create 20% with Polynomial(double constant) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
-            } else if (i % 5 == 2) {
-                /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
-            } else if (i % 5 == 3) {
-                /* Create 20% with Polynomial(Term term, int degree) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
-            } else {
-                /* Create 20% with Polynomial(Coef[] coefs) and Coef(Term[] terms) constructors */
-                polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
-            }
+            PolyPair polyPair = PolyPairFactory.createPolyPairBasedOnIndex(i);
 
             // Create exponent (even spread of positive and negative numbers)
             int exponent = i - (NUM_TESTS /2);

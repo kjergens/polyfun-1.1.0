@@ -18,6 +18,45 @@ public class PolyPairFactory {
 
     static Random random = new Random(1);
 
+    public static PolyPair createRandomPolyPairWithDegree() {
+        PolyPair polyPair = new PolyPair();
+
+        int degree = random.nextInt(5) + 1;
+
+        polyPair.polynomialOrig = new polyfun.Polynomial(degree);
+        polyPair.polynomialRefactored = new org.dalton.polyfun.Polynomial(degree);
+
+        return polyPair;
+    }
+
+    public static PolyPair createRandomPolyPairWithNumCoefDegree() {
+        PolyPair polyPair = new PolyPair();
+
+        int degree = random.nextInt(5) + 1;
+
+        double numericalCoefficient = random.nextDouble() * random.nextInt(10);
+        BigDecimal bd = new BigDecimal(numericalCoefficient).setScale(2, RoundingMode.HALF_EVEN);
+        numericalCoefficient = bd.doubleValue();
+
+        polyPair.polynomialOrig = new polyfun.Polynomial(numericalCoefficient, degree);
+        polyPair.polynomialRefactored = new org.dalton.polyfun.Polynomial(numericalCoefficient, degree);
+
+        return polyPair;
+    }
+
+    public static PolyPair createRandomPolyPairWithLetterDegree() {
+        PolyPair polyPair = new PolyPair();
+
+        char letter = (char) (random.nextInt(5) + 97);
+        int degree = random.nextInt(5) + 1;
+
+        polyPair.polynomialOrig = new polyfun.Polynomial(letter, degree);
+        polyPair.polynomialRefactored = new org.dalton.polyfun.Polynomial(letter, degree);
+
+        return polyPair;
+    }
+
+
     public static PolyPair createRandomPolyPairWithAbstractCoefArray() {
         PolyPair polyPair = new PolyPair();
         // Get random length from 2 - 4 (so they will be at least a 1 degree poly)
@@ -27,7 +66,7 @@ public class PolyPairFactory {
         polyfun.Coef[] oldCoefs = new polyfun.Coef[numCoefficients];
         Coef[] newCoefs = new Coef[numCoefficients];
 
-        // Fill them using randomly selected numericalCoefficients.
+        // Fill them using randomly selected Terms.
         for (int j = 0; j < oldCoefs.length; j++) {
             CoefPair coefPair = CoefPairFactory.createCoefPairWithTermArray();
             oldCoefs[j] = coefPair.coefOrig;
@@ -37,6 +76,51 @@ public class PolyPairFactory {
         // Finally, create 2 (hopefully) identical Polynomials
         polyPair.polynomialOrig = new polyfun.Polynomial(oldCoefs);
         polyPair.polynomialRefactored = new Polynomial(newCoefs);
+
+        return polyPair;
+    }
+
+    public static PolyPair createRandomPolyPairWithAbstractCoef() {
+        PolyPair polyPair = new PolyPair();
+
+        // Fill them using randomly selected Terms.
+        CoefPair coefPair = CoefPairFactory.createCoefPairWithTermArray();
+
+        // Finally, create 2 (hopefully) identical Polynomials
+        polyPair.polynomialOrig = new polyfun.Polynomial(coefPair.coefOrig);
+        polyPair.polynomialRefactored = new Polynomial(coefPair.coefRefactored);
+
+        return polyPair;
+    }
+
+    public static PolyPair createRandomPolyPairWithNumericalCoef() {
+        PolyPair polyPair = new PolyPair();
+
+        // Randomly selected numericalCoefficients. Precision 2 to make tests easier to read.
+        double numericalCoefficient = random.nextDouble() * random.nextInt(10);
+        BigDecimal bd = new BigDecimal(numericalCoefficient).setScale(2, RoundingMode.HALF_EVEN);
+        numericalCoefficient = bd.doubleValue();
+
+        // Finally, create 2 (hopefully) identical Polynomials
+        polyPair.polynomialOrig = new polyfun.Polynomial(new polyfun.Coef(numericalCoefficient));
+        polyPair.polynomialRefactored = new Polynomial(new Coef(numericalCoefficient));
+
+        return polyPair;
+    }
+
+    public static PolyPair createRandomPolyPairWithNumericalCoefDegree() {
+        PolyPair polyPair = new PolyPair();
+
+        int degree = random.nextInt(5) + 1;
+
+        // Randomly selected numericalCoefficients. Precision 2 to make tests easier to read.
+        double numericalCoefficient = random.nextDouble() * random.nextInt(10);
+        BigDecimal bd = new BigDecimal(numericalCoefficient).setScale(2, RoundingMode.HALF_EVEN);
+        numericalCoefficient = bd.doubleValue();
+
+        // Finally, create 2 (hopefully) identical Polynomials
+        polyPair.polynomialOrig = new polyfun.Polynomial(new polyfun.Coef(numericalCoefficient), degree);
+        polyPair.polynomialRefactored = new Polynomial(new Coef(numericalCoefficient), degree);
 
         return polyPair;
     }
@@ -183,18 +267,52 @@ public class PolyPairFactory {
 
         // Turn into ArrayList to make removing blanks easier
         ArrayList<String> origList = new ArrayList<>(Arrays.asList(orig));
-        ArrayList<String> refList = new ArrayList<>(Arrays.asList(refactored));
+        ArrayList<String> refactoredList = new ArrayList<>(Arrays.asList(refactored));
 
-        while (origList.get(0).equals("")) {
+        while (origList.size() > 0 && origList.get(0).equals("")) {
             origList.remove(0);
         }
 
-        while (refList.get(0).equals("")) {
-            refList.remove(0);
+        while (refactoredList.size() > 0 && refactoredList.get(0).equals("")) {
+            refactoredList.remove(0);
         }
 
-
         // Assert that all terms are present irrespective of their order
-        Assert.assertThat(origList.toArray(), is(refList.toArray()));
+        Assert.assertThat(refactoredList.toArray(), is(origList.toArray()));
+    }
+
+    public static PolyPair createPolyPairBasedOnIndex(int i) {
+        PolyPair polyPair;
+
+        if (i % 10 == 0) {
+            // Create 10% of the polynomials with the Polynomial(Coef[] coefs) and Coef(double[] nums) constructors
+            polyPair = PolyPairFactory.createRandomPolyPairWithNumericalCoefArray();
+        } else if (i % 10 == 1) {
+            // Create 10% with Polynomial(double constant) constructor
+            polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
+        } else if (i % 10 == 2) {
+            // Create 10% with Polynomial(double[] numericalCoefficients) constructor
+            polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
+        } else if (i % 10 == 3) {
+            // Create 10% with Polynomial(Term term, int degree) constructor
+            polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
+        } else if (i % 10 == 4) {
+            // Create 10% with the Polynomial(double numericalCoefficient, int degree) constructor
+            polyPair = PolyPairFactory.createRandomPolyPairWithNumCoefDegree();
+        } else if (i % 10 == 5) {
+            // Create 10% with the Polynomial(Coef coef) constructor
+            polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoef();
+        } else if (i % 10 == 6) {
+            // Create 10% with the Polynomial(char letter, int degree) constructor
+            polyPair = PolyPairFactory.createRandomPolyPairWithLetterDegree();
+        } else if (i % 10 == 7) {
+            // Create 10% with the Polynomial(Coef coef) constructor
+            polyPair = PolyPairFactory.createRandomPolyPairWithNumericalCoef();
+        } else {
+            // Create 20% with Polynomial(Coef[] coefs) and Coef(Term[] terms) constructors
+            polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
+        }
+
+        return polyPair;
     }
 }

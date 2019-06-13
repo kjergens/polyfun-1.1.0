@@ -1,3 +1,4 @@
+import org.dalton.polyfun.Polynomial;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * Randomly generate 1000 polynomials in the v6 library and in the v11 library and make sure they match.
+ * Randomly generate 1000 polynomials in the original library and in the refactored library and make sure they match.
  */
 
 @RunWith(value = Parameterized.class)
@@ -35,24 +36,7 @@ public class ParameterizedPolynomialTest {
         String[][] polyParams = new String[NUM_TESTS][2];
 
         for (int i = 0; i < polyParams.length; i++) {
-            PolyPair polyPair;
-
-            if (i % 5 == 0) {
-                /* Create 20% of the polynomials with the Polynomial(Coef[] coefs) and Coef(double[] nums) constructors */
-                polyPair = PolyPairFactory.createRandomPolyPairWithNumericalCoefArray();
-            } else if (i % 5 == 1) {
-                /* Create 20% with Polynomial(double constant) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithConstant();
-            } else if (i % 5 == 2) {
-                /* Create 20% with Polynomial(double[] numericalCoefficients) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithDoubleArray();
-            } else if (i % 5 == 3) {
-                /* Create 20% with Polynomial(Term term, int degree) constructor */
-                polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
-            } else {
-                /* Create 20% with Polynomial(Coef[] coefs) and Coef(Term[] terms) constructors */
-                polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
-            }
+            PolyPair polyPair = PolyPairFactory.createPolyPairBasedOnIndex(i);
 
             // Get the strings
 

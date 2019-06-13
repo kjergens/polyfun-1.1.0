@@ -56,7 +56,7 @@ public class ParameterizedOf {
                 polyPair = PolyPairFactory.createRandomPolyPairWithTermDegree();
                 polyPair2 = PolyPairFactory.createRandomPolyPairWithTermDegree();
             } else {
-                /* Create 20% with Polynomials made with abstract coefs */
+                /* Create 20% with Polynomials with abstract coefs */
                 polyPair = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
                 polyPair2 = PolyPairFactory.createRandomPolyPairWithAbstractCoefArray();
             }

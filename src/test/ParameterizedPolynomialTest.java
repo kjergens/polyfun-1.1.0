@@ -58,7 +58,6 @@ public class ParameterizedPolynomialTest {
     }
 
 //    @Test
-//    @Ignore
 //    public void testPolynomialsCompareOrigRefactored() {
 //        PolyPairFactory.comparePolynomials(polyOrig, polyRefactored);
 //    }

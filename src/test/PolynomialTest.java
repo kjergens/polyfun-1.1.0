@@ -36,15 +36,12 @@ public class PolynomialTest {
     public void createAndCompareRandomPolyPairs() {
         PolyPair polyPair = new PolyPair();
 
-        // Print to System.err
-        System.err.println(polyPair.polynomialRefactored);
-
         // Compare each part
         comparePolynomials(polyPair.polynomialOrig, polyPair.polynomialRefactored);
 
         // Compare printed string
         polyPair.polynomialOrig.print();
-        Assert.assertEquals(outContent.toString(), polyPair.polynomialRefactored.toString());
+        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString()));
 
     }
 
@@ -53,8 +50,7 @@ public class PolynomialTest {
         PolyPair polyPair = new PolyPair();
 
         polyPair.polynomialOrig.print();
-        System.err.println(outContent.toString());
-        Assert.assertEquals(outContent.toString(), polyPair.polynomialRefactored.toString());
+        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString()));
     }
 
     @Test

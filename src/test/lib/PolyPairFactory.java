@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 import lib.PolyPair;
 import lib.CoefPair;
@@ -218,25 +219,26 @@ public class PolyPairFactory {
         return polyPair;
     }
 
-    public static void comparePolynomials(String polyOrig, String polyRefactored) {
-        // Get rid of trailing newline
-        polyOrig = polyOrig.replace("\n", "");
+    public static void compareByStrings(String polyOrig, String polyRefactored) {
+        // Leave imperfections that exist in both, to be fixed later.
+        if (!polyRefactored.equals(polyOrig)) {
+            // Get rid of trailing newline
+            polyOrig = polyOrig.replace("\n", "");
 
-        // FIXME Both the original & refactored sometimes have a bad triple +++ sign. Fix in the refactored version.
-        polyOrig = polyOrig.replace("+++", "+");
-        //polyRefactored = polyRefactored.replace("+++", "+");
+            // The original sometimes has a bad triple +++ sign. Fixed in the refactored version.
+            polyOrig = polyOrig.replace("+++", "+");
 
-        // FIXME Both the original & refactored sometimes have a bad double ++ sign. Fix in the refactored version.
-        polyOrig = polyOrig.replace("++", "+");
-        //polyRefactored = polyRefactored.replace("++", "+");
+            // The original sometimes has a bad double ++ sign. Fixed in the refactored version.
+            polyOrig = polyOrig.replace("++", "+");
 
-        // Correct for the original sometimes having a bad leading + sign
-        polyOrig = polyOrig.replaceAll("\\A\\+", "");
-        polyOrig = polyOrig.replace("(+", "(");
+            // Correct for the original sometimes having a bad leading + sign
+            polyOrig = polyOrig.replaceAll("\\A\\+", "");
+            polyOrig = polyOrig.replace("(+", "(");
 
-        // Correct for the original sometimes having a bad trailing + sign
-        polyOrig = polyOrig.replace("+)", ")");
-        polyOrig = polyOrig.replaceAll("\\+\\Z", "+");
+            // Correct for the original sometimes having a bad trailing + sign
+            polyOrig = polyOrig.replace("+)", ")");
+            polyOrig = polyOrig.replaceAll("\\+\\Z", "");
+        }
 
         Assert.assertThat(polyRefactored, is(polyOrig));
     }
@@ -246,13 +248,11 @@ public class PolyPairFactory {
         // Leave imperfections that exist in both, to be fixed later.
         if (!polyRefactored.equals(polyOrig)) {
 
-            // FIXME Both the original & refactored sometimes have a bad triple +++ sign. Fix in the refactored version.
+            // The original sometimes has a bad triple +++ sign. Fixed in the refactored version.
             polyOrig = polyOrig.replace("+++", "+");
-            //polyRefactored = polyRefactored.replace("+++", "+");
 
-            // FIXME Both the original & refactored sometimes have a bad double ++ sign. Fix in the refactored version.
+            // The original sometimes has a bad double ++ sign. Fix in the refactored version.
             polyOrig = polyOrig.replace("++", "+");
-            //polyRefactored = polyRefactored.replace("++", "+");
 
             // Correct for the original sometimes having a bad leading + sign
             polyOrig = polyOrig.replaceAll("\\A\\+", "");
@@ -277,17 +277,17 @@ public class PolyPairFactory {
         ArrayList<String> origList = new ArrayList<>(Arrays.asList(orig));
         ArrayList<String> refactoredList = new ArrayList<>(Arrays.asList(refactored));
 
-        // Remove blanks and newline from original
+        // Remove blanks from original
         while (origList.size() > 0 && (origList.get(0).equals(""))) {
             origList.remove(0);
         }
 
-        // Remove blanks
+        // Remove blanks from refactored
         while (refactoredList.size() > 0 && refactoredList.get(0).equals("")) {
             refactoredList.remove(0);
         }
 
-        // Assert that all terms are present irrespective of their order
+        // Assert that all terms are present, irrespective of their order
         Assert.assertThat(refactoredList.toArray(), is(origList.toArray()));
     }
 

@@ -177,10 +177,12 @@ public class Polynomial {
      * @param degree The degree of the polynomial
      */
     public Polynomial(Coef coef, int degree) {
+        // Fill the highest degree with the given coef.
         this.coefs = new Coef[degree + 1];
         this.coefs[degree] = coef;
 
-        for (int i = 0; i < degree; ++i) {
+        // Fill lower degrees with 0's
+        for (int i = 0; i < degree; i++) {
             this.coefs[i] = new Coef(0.0D);
         }
 
@@ -626,7 +628,7 @@ public class Polynomial {
                 string.append("(").append(this.getCoefAt(1).toString()).append(")X");
             }
 
-            // Get 0-degree term (no X invariate)
+            // Get constant term (no X invariate)
             if (!this.getCoefAt(0).isZero()) {
                 string.append("+").append(this.getCoefAt(0).toString());
             }
@@ -634,6 +636,7 @@ public class Polynomial {
             string.append(this.getCoefAt(0).toString());
         }
 
-        return string.toString();
+        // Clean up the last +
+        return string.toString().replaceAll("\\+\\Z", ""); // strip last +;
     }
 }

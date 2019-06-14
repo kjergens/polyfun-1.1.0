@@ -258,7 +258,95 @@ public class PolynomialTest {
     }
 
     @Test
-    public void testMinus_CompareToPolyfunOld() {
+    public void constructorCoefDegree() {
+        // (a_1^2b_2^3b_3^4+b_3^4d_1^2d_3+c_1^4e_2)X
+
+        // a_1^2b_2^3b_3^4
+        Atom[] atoms = new Atom[]{new Atom('a', 1, 2),
+                new Atom('b', 2, 3),
+                new Atom('b', 3, 4)
+        };
+        Term termA = new Term(1, atoms);
+
+        // b_3^4d_1^2d_3
+        atoms = new Atom[]{new Atom('b', 3, 4),
+                new Atom('d', 1, 2),
+                new Atom('d', 3, 1)
+        };
+        Term termB = new Term(1, atoms);
+
+        // c_1^4e_2
+        atoms = new Atom[]{new Atom('c', 1, 4),
+                new Atom('e', 2, 1)
+        };
+        Term termC = new Term(1, atoms);
+
+        Coef coef = new Coef(new Term[]{termA, termC, termB});
+        Polynomial poly = new Polynomial(coef, 1);
+
+        assertThat(poly.toString(), is("(a_1^2b_2^3b_3^4+b_3^4d_1^2d_3+c_1^4e_2)X"));
+    }
+
+    @Test
+    public void constructorCoefArray() {
+        // (a_1^2b_2^3b_3^4+b_3^4d_1^2d_3+c_1^4e_2)X
+        Term[] terms = new Term[3];
+
+        // a_1^2b_2^3b_3^4
+        Atom[] atoms = new Atom[]{new Atom('a', 1, 2),
+                new Atom('b', 2, 3),
+                new Atom('b', 3, 4)
+        };
+        terms[2] = new Term(1, atoms);
+
+        // b_3^4d_1^2d_3
+        atoms = new Atom[]{new Atom('b', 3, 4),
+                new Atom('d', 1, 2),
+                new Atom('d', 3, 1)
+        };
+        terms[1] = new Term(1, atoms);
+
+        // c_1^4e_2
+        atoms = new Atom[]{new Atom('c', 1, 4),
+                new Atom('e', 2, 1)
+        };
+        terms[0] = new Term(1, atoms);
+
+        Coef coef = new Coef(terms);
+
+        // Implies a one-degree with a 0 in the 0-deg spot
+        Coef[] coefs = new Coef[] {new Coef(0), coef};
+
+        Polynomial poly = new Polynomial(coefs);
+
+        assertThat(poly.toString(), is("(a_1^2b_2^3b_3^4+b_3^4d_1^2d_3+c_1^4e_2)X"));
+    }
+
+    @Test
+    public void orderOfAtomArrays0Degree() {
+        // a_1^2b_2^3b_3^4+c_1^4e_2
+
+        // a_1^2b_2^3b_3^4
+        Atom[] atoms = new Atom[]{new Atom('a', 1, 2),
+                new Atom('b', 2, 3),
+                new Atom('b', 3, 4)
+        };
+        Term termA = new Term(1, atoms);
+
+        // c_1^4e_2
+        atoms = new Atom[]{new Atom('c', 1, 4),
+                new Atom('e', 2, 1)
+        };
+        Term termB = new Term(1, atoms);
+
+        Coef coef = new Coef(new Term[]{termB, termA});
+        Polynomial poly = new Polynomial(coef, 0);
+
+        assertThat(poly.toString(), is("a_1^2b_2^3b_3^4+c_1^4e_2"));
+    }
+
+    @Test
+    public void minusCompareToPolyfunOld() {
         // Create 2 identical polynomials
         double[] coefficients = {1, -3, 0, 2};
         polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
@@ -402,11 +490,6 @@ public class PolynomialTest {
         polyfun.Polynomial newPoly = new polyfun.Polynomial(coefficients);
 
         polyfun.Polynomial composition = newPoly.of(polynomial);
-
-        polynomial.print();
-        newPoly.print();
-        composition.print();
-        System.err.println(outContent.toString().replace("\n",""));
     }
 
     @Test
@@ -461,7 +544,7 @@ public class PolynomialTest {
         comparePolynomials(oldResult, newResult);
     }
 
-    private void comparePolynomials(polyfun.Polynomial oldPoly, Polynomial newPoly) {
+    public static void comparePolynomials(polyfun.Polynomial oldPoly, Polynomial newPoly) {
         // Compare number of coefficients.
         polyfun.Coef[] oldCoefs = oldPoly.getCoefficients();
         Coef[] newCoefs = newPoly.getCoefs();
@@ -474,7 +557,7 @@ public class PolynomialTest {
         }
     }
 
-    private void compareCoefs(polyfun.Coef oldCoef, Coef newCoef) {
+    private static void compareCoefs(polyfun.Coef oldCoef, Coef newCoef) {
         polyfun.Term[] oldTerms = oldCoef.getTerms();
         Term[] newTerms = newCoef.getTerms();
 
@@ -486,7 +569,7 @@ public class PolynomialTest {
         }
     }
 
-    private void compareTerms(polyfun.Term oldTerm, Term newTerm) {
+    private static void compareTerms(polyfun.Term oldTerm, Term newTerm) {
         // Compare term coefficients
         assertThat(newTerm.getNumericalCoefficient(), is(oldTerm.getTermDouble()));
 

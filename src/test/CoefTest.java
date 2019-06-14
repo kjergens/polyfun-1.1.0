@@ -251,7 +251,7 @@ public class CoefTest {
     }
 
     @Test
-    public void simplyReorder() {
+    public void simplifyReorder() {
         Atom[] atoms = new Atom[3];
         double numCoef = 1.0D;
         char letter = 'd';
@@ -271,7 +271,7 @@ public class CoefTest {
     }
 
     @Test
-    public void simplyCombine() {
+    public void simplifyCombine() {
         coef = coef.simplify();
         expected = "6.0a_1b_2^2c_3^3";
 

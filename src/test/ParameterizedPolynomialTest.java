@@ -53,10 +53,10 @@ public class ParameterizedPolynomialTest {
         return Arrays.asList(polyParams);
     }
 
-//    @Test
-//    public void testPolynomialsCompareOrigRefactored() {
-//        PolyPairFactory.comparePolynomials(polyOrig, polyRefactored);
-//    }
+    @Test
+    public void testPolynomialsCompareOrigRefactored() {
+        PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
+    }
 
     @Test
     public void testPolynomialsCompareAllTermsExistOrigRefactored() {

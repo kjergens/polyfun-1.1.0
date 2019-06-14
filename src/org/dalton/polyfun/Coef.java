@@ -444,14 +444,23 @@ public class Coef {
     public String toString() {
         String string = "";
 
-        for (int i = 0; i < this.getTerms().length; i++) {
-            String term = this.getTerms()[i].toString();
-            if (term.length() > 0) string += (term + "+");
+        // First term
+        if (terms.length > 0) {
+            string += this.getTerms()[0].toString();
         }
 
-        // Clean up the last + and +- combinations
-        string = string.replaceAll("\\+\\Z", ""); // strip last +
-        string = string.replaceAll("\\+-", "-");
+        // Rest of terms are "+" and the term.
+        for (int i = 1; i < this.getTerms().length; i++) {
+            String term = this.getTerms()[i].toString();
+            if (term.length() > 0) {
+                if (string.length() > 0 & this.getTerms()[i].getNumericalCoefficient() > 0) string += "+";
+                string += term;
+            }
+        }
+
+        // Clean up the last +
+//        string = string.replaceAll("\\+\\Z", ""); // strip last +
+//        string = string.replaceAll("\\+-", "-");
 
         return string;
     }

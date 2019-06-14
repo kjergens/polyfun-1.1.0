@@ -1,13 +1,12 @@
 import org.dalton.polyfun.Polynomial;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import testlib.CoefPair;
-import testlib.CoefPairFactory;
-import testlib.PolyPairFactory;
-import testlib.PolyPair;
+import lib.CoefPair;
+import lib.CoefPairFactory;
+import lib.PolyPairFactory;
+import lib.PolyPair;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

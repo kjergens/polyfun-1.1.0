@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import testlib.PolyPair;
+import lib.PolyPair;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertTrue;
@@ -424,13 +424,15 @@ public class PolynomialTest {
         polyfun.Atom[] oldAtoms = oldTerm.getTermAtoms();
         Atom[] newAtoms = newTerm.getAtoms();
 
-        Assert.assertEquals(oldAtoms.length, newAtoms.length);
+        if (oldAtoms != null && newAtoms != null) {
+            Assert.assertEquals(oldAtoms.length, newAtoms.length);
 
-        // For each Atom, compare the parts.
-        for (int i = 0; i < newAtoms.length; i++) {
-            Assert.assertEquals(oldAtoms[i].getLetter(), newAtoms[i].getLetter());
-            Assert.assertEquals(oldAtoms[i].getPower(), newAtoms[i].getPower());
-            Assert.assertEquals(oldAtoms[i].getSubscript(), newAtoms[i].getSubscript());
+            // For each Atom, compare the parts.
+            for (int i = 0; i < newAtoms.length; i++) {
+                Assert.assertEquals(oldAtoms[i].getLetter(), newAtoms[i].getLetter());
+                Assert.assertEquals(oldAtoms[i].getPower(), newAtoms[i].getPower());
+                Assert.assertEquals(oldAtoms[i].getSubscript(), newAtoms[i].getSubscript());
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package testlib;
+package lib;
 
 public class CoefPair {
     public polyfun.Coef coefOrig;

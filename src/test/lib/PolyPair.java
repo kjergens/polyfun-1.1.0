@@ -1,4 +1,4 @@
-package testlib;
+package lib;
 
 import org.dalton.polyfun.Coef;
 import org.dalton.polyfun.Polynomial;

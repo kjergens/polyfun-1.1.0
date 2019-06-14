@@ -1,4 +1,4 @@
-package testlib;
+package lib;
 
 import org.dalton.polyfun.Atom;
 import org.dalton.polyfun.Term;

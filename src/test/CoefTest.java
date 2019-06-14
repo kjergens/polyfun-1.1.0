@@ -358,6 +358,33 @@ public class CoefTest {
     }
 
     @Test
+    public void timesAbstractCoefSelf() {
+        // a_3^2
+        Atom[] atoms = new Atom[]{new Atom('a', 3, 2)};
+        Term term = new Term(1.0, atoms);
+        Coef coef = new Coef(term);
+
+        assertThat(coef.getTerms().length, is(1));
+
+        // Expected: a_3^4
+        // all the coef and exp squared bc poly is 2-degrees
+        Coef product = coef.times(coef);
+
+        assertThat(product.toString(), is("a_3^4"));
+
+        assertThat(product.getTerms().length, is(1));
+    }
+
+    @Test
+    public void isZeroEmptyTerm() {
+        Coef coef = new Coef(new Term[0]);
+        System.err.println(coef.toString());
+
+        boolean isZero = coef.isZero();
+        assertThat(isZero, is(true));
+    }
+
+    @Test
     public void plus() {
         Coef sum = coef.plus(coef);
         expected = "12.0a_1b_2^2c_3^3";

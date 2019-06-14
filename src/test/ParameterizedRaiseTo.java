@@ -11,14 +11,15 @@ import java.util.Collection;
 
 
 /**
- * Randomly generate 10 polynomials in the original library and in the refactored library and make sure they match.
+ * Randomly generate 20 polynomials in the original library and in the refactored library and make sure they match.
+ * This test takes a long time so only 20 iterations.
  */
 
 @RunWith(value = Parameterized.class)
 public class ParameterizedRaiseTo {
     private String polyOrig;
     private String polyRefactored;
-    private static final int NUM_TESTS = 10;
+    private static final int NUM_TESTS = 20;
 
     // Inject via constructor
     public ParameterizedRaiseTo(String polyOrig, String polyRefactored) {
@@ -35,7 +36,7 @@ public class ParameterizedRaiseTo {
             PolyPair polyPair = PolyPairFactory.createPolyPairBasedOnIndex(i);
 
             // Create exponent (even spread of positive and negative numbers)
-            int exponent = i - (NUM_TESTS / 2);
+            int exponent = i % 5 - (i - NUM_TESTS / 2) % 5;
 
             // Get the string
 

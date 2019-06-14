@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * Randomly generate 1000 polynomials in the origianl library and in the refactored library and make sure they match.
- * Note: This test takes a long time, so set to only 10 iterations.
+ * Randomly generate 20 polynomials in the origianl library and in the refactored library and make sure they match.
+ * Note: This test takes a long time, so set to only 20 iterations.
  */
 
 @RunWith(value = Parameterized.class)
@@ -20,7 +20,7 @@ public class ParameterizedOf {
     private String polyOrig;
     private String polyRefactored;
 
-    private static final int NUM_TESTS = 10;
+    private static final int NUM_TESTS = 100;
 
     // Inject via constructor
     public ParameterizedOf(String polyOrig, String polyRefactored) {
@@ -55,10 +55,6 @@ public class ParameterizedOf {
             System.setOut(originalOut);
 
             polyParams[i][1] = composition_refactored.toString();
-
-            // DEBUG
-            System.err.println(polyPair.polynomialRefactored.toString());
-            System.err.println(polyPair2.polynomialRefactored.toString());
         }
 
         return Arrays.asList(polyParams);

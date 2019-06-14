@@ -305,6 +305,44 @@ public class PolynomialTest {
     }
 
     @Test
+    public void ofDegree2OfAbstractCoef() {
+        // (1.4)X^2
+        Term term = new Term(1.4);
+        Polynomial poly = new Polynomial(term, 2);
+
+        // a_3^2
+        Atom[] atoms = new Atom[]{new Atom('a', 3, 2)};
+        term = new Term(1.0, atoms);
+        Polynomial polyB = new Polynomial(term);
+
+        assertThat(polyB.getCoefAt(0).getTerms().length, is(1));
+
+        // Expected: 1.4a_2^4
+        // all the coef and exp squared bc poly is 2-degrees, then times poly.
+        Polynomial comp = poly.of(polyB);
+
+        assertThat(comp.toString(), is("1.4a_3^4"));
+    }
+
+    @Test
+    public void timesAbstractCoefSelf() {
+        // a_3^2
+        Atom[] atoms = new Atom[]{new Atom('a', 3, 2)};
+        Term term = new Term(1.0, atoms);
+        Polynomial poly = new Polynomial(term);
+
+        assertThat(poly.getCoefAt(0).getTerms().length, is(1));
+
+        // Expected: a_3^4
+        Polynomial product = poly.times(poly);
+
+        assertThat(product.toString(), is("a_3^4"));
+
+        // bug in poly times coef. this has term 0 and term 1 but coef has just term 0
+        assertThat(product.getCoefAt(0).getTerms().length, is(1));
+    }
+
+    @Test
     public void ofAbstractCoefsNoNum() {
         // (1.4a_2^3)X^2
         Atom[] atoms = new Atom[]{new Atom('a', 2, 3)};

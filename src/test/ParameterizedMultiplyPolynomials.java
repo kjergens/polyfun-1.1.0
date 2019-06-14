@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * Randomly generate 1000 polynomials in the v6 library and in the v11 library and make sure they match.
+ * Randomly generate 1000 polynomials in the orig library and in the refactored library and make sure they match.
  */
 
 @RunWith(value = Parameterized.class)

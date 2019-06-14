@@ -261,7 +261,7 @@ public class Coef {
         if (this.getTerms().length > 1) {
             Term term = new Term(this.getTerms()[0].simplify().getNumericalCoefficient(), this.getTerms()[0].simplify().getAtoms());
             this.setTerms(coef.snip().simplify().place(term).getTerms());
-        } else {
+        } else if (this.getTerms().length == 1){
             Term[] terms = new Term[]{this.getTerms()[0].simplify()};
             this.setTerms(terms);
         }
@@ -303,13 +303,8 @@ public class Coef {
             for (int j = 0; j < coef.getTerms().length; j++) {
                 Term product = this.getTerms()[i].times(coef.getTerms()[j]);
 
-                double productCoef = product.getNumericalCoefficient();
-                Atom[] productAtoms = product.getAtoms();
-
-                Term term = new Term(productCoef, productAtoms);
-
                 int index = i * coef.getTerms().length + j;
-                terms[index] = term;
+                terms[index] = product;
             }
         }
 
@@ -340,17 +335,26 @@ public class Coef {
      * @return sumCoef The sum of this and that
      */
     public Coef plus(Coef coef) {
-        Term[] terms = new Term[this.getTerms().length + coef.getTerms().length];
+        // Ignore zero terms.
+        int numThisTerms = 0;
+        int numCoefTerms = 0;
+        if (!this.isZero()) numThisTerms+= this.getTerms().length;
+        if (!coef.isZero()) numCoefTerms += coef.getTerms().length;
+
+        Term[] terms = new Term[numThisTerms+numCoefTerms];
 
         for (int i = 0; i < terms.length; ++i) {
-            if (i < this.getTerms().length) {
+            if (i < numThisTerms) {
                 terms[i] = this.getTerms()[i];
             } else {
-                terms[i] = coef.getTerms()[i - this.getTerms().length];
+                terms[i] = coef.getTerms()[i - numThisTerms];
             }
         }
 
         Coef sum = new Coef(terms);
+
+        //if (sum == null || sum.getTerms().length == 0) return new Coef(0);
+
         return sum.simplify();
     }
 
@@ -363,6 +367,24 @@ public class Coef {
         this.simplify();
 
         for (int i = 0; i < this.getTerms().length; ++i) {
+            if (!this.getTerms()[i].isZero()) {
+                return false;
+            }
+        }
+
+        // If got this far it all Terms are zero.
+        return true;
+    }
+
+    /**
+     * If the Coef is zero, it returns true.
+     *
+     * @return true if the Coeff is 0
+     */
+    public boolean isZeroTerm() {
+        this.reduce();
+
+        for (int i = 0; i < this.getTerms().length; i++) {
             if (!this.getTerms()[i].isZero()) {
                 return false;
             }

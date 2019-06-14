@@ -225,7 +225,7 @@ public class Coef {
      * @param term
      * @return
      */
-    private void smartInsert(Term term) {
+    public void smartInsert(Term term) {
         if (term != null && !term.isZero()) {
             // If the given term is the same as an existing term, add the numerical coefficients.
             for (int i = 0; i < this.getTerms().length; i++) {
@@ -237,15 +237,38 @@ public class Coef {
             }
 
             // If the given term is less than the Coef's first term, insert the new term at the front.
-            // TODO: Make this a for-loop and where it should insert, split the arrays in 2 and push onto second then merge arrays
-            if (term.isLessThan(this.getTerms()[0])) {
-                this.push(term);
-                return;
+//            if (term.isLessThan(this.getTerms()[0])) {
+//                this.push(term);
+//                return;
+//            }
+
+            // Find where it should insert, split the arrays in 2 and push onto second then merge arrays
+            Term[] terms = new Term[this.getTerms().length + 1];
+            int insertIndex = terms.length - 1; // default to last
+            for (int i = 0; i < this.getTerms().length; i++) {
+                if (term.isLessThan(this.getTerms()[i])) {
+                    insertIndex = i;
+                    break;
+                }
+            }
+
+            // Copy everything up to here in terms array
+            for (int i = 0; i < insertIndex; i++) {
+                terms[i] = this.getTerms()[i];
+            }
+
+            // Place the new term
+            terms[insertIndex] = term;
+
+            // Copy the rest of the this.terms
+            for (int i = insertIndex + 1; i < terms.length; i++) {
+                terms[i] = this.getTerms()[i - 1];
             }
 
             // If it's not equal to or less than any other term, append
-            // TODO
-
+//            System.arraycopy(this.getTerms(), 0, terms, 0, this.getTerms().length);
+//            terms[terms.length - 1] = term;
+            this.setTerms(terms);
         }
     }
 
@@ -260,7 +283,7 @@ public class Coef {
         if (this.getTerms().length > 1) {
             Term term = new Term(this.getTerms()[0].simplify().getNumericalCoefficient(), this.getTerms()[0].simplify().getAtoms());
             this.setTerms(coef.snip().simplify().place(term).getTerms());
-        } else if (this.getTerms().length == 1){
+        } else if (this.getTerms().length == 1) {
             Term[] terms = new Term[]{this.getTerms()[0].simplify()};
             this.setTerms(terms);
         }

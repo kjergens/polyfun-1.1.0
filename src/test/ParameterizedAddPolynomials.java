@@ -62,7 +62,7 @@ public class ParameterizedAddPolynomials {
 
 //    @Test
 //    @Ignore("ordering of terms bug")
-//    public void testPolynomialsCompareOrigRefactored() {
+//    public void compareByStrings() {
 //        PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
 //    }
 

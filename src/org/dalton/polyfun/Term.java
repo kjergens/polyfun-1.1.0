@@ -8,8 +8,7 @@ package org.dalton.polyfun;
  * <p>
  * 2(a_1)^3(b) is a term, and 7ab + b_2 is two terms: 7ab and b_2
  *
- * @Author David Gomprecht
- * @Author Katie Jergens
+ * @author David Gomprecht
  */
 public class Term {
     private double numericalCoefficient;

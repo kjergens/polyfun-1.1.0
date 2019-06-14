@@ -10,8 +10,7 @@ package org.dalton.polyfun;
  * <p>
  * 2(a_1)^3(b) is a coefficient, with two atoms: (a_1)^3 and (b)
  *
- * @Author David Gomprecht
- * @Author Katie Jergens
+ * @author David Gomprecht
  */
 public class Atom {
     private char letter;

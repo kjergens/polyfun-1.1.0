@@ -235,6 +235,17 @@ public class CoefTest {
     }
 
     @Test
+    public void smartInsertInFrontFewerAtoms() {
+        Atom[] atoms = {new Atom('a', 1, 1),
+                new Atom('b', 1, 1)};
+        Term term = new Term(1.0, atoms);
+        coef.smartInsert(term);
+
+        expected = "a_1b_1+" + expected;
+        assertThat(coef.toString(), is(expected));
+    }
+
+    @Test
     public void simplifyCombineTerms() {
         Atom atomA = new Atom('a', 1, 1);
         Atom atomB = new Atom('b', 2, 2);

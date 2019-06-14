@@ -59,8 +59,13 @@ public class ParameterizedEvaluateScalar {
         return Arrays.asList(polyParams);
     }
 
+//    @Test
+//    public void compareByStrings() {
+//        PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
+//    }
+
     @Test
-    public void testCompareOrigRefactored() {
+    public void compareByParts() {
         PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
     }
 

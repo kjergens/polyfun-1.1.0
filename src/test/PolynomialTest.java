@@ -200,18 +200,44 @@ public class PolynomialTest {
     }
 
     @Test
-    public void testPlus_CompareToPolyfunOld() {
+    public void plusSelfDegree3CompareToPolyfunOld() {
         // Create 2 identical polynomials
         double[] coefficients = {1, -3, 0, 2};
 
         polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
         Polynomial newPoly = new Polynomial(coefficients);
 
-        // Raise both to the power of 0
+        // Add each to themselves
         polyfun.Polynomial oldResult = oldPoly.plus(oldPoly);
         Polynomial newResult = newPoly.plus(newPoly);
 
-        // Compare both
+        oldResult.print();
+
+        // Compare strings
+        assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
+
+        // Compare parts
+        comparePolynomials(oldResult, newResult);
+    }
+
+    @Test
+    public void plusSelfDegree1CompareToPolyfunOld() {
+        // Create 2 identical polynomials
+        double[] coefficients = {0, 1};
+
+        polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
+        Polynomial newPoly = new Polynomial(coefficients);
+
+        // Add each to themselves
+        polyfun.Polynomial oldResult = oldPoly.plus(oldPoly);
+        Polynomial newResult = newPoly.plus(newPoly);
+
+        oldResult.print();
+
+        // Compare strings
+        assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
+
+        // Compare parts
         comparePolynomials(oldResult, newResult);
     }
 
@@ -349,8 +375,6 @@ public class PolynomialTest {
         Term term = new Term(1.0, atoms);
         Polynomial poly = new Polynomial(term, 2);
 
-        System.err.println(poly.toString());
-
         // 2.75a_3^2c_1^3c_3^2
         atoms = new Atom[]{new Atom('a', 3, 2),
                 new Atom('c', 1, 3),
@@ -358,8 +382,6 @@ public class PolynomialTest {
         };
         term = new Term(1.0, atoms);
         Polynomial polyB = new Polynomial(term);
-
-        System.err.println(polyB.toString());
 
         // Expected: a_2^3a_3^4c_1^6c_3^4
         Polynomial comp = poly.of(polyB);
@@ -408,7 +430,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void testAddTangent_CompareToPolyfunOld() {
+    public void addTangentCompareToPolyfunOld() {
         // Create 2 identical polynomials
         double[] coefficients = {1, -3, 0, 2};
 
@@ -419,7 +441,23 @@ public class PolynomialTest {
         polyfun.Polynomial oldResult = oldPoly.addTangent();
         Polynomial newResult = newPoly.addTangent();
 
-        // Compare both
+        // Compare parts
+        comparePolynomials(oldResult, newResult);
+    }
+
+    @Test
+    public void addTangentDegree2CompareToPolyfunOld() {
+        // Create 2 identical polynomials
+        double[] coefficients = {0, 1, 1};
+
+        polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
+        Polynomial newPoly = new Polynomial(coefficients);
+
+        // Add tangents to each.
+        polyfun.Polynomial oldResult = oldPoly.addTangent();
+        Polynomial newResult = newPoly.addTangent();
+
+        // Compare parts
         comparePolynomials(oldResult, newResult);
     }
 
@@ -440,7 +478,7 @@ public class PolynomialTest {
         polyfun.Term[] oldTerms = oldCoef.getTerms();
         Term[] newTerms = newCoef.getTerms();
 
-        Assert.assertEquals(oldTerms.length, newTerms.length);
+        assertThat(newTerms.length, is(oldTerms.length));
 
         // For each Term array, compare Term by Term
         for (int j = 0; j < oldTerms.length; j++) {

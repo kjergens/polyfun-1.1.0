@@ -335,6 +335,7 @@ public class Polynomial {
         int biggerDegree = Math.max(this.getDegree(), polynomial.getDegree());
         int smallerDegree = Math.min(this.getDegree(), polynomial.getDegree());
 
+        // A 2-deg poly should have 3 coefs for 0, 1, 2, for example.
         Coef[] coefs = new Coef[biggerDegree + 1];
 
         // Add the co-responding coefficients
@@ -344,10 +345,12 @@ public class Polynomial {
 
         // Get the rest of the coefficients
         if (this.getDegree() > polynomial.getDegree()) {
+            // This is if the are more coefs in this.
             for (int i = smallerDegree + 1; i <= biggerDegree; i++) {
                 coefs[i] = this.getCoefAt(i);
             }
         } else {
+            // This is if there are more coefs in that.
             for (int i = smallerDegree + 1; i <= biggerDegree; i++) {
                 coefs[i] = polynomial.getCoefAt(i);
             }
@@ -489,16 +492,7 @@ public class Polynomial {
         for (int i = 0; i <= this.getDegree(); ++i) {
             Coef currentCoef = this.getCoefAt(i);
             Polynomial raised = polynomial.raiseTo(i);
-
-            Polynomial product;
-
-            product = raised.times(currentCoef);
-
-//            if (currentCoef.isConstantCoef()) {
-//                product = raised.times(currentCoef.getTerms()[0].getNumericalCoefficient());
-//            } else {
-//                product = raised.times(currentCoef);
-//            }
+            Polynomial product = raised.times(currentCoef);
 
             result.setCoefs(result.plus(product).getCoefs());
         }

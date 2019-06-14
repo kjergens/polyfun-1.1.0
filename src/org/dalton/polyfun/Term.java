@@ -350,7 +350,7 @@ public class Term {
         Atom[] unorderedAtoms = this.getAtoms();
 
         // Remove existing atoms
-        this.setAtoms(null);
+        this.setAtoms(new Atom[0]);
 
         // Put them back in order
         for (int i = 0; i < unorderedAtoms.length; i++) {
@@ -479,15 +479,18 @@ public class Term {
      * @return true if this is less than the param
      */
     public boolean isLessThan(Term term) {
-        this.reduce();
-        term.reduce();
+        this.simplify();
+        term.simplify();
 
-        if (term == null || term.getAtoms() == null || this.getAtoms() == null) return false;
+        if (term == null || term.atoms == null || this.atoms == null) return false;
 
         if (this.equals(term)) return false;
 
         // More atoms makes it "greater than"
-        if (this.getAtoms().length > term.getAtoms().length) return false;
+        int thisAtomCount = this.getAtoms().length;
+        int termAtomCount = term.getAtoms().length;
+
+        if (thisAtomCount > termAtomCount) return false;
 
         // Atom-atom place pairs must be less than for the whole term to be "less than"
         // This means that fewer atoms can still be greater than.
@@ -588,8 +591,8 @@ public class Term {
      * @return boolean True if they are equal
      */
     public boolean equals(Term term) {
-        this.reduce();
-        term.reduce();
+        this.simplify();
+        term.simplify();
 
         if (term == null) return false;
         if (this.getAtoms() == null && term.getAtoms() == null) return true;

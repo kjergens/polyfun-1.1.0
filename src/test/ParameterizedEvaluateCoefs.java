@@ -4,8 +4,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import lib.CoefPair;
-import lib.CoefPairFactory;
-import lib.PolyPairFactory;
 import lib.PolyPair;
 
 import java.io.ByteArrayOutputStream;

@@ -20,7 +20,7 @@ public class ParameterizedOf {
     private String polyOrig;
     private String polyRefactored;
 
-    private static final int NUM_TESTS = 100;
+    private static final int NUM_TESTS = 20;
 
     // Inject via constructor
     public ParameterizedOf(String polyOrig, String polyRefactored) {

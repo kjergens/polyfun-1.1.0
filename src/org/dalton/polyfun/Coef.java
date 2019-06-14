@@ -9,8 +9,7 @@ package org.dalton.polyfun;
  * 2(a_1)^3(b)+3b^2 is a Coef, as is -(a_2)(b_4) and 7ab + b_2. The first and third have
  * length 2 (two Terms) the middle has length 1 (one term)
  *
- * @Author David Gomprecht
- * @Author Katie Jergens (refactoring)
+ * @author David Gomprecht
  * <p>
  * TODO: In the setters, think through if they should assign an attribute to the Object passed in...
  * TODO:  (cont) ... or first make a copy of the Object (so that it can't be altered from outside the instance).
@@ -336,27 +335,24 @@ public class Coef {
      */
     public Coef plus(Coef coef) {
         // Ignore zero terms.
-        int numThisTerms = 0;
-        int numCoefTerms = 0;
-        if (!this.isZero()) numThisTerms+= this.getTerms().length;
-        if (!coef.isZero()) numCoefTerms += coef.getTerms().length;
+        if (this.isZero() && coef.isZero()) return new Coef(0.0D);
+        if (coef.isZero()) return this;
+        if (this.isZero()) return coef;
 
-        Term[] terms = new Term[numThisTerms+numCoefTerms];
+        Term[] terms = new Term[this.getTerms().length + coef.getTerms().length];
 
-        for (int i = 0; i < terms.length; ++i) {
-            if (i < numThisTerms) {
+        for (int i = 0; i < terms.length; i++) {
+            if (i < this.getTerms().length) {
                 terms[i] = this.getTerms()[i];
             } else {
-                terms[i] = coef.getTerms()[i - numThisTerms];
+                terms[i] = coef.getTerms()[i - this.getTerms().length];
             }
         }
 
         Coef sum = new Coef(terms);
-
-        //if (sum == null || sum.getTerms().length == 0) return new Coef(0);
-
         return sum.simplify();
     }
+
 
     /**
      * If the Coef is zero, it returns true.

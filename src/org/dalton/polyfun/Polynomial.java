@@ -375,7 +375,7 @@ public class Polynomial {
     public Polynomial times(double scalar) {
         Coef[] coefs = new Coef[this.getDegree() + 1];
 
-        for (int i = 0; i < this.getDegree() + 1; ++i) {
+        for (int i = 0; i < this.getDegree() + 1; i++) {
             coefs[i] = this.getCoefAt(i).times(scalar);
         }
 
@@ -391,7 +391,7 @@ public class Polynomial {
     public Polynomial times(Coef coef) {
         Coef[] coefs = new Coef[this.getDegree() + 1];
 
-        for (int i = 0; i < this.getDegree() + 1; ++i) {
+        for (int i = 0; i < this.getDegree() + 1; i++) {
             coefs[i] = this.getCoefAt(i).times(coef);
         }
 
@@ -439,6 +439,26 @@ public class Polynomial {
         return polynomial;
     }
 
+    /* Raise to a power.
+     *
+     * @param power to raise by
+     * @return Polynomial the result.
+     */
+    public Polynomial raiseTo(int power) {
+        Polynomial polynomial;
+
+        if (power == 0) polynomial = new Polynomial(1.0);
+        else {
+            polynomial = new Polynomial(this.getCoefs());
+
+            for (int i = 1; i < power; i++) {
+                polynomial = this.times(polynomial);
+            }
+        }
+
+        return polynomial;
+    }
+
     /**
      * Adds the Polynomial p(x) = mx + b to a Polynomial
      *
@@ -467,8 +487,17 @@ public class Polynomial {
         Polynomial result = new Polynomial(0.0D);
 
         for (int i = 0; i <= this.getDegree(); ++i) {
-            Polynomial temp = polynomial.to(i).times(this.getCoefAt(i));
-            result.setCoefs(result.plus(temp).getCoefs());
+            Coef currentCoef = this.getCoefAt(i);
+            Polynomial raised = polynomial.to(i);
+
+            Polynomial product;
+            if (currentCoef.isConstantCoef()) {
+                product = raised.times(currentCoef.getTerms()[0].getNumericalCoefficient());
+            } else {
+                product = raised.times(currentCoef);
+            }
+
+            result.setCoefs(result.plus(product).getCoefs());
         }
 
         return result;
@@ -586,7 +615,7 @@ public class Polynomial {
 
                 // Skip zero terms
                 int j = i - 1;
-                while(j > 0 && this.getCoefAt(j).isZero()) j--;
+                while (j > 0 && this.getCoefAt(j).isZero()) j--;
 
                 // If not at end append a "+"
                 if (j != 0) string.append("+");

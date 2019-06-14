@@ -20,7 +20,7 @@ import java.util.Collection;
 public class ParameterizedTo {
     private String polyOrig;
     private String polyRefactored;
-    private static final int NUM_TESTS = 1000;
+    private static final int NUM_TESTS = 10;
 
     // Inject via constructor
     public ParameterizedTo(String polyOrig, String polyRefactored) {
@@ -46,10 +46,10 @@ public class ParameterizedTo {
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));
 
-            polyPair.polynomialOrig.evaluate(exponent).print();
+            polyPair.polynomialOrig.to(exponent).print();
             polyParams[i][0] = outContent.toString();
 
-            polyParams[i][1] = polyPair.polynomialRefactored.evaluate(exponent).toString();
+            polyParams[i][1] = polyPair.polynomialRefactored.to(exponent).toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);

@@ -298,18 +298,23 @@ public class Coef {
     public Coef times(Coef coef) {
         Term[] terms = new Term[this.getTerms().length * coef.getTerms().length];
 
-        for (int i = 0; i < this.getTerms().length; ++i) {
-            for (int j = 0; j < coef.getTerms().length; ++j) {
-                double tempNum = this.getTerms()[i].times(coef.getTerms()[j]).getNumericalCoefficient();
-                Atom[] atoms = this.getTerms()[i].times(coef.getTerms()[j]).getAtoms();
-                Term term = new Term(tempNum, atoms);
+        // Multiply every term by every term.
+        for (int i = 0; i < this.getTerms().length; i++) {
+            for (int j = 0; j < coef.getTerms().length; j++) {
+                Term product = this.getTerms()[i].times(coef.getTerms()[j]);
+
+                double productCoef = product.getNumericalCoefficient();
+                Atom[] productAtoms = product.getAtoms();
+
+                Term term = new Term(productCoef, productAtoms);
+
                 int index = i * coef.getTerms().length + j;
                 terms[index] = term;
             }
         }
 
-        Coef product = new Coef(terms);
-        return product.simplify();
+        Coef productCoef = new Coef(terms);
+        return productCoef.simplify();
     }
 
     /**
@@ -321,7 +326,7 @@ public class Coef {
     public Coef times(double scalar) {
         Term[] terms = new Term[this.getTerms().length];
 
-        for (int i = 0; i < this.getTerms().length; ++i) {
+        for (int i = 0; i < this.getTerms().length; i++) {
             terms[i] = this.getTerms()[i].times(scalar);
         }
 

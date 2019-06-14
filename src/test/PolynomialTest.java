@@ -14,6 +14,7 @@ import testlib.PolyPair;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertThat;
 
 // TODO: add test cases with negative coefficients.
 public class PolynomialTest {
@@ -42,7 +43,7 @@ public class PolynomialTest {
 
         // Compare printed string
         polyPair.polynomialOrig.print();
-        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString()));
+        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString().replace("\n","")));
 
     }
 
@@ -51,7 +52,7 @@ public class PolynomialTest {
         PolyPair polyPair = new PolyPair();
 
         polyPair.polynomialOrig.print();
-        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString()));
+        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString().replace("\n","")));
     }
 
     @Test
@@ -68,7 +69,7 @@ public class PolynomialTest {
         polyfun.Polynomial sum_orig = polyPair.polynomialOrig.plus(polyPair.polynomialOrig);
         Polynomial sum_refactored = polyPair.polynomialRefactored.plus(polyPair.polynomialRefactored);
         sum_orig.print();
-        Assert.assertEquals(outContent.toString(), sum_refactored.toString());
+        Assert.assertEquals(outContent.toString().replace("\n",""), sum_refactored.toString());
     }
 
     @Test
@@ -78,7 +79,7 @@ public class PolynomialTest {
                 polyPair.polynomialRefactored.times(polyPair.polynomialRefactored));
 
         productPair.polynomialOrig.print();
-        Assert.assertEquals(outContent.toString(), productPair.polynomialRefactored.toString());
+        assertThat(productPair.polynomialRefactored.toString(), is(outContent.toString().replace("\n","").replace("\n","")));
     }
 
     @Test
@@ -88,7 +89,7 @@ public class PolynomialTest {
                 polyPair.polynomialRefactored.addTangent());
 
         sumPair.polynomialOrig.print();
-        Assert.assertEquals(outContent.toString(), sumPair.polynomialRefactored.toString());
+        Assert.assertEquals(outContent.toString().replace("\n",""), sumPair.polynomialRefactored.toString());
     }
 
     @Test
@@ -145,6 +146,21 @@ public class PolynomialTest {
     }
 
     @Test
+    public void raiseToCompareVersions() {
+        // Create 2 identical polynomials
+        double[] coefficients = {1, -3, 0, 2};
+
+        PolyPair polyPair = new PolyPair(coefficients);
+
+        // Raise both to the power of 3
+        polyfun.Polynomial old_result = polyPair.polynomialOrig.to(3);
+        Polynomial new_result = polyPair.polynomialRefactored.raiseTo(3);
+
+        // Compare both
+        comparePolynomials(old_result, new_result);
+    }
+
+    @Test
     public void testToRandom_CompareVersions() {
         PolyPair polyPair = new PolyPair();
         PolyPair raisePolys = new PolyPair(polyPair.polynomialOrig.to(5), polyPair.polynomialRefactored.to(5));
@@ -154,7 +170,20 @@ public class PolynomialTest {
 
         // Also test printed versions
         raisePolys.polynomialOrig.print();
-        Assert.assertThat(raisePolys.polynomialRefactored.toString(), is(outContent.toString()));
+        Assert.assertThat(raisePolys.polynomialRefactored.toString(), is(outContent.toString().replace("\n","")));
+    }
+
+    @Test
+    public void raiseToRandom_CompareVersions() {
+        PolyPair polyPair = new PolyPair();
+        PolyPair raisePolys = new PolyPair(polyPair.polynomialOrig.to(5), polyPair.polynomialRefactored.raiseTo(5));
+
+        // Compare parts
+        comparePolynomials(raisePolys.polynomialOrig, raisePolys.polynomialRefactored);
+
+        // Also test printed versions
+        raisePolys.polynomialOrig.print();
+        Assert.assertThat(raisePolys.polynomialRefactored.toString(), is(outContent.toString().replace("\n","").replace("\n", "")));
     }
 
     @Test
@@ -223,7 +252,111 @@ public class PolynomialTest {
     }
 
     @Test
-    public void testOf_CompareToPolyfunOld() {
+    public void of() {
+        // First polynomial
+        Atom atom = new Atom('a', 1, 2);
+        Term term = new Term(atom);
+        Coef coef = new Coef(term);
+        Polynomial polynomial = new Polynomial(coef);
+
+        // Second polynomial
+        double[] coefficients = {1, -3, 0, 2};
+        Polynomial newPoly = new Polynomial(coefficients);
+
+        Polynomial composition = newPoly.of(polynomial);
+
+        System.err.println(newPoly.toString());
+        System.err.println(composition.toString());
+        assertThat(composition.toString(), is("1.0-3.0a_1^2+2.0a_1^6"));
+    }
+
+    @Test
+    public void ofConstants() {
+        // First polynomial 9.11
+        Polynomial polynomial = new Polynomial(9.11);
+
+        // Second polynomial 4.87
+        Polynomial newPoly = new Polynomial(4.87);
+
+        Polynomial composition = polynomial.of(newPoly);
+
+        assertThat(composition.toString(), is("9.11"));
+    }
+
+    @Test
+    public void ofAbstractCoefs() {
+        // (1.4a_2^3)X^2
+        Atom[] atoms = new Atom[]{new Atom('a', 2, 3)};
+        Term term = new Term(1.4, atoms);
+        Polynomial poly = new Polynomial(term, 2);
+
+        System.err.println(poly.toString());
+
+        // 2.75a_3^2c_1^3c_3^2
+        atoms = new Atom[]{new Atom('a', 3, 2),
+                new Atom('c', 1, 3),
+                new Atom('c', 3, 2),
+        };
+        term = new Term(2.75, atoms);
+        Polynomial polyB = new Polynomial(term);
+
+        System.err.println(polyB.toString());
+
+        // Expected: 10.587499999999999a_2^3a_3^4c_1^6c_3^4
+        // all the coef and exp squared bc poly is 2-degrees, then times poly.
+        // bug in poly times coef. this has term 0 and term 1 but coef has just term 0
+        Polynomial comp = poly.of(polyB);
+
+        assertThat(comp.toString(), is("10.587499999999999a_2^3a_3^4c_1^6c_3^4"));
+    }
+
+    @Test
+    public void ofAbstractCoefsNoNum() {
+        // (1.4a_2^3)X^2
+        Atom[] atoms = new Atom[]{new Atom('a', 2, 3)};
+        Term term = new Term(1.0, atoms);
+        Polynomial poly = new Polynomial(term, 2);
+
+        System.err.println(poly.toString());
+
+        // 2.75a_3^2c_1^3c_3^2
+        atoms = new Atom[]{new Atom('a', 3, 2),
+                new Atom('c', 1, 3),
+                new Atom('c', 3, 2),
+        };
+        term = new Term(1.0, atoms);
+        Polynomial polyB = new Polynomial(term);
+
+        System.err.println(polyB.toString());
+
+        // Expected: a_2^3a_3^4c_1^6c_3^4
+        Polynomial comp = poly.of(polyB);
+
+        assertThat(comp.toString(), is("a_2^3a_3^4c_1^6c_3^4"));
+    }
+
+    @Test
+    public void ofOld() {
+        // First polynomial
+        polyfun.Atom atom = new polyfun.Atom('a', 1, 2);
+        polyfun.Term term = new polyfun.Term(atom);
+        polyfun.Coef coef = new polyfun.Coef(term);
+        polyfun.Polynomial polynomial = new polyfun.Polynomial(coef);
+
+        // Second polynomial
+        double[] coefficients = {1, -3, 0, 2};
+        polyfun.Polynomial newPoly = new polyfun.Polynomial(coefficients);
+
+        polyfun.Polynomial composition = newPoly.of(polynomial);
+
+        polynomial.print();
+        newPoly.print();
+        composition.print();
+        System.err.println(outContent.toString().replace("\n",""));
+    }
+
+    @Test
+    public void ofCompareToPolyfunOld() {
         // Create 2 identical polynomials
         double[] coefficients = {1, -3, 0, 2};
 
@@ -234,7 +367,11 @@ public class PolynomialTest {
         polyfun.Polynomial oldResult = oldPoly.of(oldPoly);
         Polynomial newResult = newPoly.of(newPoly);
 
-        // Compare both
+        // Compare strings
+        oldResult.print();
+        assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
+
+        // Compare parts
         comparePolynomials(oldResult, newResult);
     }
 
@@ -281,7 +418,7 @@ public class PolynomialTest {
 
     private void compareTerms(polyfun.Term oldTerm, Term newTerm) {
         // Compare term coefficients
-        assertTrue(oldTerm.getTermDouble() == newTerm.getNumericalCoefficient());
+        assertThat(newTerm.getNumericalCoefficient(), is(oldTerm.getTermDouble()));
 
         // For each Term, compare Atom array by Atom array
         polyfun.Atom[] oldAtoms = oldTerm.getTermAtoms();

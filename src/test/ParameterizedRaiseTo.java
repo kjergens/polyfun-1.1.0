@@ -2,7 +2,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import lib.PolyPairFactory;
 import lib.PolyPair;
 
 import java.io.ByteArrayOutputStream;
@@ -12,17 +11,17 @@ import java.util.Collection;
 
 
 /**
- * Randomly generate 1000 polynomials in the original library and in the refactored library and make sure they match.
+ * Randomly generate 10 polynomials in the original library and in the refactored library and make sure they match.
  */
 
 @RunWith(value = Parameterized.class)
-public class ParameterizedTo {
+public class ParameterizedRaiseTo {
     private String polyOrig;
     private String polyRefactored;
     private static final int NUM_TESTS = 10;
 
     // Inject via constructor
-    public ParameterizedTo(String polyOrig, String polyRefactored) {
+    public ParameterizedRaiseTo(String polyOrig, String polyRefactored) {
         this.polyOrig = polyOrig;
         this.polyRefactored = polyRefactored;
     }
@@ -36,7 +35,7 @@ public class ParameterizedTo {
             PolyPair polyPair = PolyPairFactory.createPolyPairBasedOnIndex(i);
 
             // Create exponent (even spread of positive and negative numbers)
-            int exponent = i - (NUM_TESTS /2);
+            int exponent = i - (NUM_TESTS / 2);
 
             // Get the string
 
@@ -48,7 +47,7 @@ public class ParameterizedTo {
             polyPair.polynomialOrig.to(exponent).print();
             polyParams[i][0] = outContent.toString();
 
-            polyParams[i][1] = polyPair.polynomialRefactored.to(exponent).toString();
+            polyParams[i][1] = polyPair.polynomialRefactored.raiseTo(exponent).toString();
 
             // Point System.out back to console.
             System.setOut(originalOut);

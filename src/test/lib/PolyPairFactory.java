@@ -1,5 +1,3 @@
-package lib;
-
 import org.dalton.polyfun.Atom;
 import org.dalton.polyfun.Coef;
 import org.dalton.polyfun.Polynomial;
@@ -13,6 +11,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 import static org.hamcrest.core.Is.is;
+
+import lib.PolyPair;
+import lib.CoefPair;
 
 public class PolyPairFactory {
 

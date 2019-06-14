@@ -11,7 +11,7 @@ import org.junit.runners.Suite;
         ParameterizedEvaluateCoefs.class,
         ParameterizedMultiplyPolynomials.class,
         ParameterizedSubtractPolynomials.class,
-        ParameterizedTo.class,
+        ParameterizedRaiseTo.class,
         ParameterizedOf.class
 })
 

@@ -399,7 +399,7 @@ public class Polynomial {
     }
 
     /**
-     * Multiply a polynomial by a polynomial.
+     * Multiply a polynomial by a polynomial. Recursive.
      *
      * @param polynomial to multiply
      * @return the product
@@ -447,12 +447,12 @@ public class Polynomial {
     public Polynomial raiseTo(int power) {
         Polynomial polynomial;
 
-        if (power == 0) polynomial = new Polynomial(1.0);
+        if (power <= 0) polynomial = new Polynomial(1.0);
         else {
             polynomial = new Polynomial(this.getCoefs());
 
             for (int i = 1; i < power; i++) {
-                polynomial = this.times(polynomial);
+                polynomial = this.times(polynomial); // TODO: this creates an empty term
             }
         }
 
@@ -488,14 +488,17 @@ public class Polynomial {
 
         for (int i = 0; i <= this.getDegree(); ++i) {
             Coef currentCoef = this.getCoefAt(i);
-            Polynomial raised = polynomial.to(i);
+            Polynomial raised = polynomial.raiseTo(i);
 
             Polynomial product;
-            if (currentCoef.isConstantCoef()) {
-                product = raised.times(currentCoef.getTerms()[0].getNumericalCoefficient());
-            } else {
-                product = raised.times(currentCoef);
-            }
+
+            product = raised.times(currentCoef);
+
+//            if (currentCoef.isConstantCoef()) {
+//                product = raised.times(currentCoef.getTerms()[0].getNumericalCoefficient());
+//            } else {
+//                product = raised.times(currentCoef);
+//            }
 
             result.setCoefs(result.plus(product).getCoefs());
         }

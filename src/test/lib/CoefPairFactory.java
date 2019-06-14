@@ -1,11 +1,11 @@
-package lib;
-
 import org.dalton.polyfun.Atom;
 import org.dalton.polyfun.Term;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Random;
+
+import lib.CoefPair;
 
 public class CoefPairFactory {
     static Random random = new Random(1);

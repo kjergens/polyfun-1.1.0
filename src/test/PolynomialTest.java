@@ -265,8 +265,6 @@ public class PolynomialTest {
 
         Polynomial composition = newPoly.of(polynomial);
 
-        System.err.println(newPoly.toString());
-        System.err.println(composition.toString());
         assertThat(composition.toString(), is("1.0-3.0a_1^2+2.0a_1^6"));
     }
 
@@ -290,8 +288,6 @@ public class PolynomialTest {
         Term term = new Term(1.4, atoms);
         Polynomial poly = new Polynomial(term, 2);
 
-        System.err.println(poly.toString());
-
         // 2.75a_3^2c_1^3c_3^2
         atoms = new Atom[]{new Atom('a', 3, 2),
                 new Atom('c', 1, 3),
@@ -299,8 +295,6 @@ public class PolynomialTest {
         };
         term = new Term(2.75, atoms);
         Polynomial polyB = new Polynomial(term);
-
-        System.err.println(polyB.toString());
 
         // Expected: 10.587499999999999a_2^3a_3^4c_1^6c_3^4
         // all the coef and exp squared bc poly is 2-degrees, then times poly.

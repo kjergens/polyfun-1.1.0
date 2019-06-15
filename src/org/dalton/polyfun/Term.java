@@ -27,7 +27,7 @@ public class Term {
      */
     public Term(double constant) {
         this.numericalCoefficient = constant;
-        this.atoms = new Atom[0]; // TODO: Maybe set this.atoms to null?
+        this.atoms = new Atom[0];
     }
 
     /**
@@ -110,6 +110,8 @@ public class Term {
     public void setTerm(double num, Atom[] atoms) {
         this.numericalCoefficient = num;
         this.atoms = atoms; // TODO: should this be an arraycopy?
+
+        this.reduce();
     }
 
     /**
@@ -177,8 +179,6 @@ public class Term {
     /**
      * Make a new Term with the first Atom removed. Will fail with Term that has no Atoms.
      * <p>
-     * TODO: Actually update this Term and return the popped Atom.
-     * TODO: rename pop()
      *
      * @return New term with the first Atom removed
      */
@@ -195,8 +195,6 @@ public class Term {
     /**
      * Creates a new Term with the a new Atom at the front of Term
      * <p>
-     * TODO: Actually update this Term.
-     * TODO: rename insertInFront() or push()
      *
      * @param atom
      * @return New Term with one new Atom at the beginning of the array
@@ -288,7 +286,6 @@ public class Term {
      *
      * @param atom
      * @return nothing
-     * @author Katie Jergens
      */
     public void smartInsert(Atom atom) {
         if (this.getAtoms() == null || this.getAtoms().length == 0) {
@@ -341,15 +338,13 @@ public class Term {
      * @return nothing. Permanently alters the Term
      */
     public void reduce() {
-        if (this.getAtoms() == null) {
-            return;
-        }
+        if (this.getAtoms() == null) return;
 
         // Shallow copy
         Atom[] unorderedAtoms = this.getAtoms();
 
         // Remove existing atoms
-        this.setAtoms(new Atom[0]);
+        this.atoms = new Atom[0];
 
         // Put them back in order
         for (int i = 0; i < unorderedAtoms.length; i++) {
@@ -380,7 +375,8 @@ public class Term {
         }
 
         Term termProduct = new Term(this.numericalCoefficient * term.getNumericalCoefficient(), atoms);
-        return termProduct.simplify();
+        termProduct.reduce();
+        return termProduct;
     }
 
     /**
@@ -478,8 +474,8 @@ public class Term {
      * @return true if this is less than the param
      */
     public boolean isLessThan(Term term) {
-        this.simplify();
-        term.simplify();
+        this.reduce();
+        term.reduce();
 
         if (term == null || term.atoms == null || this.atoms == null) return false;
 
@@ -590,8 +586,8 @@ public class Term {
      * @return boolean True if they are equal
      */
     public boolean equals(Term term) {
-        this.simplify();
-        term.simplify();
+        this.reduce();
+        term.reduce();
 
         if (term == null) return false;
         if (this.getAtoms() == null && term.getAtoms() == null) return true;

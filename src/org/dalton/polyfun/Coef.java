@@ -33,7 +33,8 @@ public class Coef {
 
         for (int i = 0; i < terms.length; ++i) {
             Term term = new Term(terms[i].getNumericalCoefficient(), terms[i].getAtoms());
-            this.terms[i] = term.simplify();
+            term.reduce();
+            this.terms[i] = term;
         }
     }
 
@@ -43,7 +44,8 @@ public class Coef {
      * @param term A single Term that becomes the Coef.
      */
     public Coef(Term term) {
-        this.setTerms(new Term[]{term.simplify()});  // TODO: Better to make a copy of term first?
+        term.reduce();
+        this.setTerms(new Term[]{term});  // TODO: Better to make a copy of term first?
     }
 
     /**
@@ -99,7 +101,7 @@ public class Coef {
 
         for (int i = 0; i < terms.length; ++i) {
             this.terms[i] = new Term(terms[i].getNumericalCoefficient(), terms[i].getAtoms());
-            this.terms[i].simplify();
+            this.terms[i].reduce();
         }
 
     }
@@ -110,7 +112,8 @@ public class Coef {
      * @param term term that will make up the terms array
      */
     public void setTerms(Term term) {
-        this.setTerms(new Term[]{term.simplify()}); // TODO: Better to make a copy of term first?
+        term.reduce();
+        this.setTerms(new Term[]{term}); // TODO: Better to make a copy of term first?
     }
 
     /**
@@ -236,12 +239,6 @@ public class Coef {
                 }
             }
 
-            // If the given term is less than the Coef's first term, insert the new term at the front.
-//            if (term.isLessThan(this.getTerms()[0])) {
-//                this.push(term);
-//                return;
-//            }
-
             // Find where it should insert, split the arrays in 2 and push onto second then merge arrays
             Term[] terms = new Term[this.getTerms().length + 1];
             int insertIndex = terms.length - 1; // default to last
@@ -265,9 +262,6 @@ public class Coef {
                 terms[i] = this.getTerms()[i - 1];
             }
 
-            // If it's not equal to or less than any other term, append
-//            System.arraycopy(this.getTerms(), 0, terms, 0, this.getTerms().length);
-//            terms[terms.length - 1] = term;
             this.setTerms(terms);
         }
     }
@@ -293,20 +287,20 @@ public class Coef {
 
     /**
      * Combines like terms and writes them in order.
-     * Iterative solution.
      *
-     * @return this The original Coef is permanently altered.
+     * @return nothing The original Coef is permanently altered.
      */
     public void reduce() {
         // Save a copy of the current terms.
         Term[] termsUnordered = new Term[this.getTerms().length];
         System.arraycopy(this.getTerms(), 0, termsUnordered, 0, this.getTerms().length);
 
-        // Wipe out the currect terms
+        // Wipe out the current terms
         this.setTerms(new Term[0]);
 
         // Put them back in smart order
         for (int i = 0; i < termsUnordered.length; i++) {
+            termsUnordered[i].reduce();
             this.smartInsert(termsUnordered[i]);
         }
     }
@@ -331,7 +325,8 @@ public class Coef {
         }
 
         Coef productCoef = new Coef(terms);
-        return productCoef.simplify();
+        productCoef.simplify();
+        return productCoef;
     }
 
     /**
@@ -373,7 +368,8 @@ public class Coef {
         }
 
         Coef sum = new Coef(terms);
-        return sum.simplify();
+        sum.simplify();
+        return sum;
     }
 
 
@@ -480,10 +476,6 @@ public class Coef {
                 string += term;
             }
         }
-
-        // Clean up the last +
-//        string = string.replaceAll("\\+\\Z", ""); // strip last +
-//        string = string.replaceAll("\\+-", "-");
 
         return string;
     }

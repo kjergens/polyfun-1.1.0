@@ -61,7 +61,6 @@ public class ParameterizedAddPolynomials {
     }
 
 //    @Test
-//    @Ignore("ordering of terms bug")
 //    public void compareByStrings() {
 //        PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
 //    }

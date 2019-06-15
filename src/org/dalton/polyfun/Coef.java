@@ -136,7 +136,7 @@ public class Coef {
      *
      * @return The popped Term or null
      */
-    private Term pop() {
+    public Term pop() {
         if (this.getTerms().length == 0) {
             return null;
         } else {
@@ -180,7 +180,7 @@ public class Coef {
      * @param term Term to place in front.
      * @return nothing
      **/
-    private void push(Term term) {
+    public void push(Term term) {
         Term[] terms = new Term[this.getTerms().length + 1];
         terms[0] = term;
 

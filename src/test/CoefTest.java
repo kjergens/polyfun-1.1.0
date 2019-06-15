@@ -165,6 +165,14 @@ public class CoefTest {
     }
 
     @Test
+    public void pop() {
+        coef.pop();
+        expected = "2.0a_1b_2^2c_3^3+3.0a_1b_2^2c_3^3";
+
+        assertThat(coef.toString(), is(expected));
+    }
+
+    @Test
     public void paste() {
         Atom atom = new Atom('a', 1, 2);
         Term term = new Term(atom);
@@ -173,6 +181,17 @@ public class CoefTest {
         expected = "a_1^2+" + expected;
         assertThat(coef.toString(), is(expected));
     }
+
+    @Test
+    public void push() {
+        Atom atom = new Atom('a', 1, 2);
+        Term term = new Term(atom);
+        coef.push(term);
+
+        expected = "a_1^2+" + expected;
+        assertThat(coef.toString(), is(expected));
+    }
+
 
     @Test
     public void placeInFrontFewerAtoms() {
@@ -235,6 +254,43 @@ public class CoefTest {
     }
 
     @Test
+    public void smartInsertEndMoreAtoms() {
+        Atom[] atoms = {new Atom('a', 0, 1),
+                new Atom('b', 0, 1),
+                new Atom('c', 0, 1),
+                new Atom('d', 0, 1)};
+        Term term = new Term(1.0, atoms);
+        coef.smartInsert(term);
+
+        expected = expected + "+a_0b_0c_0d_0";
+        assertThat(coef.toString(), is(expected));
+    }
+
+    @Test
+    public void smartInsertEndBiggerLastAtom() {
+        Atom[] atoms = {new Atom('a', 0, 1),
+                new Atom('b', 0, 1),
+                new Atom('c', 3, 4)};
+        Term term = new Term(1.0, atoms);
+        coef.smartInsert(term);
+
+        expected += "+a_0b_0c_3^4";
+        assertThat(coef.toString(), is(expected));
+    }
+
+    @Test
+    public void smartInsertAddCoefsSameAtoms() {
+        Atom[] atoms = {new Atom('a', 1, 1),
+                new Atom('b', 2, 2),
+                new Atom('c', 3, 3)};
+        Term term = new Term(1.0, atoms);
+        coef.smartInsert(term);
+
+        expected = "2.0" + expected;
+        assertThat(coef.toString(), is(expected));
+    }
+
+    @Test
     public void smartInsertInFrontFewerAtoms() {
         Atom[] atoms = {new Atom('a', 1, 1),
                 new Atom('b', 1, 1)};
@@ -242,6 +298,18 @@ public class CoefTest {
         coef.smartInsert(term);
 
         expected = "a_1b_1+" + expected;
+        assertThat(coef.toString(), is(expected));
+    }
+
+    @Test
+    public void smartInsertInFrontSmallerLetters() {
+        Atom[] atoms = {new Atom('a', 0, 1),
+                new Atom('b', 0, 1),
+                new Atom('c', 0, 1)};
+        Term term = new Term(1.0, atoms);
+        coef.smartInsert(term);
+
+        expected = "a_0b_0c_0+" + expected;
         assertThat(coef.toString(), is(expected));
     }
 
@@ -286,6 +354,51 @@ public class CoefTest {
         coef = coef.simplify();
         expected = "6.0a_1b_2^2c_3^3";
 
+        assertThat(coef.toString(), is(expected));
+    }
+
+    @Test
+    public void reducePushReorder() {
+        Atom[] atoms = new Atom[3];
+        double numCoef = 1.0D;
+        char letter = 'd';
+
+        for (int j = 0; j < atoms.length; j++) {
+            atoms[j] = new Atom(letter++, 1, 1);
+        }
+
+        // Paste the bigger one in front
+        coef.push(new Term(1.0, atoms));
+
+        // Reorder to put term in back
+        coef.reduce();
+        expected = "6.0a_1b_2^2c_3^3+d_1e_1f_1";
+
+        assertThat(coef.toString(), is(expected));
+    }
+
+    @Test
+    public void reduceCombine() {
+        coef.reduce();
+        expected = "6.0a_1b_2^2c_3^3";
+
+        assertThat(coef.toString(), is(expected));
+    }
+
+
+    @Test
+    public void reduceCombineTerms() {
+        Atom atomA = new Atom('a', 1, 1);
+        Atom atomB = new Atom('b', 2, 2);
+        Atom atomC = new Atom('c', 3, 3);
+        Atom[] atoms = {atomA, atomB, atomC};
+
+        Term term = new Term(1.0, atoms);
+        coef = new Coef(term);
+        coef = coef.paste(term);
+        coef.reduce();
+
+        expected = "2.0a_1b_2^2c_3^3";
         assertThat(coef.toString(), is(expected));
     }
 

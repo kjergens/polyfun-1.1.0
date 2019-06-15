@@ -24,6 +24,7 @@ public class TermTest {
         // Point System.out to another output stream so I can test the print() outputs.
         System.setOut(new PrintStream(outContent));
 
+        // 3.0a_1^2
         term = new Term();
         Atom atom = new Atom('a', 1, 2);
         Atom[] atoms = {atom};
@@ -127,6 +128,13 @@ public class TermTest {
     }
 
     @Test
+    public void pop() {
+        term.pop();
+        assertEquals(0, term.getAtoms().length);
+        assertThat(term.getNumericalCoefficient(), is(3.0));
+    }
+
+    @Test
     public void paste() {
         Atom atom = new Atom('b', 1, 3);
         Term newTerm = term.paste(atom);
@@ -142,6 +150,22 @@ public class TermTest {
     }
 
     @Test
+    public void push() {
+        Atom atom = new Atom('b', 1, 3);
+        term.push(atom);
+
+        assertEquals(2, term.getAtoms().length);
+        assertThat(term.getNumericalCoefficient(), is(3.0));
+        assertEquals('b', term.getAtoms()[0].getLetter());
+        assertEquals(1, term.getAtoms()[0].getSubscript());
+        assertEquals(3, term.getAtoms()[0].getPower());
+        assertEquals('a', term.getAtoms()[1].getLetter());
+        assertEquals(1, term.getAtoms()[0].getSubscript());
+        assertEquals(2, term.getAtoms()[1].getPower());
+        assertThat(term.toString(), is("3.0b_1^3a_1^2"));
+    }
+
+    @Test
     public void place() {
         Atom atom = new Atom('b', 1, 3);
         Term newTerm = term.place(atom);
@@ -154,6 +178,22 @@ public class TermTest {
         assertEquals('b', newTerm.getAtoms()[1].getLetter());
         assertEquals(1, newTerm.getAtoms()[0].getSubscript());
         assertEquals(3, newTerm.getAtoms()[1].getPower());
+    }
+
+    @Test
+    public void smartInsert() {
+        Atom atom = new Atom('b', 1, 3);
+        term.smartInsert(atom);
+
+        assertEquals(2, term.getAtoms().length);
+        assertThat(term.getNumericalCoefficient(), is(3.0));
+        assertEquals('a', term.getAtoms()[0].getLetter());
+        assertEquals(1, term.getAtoms()[0].getSubscript());
+        assertEquals(2, term.getAtoms()[0].getPower());
+        assertEquals('b', term.getAtoms()[1].getLetter());
+        assertEquals(1, term.getAtoms()[0].getSubscript());
+        assertEquals(3, term.getAtoms()[1].getPower());
+        assertThat(term.toString(), is("3.0a_1^2b_1^3"));
     }
 
     @Test
@@ -185,16 +225,7 @@ public class TermTest {
     }
 
     @Test
-    public void reduceCompareToSimplify() {
-        Atom atom = new Atom('b', 1, 3);
-        term = term.paste(atom);
-        term.reduce();
-
-        assertThat(term.toString(), is("3.0a_1^2b_1^3"));
-    }
-
-    @Test
-    public void simplify_TestMultiplying() {
+    public void simplifyPaste() {
         Atom atom = new Atom('a', 1, 3);
         Term newTerm = term.paste(atom);
 
@@ -205,6 +236,30 @@ public class TermTest {
         assertEquals('a', newTerm.getAtoms()[0].getLetter());
         assertEquals(1, newTerm.getAtoms()[0].getSubscript());
         assertEquals(5, newTerm.getAtoms()[0].getPower());
+    }
+
+    @Test
+    public void reduceCombineAtomsByAddingExponents() {
+        Atom[] atoms = {new Atom('a', 1, 2),
+                new Atom('b', 1, 3),
+                new Atom('b', 1, 3)};
+
+        for(Atom atom : atoms ) {
+            term.push(atom);
+        }
+
+        term.reduce();
+
+        assertThat(term.toString(), is("3.0a_1^4b_1^6"));
+    }
+
+    @Test
+    public void reducePushReorder() {
+        Atom atom = new Atom('b', 1, 3);
+        term.push(atom);
+        term.reduce();
+
+        assertThat(term.toString(), is("3.0a_1^2b_1^3"));
     }
 
     @Test

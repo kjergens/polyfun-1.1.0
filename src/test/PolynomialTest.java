@@ -35,31 +35,11 @@ public class PolynomialTest {
     }
 
     @Test
-    public void createAndCompareRandomPolyPairs() {
-        PolyPair polyPair = new PolyPair();
-
-        // Compare each part
-        comparePolynomials(polyPair.polynomialOrig, polyPair.polynomialRefactored);
-
-        // Compare printed string
-        polyPair.polynomialOrig.print();
-        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString().replace("\n","")));
-
-    }
-
-    @Test
     public void printPolynomials_CompareVersions() {
         PolyPair polyPair = new PolyPair();
 
         polyPair.polynomialOrig.print();
-        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString().replace("\n","")));
-    }
-
-    @Test
-    public void polynomialParts_CompareVersions() {
-        PolyPair polyPair = new PolyPair();
-
-        comparePolynomials(polyPair.polynomialOrig, polyPair.polynomialRefactored);
+        Assert.assertThat(polyPair.polynomialRefactored.toString(), is(outContent.toString().replace("\n", "")));
     }
 
     @Test
@@ -69,7 +49,7 @@ public class PolynomialTest {
         polyfun.Polynomial sum_orig = polyPair.polynomialOrig.plus(polyPair.polynomialOrig);
         Polynomial sum_refactored = polyPair.polynomialRefactored.plus(polyPair.polynomialRefactored);
         sum_orig.print();
-        Assert.assertEquals(outContent.toString().replace("\n",""), sum_refactored.toString());
+        Assert.assertEquals(outContent.toString().replace("\n", ""), sum_refactored.toString());
     }
 
     @Test
@@ -106,14 +86,6 @@ public class PolynomialTest {
 
         Polynomial sum = polynomialA.plus(polynomialB);
 
-        // DEBUG #25
-        System.err.println(polynomialA);
-        for (org.dalton.polyfun.Coef c : polynomialA.getCoefs()) {
-            for (int j = 0; j < c.getTerms().length; j++) {
-                System.err.println(j + ": " + c.getTerms()[j]);
-            }
-        }
-
         assertThat(sum.toString(), is("3.5a_2c_2^3c_3+6.78d_2^7+7.94d_4^2+3.15"));
     }
 
@@ -124,17 +96,19 @@ public class PolynomialTest {
                 polyPair.polynomialRefactored.times(polyPair.polynomialRefactored));
 
         productPair.polynomialOrig.print();
-        assertThat(productPair.polynomialRefactored.toString(), is(outContent.toString().replace("\n","").replace("\n","")));
+        assertThat(productPair.polynomialRefactored.toString(), is(outContent.toString().replace("\n", "").replace("\n", "")));
     }
 
     @Test
-    public void addTangent_CompareVersions() {
-        PolyPair polyPair = new PolyPair();
-        PolyPair sumPair = new PolyPair(polyPair.polynomialOrig.addTangent(),
-                polyPair.polynomialRefactored.addTangent());
-
-        sumPair.polynomialOrig.print();
-        Assert.assertEquals(outContent.toString().replace("\n",""), sumPair.polynomialRefactored.toString());
+    public void addTangentDegree2() {
+        // (0.9310232355416748)X^2+(4.597562722187815)X+0.8491604427928394
+        // Expected: (0.9310232355416748)X^2+(m+4.597562722187815)X+b+0.8491604427928394
+        Polynomial polynomial = new Polynomial(new double[]{
+                0.8491604427928394,
+                4.597562722187815,
+                0.9310232355416748});
+        Polynomial tangent = polynomial.addTangent();
+        assertThat(tangent.toString(), is("(0.9310232355416748)X^2+(m+4.597562722187815)X+b+0.8491604427928394"));
     }
 
     @Test
@@ -186,53 +160,36 @@ public class PolynomialTest {
         polyfun.Polynomial old_result = polyPair.polynomialOrig.to(3);
         Polynomial new_result = polyPair.polynomialRefactored.to(3);
 
-        // Compare both
-        comparePolynomials(old_result, new_result);
+        // Compare strings
+        old_result.print();
+        assertThat(new_result.toString(), is(outContent.toString().replace("\n", "")));
     }
 
     @Test
-    public void raiseToCompareVersions() {
-        // Create 2 identical polynomials
+    public void raiseTo3Degree3() {
+        // (2.0)X^3+(-3.0)X+1.0
         double[] coefficients = {1, -3, 0, 2};
 
-        PolyPair polyPair = new PolyPair(coefficients);
+        Polynomial polynomial = new Polynomial(coefficients);
 
-        // Raise both to the power of 3
-        polyfun.Polynomial old_result = polyPair.polynomialOrig.to(3);
-        Polynomial new_result = polyPair.polynomialRefactored.raiseTo(3);
+        // Raise to the power of 3
+        polynomial = polynomial.raiseTo(3);
 
-        // Compare both
-        comparePolynomials(old_result, new_result);
+        assertThat(polynomial.toString(), is("(8.0)X^9+(-36.0)X^7+(12.0)X^6+(54.0)X^5+(-36.0)X^4+(-21.0)X^3+(27.0)X^2+(-9.0)X+1.0"));
     }
 
     @Test
-    public void testToRandom_CompareVersions() {
-        PolyPair polyPair = new PolyPair();
-        PolyPair raisePolys = new PolyPair(polyPair.polynomialOrig.to(5), polyPair.polynomialRefactored.to(5));
-
-        // Compare parts
-        comparePolynomials(raisePolys.polynomialOrig, raisePolys.polynomialRefactored);
-
-        // Also test printed versions
-        raisePolys.polynomialOrig.print();
-        Assert.assertThat(raisePolys.polynomialRefactored.toString(), is(outContent.toString().replace("\n","")));
+    public void raiseTo5() {
+        // (3.0259470350715567)X^2+3.117598099675224
+        //(253.6919053370493)X^10+(1306.879123816304)X^8+(2692.924777395241)X^6+(2774.4891339042215)X^4+(1429.2619717358689)X^2+294.5104032144064
+        Polynomial polynomial = new Polynomial(new double[]{3.117598099675224, 0,3.0259470350715567 });
+        polynomial = polynomial.raiseTo(5);
+        assertThat(polynomial.toString(), is(
+                "(253.6919053370493)X^10+(1306.879123816304)X^8+(2692.924777395241)X^6+(2774.4891339042215)X^4+(1429.2619717358689)X^2+294.5104032144064"));
     }
 
     @Test
-    public void raiseToRandom_CompareVersions() {
-        PolyPair polyPair = new PolyPair();
-        PolyPair raisePolys = new PolyPair(polyPair.polynomialOrig.to(5), polyPair.polynomialRefactored.raiseTo(5));
-
-        // Compare parts
-        comparePolynomials(raisePolys.polynomialOrig, raisePolys.polynomialRefactored);
-
-        // Also test printed versions
-        raisePolys.polynomialOrig.print();
-        Assert.assertThat(raisePolys.polynomialRefactored.toString(), is(outContent.toString().replace("\n","").replace("\n", "")));
-    }
-
-    @Test
-    public void testTo_0_CompareToPolyfunOld() {
+    public void to_0_CompareToPolyfunOld() {
         // Create 2 identical polynomials
         double[] coefficients = {1, -3, 0, 2};
 
@@ -261,14 +218,11 @@ public class PolynomialTest {
 
         // Compare strings
         assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
-
-        // Compare parts
-        comparePolynomials(oldResult, newResult);
     }
 
     @Test
     public void plusSelfDegree1CompareToPolyfunOld() {
-        // Create 2 identical polynomials
+        // X
         double[] coefficients = {0, 1};
 
         polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
@@ -282,14 +236,12 @@ public class PolynomialTest {
 
         // Compare strings
         assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
-
-        // Compare parts
-        comparePolynomials(oldResult, newResult);
+        assertThat(newResult.toString(), is("(2.0)X"));
     }
 
     @Test
     public void testTimes_CompareToPolyfunOld() {
-        // Create 2 identical polynomials
+        // (2.0)X^3+(-3.0)X+1.0
         double[] coefficients = {1, -3, 0, 2};
 
         polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
@@ -299,8 +251,10 @@ public class PolynomialTest {
         polyfun.Polynomial oldResult = oldPoly.times(oldPoly);
         Polynomial newResult = newPoly.times(newPoly);
 
-        // Compare both
-        comparePolynomials(oldResult, newResult);
+        // Compare strings
+        // Expected: (4.0)X^6+(-12.0)X^4+(4.0)X^3+(9.0)X^2+(-6.0)X+1.0
+        oldResult.print();
+        assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
     }
 
     @Test
@@ -361,7 +315,7 @@ public class PolynomialTest {
         Coef coef = new Coef(terms);
 
         // Implies a one-degree with a 0 in the 0-deg spot
-        Coef[] coefs = new Coef[] {new Coef(0), coef};
+        Coef[] coefs = new Coef[]{new Coef(0), coef};
 
         Polynomial poly = new Polynomial(coefs);
 
@@ -407,8 +361,9 @@ public class PolynomialTest {
         polyfun.Polynomial oldResult = oldPoly.minus(oldPoly2);
         Polynomial newResult = newPoly.minus(newPoly2);
 
-        // Compare both
-        comparePolynomials(oldResult, newResult);
+        // Compare strings
+        oldResult.print();
+        assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
     }
 
     @Test
@@ -425,7 +380,7 @@ public class PolynomialTest {
 
         Polynomial composition = newPoly.of(polynomial);
 
-        assertThat(composition.toString(), is("1.0-3.0a_1^2+2.0a_1^6"));
+        assertThat(composition.toString(), is("-3.0a_1^2+2.0a_1^6+1.0"));
     }
 
     @Test
@@ -587,7 +542,7 @@ public class PolynomialTest {
 
     @Test
     public void ofCompareToPolyfunOld() {
-        // Create 2 identical polynomials
+        // (2.0)X^2-3.0X+1.0
         double[] coefficients = {1, -3, 0, 2};
 
         polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
@@ -600,41 +555,33 @@ public class PolynomialTest {
         // Compare strings
         oldResult.print();
         assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
-
-        // Compare parts
-        comparePolynomials(oldResult, newResult);
     }
 
     @Test
     public void addTangentCompareToPolyfunOld() {
-        // Create 2 identical polynomials
+        // (2.0)X^3+(m-3.0)X+b+1.0
         double[] coefficients = {1, -3, 0, 2};
 
-        polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
-        Polynomial newPoly = new Polynomial(coefficients);
+        // (2.0)X^3+(-3.0)X+1.0
+        Polynomial polynomial = new Polynomial(coefficients);
 
-        // Compose new poly of the poly and itself
-        polyfun.Polynomial oldResult = oldPoly.addTangent();
-        Polynomial newResult = newPoly.addTangent();
+        // Add tangent
+        Polynomial newResult = polynomial.addTangent();
 
-        // Compare parts
-        comparePolynomials(oldResult, newResult);
+        assertThat(newResult.toString(), is("(2.0)X^3+(m-3.0)X+b+1.0"));
     }
 
     @Test
-    public void addTangentDegree2CompareToPolyfunOld() {
+    public void addTangentDegree2NoNum() {
         // Create 2 identical polynomials
         double[] coefficients = {0, 1, 1};
 
-        polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
-        Polynomial newPoly = new Polynomial(coefficients);
+        Polynomial polynomial = new Polynomial(coefficients);
 
-        // Add tangents to each.
-        polyfun.Polynomial oldResult = oldPoly.addTangent();
-        Polynomial newResult = newPoly.addTangent();
+        Polynomial sum = polynomial.addTangent();
 
-        // Compare parts
-        comparePolynomials(oldResult, newResult);
+        // Compare strings
+        assertThat(sum.toString(), is("(1.0)X^2+(m+1.0)X+b"));
     }
 
     public static void comparePolynomials(polyfun.Polynomial oldPoly, Polynomial newPoly) {
@@ -654,7 +601,7 @@ public class PolynomialTest {
         polyfun.Term[] oldTerms = oldCoef.getTerms();
         Term[] newTerms = newCoef.getTerms();
 
-//        assertThat(newTerms.length, is(oldTerms.length));
+        assertThat(newTerms.length, is(oldTerms.length));
 
         // For each Term array, compare Term by Term
         for (int i = 0; i < newTerms.length; i++) {

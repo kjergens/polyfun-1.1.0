@@ -37,7 +37,7 @@ public class CoefPairFactory {
             for (int j = 0; j < numAtoms; j++) {
                 char letter = (char) (random.nextInt(5) + 97);
                 int subscript = random.nextInt(3) + 1;
-                int power = random.nextInt(5);
+                int power = random.nextInt(5) + 1; // Don't let power = 0.
 
                 atomsOrig[j] = new polyfun.Atom(letter, subscript, power);
                 atomsRefactored[j] = new org.dalton.polyfun.Atom(letter, subscript, power);

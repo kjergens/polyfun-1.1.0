@@ -19,7 +19,7 @@ public class ParameterizedAddPolynomials {
     private String polyOrig;
     private String polyRefactored;
 
-    private static final int NUM_TESTS = 26;
+    private static final int NUM_TESTS = 1000;
 
 
     // Inject via constructor

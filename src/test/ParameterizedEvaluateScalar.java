@@ -66,7 +66,7 @@ public class ParameterizedEvaluateScalar {
 
     @Test
     public void compareByParts() {
-        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
+        PolyPairFactory.compareByPartsIgnoringOrder(polyOrig, polyRefactored);
     }
 
 }

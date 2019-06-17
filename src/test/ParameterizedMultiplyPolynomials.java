@@ -60,8 +60,13 @@ public class ParameterizedMultiplyPolynomials {
     }
 
     @Test
+    public void compareByStrings() {
+        PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
+    }
+
+    @Test
     public void testPolynomialsCompareOrigRefactored() {
-        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
+        PolyPairFactory.compareByPartsIgnoringOrder(polyOrig, polyRefactored);
     }
 
 }

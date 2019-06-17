@@ -1,5 +1,7 @@
 package org.dalton.polyfun;
 
+import java.util.Arrays;
+
 /**
  * An array of Terms. The Terms are understood to be added.
  * For example: In the polynomial in x:
@@ -36,6 +38,8 @@ public class Coef {
             term.reduce();
             this.terms[i] = term;
         }
+
+        this.reduce();
     }
 
     /**
@@ -203,18 +207,21 @@ public class Coef {
     public Coef place(Term term) {
         Coef coef = new Coef(this.terms);
 
-        if (!term.isZero() && term.isLessThan(this.getTerms()[0])) {
+        if (!term.isZero() && (this.getTerms() == null
+                || this.getTerms().length == 0
+                || term.isLessThan(this.getTerms()[0]))) {
             // If the given term is less than the Coef's first term, insert the new term at the front.
             return coef.paste(term);
         } else if (term.equals(this.getTerms()[0])) {
             // If the given term is the same as  the Coef's first term, add the numerical coefficients.
             coef.getTerms()[0].setNumericalCoefficient(term.getNumericalCoefficient() + coef.getTerms()[0].getNumericalCoefficient());
         } else if (this.getTerms().length == 1) {
-            // If the Coef only has one term, append the given term at the end. (?)
+            // If the Coef only has one term, append the given term at the end.
             Term[] terms = new Term[]{term};
             Coef coef1 = new Coef(terms);
             coef.setTerms(coef1.paste(this.getTerms()[0]).getTerms());
         } else {
+            // Otherwise, call this again recursively
             Term term1 = this.getTerms()[0];
             coef.setTerms(coef.snip().place(term).paste(term1).getTerms());
         }
@@ -228,8 +235,15 @@ public class Coef {
      * @param term
      * @return
      */
-    public void smartInsert(Term term) {
+    public void insert(Term term) {
+
         if (term != null && !term.isZero()) {
+            // If it's the first term, just add it
+            if (this.getTerms() == null || this.getTerms().length == 0) {
+                this.setTerms(term);
+                return; // Quit once you've handled it.
+            }
+
             // If the given term is the same as an existing term, add the numerical coefficients.
             for (int i = 0; i < this.getTerms().length; i++) {
                 if (term.equals(this.getTerms()[i])) {
@@ -239,7 +253,40 @@ public class Coef {
                 }
             }
 
-            // Find where it should insert, split the arrays in 2 and push onto second then merge arrays
+            // For all other cases, push the new term, then sort all terms alphanumerically
+            this.push(term);
+
+            Arrays.sort(terms);
+
+            this.setTerms(terms);
+        }
+    }
+
+    /**
+     * Inserts given Term in a convenient order or combines it with a like another like Term
+     *
+     * @param term
+     * @return
+     */
+    public void smartInsert(Term term) {
+
+        if (term != null && !term.isZero()) {
+            // If it's the first term, just add it
+            if (this.getTerms() == null || this.getTerms().length == 0) {
+                this.setTerms(term);
+                return; // Quit once you've handled it.
+            }
+
+            // If the given term is the same as an existing term, add the numerical coefficients.
+            for (int i = 0; i < this.getTerms().length; i++) {
+                if (term.equals(this.getTerms()[i])) {
+                    double sum = term.getNumericalCoefficient() + this.getTerms()[i].getNumericalCoefficient();
+                    this.getTerms()[i].setNumericalCoefficient(sum);
+                    return; // Quit once you've handled it.
+                }
+            }
+
+            // For all other cases, find where it should insert, split the arrays in 2 and push onto second then merge arrays
             Term[] terms = new Term[this.getTerms().length + 1];
             int insertIndex = terms.length - 1; // default to last
             for (int i = 0; i < this.getTerms().length; i++) {
@@ -301,9 +348,10 @@ public class Coef {
         // Put them back in smart order
         for (int i = 0; i < termsUnordered.length; i++) {
             termsUnordered[i].reduce();
-            this.smartInsert(termsUnordered[i]);
+            this.insert(termsUnordered[i]);
         }
     }
+
 
     /**
      * Multiply a Coefficient by another Coefficient.
@@ -325,7 +373,8 @@ public class Coef {
         }
 
         Coef productCoef = new Coef(terms);
-        productCoef.simplify();
+        //productCoef.simplify();
+        productCoef.reduce();
         return productCoef;
     }
 
@@ -368,7 +417,8 @@ public class Coef {
         }
 
         Coef sum = new Coef(terms);
-        sum.simplify();
+        //sum.simplify();
+        sum.reduce();
         return sum;
     }
 
@@ -379,7 +429,8 @@ public class Coef {
      * @return true if the Coeff is 0
      */
     public boolean isZero() {
-        this.simplify();
+        //this.simplify(); // TODO. It seems wrong to change a Coef in an isXXX method.
+        this.reduce();
 
         for (int i = 0; i < this.getTerms().length; ++i) {
             if (!this.getTerms()[i].isZero()) {
@@ -427,7 +478,8 @@ public class Coef {
      * @return True if Coef consists only of a double, false otherwise
      */
     public boolean isConstantCoef() {
-        this.simplify();
+        //this.simplify();
+        this.reduce();
         return this.terms.length == 1 && this.terms[0].isConstantTerm();
     }
 
@@ -472,6 +524,7 @@ public class Coef {
         for (int i = 1; i < this.getTerms().length; i++) {
             String term = this.getTerms()[i].toString();
             if (term.length() > 0) {
+                // If negative, don't include "+" (the "-" comes with the negative number)
                 if (string.length() > 0 & this.getTerms()[i].getNumericalCoefficient() > 0) string += "+";
                 string += term;
             }

@@ -12,7 +12,7 @@ package org.dalton.polyfun;
  *
  * @author David Gomprecht
  */
-public class Atom {
+public class Atom implements Comparable<Atom>{
     private char letter;
     private int subscript = -1;
     private int power = 1;
@@ -295,5 +295,14 @@ public class Atom {
         }
 
         return string;
+    }
+
+    public int compareTo(Atom a){
+        if(this.equals(a))
+            return 0;
+        else if(this.isLessThan(a))
+            return -1;
+        else
+            return 1;
     }
 }

@@ -62,7 +62,7 @@ public class ParameterizedOf {
 
     @Test
     public void testPolynomialsCompareOrigRefactored() {
-        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
+        PolyPairFactory.compareByPartsIgnoringOrder(polyOrig, polyRefactored);
     }
 
 }

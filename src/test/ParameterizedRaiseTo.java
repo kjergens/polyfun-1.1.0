@@ -59,7 +59,7 @@ public class ParameterizedRaiseTo {
 
     @Test
     public void compareOrigRefactored() {
-        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
+        PolyPairFactory.compareByPartsIgnoringOrder(polyOrig, polyRefactored);
     }
 
 }

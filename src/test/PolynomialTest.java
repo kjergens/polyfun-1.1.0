@@ -202,6 +202,7 @@ public class PolynomialTest {
     @Test
     public void plusSelfDegree3CompareToPolyfunOld() {
         // Create 2 identical polynomials
+        // (2.0)X^3-3.0X+1
         double[] coefficients = {1, -3, 0, 2};
 
         polyfun.Polynomial oldPoly = new polyfun.Polynomial(coefficients);
@@ -478,6 +479,53 @@ public class PolynomialTest {
     }
 
     @Test
+    public void constructorParamPolyTestFailure109() {
+        // d_2^4+c_3^3+e_1^3
+
+        // d_2^4
+        Term term1 = new Term(new Atom('d', 2, 4));
+
+        // c_3^3
+        Term term2 = new Term(new Atom('c', 3, 3));
+
+        // e_1^3
+        Term term3 = new Term(new Atom('e', 1, 3));
+
+        Coef coef = new Coef(new Term[]{term1, term2, term3});
+
+        Polynomial polynomial = new Polynomial(coef);
+
+        Coef expectedCoef = new Coef(new Term[]{term2, term1, term3});
+        Polynomial expectedPolynomial = new Polynomial(expectedCoef);
+
+        assertThat(polynomial.toString(), is(expectedPolynomial.toString()));
+        comparePolynomials(polynomial, expectedPolynomial);
+    }
+
+    @Test
+    public void constructorWithConstants_TestFailureParaPoly515() {
+//        Expected :8.65c_2^3+6.69
+//        Actual   :6.69+8.65c_2^3
+
+        // b_3^2
+        Term term1 = new Term(8.65, new Atom[]{
+                new Atom('c', 2, 3)});
+
+        // 6.69
+        Term term2 = new Term(6.69, new Atom[0]);
+
+        Coef coef = new Coef(new Term[]{term2, term1});
+        Polynomial polynomial = new Polynomial(new Coef[]{coef});
+
+        Coef expectedC = new Coef(new Term[]{term1, term2});
+        Polynomial expectedPolynomial = new Polynomial((new Coef[]{expectedC}));
+
+        assertThat(polynomial.toString(), is(expectedPolynomial.toString()));
+        assertThat(polynomial.toString(), is("8.65c_2^3+6.69"));
+        comparePolynomials(polynomial, expectedPolynomial);
+    }
+
+    @Test
     public void ofOld() {
         // First polynomial
         polyfun.Atom atom = new polyfun.Atom('a', 1, 2);
@@ -561,11 +609,11 @@ public class PolynomialTest {
         polyfun.Term[] oldTerms = oldCoef.getTerms();
         Term[] newTerms = newCoef.getTerms();
 
-        assertThat(newTerms.length, is(oldTerms.length));
+//        assertThat(newTerms.length, is(oldTerms.length));
 
         // For each Term array, compare Term by Term
-        for (int j = 0; j < oldTerms.length; j++) {
-            compareTerms(oldTerms[j], newTerms[j]);
+        for (int i = 0; i < newTerms.length; i++) {
+            compareTerms(oldTerms[i], newTerms[i]);
         }
     }
 
@@ -585,6 +633,51 @@ public class PolynomialTest {
                 Assert.assertEquals(oldAtoms[i].getLetter(), newAtoms[i].getLetter());
                 Assert.assertEquals(oldAtoms[i].getPower(), newAtoms[i].getPower());
                 Assert.assertEquals(oldAtoms[i].getSubscript(), newAtoms[i].getSubscript());
+            }
+        }
+    }
+
+    public static void comparePolynomials(Polynomial actual, Polynomial expected) {
+        // Compare number of coefficients.
+        Coef[] expectedCoefs = expected.getCoefs();
+        Coef[] actualCoefs = actual.getCoefs();
+
+        Assert.assertEquals(expectedCoefs.length, actualCoefs.length);
+
+        // Compare Coef by Coef.
+        for (int i = 0; i < expectedCoefs.length; i++) {
+            compareCoefs(actualCoefs[i], expectedCoefs[i]);
+        }
+    }
+
+    private static void compareCoefs(Coef actual, Coef expected) {
+        Term[] expectedTerms = expected.getTerms();
+        Term[] actualTerms = actual.getTerms();
+
+        assertThat(actualTerms.length, is(expectedTerms.length));
+
+        // For each Term array, compare Term by Term
+        for (int j = 0; j < expectedTerms.length; j++) {
+            compareTerms(actualTerms[j], expectedTerms[j]);
+        }
+    }
+
+    private static void compareTerms(Term actual, Term expected) {
+        // Compare term coefficients
+        assertThat(actual.getNumericalCoefficient(), is(expected.getNumericalCoefficient()));
+
+        // For each Term, compare Atom array by Atom array
+        Atom[] expectedAtoms = expected.getAtoms();
+        Atom[] actualAtoms = actual.getAtoms();
+
+        if (expectedAtoms != null && actualAtoms != null) {
+            Assert.assertEquals(expectedAtoms.length, actualAtoms.length);
+
+            // For each Atom, compare the parts.
+            for (int i = 0; i < actualAtoms.length; i++) {
+                Assert.assertEquals(expectedAtoms[i].getLetter(), actualAtoms[i].getLetter());
+                Assert.assertEquals(expectedAtoms[i].getPower(), actualAtoms[i].getPower());
+                Assert.assertEquals(expectedAtoms[i].getSubscript(), actualAtoms[i].getSubscript());
             }
         }
     }

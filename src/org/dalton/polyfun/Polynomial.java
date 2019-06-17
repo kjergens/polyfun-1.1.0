@@ -36,9 +36,10 @@ public class Polynomial {
      */
     public Polynomial(Coef[] coefs) {
         this.degree = coefs.length - 1;
-        this.coefs = new Coef[coefs.length];
-
-        System.arraycopy(coefs, 0, this.coefs, 0, coefs.length);
+//        this.coefs = new Coef[coefs.length];
+//
+//        System.arraycopy(coefs, 0, this.coefs, 0, coefs.length);
+        this.setCoefs(coefs);
     }
 
     /**
@@ -305,10 +306,12 @@ public class Polynomial {
      */
     public void setCoefs(Coef[] coefs) {
         this.degree = coefs.length - 1;
-        this.coefs = new Coef[this.degree + 1];
+        this.coefs = coefs;
 
-        System.arraycopy(coefs, 0, this.coefs, 0, this.degree + 1);
-
+        // Reduce the terms
+        for (Coef coef: coefs) {
+            coef.reduce();
+        }
     }
 
     /**

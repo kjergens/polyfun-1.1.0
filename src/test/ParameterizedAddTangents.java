@@ -56,7 +56,7 @@ public class ParameterizedAddTangents {
 
     @Test
     public void addTangentsCompareOrigRefactoredNoOrder() {
-        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
+        PolyPairFactory.compareByPartsIgnoringOrder(polyOrig, polyRefactored);
     }
 
 }

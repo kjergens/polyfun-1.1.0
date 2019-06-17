@@ -314,6 +314,155 @@ public class CoefTest {
     }
 
     @Test
+    public void simplifyParamPoly38_3Terms() {
+        // b_3^2
+        Term term1 = new Term(1.0, new Atom[]{
+                new Atom('b', 3, 2)});
+
+        // d_1^5e_1^3
+        Term term2 = new Term(1.0, new Atom[]{
+                new Atom('d', 1, 5),
+                new Atom('e',1, 3)});
+
+        // e_3^2
+        Term term3 = new Term(1.0, new Atom[]{
+                new Atom('e', 3, 2)});
+
+        Coef coef = new Coef(new Term[]{term3, term2, term1});
+        Coef expected = new Coef(new Term[]{term1, term2, term3});
+
+        coef.simplify();
+
+        assertThat(coef.toString(), is(expected.toString()));
+    }
+
+    @Test
+    public void reduceSortWithConstants_TestFailureParaPoly151() {
+//        Expected :8.65c_2^3+6.69
+//        Actual   :6.69+8.65c_2^3
+
+        // b_3^2
+        Term term1 = new Term(8.65, new Atom[]{
+                new Atom('c', 2, 3)});
+
+        // 6.69
+        Term term2 = new Term(6.69);
+
+        Coef coef = new Coef(new Term[]{term2, term1});
+
+        System.err.println((coef.toString()));
+        Coef expected = new Coef(new Term[]{term1, term2});
+
+        coef.simplify();
+
+        assertThat(coef.toString(), is(expected.toString()));
+        assertThat(coef.toString(), is("8.65c_2^3+6.69"));
+    }
+
+    @Test
+    public void reduceParamPoly38_3Terms() {
+        // b_3^2
+        Term term1 = new Term(1.0, new Atom[]{
+                new Atom('b', 3, 2)});
+
+        // d_1^5e_1^3
+        Term term2 = new Term(1.0, new Atom[]{
+                new Atom('d', 1, 5),
+                new Atom('e',1, 3)});
+
+        // e_3^2
+        Term term3 = new Term(1.0, new Atom[]{
+                new Atom('e', 3, 2)});
+
+        Coef coef = new Coef(new Term[]{term3, term2, term1});
+        Coef expected = new Coef(new Term[]{term1, term2, term3});
+
+        coef.reduce();
+
+        assertThat(coef.toString(), is(expected.toString()));
+    }
+
+    @Test
+    public void reduceParamPolyTestFailure109() {
+        // d_2^4+c_3^3+e_1^3
+
+        // d_2^4
+        Term term1 = new Term(new Atom('d', 2, 4));
+
+        // c_3^3
+        Term term2 = new Term(new Atom('c', 3, 3));
+
+        // e_1^3
+        Term term3 = new Term(new Atom('e', 1, 3));
+
+        Coef coef = new Coef(new Term[]{term1, term2, term3});
+
+        Coef expected = new Coef(new Term[]{term2, term1, term3});
+
+        coef.reduce();
+
+        assertThat(coef.toString(), is(expected.toString()));
+        assertThat(coef.toString(), is("c_3^3+d_2^4+e_1^3"));
+    }
+
+    @Test
+    public void simplifyParamPolyTestFailure109() {
+        // d_2^4+c_3^3+e_1^3
+
+        // d_2^4
+        Term term1 = new Term(new Atom('d', 2, 4));
+
+        // c_3^3
+        Term term2 = new Term(new Atom('c', 3, 3));
+
+        // e_1^3
+        Term term3 = new Term(new Atom('e', 1, 3));
+
+        Coef coef = new Coef(new Term[]{term1, term2, term3});
+
+        Coef expected = new Coef(new Term[]{term2, term1, term3});
+
+        coef.reduce();
+
+        assertThat(coef.toString(), is(expected.toString()));
+        assertThat(coef.toString(), is("c_3^3+d_2^4+e_1^3"));
+    }
+
+    @Test
+    public void simplifyParamAddPolyTestFailure5() {
+        // Expected :c_1^4e_3+c_1^2e_3^2+c_2^4d_1^2e_3^3
+        // Actual   :c_1^4e_3+c_2^4d_1^2e_3^3+c_1^2e_3^2
+
+        // c_1^4e_3
+        Term term1 = new Term(1.0, new Atom[]{
+                new Atom('c', 1, 4),
+                new Atom('e', 3, 1)
+        });
+
+        // c_2^4d_1^2e_3^3
+        Term term2 = new Term(1.0, new Atom[]{
+                new Atom('c', 2, 4),
+                new Atom('d', 1, 2),
+                new Atom('e', 3, 3)
+        });
+
+        // c_1^2e_3^2
+        Term term3 = new Term(1.0, new Atom[]{
+                new Atom('c', 1, 2),
+                new Atom('e', 3, 2)
+        });
+
+        Coef coef = new Coef(new Term[]{term1, term2, term3});
+
+        Coef expected = new Coef(new Term[]{term1, term3, term2});
+
+        coef.simplify();
+
+        assertThat(coef.toString(), is(expected.toString()));
+        assertThat(coef.toString(), is("c_1^4e_3+c_1^2e_3^2+c_2^4d_1^2e_3^3"));
+    }
+
+    @Test
     public void simplifyCombineTerms() {
         Atom atomA = new Atom('a', 1, 1);
         Atom atomB = new Atom('b', 2, 2);

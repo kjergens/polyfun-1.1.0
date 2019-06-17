@@ -59,6 +59,10 @@ public class PolyPairFactory {
     }
 
 
+    /**
+     * Use Polynomial(Coef[]) and Coef(Term[]) and Term(numericalCoefficient, Atom[])
+     * @return Poly pair - an old polyfun Polynomial and a new org.dalton.polyfun Polynomial
+     */
     public static PolyPair createRandomPolyPairWithAbstractCoefArray() {
         PolyPair polyPair = new PolyPair();
         // Get random length from 2 - 4 (so they will be at least a 1 degree poly)
@@ -243,7 +247,7 @@ public class PolyPairFactory {
         Assert.assertThat(polyRefactored, is(polyOrig));
     }
 
-    public static void compareAllTermsExistOrigRefactored(String polyOrig, String polyRefactored) {
+    public static void compareByPartsIgnoringOrder(String polyOrig, String polyRefactored) {
 
         // Leave imperfections that exist in both, to be fixed later.
         if (!polyRefactored.equals(polyOrig)) {

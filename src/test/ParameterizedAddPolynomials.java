@@ -60,13 +60,13 @@ public class ParameterizedAddPolynomials {
         return Arrays.asList(polyParams);
     }
 
-//    @Test
-//    public void compareByStrings() {
-//        PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
-//    }
+    @Test
+    public void compareByStrings() {
+        PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
+    }
 
     @Test
     public void testPolynomialsCompareAllTermsExistOrigRefactored() {
-        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
+        PolyPairFactory.compareByPartsIgnoringOrder(polyOrig, polyRefactored);
     }
 }

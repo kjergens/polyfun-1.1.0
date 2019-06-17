@@ -3,6 +3,7 @@ import org.dalton.polyfun.Term;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.Random;
 
 import lib.CoefPair;
@@ -10,8 +11,15 @@ import lib.CoefPair;
 public class CoefPairFactory {
     static Random random = new Random(1);
 
+    /**
+     * Use Coef(Term[]) and Term(numericalCoefficient, Atom[]) to make a random pair of Coefs.
+     * @return CoefPair - An object with a polyfun.Coef and an org.dalton.polyfun.Coef
+     */
     public static CoefPair createCoefPairWithTermArray() {
         CoefPair coefPair = new CoefPair();
+
+        //DEBUG
+        boolean printFlag = false;
 
         // Generate number of Terms
         int numTerms = random.nextInt(3) + 1;
@@ -38,10 +46,15 @@ public class CoefPairFactory {
             // Create Term for both original and refactored
             double numericalCoefficient = random.nextDouble() * 10;
             BigDecimal bd = new BigDecimal(numericalCoefficient).setScale(2, RoundingMode.HALF_EVEN);
-            numericalCoefficient = 1; // bd.doubleValue();
+            numericalCoefficient = bd.doubleValue();
 
             termOrigs[i] = new polyfun.Term(numericalCoefficient, atomsOrig);
             termRefactoreds[i] = new Term(numericalCoefficient, atomsRefactored);
+
+            // DEBUGGING ParPolyTest #515.
+            // Isolate the test case. I can't reproduce in PolyTest.java. Trying to get more info.
+            if (numTerms == 2 && numericalCoefficient == 6.69) printFlag = true;
+
         }
 
         coefPair.coefOrig = new polyfun.Coef(termOrigs);

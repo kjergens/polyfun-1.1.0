@@ -54,12 +54,12 @@ public class ParameterizedPolynomialTest {
     }
 
     @Test
-    public void testPolynomialsCompareOrigRefactored() {
+    public void compareStrings() {
         PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
     }
 
     @Test
-    public void testPolynomialsCompareAllTermsExistOrigRefactored() {
-        PolyPairFactory.compareAllTermsExistOrigRefactored(polyOrig, polyRefactored);
+    public void compareParts() {
+        PolyPairFactory.compareByPartsIgnoringOrder(polyOrig, polyRefactored);
     }
 }

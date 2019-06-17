@@ -1,5 +1,7 @@
 package org.dalton.polyfun;
 
+import java.util.Arrays;
+
 /**
  * An array of Atoms and a number. The Atoms are understood to be multiplied.
  * For example: In the polynomial in x:
@@ -10,7 +12,7 @@ package org.dalton.polyfun;
  *
  * @author David Gomprecht
  */
-public class Term {
+public class Term implements Comparable<Term> {
     private double numericalCoefficient;
     private Atom[] atoms;
 
@@ -422,7 +424,7 @@ public class Term {
      * @return true or false if they are "like" or not
      */
     public boolean isLike(Term term) {
-        this.reduce();
+        this.reduce();  // TODO. It seems wrong to change a Term in a checking method.
         term.reduce();
 
         if (this.getAtoms().length != term.getAtoms().length) return false;
@@ -474,28 +476,53 @@ public class Term {
      * @return true if this is less than the param
      */
     public boolean isLessThan(Term term) {
-        this.reduce();
+        this.reduce();  // TODO. It seems wrong to change a Term in a checking method.
         term.reduce();
 
         if (term == null || term.atoms == null || this.atoms == null) return false;
 
         if (this.equals(term)) return false;
 
-        // More atoms makes it "greater than"
-        int thisAtomCount = this.getAtoms().length;
-        int termAtomCount = term.getAtoms().length;
+        // Fewer atoms is less than
+        if (this.getAtoms().length < term.getAtoms().length) return true;
 
-        if (thisAtomCount > termAtomCount) return false;
+        // For same #atoms but not all equal, find first unequal and that determines less than
+        int fewerAtoms = Math.min(this.getAtoms().length, term.getAtoms().length);
 
-        // Atom-atom place pairs must be less than for the whole term to be "less than"
-        // This means that fewer atoms can still be greater than.
-        for (int i = 0; i < this.getAtoms().length; i++) {
-            if (!this.getAtoms()[i].isLessThanOrEquals(term.getAtoms()[i])) {
-                return false;
+        if (this.getAtoms().length <= term.getAtoms().length) {
+
+            for (int i = 0; i < fewerAtoms; i++) {
+                // Atom-atom place pairs must be less than for the whole term to be "less than"
+//                if (!this.getAtoms()[i].isLessThanOrEquals(term.getAtoms()[i])) {
+//                    return false;
+//                }
+
+                // As soon as you find a mismatch, that one determines if it's less than or not
+                if (this.getAtoms()[i].isLike(term.getAtoms()[i])) {
+                    // if equal, the greater power will come first
+                    if (this.getAtoms()[i].equals(term.getAtoms()[i])) {
+                        ; // keep looking
+                    } else if (this.getAtoms()[i].getPower() > term.getAtoms()[i].getPower()) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else if (this.getAtoms()[i].isLessThanOrEquals(term.getAtoms()[i])) {
+                    // if this atom less than, the whole term is less than
+                    return true;
+                } else {
+                    // if this atom greater than, the whole term greater than
+                    return false;
+                }
             }
+
+            // If made it through loop, must be less than.
+            //return true;
+            return false; // unreachable
         }
 
-        return true;
+        // If got here, either this has more atoms or has same number or fewer but are bigger.
+        return false;
     }
 
     /**
@@ -523,7 +550,10 @@ public class Term {
      * @return true if a constant term
      */
     public boolean isConstantTerm() {
-        return this.atoms.length == 0;
+        boolean isConstantTerm = false;
+        if (this.getAtoms().length == 0) isConstantTerm = true;
+        else if (this.getAtoms().length == 1 && this.getAtoms()[0].toString() == "") isConstantTerm = true;
+        return isConstantTerm;
     }
 
     /**
@@ -586,7 +616,7 @@ public class Term {
      * @return boolean True if they are equal
      */
     public boolean equals(Term term) {
-        this.reduce();
+        this.reduce(); // TODO. It seems wrong to change a Term in a checking method.
         term.reduce();
 
         if (term == null) return false;
@@ -632,4 +662,48 @@ public class Term {
 
         return string.toString();
     }
+
+    /**
+     * Used for Arrays.sort and using comparison operators.
+     * Sorts the atoms, then compares alphanumerically. Ignores the numerical coefficient.
+     * @param t Term to compare to
+     * @return 0 for equal, -1 for less than, 1 for greater than.
+     */
+    public int compareTo(Term t){
+        if (t.isConstantTerm() && this.isConstantTerm()) {
+            // If both are constants, compare the numbers.
+            if (this.getNumericalCoefficient() == t.getNumericalCoefficient()) {
+                return 0;
+            } else if (this.getNumericalCoefficient() > t.getNumericalCoefficient()) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } else if (t.isConstantTerm()) {
+            // If this has atoms and t doesn't, this comes first
+            return -1;
+        } else if (this.isConstantTerm()) {
+            // If this is a constant and t isn't, this comes after
+            return 1;
+        } else {
+            // If both terms have atoms, ignore the numerical coefficient,
+            // and compare atoms alphanumerically.
+            Term thisTerm = new Term(1.0, this.getAtoms());
+            Term thatTerm = new Term(1.0, t.getAtoms());
+
+            Arrays.sort(thisTerm.getAtoms());
+            Arrays.sort(thatTerm.getAtoms());
+
+            String theseAtoms = thisTerm.toString();
+            String thoseAtoms = thatTerm.toString();
+
+            if (theseAtoms.equals(t))
+                return 0;
+            else if (theseAtoms.compareToIgnoreCase(thoseAtoms) < 0)
+                return -1;
+            else
+                return 1;
+        }
+    }
 }
+

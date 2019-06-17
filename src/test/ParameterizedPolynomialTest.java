@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -54,6 +55,7 @@ public class ParameterizedPolynomialTest {
     }
 
     @Test
+    @Ignore
     public void compareStrings() {
         PolyPairFactory.compareByStrings(polyOrig, polyRefactored);
     }

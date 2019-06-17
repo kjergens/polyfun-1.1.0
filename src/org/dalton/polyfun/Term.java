@@ -12,6 +12,7 @@ import java.util.Arrays;
  *
  * @author David Gomprecht  (wrote the original Term object)
  * @author Katie Jergens (wrote refactored version based on Dr. Gomprecht's library)
+ * @version 1.1.0 (06/17/2019)
  */
 public class Term implements Comparable<Term> {
     private double numericalCoefficient;
@@ -19,6 +20,10 @@ public class Term implements Comparable<Term> {
 
     /**
      * Default constructor.
+     *
+     * @param
+     * @return
+     * @since 1.0.0
      */
     public Term() {
     }
@@ -27,6 +32,7 @@ public class Term implements Comparable<Term> {
      * Construct a constant term.
      *
      * @param constant The constant that will be the entire term.
+     * @since 1.0.0
      */
     public Term(double constant) {
         this.numericalCoefficient = constant;
@@ -37,6 +43,7 @@ public class Term implements Comparable<Term> {
      * Construct a Term that consists of one Atom.
      *
      * @param atom This will be the first and only Atom in the atoms array
+     * @since 1.0.0
      */
     public Term(Atom atom) {
         this.numericalCoefficient = 1.0;
@@ -58,6 +65,7 @@ public class Term implements Comparable<Term> {
      *
      * @param numericalCoefficient The numericalCoefficient attribute
      * @param atoms                Atom[] attribute
+     * @since 1.0.0
      */
     public Term(double numericalCoefficient, Atom[] atoms) {
         this.numericalCoefficient = numericalCoefficient;
@@ -71,6 +79,7 @@ public class Term implements Comparable<Term> {
     /**
      * Get atoms array.
      *
+     * @since 1.0.0
      * @deprecated use {@link #getNumericalCoefficient()} ()} instead.
      */
     @Deprecated
@@ -82,12 +91,14 @@ public class Term implements Comparable<Term> {
      * Get the numerical coefficient.
      *
      * @return the numerical coefficient
+     * @since 1.1.0
      */
     public double getNumericalCoefficient() {
         return numericalCoefficient;
     }
 
     /**
+     * @since 1.0.0
      * @deprecated use {@link #getAtoms()} ()} instead.
      */
     @Deprecated
@@ -99,6 +110,7 @@ public class Term implements Comparable<Term> {
      * Get the array of Atoms
      *
      * @return atoms
+     * @since 1.1.0
      */
     public Atom[] getAtoms() {
         return atoms;
@@ -142,6 +154,7 @@ public class Term implements Comparable<Term> {
      * Set the numericalCoefficient.
      *
      * @param numericalCoefficient
+     * @since 1.1.0
      */
     public void setNumericalCoefficient(double numericalCoefficient) {
         this.numericalCoefficient = numericalCoefficient;
@@ -151,6 +164,7 @@ public class Term implements Comparable<Term> {
      * Set the array of Atoms. Note this array gets assigned, not copied.
      *
      * @param atoms Will become the Atoms array for this Term
+     * @since 1.0.0
      */
     public void setAtoms(Atom[] atoms) {
         this.atoms = atoms; // TODO: should this be an arraycopy?
@@ -158,10 +172,11 @@ public class Term implements Comparable<Term> {
 
 
     /**
-     * Remove first Atom and return it. Will fail with Term that has no Atoms.
+     * Remove first Atom and return it.
      * <p>
      *
      * @return the popped Atom
+     * @since 1.1.0
      */
     public Atom pop() {
         if (this.getAtoms() == null && this.getAtoms().length == 0) {
@@ -184,6 +199,7 @@ public class Term implements Comparable<Term> {
      * <p>
      *
      * @return New term with the first Atom removed
+     * @since 1.0.0
      */
     public Term snip() {
         Atom[] atoms = new Atom[this.getAtoms().length - 1];
@@ -200,7 +216,8 @@ public class Term implements Comparable<Term> {
      * <p>
      *
      * @param atom
-     * @return New Term with one new Atom at the beginning of the array
+     * @return  New Term with one new Atom at the beginning of the array
+     * @since 1.0.0
      */
     public Term paste(Atom atom) {
         Atom[] atoms = new Atom[this.atoms.length + 1];
@@ -216,7 +233,8 @@ public class Term implements Comparable<Term> {
      * <p>
      *
      * @param atom
-     * @return nothing
+     * @return
+     * @since 1.1.0
      */
     public void push(Atom atom) {
         Atom[] atoms = new Atom[this.atoms.length + 1];
@@ -232,7 +250,8 @@ public class Term implements Comparable<Term> {
      * <p>
      *
      * @param atom
-     * @return nothing
+     * @return
+     * @since 1.1.0
      */
     public void append(Atom atom) {
         Atom[] atoms = new Atom[this.atoms.length + 1];
@@ -253,6 +272,7 @@ public class Term implements Comparable<Term> {
      *
      * @param atom
      * @return
+     * @since 1.0.0
      */
     public Term place(Atom atom) {
         Term term = new Term(this.numericalCoefficient, this.atoms);
@@ -287,7 +307,8 @@ public class Term implements Comparable<Term> {
      * <p>
      *
      * @param atom
-     * @return nothing
+     * @return
+     * @since 1.1.0
      */
     public void insert(Atom atom) {
         if (this.getAtoms() == null || this.getAtoms().length == 0) {
@@ -318,6 +339,7 @@ public class Term implements Comparable<Term> {
      * Permanently alters the Term.
      *
      * @return Term Permanently alters the Term
+     * @since 1.0.0
      */
     public Term simplify() {
         if (this.atoms != null && this.atoms.length > 1) {
@@ -338,6 +360,7 @@ public class Term implements Comparable<Term> {
      * Permanently alters the Term.
      *
      * @return nothing. Permanently alters the Term
+     * @since 1.1.0
      */
     public void reduce() {
         if (this.getAtoms() == null) return;
@@ -362,6 +385,7 @@ public class Term implements Comparable<Term> {
      *
      * @param term The Term to multiply to this one
      * @return Term
+     * @since 1.0.0
      */
     public Term times(Term term) {
         if (this.atoms == null || term.atoms == null) return term;
@@ -389,6 +413,7 @@ public class Term implements Comparable<Term> {
      *
      * @param scalar Value to multiply this Term by
      * @return the product
+     * @since 1.0.0
      */
     public Term times(double scalar) {
         return new Term(scalar * this.getNumericalCoefficient(), this.getAtoms());
@@ -399,6 +424,7 @@ public class Term implements Comparable<Term> {
      *
      * @param term Term to compare "this" to
      * @return true or false if they are "like" or not
+     * @since 1.0.0
      * @deprecated Use {@link #isLike(Term)} instead.
      */
     @Deprecated
@@ -425,6 +451,7 @@ public class Term implements Comparable<Term> {
      *
      * @param term Term to compare "this" to
      * @return true or false if they are "like" or not
+     * @since 1.1.0
      */
     public boolean isLike(Term term) {
         this.reduce();  // TODO. It seems wrong to change a Term in a checking method.
@@ -447,7 +474,8 @@ public class Term implements Comparable<Term> {
      *
      * @param term term to compare
      * @return true if this is less than the param
-     * @deprecated Use {@link #isLessThan(Term)} instead.
+     * @since 1.0.0
+     * @deprecated Use {@link #compareTo(Term)} instead.
      */
     @Deprecated
     public boolean lessThan(Term term) {
@@ -473,60 +501,10 @@ public class Term implements Comparable<Term> {
     }
 
     /**
-     * Detects if the term passed in is less than this term.
-     *
-     * @param term term to compare
-     * @return true if this is less than the param
-     */
-    public boolean isLessThan(Term term) {
-        this.reduce();  // TODO. It seems wrong to change a Term in a checking method.
-        term.reduce();
-
-        if (term == null || term.atoms == null || this.atoms == null) return false;
-
-        if (this.equals(term)) return false;
-
-        // Fewer atoms is less than
-        if (this.getAtoms().length < term.getAtoms().length) return true;
-
-        // For same #atoms but not all equal, find first unequal and that determines less than
-        int fewerAtoms = Math.min(this.getAtoms().length, term.getAtoms().length);
-
-        if (this.getAtoms().length <= term.getAtoms().length) {
-
-            for (int i = 0; i < fewerAtoms; i++) {
-                // As soon as you find a mismatch, that one determines if it's less than or not
-                if (this.getAtoms()[i].isLike(term.getAtoms()[i])) {
-                    // if equal, the greater power will come first
-                    if (this.getAtoms()[i].equals(term.getAtoms()[i])) {
-                        ; // keep looking
-                    } else if (this.getAtoms()[i].getPower() > term.getAtoms()[i].getPower()) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else if (this.getAtoms()[i].isLessThanOrEquals(term.getAtoms()[i])) {
-                    // if this atom less than, the whole term is less than
-                    return true;
-                } else {
-                    // if this atom greater than, the whole term greater than
-                    return false;
-                }
-            }
-
-            // If made it through loop, must be less than.
-            //return true;
-            return false; // unreachable
-        }
-
-        // If got here, either this has more atoms or has same number or fewer but are bigger.
-        return false;
-    }
-
-    /**
      * Checks to see of the double (and hence the Term) is zero.
      *
      * @return true if numericalCoefficient is zero.
+     * @since 1.0.0
      */
     public boolean isZero() {
         return this.numericalCoefficient == 0.0D;
@@ -535,6 +513,7 @@ public class Term implements Comparable<Term> {
     /**
      * Non-descriptive method name.
      *
+     * @since 1.0.0
      * @deprecated use {@link #isConstantTerm()} instead.
      */
     @Deprecated
@@ -546,6 +525,7 @@ public class Term implements Comparable<Term> {
      * Checks if this is a constant term, i.e. no variables.
      *
      * @return true if a constant term
+     * @since 1.1.0
      */
     public boolean isConstantTerm() {
         boolean isConstantTerm = false;
@@ -555,6 +535,7 @@ public class Term implements Comparable<Term> {
     }
 
     /**
+     * @since 1.0.0
      * @deprecated use {@link #equals(Term)} instead.
      */
     @Deprecated
@@ -579,6 +560,7 @@ public class Term implements Comparable<Term> {
     }
 
     /**
+     * @since 1.0.0
      * @deprecated use {@link #toString()} instead.
      */
     @Deprecated
@@ -612,6 +594,7 @@ public class Term implements Comparable<Term> {
      *
      * @param term Term to check
      * @return boolean True if they are equal
+     * @since 1.1.0
      */
     public boolean equals(Term term) {
         this.reduce(); // TODO. It seems wrong to change a Term in a checking method.
@@ -641,6 +624,7 @@ public class Term implements Comparable<Term> {
      * Composes a printable string of this term.
      *
      * @return a printable string
+     * @since 1.1.0
      */
     @Override
     public String toString() {
@@ -666,6 +650,7 @@ public class Term implements Comparable<Term> {
      * Sorts the atoms, then compares alphanumerically. Ignores the numerical coefficient.
      * @param t Term to compare to
      * @return 0 for equal, -1 for less than, 1 for greater than.
+     * @since 1.1.0
      */
     public int compareTo(Term t){
         if (t.isConstantTerm() && this.isConstantTerm()) {

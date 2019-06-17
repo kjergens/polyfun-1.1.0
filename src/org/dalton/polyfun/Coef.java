@@ -210,7 +210,7 @@ public class Coef {
 
         if (!term.isZero() && (this.getTerms() == null
                 || this.getTerms().length == 0
-                || term.isLessThan(this.getTerms()[0]))) {
+                || term.lessThan(this.getTerms()[0]))) {
             // If the given term is less than the Coef's first term, insert the new term at the front.
             return coef.paste(term);
         } else if (term.equals(this.getTerms()[0])) {

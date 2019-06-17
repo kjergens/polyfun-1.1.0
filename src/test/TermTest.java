@@ -289,7 +289,7 @@ public class TermTest {
     }
 
     @Test
-    public void isLessThanPolyParam38_First2Terms() {
+    public void lessThanPolyParam38_First2Terms() {
         // b_3^2
         Term term1 = new Term(1.0, new Atom[]{
                 new Atom('b', 3, 2)});
@@ -299,12 +299,12 @@ public class TermTest {
                 new Atom('d', 1, 5),
                 new Atom('e',1, 3)});
 
-        assertThat(term1.isLessThan(term2), is(true));
-        assertThat(term2.isLessThan(term1), is(false));
+        assertThat(term1.lessThan(term2), is(true));
+        assertThat(term2.lessThan(term1), is(false));
     }
 
     @Test
-    public void isLessThanParamPoly38_FirstAnd3rdTerms() {
+    public void lessThanParamPoly38_FirstAnd3rdTerms() {
         // b_3^2
         Term term1 = new Term(1.0, new Atom[]{
                 new Atom('b', 3, 2)});
@@ -313,8 +313,8 @@ public class TermTest {
         Term term2 = new Term(1.0, new Atom[]{
                 new Atom('e', 3, 2)});
 
-        assertThat(term1.isLessThan(term2), is(true));
-        assertThat(term2.isLessThan(term1), is(false));
+        assertThat(term1.lessThan(term2), is(true));
+        assertThat(term2.lessThan(term1), is(false));
     }
 
     @Test

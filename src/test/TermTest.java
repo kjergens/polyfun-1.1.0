@@ -289,21 +289,6 @@ public class TermTest {
     }
 
     @Test
-    public void isLessThan() {
-        // d_1^4
-        Term term1 = new Term(1.0, new Atom[]{
-                new Atom('d', 1, 4)});
-
-        // b_2^3e_2^4
-        Term term2 = new Term(1.0, new Atom[]{
-                new Atom('b', 2, 3),
-                new Atom('e',2, 4)});
-
-        assertThat(term2.isLessThan(term1), is(true));
-        assertThat(term1.isLessThan(term2), is(false));
-    }
-
-    @Test
     public void isLessThanPolyParam38_First2Terms() {
         // b_3^2
         Term term1 = new Term(1.0, new Atom[]{
@@ -330,45 +315,6 @@ public class TermTest {
 
         assertThat(term1.isLessThan(term2), is(true));
         assertThat(term2.isLessThan(term1), is(false));
-    }
-
-    @Test
-    public void isLessThanParamPoly38_2ndAnd3rdTerms() {
-        // d_1^5e_1^3
-        Term term1 = new Term(1.0, new Atom[]{
-                new Atom('d', 1, 5),
-                new Atom('e',1, 3)});
-
-        // e_3^2
-        Term term2 = new Term(1.0, new Atom[]{
-                new Atom('e', 3, 2)});
-
-        assertThat(term1.isLessThan(term2), is(true));
-        assertThat(term2.isLessThan(term1), is(false));
-    }
-
-    @Test
-    public void isLessThanParamPolyTestFailure109() {
-        // d_2^4+c_3^3+e_1^3
-
-        // d_2^4
-        Term term1 = new Term(new Atom('d', 2, 4));
-
-        // c_3^3
-        Term term2 = new Term(new Atom('c', 3, 3));
-
-        // e_1^3
-        Term term3 = new Term(new Atom('e', 1, 3));
-
-
-        assertThat(term1.isLessThan(term2), is(false));
-        assertThat(term2.isLessThan(term1), is(true));
-
-        assertThat(term2.isLessThan(term3), is(true));
-        assertThat(term3.isLessThan(term1), is(false));
-
-        assertThat(term1.isLessThan(term3), is(true));
-        assertThat(term3.isLessThan(term1), is(false));
     }
 
     @Test
@@ -407,28 +353,6 @@ public class TermTest {
         Term newTerm = new Term(2, atoms);
 
         assertThat(term.isLike(newTerm), is(true));
-    }
-
-    @Test
-    public void isLessThan_MoreAtoms() {
-        // TODO: Which one is less than the other?
-        // Greater length but lower letters
-        Atom[] atomsA = {
-                new Atom('a', 1, 1),
-                new Atom('b', 1, 1),
-                new Atom('c', 1, 1)
-        };
-
-        // Smaller length but higher letters
-        Atom[] atomsB = {
-                new Atom('d', 1, 1),
-                new Atom('e', 1, 1)
-        };
-
-        Term termA = new Term(1, atomsA);
-        Term termB = new Term(1, atomsB);
-
-        assertThat(termB.isLessThan(termA), is(false));
     }
 
     @Test

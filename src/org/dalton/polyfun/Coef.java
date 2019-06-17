@@ -244,7 +244,7 @@ public class Coef {
                 return; // Quit once you've handled it.
             }
 
-            // If the given term is the same as an existing term, add the numerical coefficients.
+            // If the term is the same as an existing term, add the numerical coefficients.
             for (int i = 0; i < this.getTerms().length; i++) {
                 if (term.equals(this.getTerms()[i])) {
                     double sum = term.getNumericalCoefficient() + this.getTerms()[i].getNumericalCoefficient();
@@ -255,10 +255,7 @@ public class Coef {
 
             // For all other cases, push the new term, then sort all terms alphanumerically
             this.push(term);
-
-            Arrays.sort(terms);
-
-            this.setTerms(terms);
+            Arrays.sort(this.getTerms());
         }
     }
 
@@ -417,7 +414,6 @@ public class Coef {
         }
 
         Coef sum = new Coef(terms);
-        //sum.simplify();
         sum.reduce();
         return sum;
     }

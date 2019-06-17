@@ -19,7 +19,7 @@ public class ParameterizedAddPolynomials {
     private String polyOrig;
     private String polyRefactored;
 
-    private static final int NUM_TESTS = 1000;
+    private static final int NUM_TESTS = 26;
 
 
     // Inject via constructor
@@ -46,6 +46,19 @@ public class ParameterizedAddPolynomials {
             // Point System.out to another output stream so I can capture the print() output.
             ByteArrayOutputStream outContent = new ByteArrayOutputStream();
             PrintStream originalOut = System.out;
+
+            // DEBUG #25
+            if (sum_refactored.toString().equals("3.15+3.5a_2c_2^3c_3+7.94d_2^4+6.78d_2^7")) {
+                System.err.println(polyPair.polynomialRefactored.toString() + " + " + polyPair2.polynomialRefactored.toString());
+                for (org.dalton.polyfun.Coef c : polyPair.polynomialRefactored.getCoefs()) {
+                    for (int j = 0; j < c.getTerms().length; j++) {
+                        System.err.println(j + ": " + c.getTerms()[j]);
+                    }
+                }
+
+                sum_refactored = polyPair.polynomialRefactored.plus(polyPair2.polynomialRefactored);
+
+            }
             System.setOut(new PrintStream(outContent));
 
             sum_orig.print();

@@ -12,7 +12,7 @@ package org.dalton.polyfun;
  *
  * @author David Gomprecht
  */
-public class Atom implements Comparable<Atom>{
+public class Atom implements Comparable<Atom> {
     private char letter;
     private int subscript = -1;
     private int power = 1;
@@ -189,7 +189,7 @@ public class Atom implements Comparable<Atom>{
 
             // If the letter and the subscript are the same, the next precedence is to the power.
             if (this.getSubscript() == atom.getSubscript()
-                && this.getPower() < atom.getPower()) {
+                    && this.getPower() < atom.getPower()) {
                 return true;
             }
         }
@@ -297,10 +297,10 @@ public class Atom implements Comparable<Atom>{
         return string;
     }
 
-    public int compareTo(Atom a){
-        if(this.equals(a))
+    public int compareTo(Atom a) {
+        if (this.equals(a))
             return 0;
-        else if(this.isLessThan(a))
+        else if (this.isLessThan(a))
             return -1;
         else
             return 1;

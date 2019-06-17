@@ -73,6 +73,51 @@ public class PolynomialTest {
     }
 
     @Test
+    public void addPolynomialsTest25() {
+        // 3.15+6.78d_2^7 + 3.5a_2c_2^3c_3+7.94d_2^4
+        // 3.15+7.94d_2^4+6.78d_2^7+3.5a_2c_2^3c_3
+
+        // Polynomial A: 3.15+6.78d_2^7
+        // 3.15
+        Atom[] atoms = new Atom[0];
+        Term termA = new Term(3.15, atoms);
+
+        // 6.78d_2^7
+        atoms = new Atom[]{new Atom('d', 2, 7)};
+        Term termB = new Term(6.78, atoms);
+
+        Coef[] coefs = new Coef[]{new Coef(new Term[]{termA, termB})};
+        Polynomial polynomialA = new Polynomial(coefs);
+
+        // Polynomial B: 3.5a_2c_2^3c_3+7.94d_2^4
+        // 3.5a_2c_2^3c_3
+        atoms = new Atom[]{new Atom('a', 2, 1),
+                new Atom('c', 2, 3),
+                new Atom('c', 3, 1)
+        };
+        termA = new Term(3.5, atoms);
+
+        // 7.94d_2^4
+        atoms = new Atom[]{new Atom('d', 4, 2)};
+        termB = new Term(7.94, atoms);
+
+        coefs = new Coef[]{new Coef(new Term[]{termA, termB})};
+        Polynomial polynomialB = new Polynomial(coefs);
+
+        Polynomial sum = polynomialA.plus(polynomialB);
+
+        // DEBUG #25
+        System.err.println(polynomialA);
+        for (org.dalton.polyfun.Coef c : polynomialA.getCoefs()) {
+            for (int j = 0; j < c.getTerms().length; j++) {
+                System.err.println(j + ": " + c.getTerms()[j]);
+            }
+        }
+
+        assertThat(sum.toString(), is("3.5a_2c_2^3c_3+6.78d_2^7+7.94d_4^2+3.15"));
+    }
+
+    @Test
     public void multiplyPolynomialsToSelf_CompareVersions() {
         PolyPair polyPair = new PolyPair();
         PolyPair productPair = new PolyPair(polyPair.polynomialOrig.times(polyPair.polynomialOrig),

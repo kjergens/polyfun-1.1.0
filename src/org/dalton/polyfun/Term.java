@@ -350,7 +350,10 @@ public class Term implements Comparable<Term> {
 
         // Put them back in order
         for (int i = 0; i < unorderedAtoms.length; i++) {
-            this.smartInsert(unorderedAtoms[i]);
+            // Clean out atoms with a power of 0
+            if (unorderedAtoms[i].getPower() != 0) {
+                this.smartInsert(unorderedAtoms[i]);
+            }
         }
     }
 

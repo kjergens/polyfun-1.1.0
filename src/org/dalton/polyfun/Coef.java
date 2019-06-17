@@ -11,7 +11,8 @@ import java.util.Arrays;
  * 2(a_1)^3(b)+3b^2 is a Coef, as is -(a_2)(b_4) and 7ab + b_2. The first and third have
  * length 2 (two Terms) the middle has length 1 (one term)
  *
- * @author David Gomprecht
+ *  @author David Gomprecht (wrote the original Coef object)
+ *  @author Katie Jergens (wrote refactored version based on Dr. Gomprecht's library)
  * <p>
  * TODO: In the setters, think through if they should assign an attribute to the Object passed in...
  * TODO:  (cont) ... or first make a copy of the Object (so that it can't be altered from outside the instance).

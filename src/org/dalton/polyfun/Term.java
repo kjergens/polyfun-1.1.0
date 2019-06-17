@@ -10,7 +10,8 @@ import java.util.Arrays;
  * <p>
  * 2(a_1)^3(b) is a term, and 7ab + b_2 is two terms: 7ab and b_2
  *
- * @author David Gomprecht
+ * @author David Gomprecht  (wrote the original Term object)
+ * @author Katie Jergens (wrote refactored version based on Dr. Gomprecht's library)
  */
 public class Term implements Comparable<Term> {
     private double numericalCoefficient;

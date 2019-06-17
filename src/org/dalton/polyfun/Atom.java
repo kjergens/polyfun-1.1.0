@@ -10,7 +10,8 @@ package org.dalton.polyfun;
  * <p>
  * 2(a_1)^3(b) is a coefficient, with two atoms: (a_1)^3 and (b)
  *
- * @author David Gomprecht
+ * @author David Gomprecht (wrote the original polyfun library)
+ * @author Katie Jergens (wrote refactored version based on Dr. Gomprecht's library)
  */
 public class Atom implements Comparable<Atom> {
     private char letter;

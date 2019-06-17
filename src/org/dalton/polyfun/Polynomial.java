@@ -17,7 +17,8 @@ package org.dalton.polyfun;
  * Students will use this code and expand on it when developing the VDM method(s) and other Polynomial
  * manipulation methods.
  *
- * @author David Gomprecht
+ * @author David Gomprecht  (wrote the original Polynomial object)
+ * @author Katie Jergens (wrote refactored version based on Dr. Gomprecht's object, maintaining the interface)
  */
 public class Polynomial {
     private int degree;

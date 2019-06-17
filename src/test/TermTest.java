@@ -181,9 +181,9 @@ public class TermTest {
     }
 
     @Test
-    public void smartInsert() {
+    public void insert() {
         Atom atom = new Atom('b', 1, 3);
-        term.smartInsert(atom);
+        term.insert(atom);
 
         assertEquals(2, term.getAtoms().length);
         assertThat(term.getNumericalCoefficient(), is(3.0));

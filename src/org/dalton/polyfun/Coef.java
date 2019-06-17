@@ -260,57 +260,6 @@ public class Coef {
     }
 
     /**
-     * Inserts given Term in a convenient order or combines it with a like another like Term
-     *
-     * @param term
-     * @return
-     */
-    public void smartInsert(Term term) {
-
-        if (term != null && !term.isZero()) {
-            // If it's the first term, just add it
-            if (this.getTerms() == null || this.getTerms().length == 0) {
-                this.setTerms(term);
-                return; // Quit once you've handled it.
-            }
-
-            // If the given term is the same as an existing term, add the numerical coefficients.
-            for (int i = 0; i < this.getTerms().length; i++) {
-                if (term.equals(this.getTerms()[i])) {
-                    double sum = term.getNumericalCoefficient() + this.getTerms()[i].getNumericalCoefficient();
-                    this.getTerms()[i].setNumericalCoefficient(sum);
-                    return; // Quit once you've handled it.
-                }
-            }
-
-            // For all other cases, find where it should insert, split the arrays in 2 and push onto second then merge arrays
-            Term[] terms = new Term[this.getTerms().length + 1];
-            int insertIndex = terms.length - 1; // default to last
-            for (int i = 0; i < this.getTerms().length; i++) {
-                if (term.isLessThan(this.getTerms()[i])) {
-                    insertIndex = i;
-                    break;
-                }
-            }
-
-            // Copy everything up to here in terms array
-            for (int i = 0; i < insertIndex; i++) {
-                terms[i] = this.getTerms()[i];
-            }
-
-            // Place the new term
-            terms[insertIndex] = term;
-
-            // Copy the rest of the this.terms
-            for (int i = insertIndex + 1; i < terms.length; i++) {
-                terms[i] = this.getTerms()[i - 1];
-            }
-
-            this.setTerms(terms);
-        }
-    }
-
-    /**
      * Combines like terms and writes them in order.
      *
      * @return this The original Coef is permanently altered.

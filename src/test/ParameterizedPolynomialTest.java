@@ -37,7 +37,7 @@ public class ParameterizedPolynomialTest {
 
             // Get the strings
 
-            // Point System.out to another output stream so I can capture the print() output.
+            // Point System.out to another output stream so I can capture the print()  output.
             ByteArrayOutputStream outContent = new ByteArrayOutputStream();
             PrintStream originalOut = System.out;
             System.setOut(new PrintStream(outContent));

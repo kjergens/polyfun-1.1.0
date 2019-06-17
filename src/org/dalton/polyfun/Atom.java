@@ -259,7 +259,6 @@ public class Atom implements Comparable<Atom> {
         } else if (this.power != 0) {
             System.out.print(this.letter + "_" + this.subscript + "^" + this.power);
         }
-
     }
 
     /**

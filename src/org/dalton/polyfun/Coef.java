@@ -191,7 +191,7 @@ public class Coef {
         Term[] terms = new Term[this.getTerms().length + 1];
         terms[0] = term;
 
-        for (int i = 1; i < this.getTerms().length + 1; ++i) {
+        for (int i = 1; i < this.getTerms().length + 1; i++) {
             terms[i] = new Term(this.getTerms()[i - 1].getNumericalCoefficient(), this.getTerms()[i - 1].getAtoms());
         }
 
@@ -370,7 +370,6 @@ public class Coef {
         }
 
         Coef productCoef = new Coef(terms);
-        //productCoef.simplify();
         productCoef.reduce();
         return productCoef;
     }
@@ -425,28 +424,9 @@ public class Coef {
      * @return true if the Coeff is 0
      */
     public boolean isZero() {
-        //this.simplify(); // TODO. It seems wrong to change a Coef in an isXXX method.
-        this.reduce();
+        this.reduce(); // TODO. It seems wrong to change a Coef in an isXXX method.
 
         for (int i = 0; i < this.getTerms().length; ++i) {
-            if (!this.getTerms()[i].isZero()) {
-                return false;
-            }
-        }
-
-        // If got this far it all Terms are zero.
-        return true;
-    }
-
-    /**
-     * If the Coef is zero, it returns true.
-     *
-     * @return true if the Coeff is 0
-     */
-    public boolean isZeroTerm() {
-        this.reduce();
-
-        for (int i = 0; i < this.getTerms().length; i++) {
             if (!this.getTerms()[i].isZero()) {
                 return false;
             }
@@ -474,7 +454,6 @@ public class Coef {
      * @return True if Coef consists only of a double, false otherwise
      */
     public boolean isConstantCoef() {
-        //this.simplify();
         this.reduce();
         return this.terms.length == 1 && this.terms[0].isConstantTerm();
     }
@@ -529,4 +508,3 @@ public class Coef {
         return string;
     }
 }
-

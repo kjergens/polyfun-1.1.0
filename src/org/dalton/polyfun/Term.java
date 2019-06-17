@@ -249,7 +249,6 @@ public class Term implements Comparable<Term> {
      * example: place b^2 in the Term 3abd will result in 3ab^3d
      * example: place c_1 in the Term 3abd will result in 3abc_1d
      * <p>
-     * TODO: rename insert()
      *
      * @param atom
      * @return
@@ -289,7 +288,7 @@ public class Term implements Comparable<Term> {
      * @param atom
      * @return nothing
      */
-    public void smartInsert(Atom atom) {
+    public void insert(Atom atom) {
         if (this.getAtoms() == null || this.getAtoms().length == 0) {
             // If there are no atoms make this the atom
             this.setAtoms(new Atom[]{atom});
@@ -306,7 +305,7 @@ public class Term implements Comparable<Term> {
         } else {
             // Recursive calls
             Atom head = this.pop();
-            this.smartInsert(atom);
+            this.insert(atom);
             this.push(head);
         }
     }
@@ -352,7 +351,7 @@ public class Term implements Comparable<Term> {
         for (int i = 0; i < unorderedAtoms.length; i++) {
             // Clean out atoms with a power of 0
             if (unorderedAtoms[i].getPower() != 0) {
-                this.smartInsert(unorderedAtoms[i]);
+                this.insert(unorderedAtoms[i]);
             }
         }
     }
@@ -495,11 +494,6 @@ public class Term implements Comparable<Term> {
         if (this.getAtoms().length <= term.getAtoms().length) {
 
             for (int i = 0; i < fewerAtoms; i++) {
-                // Atom-atom place pairs must be less than for the whole term to be "less than"
-//                if (!this.getAtoms()[i].isLessThanOrEquals(term.getAtoms()[i])) {
-//                    return false;
-//                }
-
                 // As soon as you find a mismatch, that one determines if it's less than or not
                 if (this.getAtoms()[i].isLike(term.getAtoms()[i])) {
                     // if equal, the greater power will come first

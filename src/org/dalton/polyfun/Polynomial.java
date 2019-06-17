@@ -36,9 +36,6 @@ public class Polynomial {
      */
     public Polynomial(Coef[] coefs) {
         this.degree = coefs.length - 1;
-//        this.coefs = new Coef[coefs.length];
-//
-//        System.arraycopy(coefs, 0, this.coefs, 0, coefs.length);
         this.setCoefs(coefs);
     }
 

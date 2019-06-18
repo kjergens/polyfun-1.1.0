@@ -3,7 +3,8 @@
 Refactored version of David Gomprecht's polyfun 1.0.0 library which was compiled in Java 6.
 
 Download [polyfun-1.1.0 jar](https://github.com/kjergens/polyfun_v_2/raw/master/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar).
-See [Javadocs](https://kjergens.github.io/polyfun-1.1.0/out/html/index.html)
+See [Javadocs](https://kjergens.github.io/polyfun-1.1.0/out/html/org/dalton/polyfun/Polynomial.html)
+
 ## Change log
 These changes were made to be backward compatible. In other words, old XClass code will work with this updated library.
 * Compiled in Java 11

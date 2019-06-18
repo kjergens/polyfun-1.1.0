@@ -5,7 +5,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="" />
+    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="Re-link to Javadocs in out/html">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +95,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="75">
-                <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+                <caret line="5" column="99" selection-start-line="5" selection-start-column="99" selection-end-line="5" selection-end-column="99" />
               </first_editor>
               <second_editor />
             </state>
@@ -221,10 +224,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="217" />
-    <option name="y" value="52" />
+    <option name="x" value="226" />
+    <option name="y" value="80" />
     <option name="width" value="1238" />
-    <option name="height" value="762" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -245,6 +248,41 @@
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="dalton" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="dalton" type="462c0819:PsiDirectoryNode" />
+              <item name="polyfun" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -377,20 +415,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00023" summary="delete polyfun from general project folder (use out/artifacts instead) and updated Readme with the link.">
-      <created>1559783336375</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1559783336375</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Added JavaDocs">
-      <created>1559785977431</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1559785977431</updated>
     </task>
     <task id="LOCAL-00025" summary="Updated Readme">
       <created>1559789960281</created>
@@ -721,7 +745,21 @@
       <option name="project" value="LOCAL" />
       <updated>1560817140816</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Remove all Javadocs and start over.">
+      <created>1560817425880</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1560817425880</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Re-generated Javadocs in out/html">
+      <created>1560817668723</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1560817668723</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -766,10 +804,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="263" y="54" width="1238" height="762" extended-state="0" />
+    <frame x="226" y="80" width="1238" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.30518395" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.22658862" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -785,7 +823,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32833582" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.5498008" weight="0.33868378" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3296" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.31791908" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.32943144" side_tool="true" weight="0.53880596" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.36287627" weight="0.33880597" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -832,8 +870,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test runner for non-parameterized tests." />
-    <MESSAGE value="More tests for Polynomial.of(). Wrote raiseTo() but it gives different output that to() so don't use it." />
     <MESSAGE value="Put testlib folder in a package in the test folder. Marked test folder as test, not source." />
     <MESSAGE value="Fix raiseTo(). Re-arranged test code again." />
     <MESSAGE value="Fix in Coef.simply to handle 0-len term arrays.&#10;Fix in Coef.times to ignore empty terms (terms that exist with a coef of 0 and empty Atom array)." />
@@ -857,7 +893,9 @@
     <MESSAGE value="Updated README Changelog regarding sort order of terms within a Coef." />
     <MESSAGE value="Fix link to Javadocs" />
     <MESSAGE value="Re-made Javadocs in out/html folder and Fixed link to Javadocs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-made Javadocs in out/html folder and Fixed link to Javadocs" />
+    <MESSAGE value="Remove all Javadocs and start over." />
+    <MESSAGE value="Re-generated Javadocs in out/html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Re-generated Javadocs in out/html" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/polyfun_1_1_0$ParameterizedAddPolynomials__1_.ic" NAME="ParameterizedAddPolynomials (1) Coverage Results" MODIFIED="1560361469567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -1634,7 +1672,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="75">
-            <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+            <caret line="5" column="99" selection-start-line="5" selection-start-column="99" selection-end-line="5" selection-end-column="99" />
           </first_editor>
           <second_editor />
         </state>

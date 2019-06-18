@@ -5,24 +5,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/allclasses-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/allclasses-noframe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/deprecated-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/index-all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/member-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/member-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/member-search-index.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/package-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/package-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/package-search-index.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/type-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/html/type-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/type-search-index.zip" afterDir="false" />
-    </list>
+    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,30 +92,9 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="75">
-                <caret line="5" column="76" selection-start-line="5" selection-start-column="76" selection-end-line="5" selection-end-column="76" />
+                <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out/html/package-summary.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="182" column="10" selection-start-line="182" selection-start-column="10" selection-end-line="182" selection-end-column="10" />
-              <folding>
-                <element signature="e#1999#2005#0" expanded="true" />
-                <element signature="e#2026#2032#0" expanded="true" />
-                <element signature="e#2199#2205#0" expanded="true" />
-                <element signature="e#2316#2322#0" expanded="true" />
-                <element signature="e#2389#2395#0" expanded="true" />
-                <element signature="e#3000#3006#1" expanded="true" />
-                <element signature="e#3194#3200#0" expanded="true" />
-                <element signature="e#3459#3465#1" expanded="true" />
-                <element signature="e#5256#5262#0" expanded="true" />
-                <element signature="e#5283#5289#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -259,8 +221,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="263" />
-    <option name="y" value="54" />
+    <option name="x" value="217" />
+    <option name="y" value="52" />
     <option name="width" value="1238" />
     <option name="height" value="762" />
   </component>
@@ -283,12 +245,6 @@
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -421,13 +377,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00022" summary="adding out folder to repo">
-      <created>1559783149735</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1559783149735</updated>
     </task>
     <task id="LOCAL-00023" summary="delete polyfun from general project folder (use out/artifacts instead) and updated Readme with the link.">
       <created>1559783336375</created>
@@ -765,7 +714,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560816667272</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Re-made Javadocs in out/html folder and Fixed link to Javadocs">
+      <created>1560817140816</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1560817140816</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -813,7 +769,7 @@
     <frame x="263" y="54" width="1238" height="762" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.20317726" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.30518395" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -876,7 +832,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Testing more constructors and putting repeated code into PolyPairFactory." />
     <MESSAGE value="Test runner for non-parameterized tests." />
     <MESSAGE value="More tests for Polynomial.of(). Wrote raiseTo() but it gives different output that to() so don't use it." />
     <MESSAGE value="Put testlib folder in a package in the test folder. Marked test folder as test, not source." />
@@ -901,7 +856,8 @@
     <MESSAGE value="Updated Java doc comments with @since tag and generated new Javadocs." />
     <MESSAGE value="Updated README Changelog regarding sort order of terms within a Coef." />
     <MESSAGE value="Fix link to Javadocs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix link to Javadocs" />
+    <MESSAGE value="Re-made Javadocs in out/html folder and Fixed link to Javadocs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Re-made Javadocs in out/html folder and Fixed link to Javadocs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/polyfun_1_1_0$ParameterizedAddPolynomials__1_.ic" NAME="ParameterizedAddPolynomials (1) Coverage Results" MODIFIED="1560361469567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -911,12 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-296">
           <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
-          <folding>
-            <element signature="e#2181#2187#0" expanded="true" />
-            <element signature="e#2298#2304#0" expanded="true" />
-            <element signature="e#2371#2377#0" expanded="true" />
-            <element signature="e#2982#2988#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -924,13 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3945">
           <caret line="263" selection-start-line="263" selection-end-line="263" />
-          <folding>
-            <element signature="e#2157#2163#0" expanded="true" />
-            <element signature="e#2274#2280#0" expanded="true" />
-            <element signature="e#2347#2353#0" expanded="true" />
-            <element signature="e#2958#2964#1" expanded="true" />
-            <element signature="e#3563#3569#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -938,13 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-296">
           <caret line="206" column="32" selection-start-line="206" selection-start-column="32" selection-end-line="206" selection-end-column="32" />
-          <folding>
-            <element signature="e#2136#2142#0" expanded="true" />
-            <element signature="e#2253#2259#0" expanded="true" />
-            <element signature="e#2326#2332#0" expanded="true" />
-            <element signature="e#2937#2943#1" expanded="true" />
-            <element signature="e#6752#6758#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -959,22 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9817">
           <caret line="686" column="35" selection-start-line="686" selection-start-column="35" selection-end-line="686" selection-end-column="35" />
-          <folding>
-            <element signature="e#4805#4811#1" expanded="true" />
-            <element signature="e#16770#16776#1" expanded="true" />
-            <element signature="e#20620#20626#1" expanded="true" />
-            <element signature="e#41706#41712#1" expanded="true" />
-            <element signature="e#41732#41738#1" expanded="true" />
-            <element signature="e#41758#41764#1" expanded="true" />
-            <element signature="e#41784#41790#1" expanded="true" />
-            <element signature="e#41810#41816#1" expanded="true" />
-            <element signature="e#41836#41842#1" expanded="true" />
-            <element signature="e#41862#41868#1" expanded="true" />
-            <element signature="e#41888#41894#1" expanded="true" />
-            <element signature="e#41914#41920#1" expanded="true" />
-            <element signature="e#41940#41946#1" expanded="true" />
-            <element signature="e#41966#41972#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -982,12 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1845">
           <caret line="123" column="32" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
-          <folding>
-            <element signature="e#2156#2162#0" expanded="true" />
-            <element signature="e#2273#2279#0" expanded="true" />
-            <element signature="e#2346#2352#0" expanded="true" />
-            <element signature="e#2957#2963#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1720,7 +1634,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="75">
-            <caret line="5" column="76" selection-start-line="5" selection-start-column="76" selection-end-line="5" selection-end-column="76" />
+            <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
           </first_editor>
           <second_editor />
         </state>

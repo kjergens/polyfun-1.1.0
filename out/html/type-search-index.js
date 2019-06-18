@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"org.dalton.polyfun","l":"Atom"},{"p":"org.dalton.polyfun","l":"Coef"},{"p":"org.dalton.polyfun","l":"Polynomial"},{"p":"org.dalton.polyfun","l":"Term"}]

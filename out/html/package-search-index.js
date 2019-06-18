@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"polyfun_v_2/out/html/"}]
+packageSearchIndex = [{"l":"org.dalton.polyfun"}]

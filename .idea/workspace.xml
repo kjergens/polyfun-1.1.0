@@ -8,6 +8,20 @@
     <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/allclasses-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/allclasses-noframe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/index-all.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/member-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/member-search-index.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/package-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/package-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/package-search-index.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/type-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/html/type-search-index.zip" beforeDir="false" afterPath="$PROJECT_DIR$/out/html/type-search-index.zip" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Term.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="67">
-              <caret line="649" column="7" lean-forward="true" selection-start-line="649" selection-start-column="7" selection-end-line="649" selection-end-column="90" />
+              <caret line="649" column="7" selection-start-line="649" selection-start-column="7" selection-end-line="649" selection-end-column="90" />
               <folding>
                 <element signature="e#2361#2362#0" expanded="true" />
                 <element signature="e#2394#2395#0" expanded="true" />
@@ -94,10 +108,31 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="90">
-                <caret line="6" column="74" selection-start-line="6" selection-start-column="74" selection-end-line="6" selection-end-column="74" />
+              <first_editor relative-caret-position="75">
+                <caret line="5" column="76" selection-start-line="5" selection-start-column="76" selection-end-line="5" selection-end-column="76" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out/html/package-summary.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="182" column="10" selection-start-line="182" selection-start-column="10" selection-end-line="182" selection-end-column="10" />
+              <folding>
+                <element signature="e#1999#2005#0" expanded="true" />
+                <element signature="e#2026#2032#0" expanded="true" />
+                <element signature="e#2199#2205#0" expanded="true" />
+                <element signature="e#2316#2322#0" expanded="true" />
+                <element signature="e#2389#2395#0" expanded="true" />
+                <element signature="e#3000#3006#1" expanded="true" />
+                <element signature="e#3194#3200#0" expanded="true" />
+                <element signature="e#3459#3465#1" expanded="true" />
+                <element signature="e#5256#5262#0" expanded="true" />
+                <element signature="e#5283#5289#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -224,8 +259,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="170" />
-    <option name="y" value="65" />
+    <option name="x" value="263" />
+    <option name="y" value="54" />
     <option name="width" value="1238" />
     <option name="height" value="762" />
   </component>
@@ -247,13 +282,13 @@
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="polyfun" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -386,13 +421,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Update Readme.">
-      <created>1559777464579</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1559777464579</updated>
     </task>
     <task id="LOCAL-00022" summary="adding out folder to repo">
       <created>1559783149735</created>
@@ -730,7 +758,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560816351351</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Fix link to Javadocs">
+      <created>1560816667271</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1560816667272</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -775,7 +810,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="170" y="65" width="1238" height="762" extended-state="0" />
+    <frame x="263" y="54" width="1238" height="762" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.20317726" />
@@ -841,7 +876,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created a test runner for the parameterized tests. Added - (minus sign) as a split delimiter in the compare unordered test." />
     <MESSAGE value="Testing more constructors and putting repeated code into PolyPairFactory." />
     <MESSAGE value="Test runner for non-parameterized tests." />
     <MESSAGE value="More tests for Polynomial.of(). Wrote raiseTo() but it gives different output that to() so don't use it." />
@@ -866,7 +900,8 @@
     <MESSAGE value="Removed Term.isLessThan and updated class diagram." />
     <MESSAGE value="Updated Java doc comments with @since tag and generated new Javadocs." />
     <MESSAGE value="Updated README Changelog regarding sort order of terms within a Coef." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README Changelog regarding sort order of terms within a Coef." />
+    <MESSAGE value="Fix link to Javadocs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix link to Javadocs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/polyfun_1_1_0$ParameterizedAddPolynomials__1_.ic" NAME="ParameterizedAddPolynomials (1) Coverage Results" MODIFIED="1560361469567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -1610,25 +1645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/html/package-summary.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="182" column="10" selection-start-line="182" selection-start-column="10" selection-end-line="182" selection-end-column="10" />
-          <folding>
-            <element signature="e#1999#2005#0" expanded="true" />
-            <element signature="e#2026#2032#0" expanded="true" />
-            <element signature="e#2199#2205#0" expanded="true" />
-            <element signature="e#2316#2322#0" expanded="true" />
-            <element signature="e#2389#2395#0" expanded="true" />
-            <element signature="e#3000#3006#1" expanded="true" />
-            <element signature="e#3194#3200#0" expanded="true" />
-            <element signature="e#3459#3465#1" expanded="true" />
-            <element signature="e#5256#5262#0" expanded="true" />
-            <element signature="e#5283#5289#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/TermTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-677">
@@ -1667,7 +1683,7 @@
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Term.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
-          <caret line="649" column="7" lean-forward="true" selection-start-line="649" selection-start-column="7" selection-end-line="649" selection-end-column="90" />
+          <caret line="649" column="7" selection-start-line="649" selection-start-column="7" selection-end-line="649" selection-end-column="90" />
           <folding>
             <element signature="e#2361#2362#0" expanded="true" />
             <element signature="e#2394#2395#0" expanded="true" />
@@ -1681,11 +1697,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/html/package-summary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="182" column="10" selection-start-line="182" selection-start-column="10" selection-end-line="182" selection-end-column="10" />
+          <folding>
+            <element signature="e#1999#2005#0" expanded="true" />
+            <element signature="e#2026#2032#0" expanded="true" />
+            <element signature="e#2199#2205#0" expanded="true" />
+            <element signature="e#2316#2322#0" expanded="true" />
+            <element signature="e#2389#2395#0" expanded="true" />
+            <element signature="e#3000#3006#1" expanded="true" />
+            <element signature="e#3194#3200#0" expanded="true" />
+            <element signature="e#3459#3465#1" expanded="true" />
+            <element signature="e#5256#5262#0" expanded="true" />
+            <element signature="e#5283#5289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="90">
-            <caret line="6" column="74" selection-start-line="6" selection-start-column="74" selection-end-line="6" selection-end-column="74" />
+          <first_editor relative-caret-position="75">
+            <caret line="5" column="76" selection-start-line="5" selection-start-column="76" selection-end-line="5" selection-end-column="76" />
           </first_editor>
           <second_editor />
         </state>

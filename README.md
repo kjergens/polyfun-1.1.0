@@ -35,6 +35,10 @@ These changes were made to be backward compatible. In other words, old XClass co
 * Added equals() methods to Atom and Term and put deprecation warning on identicalTo() methods.
 * Throughout the library, replaced use of deprecated methods with their newer counterparts.
 * Auto-reformatted code.
+* The sort was hard to find a pattern for, so created a new intra-Coef sort order for terms, E.g. (a_1+c_2+5)X.
+    * Sorts the atoms, then compares alphanumerically. Ignores the numerical coefficient.
+    * Unless there are no atoms, then just sorts by constant.
+    * For a mix of atoms and constant, the constant is "greater" so that it comes last.
 * Added Junit tests
 * Added class diagrams (see below).
 

@@ -646,7 +646,7 @@ public class Term implements Comparable<Term> {
     }
 
     /**
-     * Used for Arrays.sort and using comparison operators.
+     * Used for Arrays.sort.
      * Sorts the atoms, then compares alphanumerically. Ignores the numerical coefficient.
      * @param t Term to compare to
      * @return 0 for equal, -1 for less than, 1 for greater than.

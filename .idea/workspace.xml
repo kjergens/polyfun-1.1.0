@@ -5,9 +5,8 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="Re-link to Javadocs in out/html">
+    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,7 +94,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="75">
-                <caret line="5" column="99" selection-start-line="5" selection-start-column="99" selection-end-line="5" selection-end-column="99" />
+                <caret line="5" column="115" selection-start-line="5" selection-start-column="115" selection-end-line="5" selection-end-column="115" />
               </first_editor>
               <second_editor />
             </state>
@@ -224,8 +223,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="226" />
-    <option name="y" value="80" />
+    <option name="x" value="168" />
+    <option name="y" value="29" />
     <option name="width" value="1238" />
     <option name="height" value="784" />
   </component>
@@ -243,41 +242,6 @@
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="dalton" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="dalton" type="462c0819:PsiDirectoryNode" />
-              <item name="polyfun" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
@@ -415,20 +379,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Updated Readme">
-      <created>1559789960281</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1559789960281</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Updated relative paths in JavaDocs">
-      <created>1559790663214</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1559790663215</updated>
     </task>
     <task id="LOCAL-00027" summary="Trying to fix search in Javadocs">
       <created>1559791315168</created>
@@ -759,7 +709,21 @@
       <option name="project" value="LOCAL" />
       <updated>1560817668723</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="package-summary not showing up for some reason, so changing link to Polynomial page.">
+      <created>1560818308573</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1560818308573</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Javadocs seem to be published now, changing link back.">
+      <created>1560818515461</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1560818515461</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -804,8 +768,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="226" y="80" width="1238" height="784" extended-state="0" />
-    <editor active="true" />
+    <frame x="168" y="29" width="1238" height="784" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.22658862" />
       <window_info id="Image Layers" order="1" />
@@ -870,8 +833,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Put testlib folder in a package in the test folder. Marked test folder as test, not source." />
-    <MESSAGE value="Fix raiseTo(). Re-arranged test code again." />
     <MESSAGE value="Fix in Coef.simply to handle 0-len term arrays.&#10;Fix in Coef.times to ignore empty terms (terms that exist with a coef of 0 and empty Atom array)." />
     <MESSAGE value="Fix bug where Atoms array was set to null instead of Atom[0]. It had downstream effects on of(), times() and plus()." />
     <MESSAGE value="Fix where trailing + appearing in poly.toString() and where there would be a +- instead of just a -." />
@@ -895,7 +856,9 @@
     <MESSAGE value="Re-made Javadocs in out/html folder and Fixed link to Javadocs" />
     <MESSAGE value="Remove all Javadocs and start over." />
     <MESSAGE value="Re-generated Javadocs in out/html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-generated Javadocs in out/html" />
+    <MESSAGE value="package-summary not showing up for some reason, so changing link to Polynomial page." />
+    <MESSAGE value="Javadocs seem to be published now, changing link back." />
+    <option name="LAST_COMMIT_MESSAGE" value="Javadocs seem to be published now, changing link back." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/polyfun_1_1_0$ParameterizedAddPolynomials__1_.ic" NAME="ParameterizedAddPolynomials (1) Coverage Results" MODIFIED="1560361469567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -1672,7 +1635,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="75">
-            <caret line="5" column="99" selection-start-line="5" selection-start-column="99" selection-end-line="5" selection-end-column="99" />
+            <caret line="5" column="115" selection-start-line="5" selection-start-column="115" selection-end-line="5" selection-end-column="115" />
           </first_editor>
           <second_editor />
         </state>

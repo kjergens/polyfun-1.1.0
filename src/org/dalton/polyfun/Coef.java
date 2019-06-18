@@ -22,6 +22,7 @@ public class Coef {
 
     /**
      * Default constructor.
+     * @since 1.0.0
      */
     public Coef() {
     }
@@ -30,6 +31,7 @@ public class Coef {
      * Constructor that takes an array of Terms and copies the values into the terms array.
      *
      * @param terms the Term array to copy
+     * @since 1.0.0
      */
     public Coef(Term[] terms) {
         this.terms = new Term[terms.length];
@@ -47,6 +49,7 @@ public class Coef {
      * Construct a Coef with just 1 term. The Term is inserted into an array of length 1.
      *
      * @param term A single Term that becomes the Coef.
+     * @since 1.0.0
      */
     public Coef(Term term) {
         term.reduce();
@@ -57,6 +60,7 @@ public class Coef {
      * Construct a Coef with just 1 Atom. The Atom is made into a Term and the Term is put into an array.
      *
      * @param atom Atom object used to initialize a term which will be the only element in the terms array.
+     * @since 1.0.0
      */
     public Coef(Atom atom) {
         Term term = new Term(atom);   // TODO: Better to make a copy of atom first?
@@ -69,6 +73,7 @@ public class Coef {
      * The constant is converted into a Term and the Term is put into the array.
      *
      * @param constant
+     * @since 1.0.0
      */
     public Coef(double constant) {
         Term term = new Term(constant);
@@ -80,6 +85,7 @@ public class Coef {
      * Construct a Coef with just one letter (no numerical coefficient or exponent).
      *
      * @param letter Used to create the term, which is the only element in the Term array.
+     * @since 1.0.0
      */
     public Coef(char letter) {
         Term term = new Term(letter);
@@ -91,6 +97,7 @@ public class Coef {
      * Get terms array.
      *
      * @return terms array
+     * @since 1.0.0
      */
     public Term[] getTerms() {
         return this.terms;
@@ -100,6 +107,7 @@ public class Coef {
      * Set terms array. The array passed in is copied to the terms attribute.
      *
      * @param terms
+     * @since 1.0.0
      */
     public void setTerms(Term[] terms) {
         this.terms = new Term[terms.length];
@@ -115,6 +123,7 @@ public class Coef {
      * Set terms array with this term as the only element
      *
      * @param term term that will make up the terms array
+     * @since 1.0.0
      */
     public void setTerms(Term term) {
         term.reduce();
@@ -124,10 +133,9 @@ public class Coef {
     /**
      * Create new Ceof array with the first Term removed. Meant for array > 1 only.
      * <p>
-     * TODO: Make this so it actually updates the coefs attribute and returns the popped Term.
-     * TODO: Rename pop()
      *
-     * @return New Coef with one less Term.
+     * @return  a new Coef with one less Term.
+     * @since 1.0.0
      */
     public Coef snip() {
         Term[] terms = new Term[this.getTerms().length - 1];
@@ -143,6 +151,7 @@ public class Coef {
      * Remove first Term.
      *
      * @return The popped Term or null
+     * @since 1.1.0
      */
     public Term pop() {
         if (this.getTerms().length == 0) {
@@ -170,6 +179,7 @@ public class Coef {
      *
      * @param term Term to place in front.
      * @return A new Coef with another Term (original Coef is not changed)
+     * @since 1.0.0
      */
     public Coef paste(Term term) {
         Term[] terms = new Term[this.getTerms().length + 1];
@@ -186,7 +196,8 @@ public class Coef {
      * Inserts new Term at the front of the array of Terms.
      *
      * @param term Term to place in front.
-     * @return nothing
+     * @return
+     * @since 1.1.0
      **/
     public void push(Term term) {
         Term[] terms = new Term[this.getTerms().length + 1];
@@ -204,6 +215,7 @@ public class Coef {
      *
      * @param term
      * @return A new Coef with another Term (original Coef is not changed)
+     * @since 1.0.0
      */
     public Coef place(Term term) {
         Coef coef = new Coef(this.terms);
@@ -235,6 +247,7 @@ public class Coef {
      *
      * @param term
      * @return
+     * @since 1.1.0
      */
     public void insert(Term term) {
 
@@ -264,6 +277,7 @@ public class Coef {
      * Combines like terms and writes them in order.
      *
      * @return this The original Coef is permanently altered.
+     * @since 1.0.0
      */
     public Coef simplify() {
         Coef coef = new Coef(this.getTerms());
@@ -283,6 +297,7 @@ public class Coef {
      * Combines like terms and writes them in order.
      *
      * @return nothing The original Coef is permanently altered.
+     * @since 1.1.0
      */
     public void reduce() {
         // Save a copy of the current terms.
@@ -305,6 +320,7 @@ public class Coef {
      *
      * @param coef The Coef object to multiply to this one.
      * @return the product
+     * @since 1.0.0
      */
     public Coef times(Coef coef) {
         Term[] terms = new Term[this.getTerms().length * coef.getTerms().length];
@@ -329,6 +345,7 @@ public class Coef {
      *
      * @param scalar The double to multiply it by
      * @return Coef that's been multiplied by a scalar
+     * @since 1.0.0
      */
     public Coef times(double scalar) {
         Term[] terms = new Term[this.getTerms().length];
@@ -343,8 +360,9 @@ public class Coef {
     /**
      * Add Coefs by combining like Terms and adding unlike Terms
      *
-     * @param coef Coef to be added to the first Coef
-     * @return sumCoef The sum of this and that
+     * @param coef  Coef to be added to the first Coef
+     * @return      The sum of this and that
+     * @since 1.0.0
      */
     public Coef plus(Coef coef) {
         // Ignore zero terms.
@@ -371,7 +389,8 @@ public class Coef {
     /**
      * If the Coef is zero, it returns true.
      *
-     * @return true if the Coeff is 0
+     * @return  true if the Coeff is 0
+     * @since 1.0.0
      */
     public boolean isZero() {
         this.reduce(); // TODO. It seems wrong to change a Coef in an isXXX method.
@@ -390,6 +409,7 @@ public class Coef {
      * True if Coef consists only of a double, false otherwise
      *
      * @return True if Coef consists only of a double, false otherwise
+     * @since 1.0.0
      * @deprecated use {@link #isConstantCoef()} instead.
      */
     @Deprecated
@@ -402,6 +422,7 @@ public class Coef {
      * True if Coef consists only of a double, false otherwise.
      *
      * @return True if Coef consists only of a double, false otherwise
+     * @since 1.1.0
      */
     public boolean isConstantCoef() {
         this.reduce();
@@ -409,6 +430,7 @@ public class Coef {
     }
 
     /**
+     * @since 1.0.0
      * @deprecated Use {@link #toString()} instead.
      */
     @Deprecated
@@ -435,6 +457,7 @@ public class Coef {
      * Compose a printable string of the Coef.
      *
      * @return a printable string
+     * @since 1.1.0
      */
     @Override
     public String toString() {

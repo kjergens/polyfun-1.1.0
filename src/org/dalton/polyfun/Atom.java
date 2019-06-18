@@ -20,10 +20,18 @@ public class Atom implements Comparable<Atom> {
 
     /**
      * Default constructor.
+     * @since 1.0.0
      */
     public Atom() {
     }
 
+    /**
+     * Construct a letter, subscript, power. E.g. 'a', 1, 2 will make the atom a_1^2.
+     * @param letter
+     * @param subscript
+     * @param power
+     * @since 1.0.0
+     */
     public Atom(char letter, int subscript, int power) {
         this.letter = letter;
         this.subscript = subscript;
@@ -34,6 +42,7 @@ public class Atom implements Comparable<Atom> {
      * Create an atom with just a letter.
      *
      * @param letter The new letter.
+     * @since 1.0.0
      */
     public Atom(char letter) {
         this.letter = letter;
@@ -42,7 +51,8 @@ public class Atom implements Comparable<Atom> {
     /**
      * Get letter
      *
-     * @return
+     * @return  This atom's letter variable
+     * @since 1.0.0
      */
     public char getLetter() {
         return this.letter;
@@ -51,7 +61,8 @@ public class Atom implements Comparable<Atom> {
     /**
      * Get subscript
      *
-     * @return
+     * @return This atom's subscript
+     * @since 1.0.0
      */
     public int getSubscript() {
         return this.subscript;
@@ -60,7 +71,8 @@ public class Atom implements Comparable<Atom> {
     /**
      * Get power
      *
-     * @return
+     * @return  This atom's exponent
+     * @since 1.0.0
      */
     public int getPower() {
         return this.power;
@@ -70,6 +82,7 @@ public class Atom implements Comparable<Atom> {
      * Set letter.
      *
      * @param letter
+     * @since 1.0.0
      */
     public void setLetter(char letter) {
         this.letter = letter;
@@ -79,6 +92,7 @@ public class Atom implements Comparable<Atom> {
      * Set subscript.
      *
      * @param subscript
+     * @since 1.0.0
      */
     public void setSubscript(int subscript) {
         this.subscript = subscript;
@@ -88,6 +102,7 @@ public class Atom implements Comparable<Atom> {
      * Set power.
      *
      * @param power
+     * @since 1.0.0
      */
     public void setPower(int power) {
         this.power = power;
@@ -99,6 +114,7 @@ public class Atom implements Comparable<Atom> {
      * @param letter    The letter
      * @param subscript The subscript
      * @param power     The power (i.e. exponent)
+     * @since 1.0.0
      */
     public void setAtom(char letter, int subscript, int power) {
         this.letter = letter;
@@ -115,6 +131,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom the like atom to multiply by
      * @return the product
+     * @since 1.0.0
      */
     public Atom timesLikeAtom(Atom atom) {
         return new Atom(this.getLetter(), this.subscript, this.getPower() + atom.getPower());
@@ -125,6 +142,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom Atom to compare this to.
      * @return true if the two Atoms have same letter and subscript.
+     * @since 1.0.0
      * @deprecated Use {@link #isLike(Atom)} instead.
      */
     @Deprecated
@@ -137,6 +155,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom Atom to compare this to.
      * @return true if the two Atoms have same letter and subscript.
+     * @since 1.1.0
      */
     public boolean isLike(Atom atom) {
         return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript();
@@ -150,6 +169,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom Atom to compare this to.
      * @return true if this is less than or equal to the atom passed in.
+     * @since 1.0.0
      * @deprecated Use {@link #isLessThanOrEquals(Atom)} instead.
      */
     @Deprecated
@@ -176,6 +196,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom Atom to compare this to.
      * @return true if this is less than or equal to the atom passed in.
+     * @since 1.1.0
      */
     public boolean isLessThanOrEquals(Atom atom) {
         // First check for equals
@@ -206,6 +227,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom Atom to compare this to.
      * @return true if this is less than the atom passed in
+     * @since 1.0.0
      * @deprecated Use {@link #isLessThan(Atom)} instead
      */
     @Deprecated
@@ -222,6 +244,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom Atom to compare this to.
      * @return true if this is less than the atom passed in
+     * @since 1.1.0
      */
     public boolean isLessThan(Atom atom) {
         if (this.getLetter() < atom.getLetter()) return true;
@@ -234,6 +257,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom
      * @return true if same
+     * @since 1.0.0
      * @deprecated Use {@link #equals(Atom)} instead.
      */
     @Deprecated
@@ -245,6 +269,7 @@ public class Atom implements Comparable<Atom> {
     /**
      * Prints the Atom.
      *
+     * @since 1.0.0
      * @deprecated Use {@link #toString()} instead
      */
     @Deprecated
@@ -267,6 +292,7 @@ public class Atom implements Comparable<Atom> {
      *
      * @param atom - The org.dalton.polyfun.Atom to compare to this one.
      * @return boolean
+     * @since 1.1.0
      */
     public boolean equals(Atom atom) {
         return this.getLetter() == atom.getLetter() && this.getSubscript() == atom.getSubscript()
@@ -277,6 +303,7 @@ public class Atom implements Comparable<Atom> {
      * Returns a printable string of the Atom.
      *
      * @return A string.
+     * @since 1.1.0
      */
     @Override
     public String toString() {
@@ -297,6 +324,12 @@ public class Atom implements Comparable<Atom> {
         return string;
     }
 
+    /**
+     *
+     * @param a
+     * @return  -1 for less than, 0 for equal, 1 for greater than
+     * @since 1.1.0
+     */
     public int compareTo(Atom a) {
         if (this.equals(a))
             return 0;

@@ -26,6 +26,7 @@ public class Polynomial {
 
     /**
      * Default constructor.
+     * @since 1.0.0
      */
     public Polynomial() {
     }
@@ -34,6 +35,7 @@ public class Polynomial {
      * Construct a Polynomial by specifying an array of Coefs
      *
      * @param coefs The array of Coefs.
+     * @since 1.0.0
      */
     public Polynomial(Coef[] coefs) {
         this.degree = coefs.length - 1;
@@ -45,6 +47,7 @@ public class Polynomial {
      * which creates the Coef array.
      *
      * @param numericalCoefficients array of numerical coefficients
+     * @since 1.0.0
      */
     public Polynomial(double[] numericalCoefficients) {
         this.degree = numericalCoefficients.length - 1;
@@ -59,6 +62,7 @@ public class Polynomial {
      * Construct a Polynomial by setting the degree.
      *
      * @param degree The degree of the polynomial
+     * @since 1.0.0
      */
     public Polynomial(int degree) {
         this.degree = degree;
@@ -70,6 +74,7 @@ public class Polynomial {
      * Note: This has a very different behavior than Polynomial(int degree)
      *
      * @param constant The constant term of the zeroth degree polynomial.
+     * @since 1.0.0
      */
     public Polynomial(double constant) {
         this.coefs = new Coef[1];
@@ -83,6 +88,7 @@ public class Polynomial {
      *
      * @param numericalCoefficient The coefficient
      * @param degree               The degree of the term and the polynomial
+     * @since 1.0.0
      */
     public Polynomial(double numericalCoefficient, int degree) {
         this.coefs = new Coef[degree + 1];
@@ -100,6 +106,7 @@ public class Polynomial {
      * For example: with atom = a_0 this creates p(x) = a_0.
      *
      * @param atom The Atom which becomes the polynomial
+     * @since 1.0.0
      */
     public Polynomial(Atom atom) {
         this.coefs = new Coef[1];
@@ -113,6 +120,7 @@ public class Polynomial {
      *
      * @param atom   The Atom which becomes the coefficient
      * @param degree The degree of the polynomial
+     * @since 1.0.0
      */
     public Polynomial(Atom atom, int degree) {
         this.coefs = new Coef[degree + 1];
@@ -130,6 +138,7 @@ public class Polynomial {
      * a double (i.e. a Term). For example: with term = 3ab this creates p(x) = 3ab.
      *
      * @param term Term is an abstract constant and a coefficient.
+     * @since 1.0.0
      */
     public Polynomial(Term term) {
         this.coefs = new Coef[1];
@@ -143,6 +152,7 @@ public class Polynomial {
      *
      * @param term
      * @param degree
+     * @since 1.0.0
      */
     public Polynomial(Term term, int degree) {
         this.coefs = new Coef[degree + 1];
@@ -160,6 +170,7 @@ public class Polynomial {
      * For example: with coef = 3ab+c this creates p(x) = 3ab+c.
      *
      * @param coef A Coef object is an array of Terms, which becomes the coefficient.
+     * @since 1.0.0
      */
     public Polynomial(Coef coef) {
         this.coefs = new Coef[1];
@@ -173,6 +184,7 @@ public class Polynomial {
      *
      * @param coef   A Coef object is an array of Terms, which becomes the coefficient.
      * @param degree The degree of the polynomial
+     * @since 1.0.0
      */
     public Polynomial(Coef coef, int degree) {
         // Fill the highest degree with the given coef.
@@ -193,6 +205,7 @@ public class Polynomial {
      *
      * @param letter The letter for the base of each coefficient. Subscripts are automatically applied.
      * @param degree The degree of the polynomial
+     * @since 1.0.0
      */
     public Polynomial(char letter, int degree) {
         this.coefs = new Coef[degree + 1];
@@ -212,6 +225,7 @@ public class Polynomial {
      * Gets the degree of the Polynomial.
      *
      * @return degree The degree of the polynomial
+     * @since 1.0.0
      */
     public int getDegree() {
         return this.degree;
@@ -219,7 +233,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow naming convention.
-     *
+     * @since 1.0.0
      * @deprecated use {@link #getCoefAt(int)} instead.
      */
     @Deprecated
@@ -229,10 +243,11 @@ public class Polynomial {
 
     /**
      * Retrieve a specific coefficient by specifying the x which corresponds with that
-     * org.dalton.polyfun.Coef. Returns a org.dalton.polyfun.Coef.
+     * Coef. Returns a Coef.
      *
      * @param index
-     * @return org.dalton.polyfun.Coef
+     * @return  Coef
+     * @since 1.1.0
      */
     public Coef getCoefAt(int index) {
         return this.coefs[index];
@@ -240,7 +255,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow naming convention.
-     *
+     * @since 1.0.0
      * @deprecated use {@link #getCoefs()} instead.
      */
     @Deprecated
@@ -252,6 +267,7 @@ public class Polynomial {
      * Get the Coef array.
      *
      * @return the array of Coefs.
+     * @since 1.0.0
      */
     public Coef[] getCoefs() {
         return this.coefs;
@@ -261,6 +277,7 @@ public class Polynomial {
      * Sets the degree of the Polynomial.
      *
      * @param degree The degree to set (also specifies length of coeffs array)
+     * @since 1.0.0
      */
     public void setDegree(int degree) {
         this.degree = degree;
@@ -269,7 +286,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow naming convention.
-     *
+     * @since 1.0.0
      * @deprecated use {@link #setCoefs(Coef[])} ()} instead.
      */
     @Deprecated
@@ -283,7 +300,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow naming convention.
-     *
+     * @since 1.0.0
      * @deprecated use {@link #setCoefs(double[])} instead.
      */
     @Deprecated
@@ -301,6 +318,7 @@ public class Polynomial {
      * Set the Coefs array of the polynomial.
      *
      * @param coefs Coef array to copy into the polynomial. Also changes the degree.
+     * @since 1.1.0
      */
     public void setCoefs(Coef[] coefs) {
         this.degree = coefs.length - 1;
@@ -316,6 +334,7 @@ public class Polynomial {
      * Set the Coefs array of the polynomial.
      *
      * @param coefficients Constants to make Coef objects out of.
+     * @since 1.1.0
      */
     public void setCoefs(double[] coefficients) {
         this.degree = coefficients.length - 1;
@@ -332,6 +351,7 @@ public class Polynomial {
      *
      * @param polynomial Polynomial  to add
      * @return the sum
+     * @since 1.0.0
      */
     public Polynomial plus(Polynomial polynomial) {
         int biggerDegree = Math.max(this.getDegree(), polynomial.getDegree());
@@ -364,8 +384,9 @@ public class Polynomial {
     /**
      * Subtracts two GenPolynomials.
      *
-     * @param polynomial Polynomial to substract
-     * @return The difference
+     * @param polynomial    Polynomial to substract
+     * @return  The difference
+     * @since 1.0.0
      */
     public Polynomial minus(Polynomial polynomial) {
         return this.plus(polynomial.times(-1.0D));
@@ -376,6 +397,7 @@ public class Polynomial {
      *
      * @param scalar to multiply
      * @return the product
+     * @since 1.0.0
      */
     public Polynomial times(double scalar) {
         Coef[] coefs = new Coef[this.getDegree() + 1];
@@ -392,6 +414,7 @@ public class Polynomial {
      *
      * @param coef to multiply
      * @return the product
+     * @since 1.0.0
      */
     public Polynomial times(Coef coef) {
         Coef[] coefs = new Coef[this.getDegree() + 1];
@@ -408,6 +431,7 @@ public class Polynomial {
      *
      * @param polynomial to multiply
      * @return the product
+     * @since 1.0.0
      */
     public Polynomial times(Polynomial polynomial) {
         Coef[] coefs = new Coef[this.getDegree() + polynomial.getDegree() + 1];
@@ -433,6 +457,7 @@ public class Polynomial {
      *
      * @param power to raise by
      * @return Polynomial the result.
+     * @since 1.0.0
      */
     public Polynomial to(int power) {
         Polynomial polynomial = new Polynomial(1.0D);
@@ -448,6 +473,7 @@ public class Polynomial {
      *
      * @param power to raise by
      * @return Polynomial the result.
+     * @since 1.1.0
      */
     public Polynomial raiseTo(int power) {
         Polynomial polynomial;
@@ -468,6 +494,7 @@ public class Polynomial {
      * Adds the Polynomial p(x) = mx + b to a Polynomial
      *
      * @return The new GenPoynomial with mx + b added to it.
+     * @since 1.0.0
      */
     public Polynomial addTangent() {
         Atom atomSlope = new Atom('m');
@@ -487,6 +514,7 @@ public class Polynomial {
      *
      * @param polynomial The inner polynomial
      * @return The new polynomial which is the composition
+     * @since 1.0.0
      */
     public Polynomial of(Polynomial polynomial) {
         Polynomial result = new Polynomial(0.0D);
@@ -511,7 +539,8 @@ public class Polynomial {
      * double from it.
      *
      * @param value The value to plug into the polynomial
-     * @return org.dalton.polyfun.Coef the result
+     * @return  Coef the result
+     * @since 1.0.0
      */
     public Coef evaluate(double value) {
         Polynomial polynomial = new Polynomial(value);
@@ -530,7 +559,8 @@ public class Polynomial {
      * p(a^2) = (a^2)^2 + 5 = a^4 + 5
      *
      * @param coef The coef to plug into the polynomial.
-     * @return org.dalton.polyfun.Coef object
+     * @return Coef object
+     * @since 1.0.0
      */
     public Coef evaluate(Coef coef) {
         Polynomial polynomial = new Polynomial(coef);
@@ -543,6 +573,11 @@ public class Polynomial {
         return result;
     }
 
+    /**
+     *
+     * @return  true if plottable
+     * @since 1.0.0
+     */
     public boolean isPlottable() {
         int degree = -1;
 
@@ -557,7 +592,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow convention.
-     *
+     * @since 1.0.0
      * @deprecated use {@link #toString()} instead.
      */
     @Deprecated
@@ -602,6 +637,7 @@ public class Polynomial {
      * Returns a printable string.
      *
      * @return String representing the polynomial.
+     * @since 1.1.0
      */
     @Override
     public String toString() {

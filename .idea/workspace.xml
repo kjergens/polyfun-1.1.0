@@ -5,28 +5,17 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="Re-link to Javadocs in out/html">
+    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Coef.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Term.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/AtomTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/BasicTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/CoefTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedAddPolynomials.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedAddTangents.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedEvaluateCoefs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedEvaluateScalar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedMultiplyPolynomials.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedOf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedPolynomialTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedSubtractPolynomials.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedTestRunner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedTestSuite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/PolynomialTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/TermTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/TestRunner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/TestSuite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Coef.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Term.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/CoefPairFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/ParameterizedRaiseTo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/PolyPairFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/lib/CoefPair.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/lib/PolyPair.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/polyfun-1.1.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/polyfun-1.1.0.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -44,15 +33,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Atom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
+            <state relative-caret-position="5372">
               <caret line="330" column="7" selection-start-line="330" selection-start-column="7" selection-end-line="330" selection-end-column="7" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/META-INF/MANIFEST.MF">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -69,6 +53,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1428">
               <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/ParameterizedPolynomialTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="588">
+              <caret line="39" column="87" selection-start-line="39" selection-start-column="87" selection-end-line="39" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -219,7 +215,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="17" />
+    <option name="x" value="101" />
+    <option name="y" value="16" />
     <option name="width" value="1192" />
     <option name="height" value="678" />
   </component>
@@ -266,15 +263,17 @@
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -294,7 +293,7 @@
     <property name="last.edited.regexp" value="Sample Text" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -328,7 +327,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.polyfun-1.1.0.jar">
+  <component name="RunManager" selected="JUnit.ParameterizedPolynomialTest">
     <configuration name="AtomTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="polyfun-1.1.0" />
       <option name="PACKAGE_NAME" value="" />
@@ -382,11 +381,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JAR Application.polyfun-1.1.0.jar" />
         <item itemvalue="JUnit.ParameterizedPolynomialTest" />
+        <item itemvalue="JUnit.AtomTest" />
+        <item itemvalue="JAR Application.polyfun-1.1.0.jar" />
         <item itemvalue="JUnit.PolynomialTest" />
         <item itemvalue="JUnit.CoefTest" />
-        <item itemvalue="JUnit.AtomTest" />
       </list>
     </recent_temporary>
   </component>
@@ -400,20 +399,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Updated Readme">
-      <created>1559789960281</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1559789960281</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Updated relative paths in JavaDocs">
-      <created>1559790663214</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1559790663215</updated>
     </task>
     <task id="LOCAL-00027" summary="Trying to fix search in Javadocs">
       <created>1559791315168</created>
@@ -744,7 +729,21 @@
       <option name="project" value="LOCAL" />
       <updated>1560817668723</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="recompiled, new jar">
+      <created>1560904807051</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1560904807052</updated>
+    </task>
+    <task id="LOCAL-00075" summary="recompiled, new jar">
+      <created>1560904904112</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1560904904112</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -789,7 +788,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="17" y="0" width="1192" height="678" extended-state="0" />
+    <frame x="101" y="16" width="1192" height="678" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.23391305" />
       <window_info id="Image Layers" order="1" />
@@ -854,7 +853,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Put testlib folder in a package in the test folder. Marked test folder as test, not source." />
     <MESSAGE value="Fix raiseTo(). Re-arranged test code again." />
     <MESSAGE value="Fix in Coef.simply to handle 0-len term arrays.&#10;Fix in Coef.times to ignore empty terms (terms that exist with a coef of 0 and empty Atom array)." />
     <MESSAGE value="Fix bug where Atoms array was set to null instead of Atom[0]. It had downstream effects on of(), times() and plus()." />
@@ -879,7 +877,8 @@
     <MESSAGE value="Re-made Javadocs in out/html folder and Fixed link to Javadocs" />
     <MESSAGE value="Remove all Javadocs and start over." />
     <MESSAGE value="Re-generated Javadocs in out/html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-generated Javadocs in out/html" />
+    <MESSAGE value="recompiled, new jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="recompiled, new jar" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/polyfun_1_1_0$ParameterizedAddPolynomials__1_.ic" NAME="ParameterizedAddPolynomials (1) Coverage Results" MODIFIED="1560361469567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -1173,16 +1172,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ParameterizedPolynomialTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="39" column="87" selection-start-line="39" selection-start-column="87" selection-end-line="39" selection-end-column="87" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/PolynomialTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8430">
@@ -1216,30 +1205,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Atom.html" />
     <entry file="file://$PROJECT_DIR$/out/html/package-summary.html" />
-    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Atom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="330" column="7" selection-start-line="330" selection-start-column="7" selection-end-line="330" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3349">
-          <caret line="199" column="17" selection-start-line="199" selection-start-column="17" selection-end-line="199" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/AtomTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Term.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10693">
@@ -1265,6 +1230,40 @@
     <entry file="file://$PROJECT_DIR$/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Atom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5372">
+          <caret line="330" column="7" selection-start-line="330" selection-start-column="7" selection-end-line="330" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3349">
+          <caret line="199" column="17" selection-start-line="199" selection-start-column="17" selection-end-line="199" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/AtomTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ParameterizedPolynomialTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="39" column="87" selection-start-line="39" selection-start-column="87" selection-end-line="39" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -1281,7 +1280,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

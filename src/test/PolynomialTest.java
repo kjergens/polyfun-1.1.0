@@ -581,7 +581,7 @@ public class PolynomialTest {
         Polynomial sum = polynomial.addTangent();
 
         // Compare strings
-        assertThat(sum.toString(), is("(1.0)X^2+(m+1.0)X+b"));
+        assertThat(sum.toString(), is("X^2+(m+1.0)X+b"));
     }
 
     public static void comparePolynomials(polyfun.Polynomial oldPoly, Polynomial newPoly) {

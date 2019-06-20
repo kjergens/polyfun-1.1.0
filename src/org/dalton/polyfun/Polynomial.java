@@ -26,6 +26,7 @@ public class Polynomial {
 
     /**
      * Default constructor.
+     *
      * @since 1.0.0
      */
     public Polynomial() {
@@ -233,6 +234,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow naming convention.
+     *
      * @since 1.0.0
      * @deprecated use {@link #getCoefAt(int)} instead.
      */
@@ -246,7 +248,7 @@ public class Polynomial {
      * Coef. Returns a Coef.
      *
      * @param index
-     * @return  Coef
+     * @return Coef
      * @since 1.1.0
      */
     public Coef getCoefAt(int index) {
@@ -255,6 +257,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow naming convention.
+     *
      * @since 1.0.0
      * @deprecated use {@link #getCoefs()} instead.
      */
@@ -286,6 +289,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow naming convention.
+     *
      * @since 1.0.0
      * @deprecated use {@link #setCoefs(Coef[])} ()} instead.
      */
@@ -300,6 +304,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow naming convention.
+     *
      * @since 1.0.0
      * @deprecated use {@link #setCoefs(double[])} instead.
      */
@@ -325,7 +330,7 @@ public class Polynomial {
         this.coefs = coefs;
 
         // Reduce the terms
-        for (Coef coef: coefs) {
+        for (Coef coef : coefs) {
             coef.reduce();
         }
     }
@@ -384,8 +389,8 @@ public class Polynomial {
     /**
      * Subtracts two GenPolynomials.
      *
-     * @param polynomial    Polynomial to substract
-     * @return  The difference
+     * @param polynomial Polynomial to substract
+     * @return The difference
      * @since 1.0.0
      */
     public Polynomial minus(Polynomial polynomial) {
@@ -539,7 +544,7 @@ public class Polynomial {
      * double from it.
      *
      * @param value The value to plug into the polynomial
-     * @return  Coef the result
+     * @return Coef the result
      * @since 1.0.0
      */
     public Coef evaluate(double value) {
@@ -574,8 +579,7 @@ public class Polynomial {
     }
 
     /**
-     *
-     * @return  true if plottable
+     * @return true if plottable
      * @since 1.0.0
      */
     public boolean isPlottable() {
@@ -592,6 +596,7 @@ public class Polynomial {
 
     /**
      * Doesn't follow convention.
+     *
      * @since 1.0.0
      * @deprecated use {@link #toString()} instead.
      */
@@ -643,17 +648,27 @@ public class Polynomial {
     public String toString() {
         StringBuilder string = new StringBuilder();
 
-        // Get 2-degree terms and higher
+        // Get each term of order 2 and higher
         for (int i = this.getDegree(); i > 1; i--) {
-            if (!this.getCoefAt(i).isZero()) {
-                string.append("(").append(this.getCoefAt(i).toString()).append(")X^").append(i);
 
-                // Skip zero terms
-                int j = i - 1;
-                while (j > 0 && this.getCoefAt(j).isZero()) j--;
+            if (!this.getCoefAt(i).isZero()) {
+
+                if (this.getCoefAt(i).isConstantCoef() &&
+                        this.getCoefAt(i).getTerms()[0].getNumericalCoefficient() == 1.0) {
+                    // If the coef is 1.0, don't print the coef
+                    string.append("X^").append(i);
+                } else {
+                    // For more complex coefs, surround with ( )
+                    string.append("(").append(this.getCoefAt(i).toString()).append(")X^").append(i);
+                }
+
+                // Look back to see if there's any more coefs
+                int prev = i - 1;
+                while (prev > 0 && this.getCoefAt(prev).isZero()) prev--;
 
                 // If not at end append a "+"
-                if (j != 0) string.append("+");
+                if (prev != 0) string.append("+");
+
             }
         }
 
@@ -661,7 +676,14 @@ public class Polynomial {
         if (this.getDegree() > 0) {
             // Get term with no exponent (X exponent is 1)
             if (!this.getCoefAt(1).isZero()) {
-                string.append("(").append(this.getCoefAt(1).toString()).append(")X");
+                if (this.getCoefAt(1).isConstantCoef() &&
+                        this.getCoefAt(1).getTerms()[0].getNumericalCoefficient() == 1.0) {
+                    // If the coef is 1.0, don't print the coef
+                    string.append("X");
+                } else {
+                    // For more complex coefs, surround with ( )
+                    string.append("(").append(this.getCoefAt(1).toString()).append(")X");
+                }
             }
 
             // Get constant term (no X invariate)

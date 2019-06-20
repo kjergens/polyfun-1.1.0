@@ -666,7 +666,9 @@ public class Polynomial {
 
             // Get constant term (no X invariate)
             if (!this.getCoefAt(0).isZero()) {
-                string.append("+").append(this.getCoefAt(0).toString());
+                String constant = this.getCoefAt(0).toString();
+                if (!constant.startsWith("-")) string.append("+");
+                string.append(constant);
             }
         } else if (this.getDegree() == 0 && !this.getCoefAt(0).isZero()) {
             string.append(this.getCoefAt(0).toString());

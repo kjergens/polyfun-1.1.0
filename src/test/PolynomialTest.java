@@ -363,7 +363,7 @@ public class PolynomialTest {
 
         // Compare strings
         oldResult.print();
-        assertThat(newResult.toString(), is(outContent.toString().replace("\n", "")));
+        assertThat(newResult.toString(), is(outContent.toString().replace("\n", "").replace("+-", "-")));
     }
 
     @Test

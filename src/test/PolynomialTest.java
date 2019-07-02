@@ -288,6 +288,12 @@ public class PolynomialTest {
     }
 
     @Test
+    public void constructorDegree() {
+        Polynomial polynomial = new Polynomial(2);
+        assertThat(polynomial.toString(), is("X^2"));
+    }
+
+    @Test
     public void constructorCoefArray() {
         // (a_1^2b_2^3b_3^4+b_3^4d_1^2d_3+c_1^4e_2)X
         Term[] terms = new Term[3];
@@ -582,6 +588,36 @@ public class PolynomialTest {
 
         // Compare strings
         assertThat(sum.toString(), is("X^2+(m+1.0)X+b"));
+    }
+
+    @Test
+    public void toStringMinusSignsManyDegrees() {
+        String expected = "(-5.0)X^8+(-4.0)X^7+(-2.0)X^6+(-7.0)X^5+(-6.0)X^4+(-5.0)X^3+(-4.0)X^2+(-3.0)X-2.0";
+        double[] coefs = {-2,-3,-4,-5,-6,-7,-2,-4,-5};
+        Polynomial polynomial = new Polynomial(coefs);
+
+        // Compare strings
+        assertThat(polynomial.toString(), is (expected));
+    }
+
+    @Test
+    public void toStringMinusSignsOneManyDegrees() {
+        String expected = "(-1.0)X^8+(-1.0)X^7+(-1.0)X^6+(-1.0)X^5+(-1.0)X^4+(-1.0)X^3+(-1.0)X^2+(-1.0)X-1.0";
+        double[] coefs = {-1,-1,-1,-1,-1,-1,-1,-1,-1};
+        Polynomial polynomial = new Polynomial(coefs);
+
+        // Compare strings
+        assertThat(polynomial.toString(), is (expected));
+    }
+
+    @Test
+    public void toStringSignsOneManyDegrees() {
+        String expected = "X^8+X^7+X^6+X^5+X^4+X^3+X^2+X+1.0";
+        double[] coefs = {1,1,1,1,1,1,1,1,1};
+        Polynomial polynomial = new Polynomial(coefs);
+
+        // Compare strings
+        assertThat(polynomial.toString(), is (expected));
     }
 
     public static void comparePolynomials(polyfun.Polynomial oldPoly, Polynomial newPoly) {

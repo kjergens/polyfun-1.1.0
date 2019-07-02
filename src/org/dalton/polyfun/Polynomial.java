@@ -67,7 +67,9 @@ public class Polynomial {
      */
     public Polynomial(int degree) {
         this.degree = degree;
-        this.coefs = new Coef[this.degree + 1];
+        double[] coefs = new double[degree+1];
+        coefs[degree] = 1;
+        this.setCoefs(coefs);
     }
 
     /**

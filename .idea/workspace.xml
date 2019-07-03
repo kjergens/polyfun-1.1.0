@@ -7,10 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/PolynomialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/PolynomialTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,15 +31,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="159" column="11" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="11" />
+            <state relative-caret-position="243">
+              <caret line="726" column="42" selection-start-line="726" selection-start-column="42" selection-end-line="726" selection-end-column="42" />
               <folding>
-                <element signature="e#10568#10569#0" expanded="true" />
-                <element signature="e#10738#10739#0" expanded="true" />
-                <element signature="e#14150#14151#0" expanded="true" />
+                <element signature="e#10618#10619#0" expanded="true" />
+                <element signature="e#10788#10789#0" expanded="true" />
+                <element signature="e#14200#14201#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,17 +48,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="260" column="47" selection-start-line="260" selection-start-column="47" selection-end-line="260" selection-end-column="47" />
+            <state relative-caret-position="54">
+              <caret line="137" column="10" selection-start-line="137" selection-start-column="10" selection-end-line="137" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/PolynomialTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="372" column="10" selection-start-line="372" selection-start-column="10" selection-end-line="372" selection-end-column="10" />
+            <state relative-caret-position="297">
+              <caret line="377" column="57" selection-start-line="377" selection-start-column="57" selection-end-line="377" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -190,11 +188,11 @@
         <option value="$PROJECT_DIR$/src/test/CoefTest.java" />
         <option value="$PROJECT_DIR$/src/test/TermTest.java" />
         <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Atom.java" />
-        <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java" />
         <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Term.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" />
         <option value="$PROJECT_DIR$/src/test/PolynomialTest.java" />
+        <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java" />
+        <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" />
       </list>
     </option>
   </component>
@@ -401,13 +399,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Change to polyfun-1.1.0">
-      <created>1560271346350</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1560271346350</updated>
     </task>
     <task id="LOCAL-00032" summary="Add output folders to Git.">
       <created>1560271624149</created>
@@ -745,16 +736,17 @@
       <option name="project" value="LOCAL" />
       <updated>1562101314997</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Get the constant coefficient of a given term. Throws assertion error if the coeffiecient is not a constant. e.g. it has variables like (2.0a_1)X">
+      <created>1562166104836</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1562166104836</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PolynomialTest_getNumericalCoefficientAtTerm - 2019.07.02 at 19h 58m 12s.xml">
-      <configuration name="PolynomialTest.getNumericalCoefficientAtTerm" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PolynomialTest_getNumericalCoefficientAtTermTooBig - 2019.07.02 at 19h 59m 45s.xml">
-      <configuration name="PolynomialTest.getNumericalCoefficientAtTermTooBig" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PolynomialTest_getConstantCoefAtTermWithAtoms - 2019.07.03 at 10h 40m 07s.xml">
       <configuration name="PolynomialTest.getConstantCoefAtTermWithAtoms" configurationId="JUnit" />
     </history-entry>
@@ -779,6 +771,12 @@
     <history-entry file="PolynomialTest_getConstantCoefAtMultipleTerms - 2019.07.03 at 10h 57m 21s.xml">
       <configuration name="PolynomialTest.getConstantCoefAtMultipleTerms" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PolynomialTest_getConstantCoefAtMultipleTerms - 2019.07.03 at 10h 59m 25s.xml">
+      <configuration name="PolynomialTest.getConstantCoefAtMultipleTerms" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolynomialTest_getConstantCoefAtBigDegree - 2019.07.03 at 11h 00m 07s.xml">
+      <configuration name="PolynomialTest.getConstantCoefAtBigDegree" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -802,7 +800,7 @@
       <window_info id="simpleUML" order="6" weight="0.23076923" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32676518" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6705686" visible="true" weight="0.20361248" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6705686" visible="true" weight="0.272578" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7968227" weight="0.47164178" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -813,7 +811,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.32943144" side_tool="true" weight="0.53880596" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.36287627" weight="0.25615764" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Structure" order="1" sideWeight="0.5066964" visible="true" weight="0.2204392" />
+      <window_info active="true" anchor="right" id="Structure" order="1" sideWeight="0.5066964" visible="true" weight="0.2204392" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
@@ -856,7 +854,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated Coef.smartInsert and wrote a unit test." />
     <MESSAGE value="Unit tests for Coef reduce, pop, push and Term reduce, pop, push." />
     <MESSAGE value="Fully port to Term.reduce() instead of simplify in the Coef object." />
     <MESSAGE value="Redid sorting of terms within a coef to be: constant terms go last, sort abstract terms alphanumerically, ignoring constant coef." />
@@ -881,7 +878,8 @@
     <MESSAGE value="Minor fix to Polynomial.toString to avoid strings like X+-1.0. Now it will be X-1.0." />
     <MESSAGE value="Hiding tests from jar" />
     <MESSAGE value="Fixed bug in constructor with just a degree that did not correctly create all the coefs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in constructor with just a degree that did not correctly create all the coefs." />
+    <MESSAGE value="Get the constant coefficient of a given term. Throws assertion error if the coeffiecient is not a constant. e.g. it has variables like (2.0a_1)X" />
+    <option name="LAST_COMMIT_MESSAGE" value="Get the constant coefficient of a given term. Throws assertion error if the coeffiecient is not a constant. e.g. it has variables like (2.0a_1)X" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/polyfun_1_1_0$ParameterizedAddPolynomials__1_.ic" NAME="ParameterizedAddPolynomials (1) Coverage Results" MODIFIED="1560361469567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -1236,13 +1234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="260" column="47" selection-start-line="260" selection-start-column="47" selection-end-line="260" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Term.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1250,24 +1241,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
+    <entry file="file://$PROJECT_DIR$/src/test/PolynomialTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="159" column="11" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="11" />
+        <state relative-caret-position="297">
+          <caret line="377" column="57" selection-start-line="377" selection-start-column="57" selection-end-line="377" selection-end-column="57" />
           <folding>
-            <element signature="e#10568#10569#0" expanded="true" />
-            <element signature="e#10738#10739#0" expanded="true" />
-            <element signature="e#14150#14151#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/PolynomialTest.java">
+    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="372" column="10" selection-start-line="372" selection-start-column="10" selection-end-line="372" selection-end-column="10" />
+        <state relative-caret-position="54">
+          <caret line="137" column="10" selection-start-line="137" selection-start-column="10" selection-end-line="137" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="726" column="42" selection-start-line="726" selection-start-column="42" selection-end-line="726" selection-end-column="42" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#10618#10619#0" expanded="true" />
+            <element signature="e#10788#10789#0" expanded="true" />
+            <element signature="e#14200#14201#0" expanded="true" />
           </folding>
         </state>
       </provider>

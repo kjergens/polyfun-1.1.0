@@ -131,6 +131,22 @@ public class Coef {
     }
 
     /**
+     * Return the constant of a constant Coef object.
+     * @return  The constant of the Coef, if it exists
+     * @throws AssertionError If the Coef is not a constant
+     */
+    public double getConstantAt0Term() throws AssertionError {
+        if (this.isZero()) return 0;
+
+        if (this.getTerms().length == 0 && this.getTerms()[0].isConstantTerm()) {
+            return this.getTerms()[0].getNumericalCoefficient();
+        } else {
+            String msg = String.format("The coef %s cannot be returned as a number", this.toString());
+            throw (new AssertionError(msg));
+        }
+    }
+
+    /**
      * Create new Ceof array with the first Term removed. Meant for array > 1 only.
      * <p>
      *

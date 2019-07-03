@@ -152,6 +152,7 @@ public class Coef {
      *
      * @return  a new Coef with one less Term.
      * @since 1.0.0
+     * @deprecated Use {{@link #pop()}} instead.
      */
     public Coef snip() {
         Term[] terms = new Term[this.getTerms().length - 1];
@@ -196,6 +197,7 @@ public class Coef {
      * @param term Term to place in front.
      * @return A new Coef with another Term (original Coef is not changed)
      * @since 1.0.0
+     * @deprecated Use {@link #push(Term)} instead.
      */
     public Coef paste(Term term) {
         Term[] terms = new Term[this.getTerms().length + 1];
@@ -232,6 +234,7 @@ public class Coef {
      * @param term
      * @return A new Coef with another Term (original Coef is not changed)
      * @since 1.0.0
+     * @deprecated Use {{@link #insert(Term)}} instead.
      */
     public Coef place(Term term) {
         Coef coef = new Coef(this.terms);

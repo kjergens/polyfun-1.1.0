@@ -416,6 +416,18 @@ public class PolynomialTest {
     }
 
     @Test
+    public void evaluateToNumber() {
+        Polynomial polynomial = new Polynomial(2);
+        assertThat(polynomial.evaluateToNumber(3), is(9.0));
+    }
+
+    @Test
+    public void evaluateToNumberDoubleArray() {
+        Polynomial polynomial = new Polynomial(new double[]{0, 3, 2});
+        assertThat(polynomial.evaluateToNumber(3), is(27.0));
+    }
+
+    @Test
     public void minusCompareToPolyfunOld() {
         // Create 2 identical polynomials
         double[] coefficients = {1, -3, 0, 2};

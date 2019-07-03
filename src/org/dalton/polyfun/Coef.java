@@ -138,7 +138,9 @@ public class Coef {
     public double getConstantAt0Term() throws AssertionError {
         if (this.isZero()) return 0;
 
-        if (this.getTerms().length == 0 && this.getTerms()[0].isConstantTerm()) {
+        Term[] terms = this.getTerms();
+
+        if (terms.length == 1 && terms[0].isConstantTerm()) {
             return this.getTerms()[0].getNumericalCoefficient();
         } else {
             String msg = String.format("The coef %s cannot be returned as a number", this.toString());

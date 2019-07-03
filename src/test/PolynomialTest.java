@@ -329,6 +329,70 @@ public class PolynomialTest {
     }
 
     @Test
+    public void getConstantCoefAtTermWithAtoms() {
+        // (a_1^2b_2^3b_3^4+b_3^4d_1^2d_3+c_1^4e_2)X
+        Term[] terms = new Term[3];
+
+        // a_1^2b_2^3b_3^4
+        Atom[] atoms = new Atom[]{new Atom('a', 1, 2),
+                new Atom('b', 2, 3),
+                new Atom('b', 3, 4)
+        };
+        terms[2] = new Term(1, atoms);
+
+        // b_3^4d_1^2d_3
+        atoms = new Atom[]{new Atom('b', 3, 4),
+                new Atom('d', 1, 2),
+                new Atom('d', 3, 1)
+        };
+        terms[1] = new Term(1, atoms);
+
+        // c_1^4e_2
+        atoms = new Atom[]{new Atom('c', 1, 4),
+                new Atom('e', 2, 1)
+        };
+        terms[0] = new Term(1, atoms);
+
+        Coef coef = new Coef(terms);
+
+        // Implies a one-degree with a 0 in the 0-deg spot
+        Coef[] coefs = new Coef[]{new Coef(0), coef};
+
+        Polynomial poly = new Polynomial(coefs);
+
+        assertThat(poly.getConstantCoefAt(1), is(0));
+    }
+
+    @Test(expected = AssertionError.class)
+    public void getConstantCoefAtMultipleTerms() {
+        Atom[] atoms = {new Atom('a', 1, 2)};
+        Coef[] coefs = {new Coef(new Term(3, atoms))};
+        Polynomial polynomial = new Polynomial(coefs);
+        polynomial.getConstantCoefAt(0);
+    }
+
+    @Test
+    public void getConstantCoefAtBigDegree() {
+        double[] coefficients = {1, -3, 0, 2};
+        Polynomial polynomial = new Polynomial(coefficients);
+        assertThat(polynomial.getConstantCoefAt(13), is(0.0));
+    }
+
+    @Test
+    public void getConstantCoefAt() {
+        double[] coefficients = {1, -3, 0, 2};
+        Polynomial polynomial = new Polynomial(coefficients);
+        assertThat(polynomial.getConstantCoefAt(3), is(2.0));
+    }
+
+    @Test
+    public void getConstantCoefAtTermTooBig() {
+        double[] coefficients = {1, -3, 0, 2};
+        Polynomial polynomial = new Polynomial(coefficients);
+        assertThat(polynomial.getConstantCoefAt(13), is(0.0));
+    }
+
+    @Test
     public void orderOfAtomArrays0Degree() {
         // a_1^2b_2^3b_3^4+c_1^4e_2
 

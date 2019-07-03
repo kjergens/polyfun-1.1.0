@@ -67,7 +67,7 @@ public class Polynomial {
      */
     public Polynomial(int degree) {
         this.degree = degree;
-        double[] coefs = new double[degree+1];
+        double[] coefs = new double[degree + 1];
         coefs[degree] = 1;
         this.setCoefs(coefs);
     }
@@ -250,11 +250,71 @@ public class Polynomial {
      * Coef. Returns a Coef.
      *
      * @param index
-     * @return Coef
+     * @return The Coef object at the given degree.
      * @since 1.1.0
      */
     public Coef getCoefAt(int index) {
         return this.coefs[index];
+    }
+
+
+    /**
+     * Return the numerical coefficient of the x term at the given degree, as long
+     * as that coefficient is a number. Example,for the polynomial:
+     *
+     *      (3.0)X^4 + (5.0a_1)X^2 + 8
+     *
+     * getConstantCoefAt(4) returns 3.0
+     * getConstantCoefAt(2) throws an Exception because the coefficient is too complex.
+     *
+     * @param degree
+     * @return  The numerical coefficient of the x term at the given degree.
+     */
+    public double getConstantCoefAt(int degree)  {
+        double constantCoefficient = -1;
+        try {
+            constantCoefficient = getNumericalCoefficientAtTerm(degree);
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+
+        return constantCoefficient;
+    }
+
+    /**
+     * Return the numerical coefficient of the x term at the given degree, as long
+     * as that coefficient is a number. Example,for the polynomial:
+     *
+     *      (3.0)X^4 + (5.0a_1)X^2 + 8
+     *
+     * getConstantCoefAt(4) returns 3.0
+     * getConstantCoefAt(2) throws an Exception because the coefficient is too complex.
+     *
+     * @param degree
+     * @return  The numerical coefficient of the x term at the given degree.
+     * @throws Exception    If the coefficient is not a constant.
+     */
+    private double getNumericalCoefficientAtTerm(int degree) throws Exception {
+        if (degree > this.getDegree()) {
+            return 0;
+        } else if (degree < 0) {
+            String msg = String.format("Invalid degree %d for a polynomial with %d degrees.",
+                    degree, this.getDegree());
+            throw (new AssertionError(msg));
+        } else {
+            Coef coef = this.getCoefAt(degree);
+            Term[] terms = coef.getTerms();
+
+            if (terms.length > 1 || !terms[0].isConstantTerm()) {
+                String msg = String.format(
+                        "The coefficient %s is not a constant and cannot be returned as a double.", coef.toString());
+                throw (new AssertionError(msg));
+            } else if (terms.length == 0) {
+                return 0;
+            } else {
+                return terms[0].getNumericalCoefficient();
+            }
+        }
     }
 
     /**

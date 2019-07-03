@@ -612,6 +612,7 @@ public class Polynomial {
      * @since 1.0.0
      * @deprecated Use {{@link #evaluateToCoef(double)}} instead.
      */
+    @Deprecated
     public Coef evaluate(double value) {
         Polynomial polynomial = new Polynomial(value);
         Coef coef = new Coef(0.0D);
@@ -676,6 +677,7 @@ public class Polynomial {
      * @since 1.0.0
      * @deprecated Use {{@link #evaluateToCoef(Coef)}} instead.
      */
+    @Deprecated
     public Coef evaluate(Coef coef) {
         Polynomial polynomial = new Polynomial(coef);
         Coef result = new Coef(0.0D);

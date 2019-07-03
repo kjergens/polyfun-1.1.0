@@ -7,6 +7,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polyfun-1.1.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/polyfun-1.1.0.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" afterDir="false" />
     </list>
@@ -25,40 +28,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Atom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
+            <state relative-caret-position="4740">
               <caret line="330" column="7" selection-start-line="330" selection-start-column="7" selection-end-line="330" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="726" column="42" selection-start-line="726" selection-start-column="42" selection-end-line="726" selection-end-column="42" />
-              <folding>
-                <element signature="e#10618#10619#0" expanded="true" />
-                <element signature="e#10788#10789#0" expanded="true" />
-                <element signature="e#14200#14201#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="137" column="10" selection-start-line="137" selection-start-column="10" selection-end-line="137" selection-end-column="10" />
+            <state relative-caret-position="106">
+              <caret line="240" column="15" selection-start-line="240" selection-start-column="15" selection-end-line="240" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/PolynomialTest.java">
+        <entry file="file://$PROJECT_DIR$/class_diagrams.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/AtomTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="377" column="57" selection-start-line="377" selection-start-column="57" selection-end-line="377" selection-end-column="57" />
+            <state relative-caret-position="1170">
+              <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,8 +63,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Term.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="9" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="9" />
+            <state relative-caret-position="146">
+              <caret line="649" column="7" selection-start-line="649" selection-start-column="7" selection-end-line="649" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out/html/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1125">
+              <caret line="75" column="13" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out/html/allclasses-noframe.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out/html/org/dalton/polyfun/Polynomial.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="280" column="127" selection-start-line="280" selection-start-column="122" selection-end-line="280" selection-end-column="127" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="240" column="19" selection-start-line="240" selection-start-column="7" selection-end-line="240" selection-end-column="19" />
+              <folding>
+                <element signature="e#10585#10586#0" expanded="true" />
+                <element signature="e#10618#10619#0" expanded="true" />
+                <element signature="e#10755#10756#0" expanded="true" />
+                <element signature="e#10788#10789#0" expanded="true" />
+                <element signature="e#14143#14144#0" expanded="true" />
+                <element signature="e#14200#14201#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -189,18 +223,18 @@
         <option value="$PROJECT_DIR$/src/test/TermTest.java" />
         <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Atom.java" />
         <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Term.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/PolynomialTest.java" />
-        <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" />
+        <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="86" />
-    <option name="y" value="42" />
-    <option name="width" value="1226" />
-    <option name="height" value="701" />
+    <option name="y" value="93" />
+    <option name="width" value="1253" />
+    <option name="height" value="714" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -210,64 +244,40 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="polyfun_1_1_0" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="polyfun" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
+              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="polyfun-1.1.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -399,13 +409,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Add output folders to Git.">
-      <created>1560271624149</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1560271624149</updated>
     </task>
     <task id="LOCAL-00033" summary="Update README with new Javadocs link.">
       <created>1560271973119</created>
@@ -743,7 +746,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562166104836</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Refreshed JavaDocs and class diagrams.">
+      <created>1562169997290</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1562169997291</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -788,16 +798,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="86" y="42" width="1226" height="701" extended-state="0" />
-    <editor active="true" />
+    <frame x="86" y="93" width="1253" height="714" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.17820945" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.25433525" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="simpleUML" order="6" weight="0.23076923" />
+      <window_info id="simpleUML" order="6" weight="0.80511975" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32676518" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6705686" visible="true" weight="0.272578" />
@@ -807,11 +816,11 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32833582" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.5498008" weight="0.33868378" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3296" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.16420361" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.40836012" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.32943144" side_tool="true" weight="0.53880596" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.36287627" weight="0.25615764" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.36287627" weight="0.42282957" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info active="true" anchor="right" id="Structure" order="1" sideWeight="0.5066964" visible="true" weight="0.2204392" />
+      <window_info active="true" anchor="right" id="Structure" order="1" sideWeight="0.5066964" visible="true" weight="0.21552436" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
@@ -854,7 +863,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Unit tests for Coef reduce, pop, push and Term reduce, pop, push." />
     <MESSAGE value="Fully port to Term.reduce() instead of simplify in the Coef object." />
     <MESSAGE value="Redid sorting of terms within a coef to be: constant terms go last, sort abstract terms alphanumerically, ignoring constant coef." />
     <MESSAGE value="Fixed error where Atoms that had power 0 were messing up the sort order." />
@@ -879,33 +887,13 @@
     <MESSAGE value="Hiding tests from jar" />
     <MESSAGE value="Fixed bug in constructor with just a degree that did not correctly create all the coefs." />
     <MESSAGE value="Get the constant coefficient of a given term. Throws assertion error if the coeffiecient is not a constant. e.g. it has variables like (2.0a_1)X" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get the constant coefficient of a given term. Throws assertion error if the coeffiecient is not a constant. e.g. it has variables like (2.0a_1)X" />
+    <MESSAGE value="Refreshed JavaDocs and class diagrams." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refreshed JavaDocs and class diagrams." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/polyfun_1_1_0$ParameterizedAddPolynomials__1_.ic" NAME="ParameterizedAddPolynomials (1) Coverage Results" MODIFIED="1560361469567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/out/html/deprecated-list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3945">
-          <caret line="263" selection-start-line="263" selection-end-line="263" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/html/help-doc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-296">
-          <caret line="206" column="32" selection-start-line="206" selection-start-column="32" selection-end-line="206" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/html/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="75" column="13" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/html/index-all.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9817">
@@ -1148,9 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/class_diagrams.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/ParameterizedAddPolynomials.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1179,24 +1164,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Atom.html" />
     <entry file="file://$PROJECT_DIR$/out/html/package-summary.html" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="85">
-            <caret line="5" column="99" selection-start-line="5" selection-start-column="99" selection-end-line="5" selection-end-column="99" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/AtomTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="1170">
           <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1229,15 +1199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Atom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="4740">
           <caret line="330" column="7" selection-start-line="330" selection-start-column="7" selection-end-line="330" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Term.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1251,22 +1214,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java">
+    <entry file="file://$PROJECT_DIR$/class_diagrams.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="600">
+            <caret line="40" column="60" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Term.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="137" column="10" selection-start-line="137" selection-start-column="10" selection-end-line="137" selection-end-column="10" />
+        <state relative-caret-position="146">
+          <caret line="649" column="7" selection-start-line="649" selection-start-column="7" selection-end-line="649" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="75" column="13" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/html/allclasses-noframe.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/html/org/dalton/polyfun/Polynomial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="280" column="127" selection-start-line="280" selection-start-column="122" selection-end-line="280" selection-end-column="127" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="726" column="42" selection-start-line="726" selection-start-column="42" selection-end-line="726" selection-end-column="42" />
+        <state relative-caret-position="125">
+          <caret line="240" column="19" selection-start-line="240" selection-start-column="7" selection-end-line="240" selection-end-column="19" />
           <folding>
+            <element signature="e#10585#10586#0" expanded="true" />
             <element signature="e#10618#10619#0" expanded="true" />
+            <element signature="e#10755#10756#0" expanded="true" />
             <element signature="e#10788#10789#0" expanded="true" />
+            <element signature="e#14143#14144#0" expanded="true" />
             <element signature="e#14200#14201#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Coef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="240" column="15" selection-start-line="240" selection-start-column="15" selection-end-line="240" selection-end-column="15" />
         </state>
       </provider>
     </entry>

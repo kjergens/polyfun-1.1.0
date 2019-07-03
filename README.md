@@ -38,6 +38,7 @@ These changes were made to be backward compatible. In other words, old XClass co
     * Constants always last.
     * Sorts atoms alphanumerically. Ignores the numerical coefficient. E.g. This is a sorted Coef: 2a_1+8b_1+1.
 * Added Junit tests
+* Added Polynomial.evaluateToNumber() and supporting methods because evaluate returned a Coef object, which was not intuitive.
 * Added class diagrams (see below).
 
 ![class diagrams](class_diagrams.png)

@@ -1,9 +1,11 @@
 # Polyfun 1.1.0
 
-Refactored version of David Gomprecht's polyfun 1.0.0 library which was compiled in Java 6.
+Refactored version of David Gomprecht's polyfun 1.0.0 library.
 
-Download [polyfun-1.1.0 jar](https://github.com/kjergens/polyfun_v_2/raw/master/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar).
-Read [Javadocs](https://kjergens.github.io/polyfun-1.1.0/out/html/index.html?org/dalton/polyfun/package-summary.html)
+* Download [polyfun-1.1.0 jar](https://github.com/kjergens/polyfun_v_2/raw/master/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar).
+* Read the [Javadocs](https://kjergens.github.io/polyfun-1.1.0/out/html/index.html?org/dalton/polyfun/package-summary.html)
+
+![class diagrams](class_diagrams.png)
 
 ## Change log
 These changes were made to be backward compatible. In other words, old XClass code will work with this updated library.
@@ -39,7 +41,7 @@ These changes were made to be backward compatible. In other words, old XClass co
     * Sorts atoms alphanumerically. Ignores the numerical coefficient. E.g. This is a sorted Coef: 2a_1+8b_1+1.
 * Added Junit tests
 * Added Polynomial.evaluateToNumber() and supporting methods because evaluate returned a Coef object, which was not intuitive.
-* Added class diagrams (see below).
+* Added class diagrams.
 
-![class diagrams](class_diagrams.png)
+
 

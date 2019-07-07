@@ -5,32 +5,29 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="Fixed evaluateToNumber &amp; recompiled JAR">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polyfun-1.1.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/polyfun-1.1.0.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedAddPolynomials.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedAddTangents.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedEvaluateCoefs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedEvaluateScalar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedMultiplyPolynomials.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedOf.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedPolynomialTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedRaiseTo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedSubtractPolynomials.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedTestRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/parameterizedtest/ParameterizedTestSuite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/AtomTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/BasicTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/CoefTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/PolynomialTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/TermTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/TestRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/TestSuite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/testlib/CoefPair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/testlib/CoefPairFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/testlib/PolyPair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/unittest/testlib/PolyPairFactory.java" beforeDir="false" />
+    <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/test/AtomTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/BasicTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/CoefTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedAddPolynomials.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedAddTangents.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedEvaluateCoefs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedEvaluateScalar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedMultiplyPolynomials.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedOf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedPolynomialTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedRaiseTo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedSubtractPolynomials.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedTestRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ParameterizedTestSuite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/PolynomialTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TermTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestSuite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/lib/CoefPair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/lib/CoefPairFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/lib/PolyPair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/lib/PolyPairFactory.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -119,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/parameterizedtest/ParameterizedAddPolynomials.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="332">
-              <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+              <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,7 +128,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/unittest/PolynomialTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="158">
@@ -281,41 +278,6 @@
             <path>
               <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="polyfun" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="parameterizedtest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="unittest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="polyfun-1.1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Polyfun" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="unittest" type="462c0819:PsiDirectoryNode" />
-              <item name="testlib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -473,13 +435,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Parameterized test for evaluate with scalar. Used a constant seed so all parameterized tests always use same values. Renamed vars to get rid of v6/v11.">
-      <created>1560283126318</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1560283126318</updated>
     </task>
     <task id="LOCAL-00036" summary="Parameterized test for Of (composition) and To (raise to power)">
       <created>1560283761073</created>
@@ -817,13 +772,17 @@
       <option name="project" value="LOCAL" />
       <updated>1562176093275</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="restructured test package structure. made sure they don't appear in JAR.">
+      <created>1562177666865</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1562177666865</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 00m 10s.xml">
-      <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 00m 16s.xml">
       <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
     </history-entry>
@@ -851,6 +810,9 @@
     <history-entry file="TestSuite - 2019.07.03 at 13h 58m 44s.xml">
       <configuration name="TestSuite" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ParameterizedAddPolynomials_testPolynomialsCompareAllTermsExistOrigRefactored - 2019.07.03 at 14h 13m 50s.xml">
+      <configuration name="ParameterizedAddPolynomials.testPolynomialsCompareAllTermsExistOrigRefactored" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -863,9 +825,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="171" y="65" width="1253" height="714" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.24855492" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.24855492" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -874,7 +835,7 @@
       <window_info id="simpleUML" order="6" weight="0.76878613" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32676518" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6705686" weight="0.45819935" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6705686" weight="0.31672025" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7968227" weight="0.47106108" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -883,7 +844,7 @@
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3296" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.40836012" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.32943144" side_tool="true" weight="0.53880596" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" sideWeight="0.36287627" visible="true" weight="0.26205787" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.36287627" weight="0.26205787" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Structure" order="1" sideWeight="0.5066964" visible="true" weight="0.21552436" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -928,7 +889,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed error where Atoms that had power 0 were messing up the sort order." />
     <MESSAGE value="Got rid of random tests in PolynomialTest" />
     <MESSAGE value="Got rid of isLessThan tests in TermTests because the rules of sorting have changed." />
     <MESSAGE value="Changed or deleted place, insert and times tests now that the coef auto-reduces." />
@@ -953,7 +913,8 @@
     <MESSAGE value="Refreshed JavaDocs and class diagrams." />
     <MESSAGE value="Properly marked @deprecated methods as @Deprecated." />
     <MESSAGE value="Fixed evaluateToNumber" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed evaluateToNumber" />
+    <MESSAGE value="restructured test package structure. made sure they don't appear in JAR." />
+    <option name="LAST_COMMIT_MESSAGE" value="restructured test package structure. made sure they don't appear in JAR." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1361,20 +1322,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/parameterizedtest/ParameterizedAddPolynomials.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/unittest/PolynomialTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/parameterizedtest/ParameterizedAddPolynomials.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

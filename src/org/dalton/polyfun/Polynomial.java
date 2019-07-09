@@ -267,10 +267,14 @@ public class Polynomial {
      * getConstantCoefAt(4) returns 3.0
      * getConstantCoefAt(2) throws an Exception because the coefficient is too complex.
      *
+     * Deprecated for confusing name.
+     *
      * @param degree
      * @return  The numerical coefficient of the x term at the given degree.
      * @since 1.1.1
+     * @deprecated Use {{@link #getCoefficientAtTerm(int)} instead.
      */
+    @Deprecated
     public double getConstantCoefAt(int degree)  {
         double constantCoefficient = 0;
         try {
@@ -291,14 +295,14 @@ public class Polynomial {
      * getCoefficientFor(4) returns 3.0 because x^4 has a coefficient of 3.0
      * getCoefficientFor(2) throws an Exception because x^4 has coefficient that is not a double.
      *
-     * @param xTerm
+     * @param termNumber
      * @return  The numerical coefficient of the x term at the given degree.
      * @since 1.1.1
      */
-    public double getCoefficientFor(int xTerm)  {
+    public double getCoefficientAtTerm(int termNumber)  {
         double constantCoefficient = 0;
         try {
-            constantCoefficient = getNumericalCoefficientAtTerm(degree);
+            constantCoefficient = this.getNumericalCoefficientAtTerm(termNumber);
         } catch (Exception e) {
             System.err.println(e.toString());
         }
@@ -333,7 +337,7 @@ public class Polynomial {
         double[] coefs = new double[this.getDegree()+1];
         try {
             for (int i = 0; i < coefs.length; i++) {
-                coefs[i] = this.getConstantCoefAt(i);
+                coefs[i] = this.getCoefficientAtTerm(i);
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -343,7 +347,7 @@ public class Polynomial {
     }
 
     /**
-     * Return the numerical coefficient of the x term at the given degree, as long
+     * Return the numerical coefficient of the x term at the given termNumber, as long
      * as that coefficient is a number. Example,for the polynomial:
      *
      *      (3.0)X^4 + (5.0a_1)X^2 + 8
@@ -351,20 +355,22 @@ public class Polynomial {
      * getConstantCoefAt(4) returns 3.0
      * getConstantCoefAt(2) throws an Exception because the coefficient is too complex.
      *
-     * @param degree
-     * @return  The numerical coefficient of the x term at the given degree.
+     * Deprected for confusing name.
+     *
+     * @param termNumber
+     * @return  The numerical coefficient of the x term at the given termNumber.
      * @throws AssertionError    If the coefficient is not a constant.
-     * @since 1.1.0
+     * @since 1.1.1
      */
-    private double getNumericalCoefficientAtTerm(int degree) throws AssertionError {
-        if (degree > this.getDegree()) {
+    private double getNumericalCoefficientAtTerm(int termNumber) throws AssertionError {
+        if (termNumber > this.getDegree()) {
             return 0;
-        } else if (degree < 0) {
-            String msg = String.format("Invalid degree %d for a polynomial with %d degrees.",
-                    degree, this.getDegree());
+        } else if (termNumber < 0) {
+            String msg = String.format("Invalid termNumber %d for a polynomial with %d degrees.",
+                    termNumber, this.getDegree());
             throw (new AssertionError(msg));
         } else {
-            Coef coef = this.getCoefAt(degree);
+            Coef coef = this.getCoefAt(termNumber);
             Term[] terms = coef.getTerms();
 
             if (terms.length == 0) return 0;

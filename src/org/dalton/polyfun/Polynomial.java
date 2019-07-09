@@ -272,7 +272,7 @@ public class Polynomial {
      * @since 1.1.0
      */
     public double getConstantCoefAt(int degree)  {
-        double constantCoefficient = -1;
+        double constantCoefficient = 0;
         try {
             constantCoefficient = getNumericalCoefficientAtTerm(degree);
         } catch (Exception e) {

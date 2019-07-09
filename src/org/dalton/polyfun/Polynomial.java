@@ -269,7 +269,7 @@ public class Polynomial {
      *
      * @param degree
      * @return  The numerical coefficient of the x term at the given degree.
-     * @since 1.1.0
+     * @since 1.1.1
      */
     public double getConstantCoefAt(int degree)  {
         double constantCoefficient = 0;
@@ -293,7 +293,7 @@ public class Polynomial {
      *
      * @param xTerm
      * @return  The numerical coefficient of the x term at the given degree.
-     * @since 1.1.0
+     * @since 1.1.1
      */
     public double getCoefficientFor(int xTerm)  {
         double constantCoefficient = 0;
@@ -304,6 +304,42 @@ public class Polynomial {
         }
 
         return constantCoefficient;
+    }
+
+    /**
+     * Return all the numerical coefficient of this polynomial, as long
+     * as all the coefficients are numbers. Example,for the polynomial:
+     *
+     *      (3.0)X^4 + (5.0)X^2 + 8.0
+     *
+     * getCoefficients returns new double[]{8.0, 0.0, 5.0, 0.0, 3.0}
+     *
+     * - the x^0 coefficient is 8
+     * - the x^1 coefficient is 0
+     * - the x^2 coefficient is 5
+     * - the x^3 coefficient is 0
+     * - the x^4 coefficient is 3
+     *
+     * Example 2,for the polynomial:
+     *
+     *      (3.0)X^4 + (5.0q_1 + q_0)X^2 + 8.0
+     *
+     * getCoefficients throws an Exception because x^2 term has a coefficient that is not a double.
+     *
+     * @return  The numerical coefficients of the polynomial.
+     * @since 1.1.1
+     */
+    public double[] getCoefficientArray()  {
+        double[] coefs = new double[this.getDegree()+1];
+        try {
+            for (int i = 0; i < coefs.length; i++) {
+                coefs[i] = this.getConstantCoefAt(i);
+            }
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+
+        return coefs;
     }
 
     /**

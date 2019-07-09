@@ -708,6 +708,18 @@ public class PolynomialTest {
         assertThat(fx.getConstantCoefAt(3), is(2.0));
     }
 
+    @Test
+    public void getCoefficientArray() {
+        Polynomial fx = new Polynomial(new double[]{0, 3, 0, 2});
+
+        double[] coefs = fx.getCoefficientArray();
+
+        assertThat(coefs[0], is(0.0));
+        assertThat(coefs[1], is(3.0));
+        assertThat(coefs[2], is(0.0));
+        assertThat(coefs[3], is(2.0));
+    }
+
 
     public static void comparePolynomials(polyfun.Polynomial oldPoly, Polynomial newPoly) {
         // Compare number of coefficients.

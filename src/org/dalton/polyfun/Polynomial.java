@@ -712,8 +712,10 @@ public class Polynomial {
      *
      * @param input The value to plug into the polynomial
      * @return double the result
-     * @since 1.1.0
+     * @since 1.1.1
+     * @deprecated Use {@link #evaluateWith(double)} instead
      */
+    @Deprecated
     public double evaluateToNumber(double input) {
         Polynomial polynomial = new Polynomial(input);
         Coef coef = new Coef(0.0D);
@@ -794,7 +796,8 @@ public class Polynomial {
      *
      * @param coef The coef to plug into the polynomial.
      * @return  The answer as a double.
-     * @since 1.1.0
+     * @since 1.1.1
+     * @deprecated Use {@link #evaluateWith(Coef)} instead.
      */
     public double evaluateToNumber(Coef coef) {
         Polynomial polynomial = new Polynomial(coef);
@@ -808,19 +811,36 @@ public class Polynomial {
     }
 
     /**
+     * Think of this method as plugging in a variable into a polynomial function. For example,
+     * if p(x) = x2 + 5, and Coef C = a2, then p.evaluate(C) would essentially evaluate
+     * p(2) = X^2 + 5 = 4 + 5 = 20
+     *
+     * @param coef The coef to plug into the polynomial.
+     * @return  The answer as a double.
+     * @since 1.1.1
+     */
+    public double evaluateWith(Coef coef) {
+        Polynomial polynomial = new Polynomial(coef);
+        Coef result = new Coef(0.0D);
+
+        for (int i = 0; i < this.coefs.length; ++i) {
+            result.setTerms(result.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
+        }
+
+        return result.getConstantAt0Term();
+    }
+
+    /**
+     * Determines if all the coefficients are constant, meaning the polynomial can be represented in a graph.
+     *
      * @return true if plottable
      * @since 1.0.0
      */
     public boolean isPlottable() {
-        int degree = -1;
+        for (Coef coef : this.coefs)
+            if (!coef.isConstantCoef()) return false;
 
-        for (int i = 0; i <= this.degree; ++i) {
-            if (this.coefs[i].isConstantCoef()) {
-                ++degree;
-            }
-        }
-
-        return degree == this.degree;
+        return true;
     }
 
     /**

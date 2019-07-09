@@ -8,7 +8,9 @@
     <list default="true" id="b51a12b7-8efc-4dee-a409-196f5d780861" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unittest/PolynomialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/unittest/PolynomialTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="298" column="19" selection-start-line="298" selection-start-column="19" selection-end-line="298" selection-end-column="19" />
+            <state relative-caret-position="308">
+              <caret line="315" column="13" selection-start-line="315" selection-start-column="13" selection-end-line="315" selection-end-column="13" />
               <folding>
                 <element signature="e#10585#10586#0" expanded="true" />
                 <element signature="e#10618#10619#0" expanded="true" />
@@ -48,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/unittest/PolynomialTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+            <state relative-caret-position="187">
+              <caret line="707" column="53" selection-start-line="707" selection-start-column="53" selection-end-line="707" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -202,8 +204,8 @@
         <option value="$PROJECT_DIR$/test/parameterizedtest/ParameterizedEvaluateCoefs.java" />
         <option value="$PROJECT_DIR$/test/parameterizedtest/ParameterizedAddTangents.java" />
         <option value="$PROJECT_DIR$/test/parameterizedtest/ParameterizedAddPolynomials.java" />
-        <option value="$PROJECT_DIR$/test/unittest/PolynomialTest.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/test/unittest/PolynomialTest.java" />
         <option value="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" />
       </list>
     </option>
@@ -310,7 +312,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ParameterizedAddPolynomials.testPolynomialsCompareAllTermsExistOrigRefactored">
+  <component name="RunManager" selected="JUnit.PolynomialTest.getConstantCoefAtFix">
     <configuration name="ParameterizedTestRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="unittest.parameterizedtest.ParameterizedTestRunner" />
       <module name="polyfun-1.1.0" />
@@ -355,11 +357,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolynomialTest.evaluateToNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PolynomialTest.getConstantCoefAtFix" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="polyfun-1.1.0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="unittest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="PACKAGE_NAME" value="unittest" />
       <option name="MAIN_CLASS_NAME" value="unittest.PolynomialTest" />
-      <option name="METHOD_NAME" value="evaluateToNumber" />
+      <option name="METHOD_NAME" value="getConstantCoefAtFix" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -393,11 +401,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PolynomialTest.getConstantCoefAtFix" />
         <item itemvalue="JUnit.ParameterizedAddPolynomials.testPolynomialsCompareAllTermsExistOrigRefactored" />
         <item itemvalue="JUnit.AtomTest" />
         <item itemvalue="Application.ParameterizedTestRunner" />
         <item itemvalue="JUnit.TestSuite" />
-        <item itemvalue="JUnit.PolynomialTest.evaluateToNumber" />
       </list>
     </recent_temporary>
   </component>
@@ -411,13 +419,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Convert python snake_case to Java camelCase.">
-      <created>1560284680257</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1560284680257</updated>
     </task>
     <task id="LOCAL-00038" summary="Remove printing the exponent and scalar from unit tests.">
       <created>1560284877607</created>
@@ -755,25 +756,17 @@
       <option name="project" value="LOCAL" />
       <updated>1562527249477</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="added polyfun.jar to the workspace">
+      <created>1562691221485</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1562691221487</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 00m 16s.xml">
-      <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 02m 03s.xml">
-      <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 02m 15s.xml">
-      <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 52m 07s.xml">
-      <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 54m 18s.xml">
-      <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 55m 04s.xml">
       <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
     </history-entry>
@@ -789,6 +782,21 @@
     <history-entry file="ParameterizedAddPolynomials_testPolynomialsCompareAllTermsExistOrigRefactored - 2019.07.03 at 14h 13m 50s.xml">
       <configuration name="ParameterizedAddPolynomials.testPolynomialsCompareAllTermsExistOrigRefactored" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PolynomialTest_getConstantCoefAtFix - 2019.07.09 at 12h 55m 35s.xml">
+      <configuration name="PolynomialTest.getConstantCoefAtFix" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolynomialTest_getConstantCoefAtFix - 2019.07.09 at 12h 55m 59s.xml">
+      <configuration name="PolynomialTest.getConstantCoefAtFix" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolynomialTest_getConstantCoefAtFix - 2019.07.09 at 12h 56m 56s.xml">
+      <configuration name="PolynomialTest.getConstantCoefAtFix" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolynomialTest_getConstantCoefAtFix - 2019.07.09 at 13h 04m 52s.xml">
+      <configuration name="PolynomialTest.getConstantCoefAtFix" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PolynomialTest_getConstantCoefAtFix - 2019.07.09 at 13h 05m 31s.xml">
+      <configuration name="PolynomialTest.getConstantCoefAtFix" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -801,8 +809,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="21" y="54" width="1253" height="714" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.18579686" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49330357" visible="true" weight="0.18579686" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -811,7 +820,7 @@
       <window_info id="simpleUML" order="6" weight="0.76878613" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32676518" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6705686" weight="0.31672025" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6705686" visible="true" weight="0.31672025" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7968227" weight="0.47106108" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -865,7 +874,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Got rid of isLessThan tests in TermTests because the rules of sorting have changed." />
     <MESSAGE value="Changed or deleted place, insert and times tests now that the coef auto-reduces." />
     <MESSAGE value="Ignore the string compare tests in paramaterized suite because the order of terms will be different." />
     <MESSAGE value="Delete commented out code, unused iZeroTerm method and renamed Term.smartInsert to Term.insert." />
@@ -890,7 +898,8 @@
     <MESSAGE value="Fixed evaluateToNumber" />
     <MESSAGE value="restructured test package structure. made sure they don't appear in JAR." />
     <MESSAGE value="Updated README" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README" />
+    <MESSAGE value="added polyfun.jar to the workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="added polyfun.jar to the workspace" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1132,10 +1141,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/unittest/PolynomialTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="707" column="53" selection-start-line="707" selection-start-column="53" selection-end-line="707" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="298" column="19" selection-start-line="298" selection-start-column="19" selection-end-line="298" selection-end-column="19" />
+        <state relative-caret-position="308">
+          <caret line="315" column="13" selection-start-line="315" selection-start-column="13" selection-end-line="315" selection-end-column="13" />
           <folding>
             <element signature="e#10585#10586#0" expanded="true" />
             <element signature="e#10618#10619#0" expanded="true" />
@@ -1143,16 +1162,6 @@
             <element signature="e#10788#10789#0" expanded="true" />
             <element signature="e#14143#14144#0" expanded="true" />
             <element signature="e#14200#14201#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/unittest/PolynomialTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1220,7 +1229,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

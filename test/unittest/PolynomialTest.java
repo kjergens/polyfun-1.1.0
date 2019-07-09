@@ -698,6 +698,17 @@ public class PolynomialTest {
         assertThat(polynomial.toString(), is (expected));
     }
 
+    @Test
+    public void getConstantCoefAtFix() {
+        Polynomial fx = new Polynomial(new double[]{0, 3, 0, 2});
+
+        assertThat(fx.getConstantCoefAt(0), is(0.0));
+        assertThat(fx.getConstantCoefAt(1), is(3.0));
+        assertThat(fx.getConstantCoefAt(2), is(0.0));
+        assertThat(fx.getConstantCoefAt(3), is(2.0));
+    }
+
+
     public static void comparePolynomials(polyfun.Polynomial oldPoly, Polynomial newPoly) {
         // Compare number of coefficients.
         polyfun.Coef[] oldCoefs = oldPoly.getCoefficients();

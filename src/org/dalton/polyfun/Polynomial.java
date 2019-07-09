@@ -307,14 +307,12 @@ public class Polynomial {
             Coef coef = this.getCoefAt(degree);
             Term[] terms = coef.getTerms();
 
-            if (terms.length > 1 || !terms[0].isConstantTerm()) {
+            if (terms.length == 0) return 0;
+            else if (terms.length == 1 && terms[0].isConstantTerm()) return terms[0].getNumericalCoefficient();
+            else {
                 String msg = String.format(
                         "The coefficient %s is not a constant and cannot be returned as a double.", coef.toString());
                 throw (new AssertionError(msg));
-            } else if (terms.length == 0) {
-                return 0;
-            } else {
-                return terms[0].getNumericalCoefficient();
             }
         }
     }
@@ -652,12 +650,32 @@ public class Polynomial {
      * For example, if p(x) = x2 + 5, and x = 2, then p.evaluate(2) would essentially
      * evaluate p(2) = 22 + 5 = 9.
      *
-     * @param value The value to plug into the polynomial
+     * @param input The value to plug into the polynomial
      * @return double the result
      * @since 1.1.0
      */
-    public double evaluateToNumber(double value) {
-        Polynomial polynomial = new Polynomial(value);
+    public double evaluateToNumber(double input) {
+        Polynomial polynomial = new Polynomial(input);
+        Coef coef = new Coef(0.0D);
+
+        for (int i = 0; i < this.coefs.length; ++i) {
+            coef.setTerms(coef.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
+        }
+
+        return coef.getConstantAt0Term();
+    }
+
+    /**
+     * Think of this method as plugging in a numeric value into a polynomial function.
+     * For example, if p(x) = x2 + 5, and x = 2, then p.evaluate(2) would essentially
+     * evaluate p(2) = 22 + 5 = 9.
+     *
+     * @param x The value to plug into the polynomial
+     * @return double the result
+     * @since 1.1.0
+     */
+    public double evaluateWith(double x) {
+        Polynomial polynomial = new Polynomial(x);
         Coef coef = new Coef(0.0D);
 
         for (int i = 0; i < this.coefs.length; ++i) {

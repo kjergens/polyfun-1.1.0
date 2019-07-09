@@ -375,6 +375,7 @@ public class Polynomial {
 
             if (terms.length == 0) return 0;
             else if (terms.length == 1 && terms[0].isConstantTerm()) return terms[0].getNumericalCoefficient();
+            else if (terms.length == 1) return 1; // implied coef of 1 for non-constants
             else {
                 String msg = String.format(
                         "The coefficient %s is not a constant and cannot be returned as a double.", coef.toString());

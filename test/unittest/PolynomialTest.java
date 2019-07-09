@@ -331,7 +331,7 @@ public class PolynomialTest {
     }
 
     @Test(expected = AssertionError.class)
-    public void getConstantCoefAtTermWithAtoms() {
+    public void getCoefficientAtTermTermWithAtoms() {
         // (a_1^2b_2^3b_3^4+b_3^4d_1^2d_3+c_1^4e_2)X
         Term[] terms = new Term[3];
 
@@ -362,36 +362,36 @@ public class PolynomialTest {
 
         Polynomial poly = new Polynomial(coefs);
 
-        poly.getConstantCoefAt(1);
+        poly.getCoefficientAtTerm(1);
     }
 
-    @Test(expected = AssertionError.class)
-    public void getConstantCoefAtMultipleTerms() {
+    @Test
+    public void getCoefficientAtTermMultipleTerms() {
         Atom[] atoms = {new Atom('a', 1, 2)};
         Coef[] coefs = {new Coef(new Term(3, atoms))};
         Polynomial polynomial = new Polynomial(coefs);
-        polynomial.getConstantCoefAt(0);
+        assertThat(polynomial.getCoefficientAtTerm(0), is(1.0));
     }
 
     @Test
-    public void getConstantCoefAtBigDegree() {
+    public void getCoefficientAtTermBigDegree() {
         double[] coefficients = {1, -3, 0, 2};
         Polynomial polynomial = new Polynomial(coefficients);
-        assertThat(polynomial.getConstantCoefAt(13), is(0.0));
+        assertThat(polynomial.getCoefficientAtTerm(13), is(0.0));
     }
 
     @Test
-    public void getConstantCoefAt() {
+    public void getCoefficientAtTerm() {
         double[] coefficients = {1, -3, 0, 2};
         Polynomial polynomial = new Polynomial(coefficients);
-        assertThat(polynomial.getConstantCoefAt(3), is(2.0));
+        assertThat(polynomial.getCoefficientAtTerm(3), is(2.0));
     }
 
     @Test
-    public void getConstantCoefAtTermTooBig() {
+    public void getCoefficientAtTermTermTooBig() {
         double[] coefficients = {1, -3, 0, 2};
         Polynomial polynomial = new Polynomial(coefficients);
-        assertThat(polynomial.getConstantCoefAt(13), is(0.0));
+        assertThat(polynomial.getCoefficientAtTerm(13), is(0.0));
     }
 
     @Test
@@ -699,13 +699,13 @@ public class PolynomialTest {
     }
 
     @Test
-    public void getConstantCoefAtFix() {
+    public void getCoefficientAtTermFix() {
         Polynomial fx = new Polynomial(new double[]{0, 3, 0, 2});
 
-        assertThat(fx.getConstantCoefAt(0), is(0.0));
-        assertThat(fx.getConstantCoefAt(1), is(3.0));
-        assertThat(fx.getConstantCoefAt(2), is(0.0));
-        assertThat(fx.getConstantCoefAt(3), is(2.0));
+        assertThat(fx.getCoefficientAtTerm(0), is(0.0));
+        assertThat(fx.getCoefficientAtTerm(1), is(3.0));
+        assertThat(fx.getCoefficientAtTerm(2), is(0.0));
+        assertThat(fx.getCoefficientAtTerm(3), is(2.0));
     }
 
     @Test

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"org.dalton.polyfun"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.dalton.polyfun"}]

@@ -10,7 +10,6 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/polyfun_1_1_0/polyfun-1.1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/polyfun-1.1.0/org/dalton/polyfun/Polynomial.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unittest/PolynomialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/unittest/PolynomialTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +35,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="315" column="13" selection-start-line="315" selection-start-column="13" selection-end-line="315" selection-end-column="13" />
+            <state relative-caret-position="-41">
+              <caret line="291" column="81" selection-start-line="291" selection-start-column="81" selection-end-line="291" selection-end-column="81" />
               <folding>
                 <element signature="e#10585#10586#0" expanded="true" />
                 <element signature="e#10618#10619#0" expanded="true" />
@@ -420,13 +419,6 @@
       <option name="presentableId" value="Default" />
       <updated>1559416545783</updated>
     </task>
-    <task id="LOCAL-00038" summary="Remove printing the exponent and scalar from unit tests.">
-      <created>1560284877607</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1560284877607</updated>
-    </task>
     <task id="LOCAL-00039" summary="Added Parameterized evaluate coefs tests. They exposed a bug where the terms are not in the same order at the original polyfun in 7 out of 1000 cases.">
       <created>1560346539889</created>
       <option name="number" value="00039" />
@@ -763,13 +755,17 @@
       <option name="project" value="LOCAL" />
       <updated>1562691221487</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="fix to getConstantCoefAt for when there is no Coef. Also made evaluateWith(x) to see if that name feels more natural.">
+      <created>1562692916656</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1562692916656</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 55m 04s.xml">
-      <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PolynomialTest_evaluateToNumber - 2019.07.03 at 13h 56m 14s.xml">
       <configuration name="PolynomialTest.evaluateToNumber" configurationId="JUnit" />
     </history-entry>
@@ -797,6 +793,9 @@
     <history-entry file="PolynomialTest_getConstantCoefAtFix - 2019.07.09 at 13h 05m 31s.xml">
       <configuration name="PolynomialTest.getConstantCoefAtFix" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PolynomialTest_getConstantCoefAtFix - 2019.07.09 at 13h 18m 55s.xml">
+      <configuration name="PolynomialTest.getConstantCoefAtFix" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -820,7 +819,7 @@
       <window_info id="simpleUML" order="6" weight="0.76878613" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32676518" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6705686" visible="true" weight="0.31672025" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6705686" visible="true" weight="0.31672025" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7968227" weight="0.47106108" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -831,7 +830,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.32943144" side_tool="true" weight="0.53880596" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.36287627" weight="0.26205787" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Structure" order="1" sideWeight="0.5066964" visible="true" weight="0.18331957" />
+      <window_info active="true" anchor="right" id="Structure" order="1" sideWeight="0.5066964" visible="true" weight="0.18331957" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
@@ -874,7 +873,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed or deleted place, insert and times tests now that the coef auto-reduces." />
     <MESSAGE value="Ignore the string compare tests in paramaterized suite because the order of terms will be different." />
     <MESSAGE value="Delete commented out code, unused iZeroTerm method and renamed Term.smartInsert to Term.insert." />
     <MESSAGE value="Remove Coef.smartInsert." />
@@ -899,7 +897,8 @@
     <MESSAGE value="restructured test package structure. made sure they don't appear in JAR." />
     <MESSAGE value="Updated README" />
     <MESSAGE value="added polyfun.jar to the workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="added polyfun.jar to the workspace" />
+    <MESSAGE value="fix to getConstantCoefAt for when there is no Coef. Also made evaluateWith(x) to see if that name feels more natural." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix to getConstantCoefAt for when there is no Coef. Also made evaluateWith(x) to see if that name feels more natural." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1153,8 +1152,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/dalton/polyfun/Polynomial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="315" column="13" selection-start-line="315" selection-start-column="13" selection-end-line="315" selection-end-column="13" />
+        <state relative-caret-position="-41">
+          <caret line="291" column="81" selection-start-line="291" selection-start-column="81" selection-end-line="291" selection-end-column="81" />
           <folding>
             <element signature="e#10585#10586#0" expanded="true" />
             <element signature="e#10618#10619#0" expanded="true" />

@@ -288,6 +288,30 @@ public class Polynomial {
      *
      *      (3.0)X^4 + (5.0a_1)X^2 + 8
      *
+     * getCoefficientFor(4) returns 3.0 because x^4 has a coefficient of 3.0
+     * getCoefficientFor(2) throws an Exception because x^4 has coefficient that is not a double.
+     *
+     * @param xTerm
+     * @return  The numerical coefficient of the x term at the given degree.
+     * @since 1.1.0
+     */
+    public double getCoefficientFor(int xTerm)  {
+        double constantCoefficient = 0;
+        try {
+            constantCoefficient = getNumericalCoefficientAtTerm(degree);
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+
+        return constantCoefficient;
+    }
+
+    /**
+     * Return the numerical coefficient of the x term at the given degree, as long
+     * as that coefficient is a number. Example,for the polynomial:
+     *
+     *      (3.0)X^4 + (5.0a_1)X^2 + 8
+     *
      * getConstantCoefAt(4) returns 3.0
      * getConstantCoefAt(2) throws an Exception because the coefficient is too complex.
      *

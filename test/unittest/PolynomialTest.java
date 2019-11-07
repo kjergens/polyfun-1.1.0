@@ -15,8 +15,7 @@ import java.io.PrintStream;
 import unittest.testlib.*;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 // TODO: add test cases with negative coefficients.
 public class PolynomialTest {
@@ -126,6 +125,18 @@ public class PolynomialTest {
     }
 
     @Test
+    public void testEvaluateWith_CompareToPolyfunOld() {
+        double[] coefficients = {1, -3, 0, 2};
+
+        PolyPair polyPair = new PolyPair(coefficients);
+
+        double old_result = polyPair.polynomialOrig.evaluate(3).getTerms()[0].getTermDouble();
+        double new_result = polyPair.polynomialRefactored.evaluateWith(3);
+
+        assertTrue(old_result == new_result);
+    }
+
+    @Test
     public void testPlus() {
         double[] coefficients = {1, -3, 0, 2};
         Polynomial poly = new Polynomial(coefficients);
@@ -149,6 +160,47 @@ public class PolynomialTest {
         double y = poly.evaluate(3).getTerms()[0].getNumericalCoefficient();
 
         assertTrue(46.0 == y);
+    }
+
+    @Test
+    public void testEvaluateWith() {
+        double[] coefficients = {1, -3, 0, 2};
+        Polynomial poly = new Polynomial(coefficients);
+
+        double y = poly.evaluateWith(3);
+
+        assertTrue(46.0 == y);
+    }
+
+    @Test
+    public void testEvaluateWithCubicPoly() {
+        double[] coefficients = {0, 2, 2, -4};
+        Polynomial poly = new Polynomial(coefficients);
+
+        double y = poly.evaluateWith(2);
+
+        assertTrue(-20.0 == y);
+    }
+
+    @Test
+    public void testEvaluateWithCubicWithXTermPoly() {
+        double[] coefficients = {0, 2, 0, -4};
+        Polynomial poly = new Polynomial(coefficients);
+
+        double y = poly.evaluateWith(1);
+
+        assertTrue(-2.0 == y);
+    }
+
+    @Test
+    public void testEvaluateWith5thOrderPoly() {
+        // 3x^{5}-10x^{3}-4x^{2}+5x
+        double[] coefficients = {0, 5, -4, -10, 0, 3};
+        Polynomial poly = new Polynomial(coefficients);
+
+        double y = poly.evaluateWith(2);
+
+        assertThat(y, is(10.0));
     }
 
     @Test
@@ -424,9 +476,21 @@ public class PolynomialTest {
     }
 
     @Test
+    public void evaluateWith() {
+        Polynomial polynomial = new Polynomial(2);
+        assertThat(polynomial.evaluateWith(3), is(9.0));
+    }
+
+    @Test
     public void evaluateToNumberDoubleArray() {
         Polynomial polynomial = new Polynomial(new double[]{0, 3, 2});
         assertThat(polynomial.evaluateToNumber(3), is(27.0));
+    }
+
+    @Test
+    public void evaluateWithDoubleArray() {
+        Polynomial polynomial = new Polynomial(new double[]{0, 3, 2});
+        assertThat(polynomial.evaluateWith(3), is(27.0));
     }
 
     @Test

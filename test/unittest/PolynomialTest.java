@@ -120,7 +120,7 @@ public class PolynomialTest {
         PolyPair polyPair = new PolyPair(coefficients);
 
         double old_result = polyPair.polynomialOrig.evaluate(3).getTerms()[0].getTermDouble();
-        double new_result = polyPair.polynomialRefactored.evaluate(3).getTerms()[0].getNumericalCoefficient();
+        double new_result = polyPair.polynomialRefactored.eval(3);
 
         assertTrue(old_result == new_result);
     }
@@ -146,7 +146,7 @@ public class PolynomialTest {
         double[] coefficients = {1, -3, 0, 2};
         Polynomial poly = new Polynomial(coefficients);
 
-        double y = poly.evaluate(3).getTerms()[0].getNumericalCoefficient();
+        double y = poly.eval(3);
 
         assertTrue(46.0 == y);
     }
@@ -420,13 +420,13 @@ public class PolynomialTest {
     @Test
     public void evaluateToNumber() {
         Polynomial polynomial = new Polynomial(2);
-        assertThat(polynomial.evaluateToNumber(3), is(9.0));
+        assertThat(polynomial.eval(3), is(9.0));
     }
 
     @Test
     public void evaluateToNumberDoubleArray() {
         Polynomial polynomial = new Polynomial(new double[]{0, 3, 2});
-        assertThat(polynomial.evaluateToNumber(3), is(27.0));
+        assertThat(polynomial.eval(3), is(27.0));
     }
 
     @Test

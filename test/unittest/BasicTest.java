@@ -40,9 +40,9 @@ public class BasicTest {
          * In the next code chunk we will find the value of p (or P) at x=3
          */
 
-        Coef C = p.evaluate(3); //plugs in 3 and returns the answer as a org.dalton.polyfun.Coef which we call C
-        Term T = C.getTerms()[0]; //pulls the first org.dalton.polyfun.Term (index 0) off the array of Terms and calls it T
-        double y = T.getNumericalCoefficient(); //finds the number associated with that org.dalton.polyfun.Term, which is our answer.
+        //Coef C = p.eval(3); //plugs in 3 and returns the answer as a org.dalton.polyfun.Coef which we call C
+        //Term T = C.getTerms()[0]; //pulls the first org.dalton.polyfun.Term (index 0) off the array of Terms and calls it T
+        double y = p.eval(3); //T.getNumericalCoefficient(); //finds the number associated with that org.dalton.polyfun.Term, which is our answer.
 
         System.out.println("p(3) = " + y);  //prints the value of the polynomial when x=3 to the console
 
@@ -53,8 +53,7 @@ public class BasicTest {
          * org.dalton.polyfun.Term T contains only a double, and no other variable.
          */
 
-        //This process could have been streamlined by calling multiple methods in one line:
-        double Y = P.evaluate(3).getTerms()[0].getNumericalCoefficient(); //as P and p are the same Y and y will also be the same
+        double Y = P.eval(3); //as P and p are the same Y and y will also be the same
 
         System.out.println("P(3) = " + Y);
 

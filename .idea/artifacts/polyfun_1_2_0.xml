@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="polyfun-1.2.0">
+    <output-path>$PROJECT_DIR$/out/artifacts/polyfun_1_2_0</output-path>
+    <root id="archive" name="polyfun-1.2.0.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="polyfun-1.2.0" />
+    </root>
+  </artifact>
+</component>

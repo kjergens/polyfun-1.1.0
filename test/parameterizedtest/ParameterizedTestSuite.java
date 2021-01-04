@@ -9,7 +9,6 @@ import org.junit.runners.Suite;
         ParameterizedPolynomialTest.class,
         ParameterizedAddPolynomials.class,
         ParameterizedAddTangents.class,
-        ParameterizedEvaluateScalar.class,
         ParameterizedEvaluateCoefs.class,
         ParameterizedMultiplyPolynomials.class,
         ParameterizedSubtractPolynomials.class,

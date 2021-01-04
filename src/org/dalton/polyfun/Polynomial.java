@@ -235,17 +235,6 @@ public class Polynomial {
     }
 
     /**
-     * Doesn't follow naming convention.
-     *
-     * @since 1.0.0
-     * @deprecated use {@link #getCoefAt(int)} instead.
-     */
-    @Deprecated
-    public Coef getCoefficient(int index) {
-        return this.coefs[index];
-    }
-
-    /**
      * Retrieve a specific coefficient by specifying the x which corresponds with that
      * Coef. Returns a Coef.
      *
@@ -255,35 +244,6 @@ public class Polynomial {
      */
     public Coef getCoefAt(int index) {
         return this.coefs[index];
-    }
-
-
-    /**
-     * Return the numerical coefficient of the x term at the given degree, as long
-     * as that coefficient is a number. Example,for the polynomial:
-     *
-     *      (3.0)X^4 + (5.0a_1)X^2 + 8
-     *
-     * getConstantCoefAt(4) returns 3.0
-     * getConstantCoefAt(2) throws an Exception because the coefficient is too complex.
-     *
-     * Deprecated for confusing name.
-     *
-     * @param degree
-     * @return  The numerical coefficient of the x term at the given degree.
-     * @since 1.1.1
-     * @deprecated Use {{@link #getCoefficientAtTerm(int)} instead.
-     */
-    @Deprecated
-    public double getConstantCoefAt(int degree)  {
-        double constantCoefficient = 0;
-        try {
-            constantCoefficient = getNumericalCoefficientAtTerm(degree);
-        } catch (Exception e) {
-            System.err.println(e.toString());
-        }
-
-        return constantCoefficient;
     }
 
     /**
@@ -674,31 +634,6 @@ public class Polynomial {
      *
      * @param value The value to plug into the polynomial
      * @return Coef the result
-     * @since 1.0.0
-     * @deprecated Use {{@link #evaluateToCoef(double)}} instead.
-     */
-    @Deprecated
-    public Coef evaluate(double value) {
-        Polynomial polynomial = new Polynomial(value);
-        Coef coef = new Coef(0.0D);
-
-        for (int i = 0; i < this.coefs.length; ++i) {
-            coef.setTerms(coef.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
-        }
-
-        return coef;
-    }
-
-    /**
-     * Think of this method as plugging in a numeric value into a polynomial function.
-     * For example, if p(x) = x2 + 5, and x = 2, then p.evaluate(2) would essentially
-     * evaluate p(2) = 22 + 5 = 9. Although the answer will in many cases be a number,
-     * a double, it is possible to have other variables as coefficients. This forces
-     * the .evaluate(double x) to return a Coef. Use methods for Coefs to extract the
-     * double from it.
-     *
-     * @param value The value to plug into the polynomial
-     * @return Coef the result
      * @since 1.1.0
      */
     public Coef evaluateToCoef(double value) {
@@ -717,14 +652,12 @@ public class Polynomial {
      * For example, if p(x) = x2 + 5, and x = 2, then p.evaluate(2) would essentially
      * evaluate p(2) = 22 + 5 = 9.
      *
-     * @param input The value to plug into the polynomial
+     * @param x The value to plug into the polynomial
      * @return double the result
-     * @since 1.1.1
-     * @deprecated Use {@link #evaluateWith(double)} instead
+     * @since 1.2.0
      */
-    @Deprecated
-    public double evaluateToNumber(double input) {
-        Polynomial polynomial = new Polynomial(input);
+    public double eval(double x) {
+        Polynomial polynomial = new Polynomial(x);
         Coef coef = new Coef(0.0D);
 
         for (int i = 0; i < this.coefs.length; ++i) {
@@ -742,7 +675,9 @@ public class Polynomial {
      * @param x The value to plug into the polynomial
      * @return double the result
      * @since 1.1.0
+     * @deprecated Use {{@link #eval(double)}} instead.
      */
+    @Deprecated
     public double evaluateWith(double x) {
         Polynomial polynomial = new Polynomial(x);
         Coef coef = new Coef(0.0D);
@@ -752,89 +687,6 @@ public class Polynomial {
         }
 
         return coef.getConstantAt0Term();
-    }
-
-    /**
-     * Think of this method as plugging in a variable into a polynomial function. For example,
-     * if p(x) = x2 + 5, and Coef C = a2, then p.evaluate(C) would essentially evaluate
-     * p(a^2) = (a^2)^2 + 5 = a^4 + 5
-     *
-     * @param coef The coef to plug into the polynomial.
-     * @return Coef object
-     * @since 1.0.0
-     * @deprecated Use {{@link #evaluateToCoef(Coef)}} instead.
-     */
-    @Deprecated
-    public Coef evaluate(Coef coef) {
-        Polynomial polynomial = new Polynomial(coef);
-        Coef result = new Coef(0.0D);
-
-        for (int i = 0; i < this.coefs.length; ++i) {
-            result.setTerms(result.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
-        }
-
-        return result;
-    }
-
-    /**
-     * Think of this method as plugging in a variable into a polynomial function. For example,
-     * if p(x) = x2 + 5, and Coef C = a2, then p.evaluate(C) would essentially evaluate
-     * p(a^2) = (a^2)^2 + 5 = a^4 + 5
-     *
-     * @param coef The coef to plug into the polynomial.
-     * @return Coef object
-     * @since 1.1.0
-     */
-    public Coef evaluateToCoef(Coef coef) {
-        Polynomial polynomial = new Polynomial(coef);
-        Coef result = new Coef(0.0D);
-
-        for (int i = 0; i < this.coefs.length; ++i) {
-            result.setTerms(result.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
-        }
-
-        return result;
-    }
-
-    /**
-     * Think of this method as plugging in a variable into a polynomial function. For example,
-     * if p(x) = x2 + 5, and Coef C = a2, then p.evaluate(C) would essentially evaluate
-     * p(2) = X^2 + 5 = 4 + 5 = 20
-     *
-     * @param coef The coef to plug into the polynomial.
-     * @return  The answer as a double.
-     * @since 1.1.1
-     * @deprecated Use {@link #evaluateWith(Coef)} instead.
-     */
-    public double evaluateToNumber(Coef coef) {
-        Polynomial polynomial = new Polynomial(coef);
-        Coef result = new Coef(0.0D);
-
-        for (int i = 0; i < this.coefs.length; ++i) {
-            result.setTerms(result.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
-        }
-
-        return result.getConstantAt0Term();
-    }
-
-    /**
-     * Think of this method as plugging in a variable into a polynomial function. For example,
-     * if p(x) = x2 + 5, and Coef C = a2, then p.evaluate(C) would essentially evaluate
-     * p(2) = X^2 + 5 = 4 + 5 = 20
-     *
-     * @param coef The coef to plug into the polynomial.
-     * @return  The answer as a double.
-     * @since 1.1.1
-     */
-    public double evaluateWith(Coef coef) {
-        Polynomial polynomial = new Polynomial(coef);
-        Coef result = new Coef(0.0D);
-
-        for (int i = 0; i < this.coefs.length; ++i) {
-            result.setTerms(result.plus(polynomial.to(i).times(this.coefs[i]).getCoefAt(0)).getTerms());
-        }
-
-        return result.getConstantAt0Term();
     }
 
     /**
@@ -848,50 +700,6 @@ public class Polynomial {
             if (!coef.isConstantCoef()) return false;
 
         return true;
-    }
-
-    /**
-     * Doesn't follow convention.
-     *
-     * @since 1.0.0
-     * @deprecated use {@link #toString()} instead.
-     */
-    @Deprecated
-    public void print() {
-        for (int i = this.degree; i > 1; --i) {
-            if (!this.coefs[i].isZero()) {
-                System.out.print("(");
-                this.coefs[i].print();
-                System.out.print(")X^" + i);
-
-                int j;
-                for (j = i - 1; j > 0 && this.coefs[j].isZero(); --j) {
-                }
-
-                if (j != 0) {
-                    System.out.print("+");
-                }
-            }
-        }
-
-        if (this.degree > 0) {
-            if (!this.coefs[1].isZero()) {
-                System.out.print("(");
-                this.coefs[1].print();
-                System.out.print(")X");
-            }
-
-            if (!this.coefs[0].isZero()) {
-                System.out.print("+");
-                this.coefs[0].print();
-            }
-        }
-
-        if (this.degree == 0 && !this.coefs[0].isZero()) {
-            this.coefs[0].print();
-        }
-
-        System.out.println();
     }
 
     /**
